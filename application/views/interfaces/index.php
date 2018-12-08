@@ -10,28 +10,33 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
+    
         <div class="login-register bg-gradient">
             <div class="d-flex no-block align-items-center m-b-15">
                 <div class="m-auto">
                     <img src="assets/images/Logo WL BLANCO_v.png" height="100px" alt="homepage" class="light-logo">
                 </div>
             </div>
+          
             <div class="login-box card bg-papaya">
-                 <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
+                
                     <h1 class="box-title m-b-40 text-center txt-blanco">Reporteador</h1>
+                    <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control placeOk" type="text" required="" placeholder="Usuario"> </div>
+                            <input class="form-control placeOk" type="text" required="" placeholder="Usuario" name="email"> </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control placeOk" type="password" required="" placeholder="Contraseña"> </div>
+                            <input class="form-control placeOk" type="password" required="" placeholder="Contraseña" name="pass"> </div>
                     </div>
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
                             <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Iniciar Sesión</button>
+                            <?php echo form_close(); ?>  
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         <div class="d-flex no-block align-items-center">
                             <div class="m-auto">
@@ -39,7 +44,7 @@
                             </div>
                          </div>
                      </div>
-                <?php echo form_close(); ?>  
+               
                 <form class="form-horizontal" id="recoverform" action="index.html">
                     <div class="form-group ">
                         <div class="col-xs-12">

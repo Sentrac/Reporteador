@@ -9,6 +9,7 @@ class Login extends CI_Controller {
 		
 		$this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->model('Modelo_login');
 		$this->load->library('session');
 	}
 
@@ -19,6 +20,7 @@ class Login extends CI_Controller {
 	}
 
 	public function proceso_login(){
+		$this->load->helper(array('form','url'));
 		$email=$this->input->post('email');
 		$pass=$this->input->post('pass');
 		
@@ -30,7 +32,7 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('tipo_usuario',$row->tipo_usuario);
                 //USUARIO SUPERUSUARIO
                 if($this->session->userdata('tipo_usuario')=="SU"){
-                    redirect('superusuario/index');
+                    redirect('Superusuario/index');
                 }
                 //USUARIO ADMINISTRADOR
                 elseif($this->session->userdata('tipo_usuario')=="AD"){
