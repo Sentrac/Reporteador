@@ -17,57 +17,49 @@
                 </div>
             </div>
             <div class="login-box card bg-papaya">
-                <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="index.html">
-                        <h1 class="box-title m-b-40 text-center txt-blanco">Reporteador</h1>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control placeOk txt-rosita" type="text" required="" placeholder="Usuario"> </div>
+                 <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
+                    <h1 class="box-title m-b-40 text-center txt-blanco">Reporteador</h1>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control placeOk" type="text" required="" placeholder="Usuario"> </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control placeOk" type="password" required="" placeholder="Contraseña"> </div>
+                    </div>
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Iniciar Sesión</button>
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input class="form-control placeOk txt-rosita" type="password" required="" placeholder="Contraseña"> </div>
-                        </div>
-                        <div class="form-group text-center m-t-20">
-                            <div class="col-xs-12">
-                                <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Iniciar Sesión</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex no-block align-items-center">
+                            <div class="m-auto">
+                                 <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i>¿Olvidaste la contraseña?</a> 
                             </div>
+                         </div>
+                     </div>
+                <?php echo form_close(); ?>  
+                <form class="form-horizontal" id="recoverform" action="index.html">
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <h3 class="txt-blanco m-b-15 text-center">Recuperar contraseña</h3>
+                            <p class="text-muted txt-blanco text-center">Ingrese su correo electrónico y las instrucciones serán enviadas a usted!</p>
                         </div>
-                       <div class="form-group">
-                            <div class="d-flex no-block align-items-center">
-                                <div class="m-auto">
-                                    <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i>¿Olvidaste la contraseña?</a> 
-                                </div>
-                            </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Correo">
                         </div>
-                    </form>
-                    <form class="form-horizontal" id="recoverform" action="index.html">
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <h3 class="txt-blanco m-b-15 text-center">Recuperar contraseña</h3>
-                                <p class="text-muted txt-blanco text-center">Ingrese su correo electrónico y las instrucciones serán enviadas a usted!</p>
-                            </div>
+                    </div>
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Enviar</button>
                         </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Correo">
-                            </div>
-                        </div>
-                        <div class="form-group text-center m-t-20">
-                            <div class="col-xs-12">
-                                <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>                            
             </div>
         </div>
     </section>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->   
 </body>
 </html>
