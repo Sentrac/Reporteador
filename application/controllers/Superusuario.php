@@ -14,7 +14,6 @@ class Superusuario extends CI_Controller {
 	}
 
 	public function index(){
-        $this->load->view('temps/header');
 		$this->load->view('interfaces/interfaz_susuario');
     }
 }

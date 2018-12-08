@@ -11,12 +11,12 @@ class Login extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('Modelo_login');
 		$this->load->library('session');
+		$this->load->view('temps/header'); 
+		$this->load->view('temps/footer');         
 	}
 
-	public function index(){
-        $this->load->view('temps/header');         
+	public function index(){        
 		$this->load->view('interfaces/index');
-		$this->load->view('temps/footer');         
 	}
 
 	public function proceso_login(){
