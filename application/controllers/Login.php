@@ -9,10 +9,10 @@ class Login extends CI_Controller {
 		
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->model('Modelo_login');
 		$this->load->library('session');
-		$this->load->view('temps/header'); 
-		$this->load->view('temps/footer');         
+		$this->load->model('Modelo_login');
+		$this->load->view('temps/header');
+		$this->load->view('temps/footer');
 	}
 
 	public function index(){        
