@@ -16,5 +16,17 @@ class Modelo_login extends CI_Model{
             return false;
         }
     }
+    //FUNCIÓN PARA TRAER LOS CAMPOS 'nombre,apellidos DE LA TABLA 'usuarios'
+    function getRoles(){  
+        $this->db->select("nombre,apellidos,email"); 
+        $this->db->from('usuarios');  
+        $this->db->where("email",$this->session->userdata("email"));
+        $query=$this->db->get();
+        if($query->num_rows()==1){
+            return $query->result();
+        }else {
+            return false;
+        }
+    }
 }
 ?>

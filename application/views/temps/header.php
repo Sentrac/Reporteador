@@ -8,7 +8,7 @@
     <meta name="description" content="Reporteador">
     <meta name="author" content="WarrioPracticantes">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/ico" sizes="16x16" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/ico" sizes="16x16" href="../assets/images/favicon.ico">
     <title>Reporteador</title>
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
