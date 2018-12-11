@@ -11,8 +11,6 @@ class Login extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->model('Modelo_login');
-		$this->load->view('temps/header');
-		$this->load->view('temps/footer');
 	}
 
 	public function index(){        
@@ -44,4 +42,8 @@ class Login extends CI_Controller {
                 }
 		}
 	}
+	public function logout(){
+        $this->session->sess_destroy();
+        redirect(base_url());
+    }
 }

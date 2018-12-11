@@ -3,7 +3,7 @@
     if($name=='SU'){
     }
     else{
-        redirect('login/index');
+        redirect(base_url());
     }
 ?>
 <body class="fix-header fix-sidebar card-no-border">
@@ -180,7 +180,7 @@
             <div class="sidebar-footer">
                 <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="mdi mdi-settings"></i></a>
                 <!-- item--><a href="" class="link clikem" data-toggle="tooltip"></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                <!-- item--><a href="<?= base_url() ?>Login/logout" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
             </div>
             <!-- End Bottom points-->
         </aside>
@@ -314,10 +314,6 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer"> © 2018 Reporteador by WarrioPracticantes</footer>
-            <?php
-            $name = $this->session->userdata('tipo_usuario');
-            echo $name;
-            ?>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
