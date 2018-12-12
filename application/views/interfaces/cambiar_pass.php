@@ -81,7 +81,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?= base_url() ?>Superusuario/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Superusuario/cambiarpass"><i class="ti-settings"></i> Cuenta</a></li>
+                                    <li><a href="<?= base_url() ?>Superusuario/vistaPassword"><i class="ti-settings"></i> Cuenta</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="fa fa-power-off"></i> Salir</a></li>
                                 </ul>
@@ -159,34 +159,39 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-
+                <?php echo form_open("Superusuario/cambiarPassword"); ?>
                 <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
                         <h4 class="m-b-0 text-white"></h4>
                       </div>
+                      <?php echo validation_errors(); ?>
+                      <?php echo $this->session->flashdata('pass'); ?>
+                      <?php echo $this->session->flashdata('passError'); ?>
                       <div class="card-body">
-                        <form action="#" class="form-horizontal form-bordered">
                           <div class="form-body">
                             <h4 class="card-title">Cambiar Contraseña</h4>
                             <hr>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Contraseña actual</label>
                               <div class="col-md-9">
-                                <input type="text" class="form-control">
+                                <input type="password" name="actual_pswd" class="form-control">
+                                <?php form_error("actual_pswd"); ?>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nueva contraseña</label>
                               <div class="col-md-9">
-                                <input type="email" class="form-control">
+                                <input type="password" name="new_pswd" class="form-control">
+                                <?php form_error("new_pswd"); ?>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Repetir contraseña</label>
                               <div class="col-md-9">
-                                <input type="text" class="form-control">
+                                <input type="password" name="repeat_pswd" class="form-control">
+                                <?php form_error("repeat_pswd"); ?>
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
@@ -195,15 +200,15 @@
                               <div class="col-md-12">
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
-                                    <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                    <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <input type="button" class="btn btn-danger" value="Cancelar"> <i class="mdi mdi-close-circle"></i></input>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                           </div>
-                        </form>
+                          <?php echo form_close(); ?> 
                       </div>
                     </div>
                   </div>
