@@ -31,9 +31,9 @@ class Superusuario extends CI_Controller {
 	}
 	function cambiarPassword(){
         //VALIDACIONES
-        $this->form_validation->set_rules('actual_pswd','Ingresa tu contraseña actual','required');
-        $this->form_validation->set_rules('new_pswd','Ingresa nueva contraseña','required|max_length[10]|min_length[6]');
-        $this->form_validation->set_rules('repeat_pswd','Confirmar contraseña','required|matches[new_pswd]');
+        $this->form_validation->set_rules('actual_pswd','Contraseña actual','required');
+        $this->form_validation->set_rules('new_pswd','Nueva contraseña','required|max_length[20]|min_length[6]');
+        $this->form_validation->set_rules('repeat_pswd','Repetir contraseña','required|matches[new_pswd]');
 
         if($this->form_validation->run()==FALSE){
             $this->data['posts']=$this->Modelo_login->getRoles();
@@ -45,7 +45,8 @@ class Superusuario extends CI_Controller {
                 $db_email=$my_pswd->email;        
                 $this->session->set_flashdata('pass', 'LA CONTRASEÑA SE HA CAMBIADO EXITOSAMENTE');
                 $fixed_pw=md5($this->input->post("new_pswd"));
-                $update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE email='$db_email'")or die(mysqli_error());
+				$update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE email='$db_email'")or die(mysqli_error());
+				$this->vistaPassword();
             } 
 		}   
 	}
