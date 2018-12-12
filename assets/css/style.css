@@ -340,7 +340,8 @@ html body .m-b-30 {
 }
 
 html body .m-b-40 {
-  margin-bottom: 40px
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 html body .vt {
