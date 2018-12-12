@@ -61,7 +61,7 @@
                 <div class="form-group ">
                     <div class="col-xs-12">
                         <input class="form-control placeOk" type="text" required="" placeholder="Usuario" name="email"> </div>
-                </div>nknok
+                </div>
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class="form-control placeOk" type="password" required="" placeholder="Contraseña" name="pass"> </div>

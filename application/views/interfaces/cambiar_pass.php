@@ -81,7 +81,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?= base_url() ?>Superusuario/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Cuenta</a></li>
+                                    <li><a href="<?= base_url() ?>Superusuario/cambiarpass"><i class="ti-settings"></i> Cuenta</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="fa fa-power-off"></i> Salir</a></li>
                                 </ul>
@@ -169,66 +169,40 @@
                       <div class="card-body">
                         <form action="#" class="form-horizontal form-bordered">
                           <div class="form-body">
-                            <h4 class="card-title">Perfil</h4>
+                            <h4 class="card-title">Cambiar Contraseña</h4>
                             <hr>
-                            <?php foreach($posts as $post){?>
                             <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Nombre</label>
+                              <label class="control-label text-center col-md-2">Contraseña actual</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post->nombre;?> <?php echo $post->apellidos;?>">
+                                <input type="text" class="form-control">
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Correo</label>
+                              <label class="control-label text-center col-md-2">Nueva contraseña</label>
                               <div class="col-md-9">
-                                <input readonly type="email" class="form-control" value="<?php echo $post->email;?>">
+                                <input type="email" class="form-control">
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Telefono</label>
+                              <label class="control-label text-center col-md-2">Repetir contraseña</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post->telefono;?>">
+                                <input type="text" class="form-control">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
-                           <?php if($posts[0]->tipo_usuario=='SU'){
-                               foreach($posts as $post){
-                                   $post='Super Administrador'?>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
-                              <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
-                                <small class="form-control-feedback"> </small>
+                           <div class="form-actions">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="offset-sm-4 col-md-8">
+                                    <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                               <?php }
-                               }?>
-                            <?php if($posts[0]->tipo_usuario=='AD'){
-                               foreach($posts as $post){
-                                   $post='Admnistrador'?>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
-                              <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
-                                <small class="form-control-feedback"> </small>
-                              </div>
-                            </div>
-                               <?php }
-                               }?>
-                            <?php if($posts[0]->tipo_usuario=='CO'){
-                               foreach($posts as $post){
-                                   $post='Consultor'?>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
-                              <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
-                                <small class="form-control-feedback"> </small>
-                              </div>
-                            </div>
-                               <?php }
-                               }?>
                           </div>
-                          <?php } ?>
+                          </div>
                         </form>
                       </div>
                     </div>
