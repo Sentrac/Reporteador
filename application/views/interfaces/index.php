@@ -56,6 +56,8 @@
             <div class="login-box card bg-papaya">
                 <h1 class="box-title m-b-40 text-center txt-blanco">Reporteador</h1>
                 <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
+               <?php echo validation_errors('<div class="error-login tajawalR ls1">', '</div>'); ?>
+               <div class="font-medium text-warning "><center><?php echo $this->session->flashdata('error'); ?></center></div>
                 <div class="form-group ">
                     <div class="col-xs-12">
                         <input class="form-control placeOk" type="text" required="" placeholder="Usuario" name="email"> </div>
