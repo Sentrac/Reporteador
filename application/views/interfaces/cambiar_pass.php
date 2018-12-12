@@ -83,7 +83,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?= base_url() ?>Superusuario/vistaPassword"><i class="ti-settings"></i> Cuenta</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Salir</a></li>
+                                    <li><a href="<?= base_url() ?>Login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -166,7 +166,7 @@
                       <div class="card-header">
                         <h4 class="m-b-0 text-white"></h4>
                       </div>
-                      <?php echo validation_errors(); ?>
+                      <center><?php echo validation_errors('<div class="label-danger text-white">', '</div>'); ?></center>
                       <?php echo $this->session->flashdata('pass'); ?>
                       <?php echo $this->session->flashdata('passError'); ?>
                       <div class="card-body">
@@ -177,21 +177,21 @@
                               <label class="control-label text-center col-md-2">Contraseña actual</label>
                               <div class="col-md-9">
                                 <input type="password" name="actual_pswd" class="form-control">
-                                <div class=""><?php form_error("actual_pswd"); ?></div>
+                                <center><?php form_error("actual_pswd"); ?></center>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nueva contraseña</label>
                               <div class="col-md-9">
                                 <input type="password" name="new_pswd" class="form-control">
-                                <?php form_error("new_pswd"); ?>
+                                <center><?php form_error("new_pswd"); ?></center>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Repetir contraseña</label>
                               <div class="col-md-9">
                                 <input type="password" name="repeat_pswd" class="form-control">
-                                <?php form_error("repeat_pswd"); ?>
+                                <center><?php form_error("repeat_pswd"); ?></center>
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
@@ -201,7 +201,9 @@
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
                                     <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <input type="button" class="btn btn-danger" value="Cancelar"></input>
+                                    <a href="<?= base_url() ?>Superusuario/index">
+                                        <input type="button" class="btn btn-danger" value="Cancelar"></input>
+                                    </a>
                                   </div>
                                 </div>
                               </div>
