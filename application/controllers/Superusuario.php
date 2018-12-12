@@ -18,6 +18,10 @@ class Superusuario extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('interfaces/interfaz_susuario',$this->data);
 	}
+	public function perfil(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('interfaces/perfil',$this->data);
+	}
 	public function usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('interfaces/usuarios',$this->data);

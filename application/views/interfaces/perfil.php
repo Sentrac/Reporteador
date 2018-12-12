@@ -1,13 +1,4 @@
-<?php
-    $name = $this->session->userdata('tipo_usuario');
-    if($name=='SU'){
-    }
-    else{
-        redirect(base_url());
-    }
-?>
 <body class="fix-header fix-sidebar card-no-border">
-
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -77,13 +68,13 @@
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <center><div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div></center>
-                                            <center><div class="u-text">
-                                                <br/>
-                                                <?php foreach($posts as $post){?>
-                                                    <h4><?php echo $post->nombre;?> <?php echo $post->apellidos;?></h4>
-                                                    <p class="text-muted"><?php echo $post->email;?></p>
-                                                <?php } ?>
+                                        <center><div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div></center>
+                                        <center><div class="u-text">
+                                            <br/>
+                                            <?php foreach($posts as $post){?>
+                                                <h4><?php echo $post->nombre;?> <?php echo $post->apellidos;?></h4>
+                                                <p class="text-muted"><?php echo $post->email;?></p>
+                                            <?php } ?>
                                             </div></center>
                                         </div>
                                     </li>
@@ -126,11 +117,11 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>
                         <li><i class="fas fa-address-book"></i></li>
+                        <li><i class="fas fa-address-book"></i></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/clientes"><i class="mdi mdi-laptop"></i><span class="hide-menu">Clientes</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>
-                        </li>
+                        <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -159,69 +150,90 @@
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
+                    
                 </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <div class="row">
-                  <div class="col-md-6 col-lg-4">
-                      <div class="card card-body">
-                          <!-- Row -->
-                          <div class="row padleft">
-                              <!-- Column -->
-                              <div class="round round-lg round-success align-self-center">
-                                  <i class="mdi mdi-harddisk"></i>
-                              </div>
-                              <div class="col p-r-0 align-self-center">
-                                  <h2 class="font-light m-b-0 text-center">CPU</h2>
-                              </div>
-                              <div class="col align-self-center padleftmin">
-                                  <div data-label="20%" class="css-bar m-b-0 css-bar-cgraf css-bar-20"></div>
-                              </div>
-                          </div>
+
+                <div class="Row">
+                  <div class="col-lg-12">
+                    <div class="card card-outline-inverse">
+                      <div class="card-header">
+                        <h4 class="m-b-0 text-white"></h4>
                       </div>
+                      <div class="card-body">
+                        <form action="#" class="form-horizontal form-bordered">
+                          <div class="form-body">
+                            <h4 class="card-title">Perfil</h4>
+                            <hr>
+                            <?php foreach($posts as $post){?>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Nombre</label>
+                              <div class="col-md-9">
+                                <input readonly type="text" class="form-control" value="<?php echo $post->nombre;?> <?php echo $post->apellidos;?>">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Correo</label>
+                              <div class="col-md-9">
+                                <input readonly type="email" class="form-control" value="<?php echo $post->email;?>">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Telefono</label>
+                              <div class="col-md-9">
+                                <input readonly type="text" class="form-control" value="<?php echo $post->telefono;?>">
+                                <small class="form-control-feedback"> </small>
+                              </div>
+                            </div>
+                           <?php if($posts[0]->tipo_usuario=='SU'){
+                               foreach($posts as $post){
+                                   $post='Super Administrador'?>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Rol</label>
+                              <div class="col-md-9">
+                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
+                                <small class="form-control-feedback"> </small>
+                              </div>
+                            </div>
+                               <?php }
+                               }?>
+                            <?php if($posts[0]->tipo_usuario=='AD'){
+                               foreach($posts as $post){
+                                   $post='Admnistrador'?>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Rol</label>
+                              <div class="col-md-9">
+                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
+                                <small class="form-control-feedback"> </small>
+                              </div>
+                            </div>
+                               <?php }
+                               }?>
+                            <?php if($posts[0]->tipo_usuario=='CO'){
+                               foreach($posts as $post){
+                                   $post='Consultor'?>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Rol</label>
+                              <div class="col-md-9">
+                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
+                                <small class="form-control-feedback"> </small>
+                              </div>
+                            </div>
+                               <?php }
+                               }?>
+                          </div>
+                          <?php } ?>
+                        </form>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="col-md-6 col-lg-4">
-                      <div class="card card-body">
-                          <!-- Row -->
-                          <div class="row padleft">
-                              <!-- Column -->
-                              <div class="round round-lg round-warning align-self-center">
-                                  <i class="mdi mdi-harddisk"></i>
-                              </div>
-                              <div class="col p-r-0 align-self-center">
-                                  <h2 class="font-light m-b-0 text-center">Disco Duro</h2>
-                              </div>
-                              <div class="col align-self-center padleftmin">
-                                  <div data-label="20%" class="css-bar m-b-0 css-bar-warning css-bar-20"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4">
-                      <div class="card card-body">
-                          <!-- Row -->
-                          <div class="row padleft">
-                              <!-- Column -->
-                              <div class="round round-lg round-danger align-self-center">
-                                  <i class="mdi mdi-harddisk"></i>
-                              </div>
-                              <div class="col p-r-0 align-self-center">
-                                  <h2 class="font-light m-b-0 text-center">Trafico</h2>
-                                  <h6 class="font-light m-b-0 text-center">Ancho de banda</h6>
-                              </div>
-                              <div class="col align-self-center padleftmin">
-                                  <div data-label="20%" class="css-bar m-b-0 css-bar-danger css-bar-20"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="embed-responsive embed-responsive-1by1">
-                    <iframe class="embed-responsive-item" src="http://192.168.0.40:5601/app/kibana#/dashboard/32e1f900-d87a-11e8-9ed7-8f41f487c1dd?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-6M%2Cmode%3Aquick%2Cto%3Anow))"></iframe>
-                  </div>
                 </div>
 
                 <!-- Row -->
@@ -248,9 +260,4 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    
-</body>
-
-</html>
+   
