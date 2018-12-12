@@ -177,7 +177,7 @@
                               <label class="control-label text-center col-md-2">Contraseña actual</label>
                               <div class="col-md-9">
                                 <input type="password" name="actual_pswd" class="form-control">
-                                <?php form_error("actual_pswd"); ?>
+                                <div class=""><?php form_error("actual_pswd"); ?></div>
                               </div>
                             </div>
                             <div class="form-group row">
@@ -201,7 +201,7 @@
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
                                     <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <input type="button" class="btn btn-danger" value="Cancelar"> <i class="mdi mdi-close-circle"></i></input>
+                                    <input type="button" class="btn btn-danger" value="Cancelar"></input>
                                   </div>
                                 </div>
                               </div>

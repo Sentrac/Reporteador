@@ -81,7 +81,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?= base_url() ?>Superusuario/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Superusuario/cambiarpass"><i class="ti-settings"></i> Cuenta</a></li>
+                                    <li><a href="<?= base_url() ?>Superusuario/vistaPassword"><i class="ti-settings"></i> Cuenta</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="fa fa-power-off"></i> Salir</a></li>
                                 </ul>
@@ -175,19 +175,19 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post->nombre;?> <?php echo $post->apellidos;?>">
+                                <input disabled type="text" class="form-control" value="<?php echo $post->nombre;?> <?php echo $post->apellidos;?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Correo</label>
                               <div class="col-md-9">
-                                <input readonly type="email" class="form-control" value="<?php echo $post->email;?>">
+                                <input disabled type="email" class="form-control" value="<?php echo $post->email;?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Telefono</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post->telefono;?>">
+                                <input disabled type="text" class="form-control" value="<?php echo $post->telefono;?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
@@ -197,7 +197,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Rol</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
+                                <input disabled type="text" class="form-control" value="<?php echo $post;?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
@@ -209,7 +209,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Rol</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
+                                <input disabled type="text" class="form-control" value="<?php echo $post;?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
@@ -221,7 +221,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Rol</label>
                               <div class="col-md-9">
-                                <input readonly type="text" class="form-control" value="<?php echo $post;?>">
+                                <input disabled type="text" class="form-control" value="<?php echo $post;?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
