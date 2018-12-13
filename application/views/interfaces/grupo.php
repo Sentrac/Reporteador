@@ -119,7 +119,7 @@
                         <li><i class="fas fa-address-book"></i></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/clientes"><i class="mdi mdi-laptop"></i><span class="hide-menu">Clientes</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
@@ -162,11 +162,11 @@
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Clientes</h4>
+                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Grupo</h4>
                         <a class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-toggle="modal" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar equipo</a>
                       </div>
                       <div class="card-body">
-                        <h4>Clientes actuales</h4>
+                        <h4>Grupo actuales</h4>
                       </div>
                     </div>
                   </div>
