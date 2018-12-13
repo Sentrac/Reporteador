@@ -203,9 +203,11 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                  <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                    <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                  </button>
+                                    <a href="<?= base_url() ?>Superusuario/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
+                                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                                          <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                                        </button>
+                                    </a>
                                   <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
                                     <span class="mdi mdi-delete" aria-hidden="true"></span>
                                   </button>

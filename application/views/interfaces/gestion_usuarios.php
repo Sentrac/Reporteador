@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html lang="es_MX">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reporteador">
+    <meta name="author" content="WarrioPracticantes">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/ico" sizes="16x16" href="../assets/images/favicon.ico">
+    <title>Reporteador</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="../../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="../../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="../../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="../../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="../../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/style2.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../../assets/css/colors/red.css" id="theme" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/icons/material-design-iconic-font/css/materialdesignicons.min.css">
+    <!--<link rel="stylesheet" href="http://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and mfile:///home/sentrack/Documentos/edia queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 <body class="fix-header fix-sidebar card-no-border">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -25,15 +61,15 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="dark-logo" />
+                            <img src="../../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="light-logo" />
+                            <img src="../../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
                             <font class="h1title">Reporteador</font>
                         </span>
@@ -62,13 +98,13 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/user.png" alt="user"
+                                aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/user.png" alt="user"
                                     class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                        <center><div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div></center>
+                                        <center><div class="u-img"><img src="../../assets/images/users/user.png" alt="user"></div></center>
                                         <center><div class="u-text">
                                             <br/>
                                             <?php foreach($posts as $post){?>
@@ -101,9 +137,9 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- User profile -->
-                <div class="user-profile" style="background: url(../assets/images/users/user-info.jpg) no-repeat;">
+                <div class="user-profile" style="background: url(../../assets/images/users/user-info.jpg) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="../assets/images/users/user.png" alt="user" /> </div>
+                    <div class="profile-img"> <img src="../../assets/images/users/user.png" alt="user" /> </div>
                     <!-- User profile text-->
                     <?php foreach($posts as $post){?>
                     <div class="profile-text">
@@ -167,73 +203,94 @@
                         <h4 class="m-b-0 text-white"></h4>
                       </div>
                       <div class="card-body">
-                        <form action="#" class="form-horizontal form-bordered">
+                      <?php echo form_open("SuperUsuario/actualizarUsuario"); ?> 
                           <div class="form-body">
-                            <h4 class="card-title text-muted text-center">Perfil</h4>
+                            <h4 class="card-title text-muted text-center">Editar Usuario</h4>
                             <hr>
-                            <?php foreach($posts as $post){?>
+                            <?php   if(isset($mostrardatosUsuario)){?>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre</label>
                               <div class="col-md-9">
-                                <input disabled type="text" class="form-control" value="<?php echo $post->nombre;?> <?php echo $post->apellidos;?>">
+                                <input type="text" class="form-control" value="<?php echo $mostrardatosUsuario[0]->nombre;?>">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Apellidos</label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" value="<?php echo $mostrardatosUsuario[0]->apellidos;?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Correo</label>
                               <div class="col-md-9">
-                                <input disabled type="email" class="form-control" value="<?php echo $post->email;?>">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Telefono</label>
-                              <div class="col-md-9">
-                                <input disabled type="text" class="form-control" value="<?php echo $post->telefono;?>">
+                                <input type="email" class="form-control" value="<?php echo $mostrardatosUsuario[0]->email;?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
-                           <?php if($posts[0]->tipo_usuario=='SU'){
-                               foreach($posts as $post){
-                                   $post='Super Administrador'?>
                             <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
+                              <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
-                                <input disabled type="text" class="form-control" value="<?php echo $post;?>">
-                                <small class="form-control-feedback"> </small>
+                                <select class="form-control custom-select">
+                                    <?php foreach($nombre_grupo as $grupo){?>
+                                  <option value="<?php echo $grupo->fk_grupou; ?>"><?php echo $grupo->grupo; ?></option>
+                                    <?php } ?>
+                                </select>
                               </div>
-                            </div>
-                               <?php }
-                               }?>
-                            <?php if($posts[0]->tipo_usuario=='AD'){
-                               foreach($posts as $post){
-                                   $post='Admnistrador'?>
+                            </div>                                
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Rol</label>
                               <div class="col-md-9">
-                                <input disabled type="text" class="form-control" value="<?php echo $post;?>">
-                                <small class="form-control-feedback"> </small>
+                              
+                                <select class="form-control custom-select">
+                                <?php
+                                $tu = $mostrardatosUsuario[0]->tipo_usuario;
+                                if ($tu == 'SU'){
+                                ?>
+                                    <option value="SU">Super Administrador</option>
+                                    <option value="AD">Administrador</option>
+                                    <option value="CO">Consultor</option>
+                                <?php
+                                } else if ($tu == 'CO'){
+                                ?>
+                                    <option value="CO">Consultor</option>
+                                    <option value="SU">Super Administrador</option>
+                                    <option value="AD">Administrador</option>
+                              <?php
+                                } else if ($tu == 'AD'){
+                                ?>
+                                    <option value="AD">Administrador</option>
+                                    <option value="CO">Consultor</option>
+                                    <option value="SU">Super Administrador</option>
+                                <?php
+                                }
+                              ?>  
+                                  <!--<option value="<?php //echo $mostrardatosUsuario[0]->tipo_usuario;?>"><?php //echo $mostrardatosUsuario[0]->tipo_usuario;?></option>
+                                  <option value="SU">Super Administrador</option>
+                                  <option value="AD">Administrador</option>
+                                  <option value="CO">Consultor</option>-->
+                                </select>
                               </div>
                             </div>
-                               <?php }
-                               }?>
-                            <?php if($posts[0]->tipo_usuario=='CO'){
-                               foreach($posts as $post){
-                                   $post='Consultor'?>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
-                              <div class="col-md-9">
-                                <input disabled type="text" class="form-control" value="<?php echo $post;?>">
-                                <small class="form-control-feedback"> </small>
+                            <?php } ?>
+                            <div class="form-actions">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="offset-sm-4 col-md-8">
+                                    <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <a href="<?= base_url() ?>Superusuario/usuarios">
+                                        <input type="button" class="btn btn-danger" value="Cancelar"></input>
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                               <?php }
-                               }?>
                           </div>
-                          <?php } ?>
-                        </form>
+                          </div>  
+                        <?php echo form_close(); ?>                       
                       </div>
                     </div>
                   </div>
-
                 </div>
 
                 <!-- Row -->
@@ -255,6 +312,35 @@
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
+        <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../../assets/plugins/popper/popper.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../../assets/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="../../assets/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../../assets/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="../../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../../assets/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- chartist chart -->
+    <!--<script src="assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>-->
+    <!--c3 JavaScript -->
+    <script src="../../assets/plugins/d3/d3.min.js"></script>
+    <script src="../../assets/plugins/c3-master/c3.min.js"></script>
+    <!-- Chart JS -->
+    <!--<script src="js/dashboard1.js"></script>-->
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
