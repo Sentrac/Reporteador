@@ -55,8 +55,8 @@ class Superusuario extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('interfaces/usuarios',$this->data);
 	}
-	public function clientes(){
+	public function grupo(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('interfaces/clientes',$this->data);
+		$this->load->view('interfaces/grupo',$this->data);
 	}
 }

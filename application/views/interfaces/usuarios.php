@@ -119,7 +119,7 @@
                         <li><i class="fas fa-address-book"></i></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/clientes"><i class="mdi mdi-laptop"></i><span class="hide-menu">Clientes</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
@@ -172,9 +172,7 @@
                             <tr>
                               <th>#</th>
                               <th>Nombre</th>
-                              <th>Usuario</th>
-                              <th>Contraseña</th>
-                              <th>Correo</th>
+                              <th>Usuario/Correo</th>
                               <th>Grupo</th>
                               <th>Rol</th>
                               <th>Acción</th>
@@ -182,56 +180,12 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td>1</td>
-                              <td>Rosita Santillan</td>
-                              <td>Reporteador</td>
-                              <td>Reporteador</td>
-                              <td>qwer1234@warriorslabs.com</td>
-                              <td>Insurgentes</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
                               <td>
                                 <span class="label label-danger">SuperAdmin</span>
-                              </td>
-                              <td class="footable-editing footable-last-visible" style="display: table-cell;">
-                                <div class="btn-group btn-group-xs" role="group">
-                                  <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                    <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                  </button>
-                                  <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
-                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Rosita Santillan</td>
-                              <td>Admin</td>
-                              <td>Admin</td>
-                              <td>1234qwer@warriorslabs.com</td>
-                              <td>Tlalpan</td>
-                              <td>
-                                <span class="label label-warning">Admin</span>
-                              </td>
-                              <td class="footable-editing footable-last-visible" style="display: table-cell;">
-                                <div class="btn-group btn-group-xs" role="group">
-                                  <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                    <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                  </button>
-                                  <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
-                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-                              <td>Rosita Santillan</td>
-                              <td>Consultor</td>
-                              <td>Consultor</td>
-                              <td>consul@warriorslabs.com</td>
-                              <td>Zaragoza</td>
-                              <td>
-                                <span class="label label-success">Consultor</span>
                               </td>
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
