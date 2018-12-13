@@ -170,7 +170,7 @@
                         <table class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table">
                           <thead>
                             <tr>
-                              <th>#</th>
+                              <th>ID</th>
                               <th>Nombre</th>
                               <th>Usuario/Correo</th>
                               <th>Grupo</th>
@@ -179,14 +179,28 @@
                             </tr>
                           </thead>
                           <tbody>
+                          <?php foreach ($usuarios as $row){ ?>                              
                             <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><?php echo $row->idusuarios; ?></td>
+                              <td><?php echo $row->nombre; ?><?php echo $row->apellidos; ?></td>
+                              <td><?php echo $row->email; ?></td>
+                              <td><?php echo $row->fk_grupou; ?></td>
                               <td>
-                                <span class="label label-danger">SuperAdmin</span>
-                              </td>
+                                  <span class="label label-custom">
+                              <?php if($row->tipo_usuario=='SU'){
+                                        $su='Super Administrador';
+                                        echo $su;
+                                    } 
+                                    if($row->tipo_usuario=='AD'){
+                                        $ad='administrador';
+                                        echo $ad;
+                                    } 
+                                    if($row->tipo_usuario=='CO'){
+                                        $co='Consultor';
+                                        echo $co;
+                                    } ?>
+                                  </span> 
+                              </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
                                   <button type="button" class="btn btn-secondary txt-azul" title="Editar">
@@ -198,6 +212,7 @@
                                 </div>
                               </td>
                             </tr>
+                                  <?php } ?>
                           </tbody>
                         </table>
                       </div>
