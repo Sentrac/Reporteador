@@ -70,7 +70,7 @@ class Superusuario extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$idusuario=$this->input->get('idusuario');
 		$this->data['mostrardatosUsuario']=$this->Modelo_usuarios->traerdatosUsuario($idusuario);
-		$this->data['nombre_grupo']=$this->Modelo_usuarios->grupo(); 
+		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
 	}
 	/********************************************************************************************** */

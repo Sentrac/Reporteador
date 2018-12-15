@@ -182,9 +182,11 @@
                           <?php foreach ($usuarios as $row){ ?>                              
                             <tr>
                               <td><?php echo $row->idusuarios; ?></td>
-                              <td><?php echo $row->nombre; ?><?php echo $row->apellidos; ?></td>
+                              <td><?php echo $row->nombre; ?> <?php echo $row->apellidos; ?></td>
                               <td><?php echo $row->email; ?></td>
-                              <td><?php echo $row->fk_grupou; ?></td>
+                              <td>
+                                  <?php echo $row->grupo; ?>
+                              </td>
                               <td>
                                   <span class="label label-custom">
                               <?php if($row->tipo_usuario=='SU'){

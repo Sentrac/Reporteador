@@ -231,9 +231,7 @@
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
                                 <select class="form-control custom-select">
-                                    <?php foreach($nombre_grupo as $grupo){?>
-                                  <option value="<?php echo $grupo->fk_grupou; ?>"><?php echo $grupo->grupo; ?></option>
-                                    <?php } ?>
+                                  <option value="<?php echo $mostrardatosUsuario[0]->fk_grupou; ?>"><?php echo $mostrardatosUsuario[0]->fk_grupou;?></option>
                                 </select>
                               </div>
                             </div>                                
