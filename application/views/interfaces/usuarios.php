@@ -1,99 +1,3 @@
-<body class="fix-header fix-sidebar card-no-border">
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
-    </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon -->
-                        <b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span>
-                            <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <font class="h1title">Reporteador</font>
-                        </span>
-                    </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                        <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/user.png" alt="user"
-                                    class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
-                                <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <center><div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div></center>
-                                            <center><div class="u-text">
-                                                <br/>
-                                                <?php foreach($posts as $post){?>
-                                                    <h4><?php echo $post->nombre;?> <?php echo $post->apellidos;?></h4>
-                                                    <p class="text-muted"><?php echo $post->email;?></p>
-                                                <?php } ?>
-                                                </div></center>
-                                        </div>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Superusuario/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Superusuario/vistaPassword"><i class="ti-settings"></i> Cuenta</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -163,7 +67,7 @@
                     <div class="card card-outline-inverse">
                       <div class="card-header">
                         <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Usuarios</h4>
-                        <a class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-toggle="modal" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar usuario</a>
+                        <a href="<?= base_url() ?>Superusuario/registrar_usuarios" class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar usuario</a>
                       </div>
                       <div class="card-body">
                       <div class="table-responsive">
@@ -188,19 +92,20 @@
                                   <?php echo $row->grupo; ?>
                               </td>
                               <td>
-                                  <span class="label label-custom">
                               <?php if($row->tipo_usuario=='SU'){
                                         $su='Super Administrador';
-                                        echo $su;
-                                    } 
+                                ?>
+                                    <span class="label label-info"><?php  echo $su; ?>
+                                <?php } 
                                     if($row->tipo_usuario=='AD'){
                                         $ad='administrador';
-                                        echo $ad;
-                                    } 
+                                ?>
+                                    <span class="label label-primary"><?php  echo $ad; ?>
+                                <?php }
                                     if($row->tipo_usuario=='CO'){
-                                        $co='Consultor';
-                                        echo $co;
-                                    } ?>
+                                        $co='Consultor';?>
+                                    <span class="label label-megna"><?php  echo $co; ?>
+                                   <?php } ?>
                                   </span> 
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">

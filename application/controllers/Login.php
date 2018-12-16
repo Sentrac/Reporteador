@@ -16,9 +16,8 @@ class Login extends CI_Controller {
 
 	public function index(){        
 		$this->load->view('interfaces/index');
-	}
-
-	public function proceso_login(){
+    }
+    public function proceso_login(){
 		$email=$this->input->post('email');
         md5($pass=$this->input->post('pass'));     
 
@@ -51,6 +50,41 @@ class Login extends CI_Controller {
                 redirect(base_url());
             }
         }
+	}
+    public function perfil(){
+        $this->data['posts']=$this->Modelo_login->getRoles();
+        $this->load->view('temps/header',$this->data); 
+        $this->load->view('interfaces/perfil',$this->data);
+        $this->load->view('temps/footer');
+    }
+    function vistaPassword(){
+        $this->data['posts']=$this->Modelo_login->getRoles();
+        $this->load->view('temps/header',$this->data); 
+        $this->load->view('interfaces/cambiar_pass',$this->data);
+        $this->load->view('temps/footer');
+    }
+    //FUNCIÓN PARA CAMBIAR LA CONTRASEÑA DEL SUPER USUARIO PARA LA TABLA 'usuarios'
+	function cambiarPassword(){
+        //VALIDACIONES
+        $this->form_validation->set_rules('actual_pswd','Contraseña actual','required');
+        $this->form_validation->set_rules('new_pswd','Nueva contraseña','required|max_length[20]|min_length[6]');
+        $this->form_validation->set_rules('repeat_pswd','Repetir contraseña','required|matches[new_pswd]');
+
+        if($this->form_validation->run()==FALSE){
+            $this->data['posts']=$this->Modelo_login->getRoles();
+            $this->load->view('interfaces/cambiar_pass',$this->data);
+        }else {
+            $sql=$this->db->select("*")->from("usuarios")->where("email",$this->session->userdata("email"))->get();
+            foreach ($sql->result() as $my_pswd) {
+                md5($db_password=$my_pswd->pass);
+                $db_email=$my_pswd->email;        
+                $this->session->set_flashdata('pass', 'LA CONTRASEÑA SE HA CAMBIADO EXITOSAMENTE');
+                $fixed_pw=md5($this->input->post("new_pswd"));
+				$update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE email='$db_email'")or die(mysqli_error());
+				$this->vistaPassword();
+            } 
+        } 
+        $this->load->view('temps/footer');  
 	}
 	public function logout(){
         $this->session->sess_destroy();
