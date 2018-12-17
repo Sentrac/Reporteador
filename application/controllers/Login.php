@@ -18,19 +18,19 @@ class Login extends CI_Controller {
 		$this->load->view('interfaces/index');
     }
     public function proceso_login(){
-		$email=$this->input->post('email');
+		$user=$this->input->post('usuario');
         md5($pass=$this->input->post('pass'));     
 
-        $this->form_validation->set_rules('email', 'Correp', 'required');
+        $this->form_validation->set_rules('usuario', 'Correo', 'required');
         $this->form_validation->set_rules('pass', 'Contraseña', 'required');
         
         if($this->form_validation->run()==FALSE){
             $this->index();
         }else{
-		    $checklogin=$this->Modelo_login->login($email,$pass);
+		    $checklogin=$this->Modelo_login->login($user,$pass);
             if($checklogin){
                 foreach ($checklogin as $row);
-                    $this->session->set_userdata('email',$row->email);
+                    $this->session->set_userdata('usuario',$row->usuario);
                     $this->session->set_userdata('tipo_usuario',$row->tipo_usuario);
                     //USUARIO SUPERUSUARIO
                     if($this->session->userdata('tipo_usuario')=="SU"){
@@ -74,13 +74,13 @@ class Login extends CI_Controller {
             $this->data['posts']=$this->Modelo_login->getRoles();
             $this->load->view('interfaces/cambiar_pass',$this->data);
         }else {
-            $sql=$this->db->select("*")->from("usuarios")->where("email",$this->session->userdata("email"))->get();
+            $sql=$this->db->select("*")->from("usuarios")->where("usuario",$this->session->userdata("usuario"))->get();
             foreach ($sql->result() as $my_pswd) {
                 md5($db_password=$my_pswd->pass);
-                $db_email=$my_pswd->email;        
+                $db_user=$my_pswd->usuario;        
                 $this->session->set_flashdata('pass', 'LA CONTRASEÑA SE HA CAMBIADO EXITOSAMENTE');
                 $fixed_pw=md5($this->input->post("new_pswd"));
-				$update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE email='$db_email'")or die(mysqli_error());
+				$update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE usuario='$db_user'")or die(mysqli_error());
 				$this->vistaPassword();
             } 
         } 

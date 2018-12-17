@@ -16,6 +16,14 @@ class Modelo_usuarios extends CI_Model{
         $data=$this->db->get('nombre_grupo');
         return $data->result();
     }
+    public function registrarUsuarios($data){
+        $count=$this->db->insert('usuarios',$data);        
+        if($count>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>

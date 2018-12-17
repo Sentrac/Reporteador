@@ -2,11 +2,11 @@
 
 class Modelo_login extends CI_Model{
 
-    function login($email,$pass){
+    function login($user,$pass){
         /*FUNCIÓN PARA CONSULTAR LOS CAMPOS DE LA TABLA 'usuarios'*/
-        $this->db->select('email, pass, tipo_usuario');
+        $this->db->select('usuario, pass, tipo_usuario');
         $this->db->from('usuarios');
-        $this->db->where('email',$email);
+        $this->db->where('usuario',$user);
         $this->db->where('pass',md5($pass));
         $this->db->limit(1);
         $query=$this->db->get();
@@ -20,7 +20,7 @@ class Modelo_login extends CI_Model{
     function getRoles(){  
         $this->db->select("idusuarios,nombre,apellidos,telefono,email,tipo_usuario,fk_grupou"); 
         $this->db->from('usuarios');  
-        $this->db->where("email",$this->session->userdata("email"));
+        $this->db->where("usuario",$this->session->userdata("usuario"));
         $query=$this->db->get();
         if($query->num_rows()==1){
             return $query->result();

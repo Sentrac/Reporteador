@@ -60,7 +60,7 @@
                <div class="font-medium text-warning "><center><?php echo $this->session->flashdata('error'); ?></center></div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control placeOk" type="text" required="" placeholder="Usuario" name="email"> </div>
+                        <input class="form-control placeOk" type="text" required="" placeholder="Usuario" name="usuario"> </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
