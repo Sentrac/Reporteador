@@ -115,9 +115,9 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Superusuario/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
+                                    <li><a href="<?= base_url() ?>Login/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Superusuario/vistaPassword"><i class="ti-settings"></i> Cuenta</a></li>
+                                    <li><a href="<?= base_url() ?>Login/vistaPassword"><i class="ti-settings"></i> Cuenta</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?= base_url() ?>Login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
                                 </ul>
@@ -200,12 +200,11 @@
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="m-b-0 text-white"></h4>
+                        <h4 class="m-b-0 text-white">Editar Usuario</h4>
                       </div>
                       <div class="card-body">
                       <?php echo form_open("SuperUsuario/actualizarUsuario"); ?> 
                           <div class="form-body">
-                            <h4 class="card-title text-muted text-center">Editar Usuario</h4>
                             <hr>
                             <?php   if(isset($mostrardatosUsuario)){?>
                             <div class="form-group row">
@@ -231,8 +230,8 @@
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
                                 <select class="form-control custom-select">
-                                    <?php foreach($nombre_grupo as $grupo){?>
-                                  <option value="<?php echo $grupo->fk_grupou; ?>"><?php echo $grupo->grupo; ?></option>
+                                    <?php if(isset($nombre_grupo)){?>
+                                  <option value="<?php echo $nombre_grupo[0]->fk_grupou; ?>"><?php echo $nombre_grupo[0]->grupo;?></option>
                                     <?php } ?>
                                 </select>
                               </div>

@@ -11,7 +11,7 @@
                     <!-- User profile text-->
                     <?php foreach($posts as $post){?>
                     <div class="profile-text">
-                        <a class="u-dropdown clikem"><?php echo $post->nombre;?> <?php echo $post->apellidos;?></a>
+                       <a class="u-dropdown clikem"><?php echo $post->nombre;?> <?php echo $post->apellidos;?></a>
                     </div>
                     <?php }?>
                 </div>
@@ -20,6 +20,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>
+                        <li><i class="fas fa-address-book"></i></li>
                         <li><i class="fas fa-address-book"></i></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
@@ -53,6 +54,7 @@
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
+                    
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -62,73 +64,85 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
 
-                <div class="row">
+                <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Usuarios</h4>
-                        <a href="<?= base_url() ?>Superusuario/registrar_usuarios" class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar usuario</a>
+                        <h4 class="m-b-0 text-white">Registrar usuario</h4>
                       </div>
                       <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Nombre</th>
-                              <th>Usuario/Correo</th>
-                              <th>Grupo</th>
-                              <th>Rol</th>
-                              <th>Acción</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          <?php foreach ($usuarios as $row){ ?>                              
-                            <tr>
-                              <td><?php echo $row->idusuarios; ?></td>
-                              <td><?php echo $row->nombre; ?> <?php echo $row->apellidos; ?></td>
-                              <td><?php echo $row->email; ?></td>
-                              <td>
-                                  <?php echo $row->grupo; ?>
-                              </td>
-                              <td>
-                              <?php if($row->tipo_usuario=='SU'){
-                                        $su='Super Administrador';
-                                ?>
-                                    <span class="label label-info"><?php  echo $su; ?>
-                                <?php } 
-                                    if($row->tipo_usuario=='AD'){
-                                        $ad='administrador';
-                                ?>
-                                    <span class="label label-primary"><?php  echo $ad; ?>
-                                <?php }
-                                    if($row->tipo_usuario=='CO'){
-                                        $co='Consultor';?>
-                                    <span class="label label-megna"><?php  echo $co; ?>
-                                   <?php } ?>
-                                  </span> 
-                              </td>                                   
-                              <td class="footable-editing footable-last-visible" style="display: table-cell;">
-                                <div class="btn-group btn-group-xs" role="group">
-                                    <a href="<?= base_url() ?>Superusuario/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
-                                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                          <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                        </button>
-                                    </a>
-                                  <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
-                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                  </button>
+                      <?php echo form_open("Superusuario/registrar_usuario"); ?>
+                          <div class="form-body">
+                            <h4 class="card-title">Datos</h4>
+                            <hr>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Nombre(s)</label>
+                              <div class="col-md-9">
+                                <input type="text" placeholder="Nombre" class="form-control" name="nombre">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Apellido(s)</label>
+                              <div class="col-md-9">
+                                <input type="text" placeholder="Apellidos(s)" class="form-control" name="apellidos">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Usuario</label>
+                              <div class="col-md-9">
+                                <input type="text" placeholder="Usuario" class="form-control" name="usuario">
+                                <small class="form-control-feedback">Ejemplo: qwer1234@warriorslabs.com</small>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Grupo</label>
+                              <div class="col-md-9">
+                                <select class="form-control custom-select" name="fk_grupou">
+                                  <option value="Grupo 1">Grupo 1</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Contraseña</label>
+                              <div class="col-md-9">
+                                <input type="password" placeholder="Contraseña" class="form-control" name="pass">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Repite la contraseña</label>
+                              <div class="col-md-9">
+                                <input type="password" placeholder="Reescribe la contraseña" class="form-control" name="repeat_pswd">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Rol</label>
+                              <div class="col-md-9">
+                                <select class="form-control custom-select" name="tipo_usuario">
+                                  <optgroup label="Roles"></optgroup>
+                                  <option value="SU">Super Administrador</option>
+                                  <option value="AD">Administrador</option>
+                                  <option value="CO">Consultor</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-actions">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="offset-sm-4 col-md-8">
+                                    <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <button type="button" class="btn btn-inverse"> <i class="mdi mdi-close-circle"></i> Cancel</button>
+                                  </div>
                                 </div>
-                              </td>
-                            </tr>
-                                  <?php } ?>
-                          </tbody>
-                        </table>
+                              </div>
+                            </div>
+                          </div>
+                        <?php echo form_close(); ?>                       
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
                 <!-- Row -->
                 <!-- ============================================================== -->
@@ -150,7 +164,8 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
    
-</body>
-
-</html>
