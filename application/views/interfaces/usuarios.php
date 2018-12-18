@@ -67,7 +67,7 @@
                     <div class="card card-outline-inverse">
                       <div class="card-header">
                         <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Usuarios</h4>
-                        <a href="<?= base_url() ?>Superusuario/registrar_usuarios" class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar usuario</a>
+                        <a href="<?= base_url() ?>Superusuario/formulario_usuarios" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar usuario</a>
                       </div>
                       <div class="card-body">
                       <div class="table-responsive">
@@ -76,7 +76,8 @@
                             <tr>
                               <th>ID</th>
                               <th>Nombre</th>
-                              <th>Usuario/Correo</th>
+                              <th>Correo</th>
+                              <th>Usuario</th>
                               <th>Grupo</th>
                               <th>Rol</th>
                               <th>Acción</th>

@@ -969,7 +969,8 @@ html body .waves-notransition {
 }
 
 .btn-group label.btn-secondary {
-  color: #67757c !important
+  color: #e27878 !important;
+  font-weight: bold;
 }
 
 .btn-lg {
@@ -3890,7 +3891,7 @@ table.dataTable thead .sorting:after {
 }
 
 .tablesaw-bar .btn-group label {
-  color: #67757c !important
+  color: #67757c !important;
 }
 
 .dt-bootstrap {

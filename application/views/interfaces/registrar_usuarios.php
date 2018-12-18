@@ -71,7 +71,7 @@
                         <h4 class="m-b-0 text-white">Registrar usuario</h4>
                       </div>
                       <div class="card-body">
-                      <?php echo form_open("Superusuario/registrar_usuario"); ?>
+                      <?php echo form_open("Superusuario/registrar_usuarios"); ?>
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
@@ -95,10 +95,33 @@
                               </div>
                             </div>
                             <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Rol</label>
+                            <div class="col-md-9">
+                              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary">
+                                  <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
+                                </label>
+                                <label class="btn btn-secondary">
+                                  <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> Administrador
+                                </label>
+                                <label class="btn btn-secondary">
+                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
+                                </label>
+                              </div>   
+                              </div>
+                            </div>   
+                            <div class="form-group row">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
-                                <select class="form-control custom-select" name="fk_grupou">
-                                  <option value="Grupo 1">Grupo 1</option>
+                                <!--JS RADIO BUTTON OPCION 1 SUPER USUARIO EN radiobuttons.js-->            
+                                <select style="display:none;" class="form-control custom-select" name="fk_grupou" id="grupo_default">
+                                  <option value="1">Todos</option>
+                                </select>
+                                  <!--JS RADIO BUTTON OPCION 2 PARA ADMIN Y CONSULTOR EN radiobuttons.js-->            
+                                <select style="display:none;" class="form-control custom-select" name="fk_grupou" id="grupo_todos">
+                                <?php foreach($ex_grupos as $grupos){?>
+                                  <option value="<?php echo $grupos->fk_grupou?>"><?php echo $grupos->grupo?></option>
+                                <?php } ?>
                                 </select>
                               </div>
                             </div>
@@ -112,17 +135,6 @@
                               <label class="control-label text-center col-md-2">Repite la contraseña</label>
                               <div class="col-md-9">
                                 <input type="password" placeholder="Reescribe la contraseña" class="form-control" name="repeat_pswd">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
-                              <div class="col-md-9">
-                                <select class="form-control custom-select" name="tipo_usuario">
-                                  <optgroup label="Roles"></optgroup>
-                                  <option value="SU">Super Administrador</option>
-                                  <option value="AD">Administrador</option>
-                                  <option value="CO">Consultor</option>
-                                </select>
                               </div>
                             </div>
                           </div>
