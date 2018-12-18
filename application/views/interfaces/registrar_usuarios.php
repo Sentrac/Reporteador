@@ -63,7 +63,12 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-
+                <?php echo validation_errors('<div class="alert alert-danger alert-dismissible fade show">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                 </button>',
+                                              '</div>'); 
+                ?>
                 <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
@@ -97,7 +102,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Rol</label>
                             <div class="col-md-9">
-                              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                              <div class="form-group radio-row row btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-secondary">
                                   <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
                                 </label>
@@ -134,7 +139,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Repite la contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="Reescribe la contraseña" class="form-control" name="repeat_pswd">
+                                <input type="password" placeholder="Repite la contraseña" class="form-control" name="repeat_pswd">
                               </div>
                             </div>
                           </div>

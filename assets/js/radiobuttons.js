@@ -17,3 +17,7 @@ $("input[type='radio']").change(function(){
     }
    
 });
+/************************ALERTAS****************** */
+$('#myAlert').on('closed.bs.alert', function () {
+    // do something…
+  })

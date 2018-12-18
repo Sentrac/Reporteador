@@ -40,6 +40,19 @@ class Superusuario extends CI_Controller {
 	}
 	//FUNCIÓN DONDE SE REGISTRA UN NUEVO USUARIO
 	public function registrar_usuarios(){		
+		//VALIDACIONES DE CAMPOS
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
+		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
+		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
+		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
+
+		if($this->form_validation->run() == FALSE){
+           
+            $this->formulario_usuarios();
+
+        }else{
 			$nombre = $this->input->post('nombre');
 			$apellidos = $this->input->post('apellidos');
 			$user = $this->input->post('usuario');
@@ -59,11 +72,15 @@ class Superusuario extends CI_Controller {
 				'fk_grupou' => $grupo
 			);
 				if($this->Modelo_usuarios->registrarUsuarios($d)){
+					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
+					$d='';
 					$this->usuarios();
 				}else{
-					echo 'no registradp';
+					echo 'no registrado';
 				}
+			}
 	}
+	
 	//Función para mostrar datos en formulario de editar->gestion_usuarios.php
 	public function editarUsuario(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
