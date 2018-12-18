@@ -61,7 +61,14 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-
+                <?php if($this->session->flashdata('registro')){?>
+                    <div  class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('registro'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div> 
+                <?php } ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">

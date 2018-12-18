@@ -64,3 +64,6 @@
 .css-bar-cgraf.css-bar-20 {
   background-image: linear-gradient(90deg, #BFC9CA 50%, transparent 50%, transparent), linear-gradient(162deg, #3498DB 50%, #BFC9CA 50%, #BFC9CA);
 }
+.radio-row{
+	padding-left: 16px !important;
+}
