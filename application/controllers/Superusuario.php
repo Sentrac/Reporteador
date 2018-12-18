@@ -21,6 +21,7 @@ class Superusuario extends CI_Controller {
 		$this->load->view('temps/footer');
 	}
 	/**********************************FUNCIONES DE USUARIO ->agregar->eliminar->actualizar***************** */
+	//INTERFAZ PRINCIPAL DONDE SE MUESTRAN LOS USUARIOS REGISTRADOS
 	public function usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
@@ -28,16 +29,17 @@ class Superusuario extends CI_Controller {
 		$this->load->view('interfaces/usuarios',$this->data);
 		$this->load->view('temps/footer');
 	}
-	//Función para registrar usuarios
-	public function registrar_usuarios(){
-		//VALIDACIONES DE CAMPOS
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|alpha');
-		$this->form_validation->set_rules('apellidos', 'Apellidos', 'required|alpha');
-		$this->form_validation->set_rules('usuario', 'Usuario', 'required|valid_email');
-
-		if($this->form_validation->run() == FALSE){
-            $this->registrar_usuarios();
-        }else{
+	//FUNCIÓN DONDE MUESTRA LA VISTA DEL FORMULARIO PARA REGISTRAR USUARIOS
+	public function formulario_usuarios(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->data['grupos']=$this->Modelo_usuarios->grupos();
+		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/registrar_usuarios');	
+		$this->load->view('temps/footer');
+	}
+	//FUNCIÓN DONDE SE REGISTRA UN NUEVO USUARIO
+	public function registrar_usuarios(){		
 			$nombre = $this->input->post('nombre');
 			$apellidos = $this->input->post('apellidos');
 			$user = $this->input->post('usuario');
@@ -48,7 +50,7 @@ class Superusuario extends CI_Controller {
 			$nombre = strtoupper($nombre);
 			$apellidos = strtoupper($apellidos);
 		
-			$data = array(
+			$d = array(
 				'nombre' => $nombre,
 				'apellidos' => $apellidos,
 				'usuario' => $user,
@@ -56,16 +58,11 @@ class Superusuario extends CI_Controller {
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo
 			);
-			if ($this->Modelo_usuarios->registrarUsuarios($data)){
-                //SE LLAMA A LA FUNCIÓN PRINCIPAL 'function gestion_tutores'
-                $this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
-                $this->usuarios();
-			}
-		}
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/registrar_usuarios');
-		$this->load->view('temps/footer');
+				if($this->Modelo_usuarios->registrarUsuarios($d)){
+					$this->usuarios();
+				}else{
+					echo 'no registradp';
+				}
 	}
 	//Función para mostrar datos en formulario de editar->gestion_usuarios.php
 	public function editarUsuario(){

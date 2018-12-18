@@ -4,6 +4,11 @@
 	font-weight: bold;
 	font-style: italic;
 }
+.radio-names {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
 
 .clikem {
 	cursor: initial;
