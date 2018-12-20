@@ -17,6 +17,12 @@ class Modelo_usuarios extends CI_Model{
         $data=$this->db->get('nombre_grupo');
         return $data->result();
     }
+    public function grupostodos(){
+        $this->db->distinct('grupo');
+        $this->db->where('fk_grupou',1);
+        $data=$this->db->get('nombre_grupo');
+        return $data->result();
+    }
     public function n_grupos(){
         $this->db->distinct('grupo');
         $this->db->where_not_in('fk_grupou', 1);

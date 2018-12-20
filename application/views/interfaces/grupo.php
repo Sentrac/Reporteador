@@ -77,54 +77,20 @@
                 </div>
 
                 <div class="row">
+                  <?php foreach($lista_grupos as $grupo_bd){?>
                   <div class="col-lg-3 col-md-6">
                     <!-- Card -->
                     <div class="card text-center">
-                      <img class="card-img-top img-responsive" src="assets/images/big/mac.png" alt="Card image cap">
+                      <center><img class="card-img-top img-responsive " src="../assets/images/mac.png" alt="Card image cap"></center>
                       <div class="card-body">
-                        <h4 class="card-title">Cliente 1</h4>
-                        <p class="card-text">Descripción</p>
+                        <h4 class="card-title"><?php echo $grupo_bd->nombre?></h4>
+                        <p class="card-text"><?php echo $grupo_bd->descripcion?></p>
                         <a href="#" class="btn btn-primary">Ver</a>
                       </div>
                     </div>
                     <!-- Card -->
                   </div>
-                  <div class="col-lg-3 col-md-6">
-                    <!-- Card -->
-                    <div class="card text-center">
-                      <img class="card-img-top img-responsive" src="assets/images/big/mac.png" alt="Card image cap">
-                      <div class="card-body">
-                        <h4 class="card-title">Cliente 2</h4>
-                        <p class="card-text">Descripción</p>
-                        <a href="#" class="btn btn-primary">Ver</a>
-                      </div>
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <!-- Card -->
-                    <div class="card text-center">
-                      <img class="card-img-top img-responsive" src="assets/images/big/mac.png" alt="Card image cap">
-                      <div class="card-body">
-                        <h4 class="card-title">Cliente 3</h4>
-                        <p class="card-text">Descripción</p>
-                        <a href="#" class="btn btn-primary">Ver</a>
-                      </div>
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <!-- Card -->
-                    <div class="card text-center">
-                      <img class="card-img-top img-responsive" src="assets/images/big/mac.png" alt="Card image cap">
-                      <div class="card-body">
-                        <h4 class="card-title">Cliente 4</h4>
-                        <p class="card-text">Descripción</p>
-                        <a href="#" class="btn btn-primary">Ver</a>
-                      </div>
-                    </div>
-                    <!-- Card -->
-                  </div>
+                    <?php } ?>
                 </div>
 
                 <!-- Row -->

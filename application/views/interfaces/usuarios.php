@@ -83,7 +83,6 @@
                             <tr>
                               <th>ID</th>
                               <th>Nombre</th>
-                              <th>Correo</th>
                               <th>Usuario</th>
                               <th>Grupo</th>
                               <th>Rol</th>
@@ -95,23 +94,23 @@
                             <tr>
                               <td><?php echo $row->idusuarios; ?></td>
                               <td><?php echo $row->nombre; ?> <?php echo $row->apellidos; ?></td>
-                              <td><?php echo $row->email; ?></td>
+                              <td><?php echo $row->usuario; ?></td>
                               <td>
                                   <?php echo $row->grupo; ?>
                               </td>
                               <td>
                               <?php if($row->tipo_usuario=='SU'){
-                                        $su='Super Administrador';
+                                        $su='SUPER ADMINISTRADOR';
                                 ?>
                                     <span class="label label-info"><?php  echo $su; ?>
                                 <?php } 
                                     if($row->tipo_usuario=='AD'){
-                                        $ad='administrador';
+                                        $ad='ADMINISTRADOR';
                                 ?>
                                     <span class="label label-primary"><?php  echo $ad; ?>
                                 <?php }
                                     if($row->tipo_usuario=='CO'){
-                                        $co='Consultor';?>
+                                        $co='CONSULTOR';?>
                                     <span class="label label-megna"><?php  echo $co; ?>
                                    <?php } ?>
                                   </span> 

@@ -102,28 +102,35 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Rol</label>
                             <div class="col-md-9">
-                              <div class="form-group radio-row row btn-group btn-group-toggle" data-toggle="buttons">
+                              <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
+                                  <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU"><label>Super Administrador</label>
                                 </label>
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> Administrador
+                                  <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> <label>Administrador</label>
                                 </label>
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
+                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> <label>Consultor</label>
                                 </label>
                               </div>   
                               </div>
                             </div>   
-                            <div class="form-group row">
+                            <div class="form-group row" style="display:none;" id="grupo_default">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
                                 <!--JS RADIO BUTTON OPCION 1 SUPER USUARIO EN radiobuttons.js-->            
-                                <select style="display:none;" class="form-control custom-select" name="fk_grupou" id="grupo_default">
-                                  <option value="1">Todos</option>
+                                <select  class="form-control custom-select" name="fk_grupou" id="todos">
+                                <?php foreach($todo_grupo as $todos){?>
+                                  <option value="<?php echo $todos->fk_grupou?>"><?php echo $todos->grupo?></option>
+                                <?php } ?>
                                 </select>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="display:none;" id="grupo_todos">
+                              <label class="control-label text-center col-md-2">Grupo</label>
+                              <div class="col-md-9">
                                   <!--JS RADIO BUTTON OPCION 2 PARA ADMIN Y CONSULTOR EN radiobuttons.js-->            
-                                <select style="display:none;" class="form-control custom-select" name="fk_grupou" id="grupo_todos">
+                                <select  class="form-control custom-select" name="fk_grupou" id="grupos">
                                 <?php foreach($ex_grupos as $grupos){?>
                                   <option value="<?php echo $grupos->fk_grupou?>"><?php echo $grupos->grupo?></option>
                                 <?php } ?>
@@ -149,8 +156,10 @@
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
                                     <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <button type="button" class="btn btn-inverse"> <i class="mdi mdi-close-circle"></i> Cancel</button>
-                                  </div>
+                                    <a href="<?= base_url() ?>Superusuario/usuarios">
+                                      <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                    </a>
+                                    </div>
                                 </div>
                               </div>
                             </div>
