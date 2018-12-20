@@ -12,6 +12,7 @@ class Superusuario extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('Modelo_login');
 		$this->load->model('Modelo_usuarios');
+		$this->load->model('Modelo_grupo');
 		$this->load->library('form_validation');//libreria de validaciones
 	}
 	public function index(){
@@ -32,8 +33,8 @@ class Superusuario extends CI_Controller {
 	//FUNCIÓN DONDE MUESTRA LA VISTA DEL FORMULARIO PARA REGISTRAR USUARIOS
 	public function formulario_usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->data['grupos']=$this->Modelo_usuarios->grupos();
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
+		$this->data['todo_grupo']=$this->Modelo_usuarios->grupostodos();
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/registrar_usuarios');	
 		$this->load->view('temps/footer');
@@ -89,12 +90,15 @@ class Superusuario extends CI_Controller {
 		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
 		$this->data['nombre_grupo']=$this->Modelo_usuarios->nombreGrupo($idusuario);
 		$this->data['grupos']=$this->Modelo_usuarios->grupos();
+		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
+		
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
 	}
-	/********************************************************************************************** */
+	/***************************************FUNCIONES DE GRUPO************************************************* */
 	public function grupo(){
 		$this->load->view('temps/header'); 
 		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->data['lista_grupos']=$this->Modelo_grupo->grupos_lista();
 		$this->load->view('interfaces/grupo',$this->data);
 		$this->load->view('temps/footer');
 	}

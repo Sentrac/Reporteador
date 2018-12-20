@@ -219,58 +219,47 @@
                                 <input type="text" class="form-control" value="<?php echo $mostrardatosUsuario[0]->apellidos;?>">
                               </div>
                             </div>
+                           
                             <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Correo</label>
-                              <div class="col-md-9">
-                                <input type="email" class="form-control" value="<?php echo $mostrardatosUsuario[0]->email;?>">
-                                <small class="form-control-feedback"> </small>
-                              </div>
-                            </div>
+                            <?php foreach ($mostrardatosUsuario as $mostrar) { ?>
+                              <label class="control-label text-center col-md-2">Rol</label>
+                                <div class="col-md-9">
+                                <?php if($mostrar->tipo_usuario=='SU'){?>
+                                    <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
+                                     <label class="btn btn-secondary active">
+                                        <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU" checked><label>Super Administrador</label>
+                                      </label>
+                                    </div>
+                                <?php }?>
+                                <?php if($mostrar->tipo_usuario=='AD'){?>
+                                    <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
+                                     <label class="btn btn-secondary active">
+                                        <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU" checked><label>Administrador</label>
+                                      </label>
+                                    </div>
+                                <?php }?>
+                                <?php if($mostrar->tipo_usuario=='CO'){?>
+                                    <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
+                                     <label class="btn btn-secondary active">
+                                        <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU" checked><label>CONSULTOR</label>
+                                      </label>
+                                    </div>
+                                <?php }}?>
+                                </div>
+                               </div>
+                                            
+                            
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
-                                <select class="form-control custom-select">
+                                 <select class="form-control custom-select" name="fk_grupou" id="grupo_default">
                                     <?php if(isset($nombre_grupo)){?>
-                                  <option value="<?php echo $nombre_grupo[0]->fk_grupou; ?>"><?php echo $nombre_grupo[0]->grupo;?></option>
-                                    <?php } ?>
-                                </select>
+                                    <option value="<?php echo $nombre_grupo[0]->fk_grupou; ?>"><?php echo $nombre_grupo[0]->grupo;?></option>
+                                    </select>
                               </div>
                             </div>                                
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Rol</label>
-                              <div class="col-md-9">
-                              
-                                <select class="form-control custom-select">
-                                <?php
-                                $tu = $mostrardatosUsuario[0]->tipo_usuario;
-                                if ($tu == 'SU'){
-                                ?>
-                                    <option value="SU">Super Administrador</option>
-                                    <option value="AD">Administrador</option>
-                                    <option value="CO">Consultor</option>
-                                <?php
-                                } else if ($tu == 'CO'){
-                                ?>
-                                    <option value="CO">Consultor</option>
-                                    <option value="SU">Super Administrador</option>
-                                    <option value="AD">Administrador</option>
-                              <?php
-                                } else if ($tu == 'AD'){
-                                ?>
-                                    <option value="AD">Administrador</option>
-                                    <option value="CO">Consultor</option>
-                                    <option value="SU">Super Administrador</option>
-                                <?php
-                                }
-                              ?>  
-                                  <!--<option value="<?php //echo $mostrardatosUsuario[0]->tipo_usuario;?>"><?php //echo $mostrardatosUsuario[0]->tipo_usuario;?></option>
-                                  <option value="SU">Super Administrador</option>
-                                  <option value="AD">Administrador</option>
-                                  <option value="CO">Consultor</option>-->
-                                </select>
-                              </div>
-                            </div>
-                            <?php } ?>
+                            <?php } 
+                            }?>
                             <div class="form-actions">
                             <div class="row">
                               <div class="col-md-12">
@@ -278,7 +267,7 @@
                                   <div class="offset-sm-4 col-md-8">
                                     <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
                                     <a href="<?= base_url() ?>Superusuario/usuarios">
-                                        <input type="button" class="btn btn-danger" value="Cancelar"></input>
+                                      <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
                                     </a>
                                   </div>
                                 </div>
