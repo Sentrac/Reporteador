@@ -255,7 +255,7 @@
                                  <select class="form-control custom-select" name="fk_grupou" id="grupo_default">
                                     <?php if(isset($nombre_grupo)){?>
                                     <option value="<?php echo $nombre_grupo[0]->fk_grupou; ?>"><?php echo $nombre_grupo[0]->grupo;?></option>
-                                    </select>
+                                 </select>
                               </div>
                             </div>                                
                             <?php } 

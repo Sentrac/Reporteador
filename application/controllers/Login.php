@@ -18,39 +18,32 @@ class Login extends CI_Controller {
 		$this->load->view('interfaces/index');
     }
     public function proceso_login(){
-		$user=$this->input->post('usuario');
-        md5($pass=$this->input->post('pass'));     
+		$usuario=$this->input->post('usuario');
+		md5($pass=$this->input->post('pass'));
+		
+		$checklogin=$this->Modelo_login->login($usuario,$pass);
 
-        $this->form_validation->set_rules('usuario', 'Correo', 'required');
-        $this->form_validation->set_rules('pass', 'Contraseña', 'required');
-        
-        if($this->form_validation->run()==FALSE){
-            $this->index();
-        }else{
-		    $checklogin=$this->Modelo_login->login($user,$pass);
-            if($checklogin){
-                foreach ($checklogin as $row);
-                    $this->session->set_userdata('usuario',$row->usuario);
-                    $this->session->set_userdata('tipo_usuario',$row->tipo_usuario);
-                    //USUARIO SUPERUSUARIO
-                    if($this->session->userdata('tipo_usuario')=="SU"){
-                        redirect('Superusuario/index');
-                    }
-                    //USUARIO ADMINISTRADOR
-                    elseif($this->session->userdata('tipo_usuario')=="AD"){
-                        redirect('admin/index');
-                    }
-                    //USUARIO CONSULTAS
-                    elseif($this->session->userdata('tipo_usuario')=='CO'){
-                        redirect('consultas/index');
-                    }
-            }
-            else{
-                $this->session->set_flashdata('error','USUARIO O CONTRASEÑA INCORRECTOS'); 
-                redirect(base_url());
-            }
+        if($checklogin){
+            foreach ($checklogin as $row);
+                $this->session->set_userdata('usuario',$row->usuario);
+                $this->session->set_userdata('tipo_usuario',$row->tipo_usuario);
+                //USUARIO SUPERUSUARIO
+                if($this->session->userdata('tipo_usuario')=="SU"){
+                    redirect('superusuario/index');
+                    
+                }
+                //USUARIO ADMINISTRADOR
+                elseif($this->session->userdata('tipo_usuario')=="AD"){
+                    redirect('admin/index');
+                }
+                //USUARIO CONSULTAS
+                elseif($this->session->userdata('tipo_usuario')=='CO'){
+                    redirect('consultas/index');
+                }
         }
-	}
+        var_dump($checklogin);
+    }
+
     public function perfil(){
         $this->data['posts']=$this->Modelo_login->getRoles();
         $this->load->view('temps/header',$this->data); 
