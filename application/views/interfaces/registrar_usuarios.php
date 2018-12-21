@@ -104,13 +104,13 @@
                             <div class="col-md-9">
                               <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU"><label>Super Administrador</label>
+                                  <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
                                 </label>
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> <label>Administrador</label>
+                                  <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> Administrador
                                 </label>
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> <label>Consultor</label>
+                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
                                 </label>
                               </div>   
                               </div>

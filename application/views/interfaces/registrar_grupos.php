@@ -72,7 +72,13 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-
+              <?php echo validation_errors(
+              '<div class="alert alert-danger alert-dismissible fade show">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>',
+              '</div>'); 
+              ?>
                 <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
@@ -80,35 +86,35 @@
                         <h4 class="m-b-0 text-white">Registrar Grupo</h4>
                       </div>
                       <div class="card-body">
-                        <form action="#" class="form-horizontal form-bordered">
+                        <?php echo form_open("Superusuario/registrar_grupo"); ?>
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Nombre completo" class="form-control" name="nombre">
+                                <input type="text" placeholder="Nombre completo" class="form-control" style="text-transform: uppercase;" name="nombre">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre (<small>Alias</small>)</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Alias" class="form-control" name="alias">
+                                <input type="text" placeholder="Alias" class="form-control" style="text-transform: uppercase;" name="alias">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">RFC</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="RFC" class="form-control" name="rfc">
+                                <input type="text" placeholder="RFC" class="form-control" style="text-transform: uppercase;" name="rfc">
                                 <small class="form-control-feedback">Ejemplo: POI1624345QWE</small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Descripción</label>
                               <div class="col-md-9">
-                                <textarea rows="5" placeholder="Descripción" class="form-control" name=""descripcion></textarea>
+                                <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion"></textarea>
                               </div>
                             </div>
                             <h3 class="card-title">Contacto</h3>
@@ -116,25 +122,34 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Nombre completo" class="form-control" name="nombre_cont">
+                                <input type="text" placeholder="Nombre completo" class="form-control" style="text-transform: uppercase;" name="nombre_cont">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Apellido Paterno</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Apellido Paterno" class="form-control" name="paterno_cont">
+                                <input type="text" placeholder="Apellido Paterno" class="form-control" style="text-transform: uppercase;" name="paterno_cont">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Apellido Materno</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Apellido Materno" class="form-control" name="materno_cont">
+                                <input type="text" placeholder="Apellido Materno" class="form-control" style="text-transform: uppercase;" name="materno_cont">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Lada + Número</label>
                               <div class="col-md-4">
-                                <select class="form-control custom-select" placeholder="lada" id="grupo_default" name="lada">
+                                <select class="form-control custom-select" placeholder="lada" id="grupo_default" style="text-transform: uppercase;" name="lada">
+                                    <option value="244">244</option>
+                                    <option value="981">981</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
                                     <option value=""></option>
                                 </select>
                               </div>
@@ -163,7 +178,7 @@
                               </div>
                             </div>
                           </div>
-                        </form>
+                        <?php echo form_close(); ?>                       
                       </div>
                     </div>
                   </div>
