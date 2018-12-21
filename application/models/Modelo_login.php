@@ -2,11 +2,11 @@
 
 class Modelo_login extends CI_Model{
 
-    function login($user,$pass){
+    function login($usuario,$pass){
         /*FUNCIÓN PARA CONSULTAR LOS CAMPOS DE LA TABLA 'usuarios'*/
         $this->db->select('usuario, pass, tipo_usuario');
         $this->db->from('usuarios');
-        $this->db->where('usuario',$user);
+        $this->db->where('usuario',$usuario);
         $this->db->where('pass',md5($pass));
         $this->db->limit(1);
         $query=$this->db->get();

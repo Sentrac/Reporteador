@@ -96,10 +96,17 @@ class Superusuario extends CI_Controller {
 	}
 	/***************************************FUNCIONES DE GRUPO************************************************* */
 	public function grupo(){
-		$this->load->view('temps/header'); 
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->data['lista_grupos']=$this->Modelo_grupo->grupos_lista();
+		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/grupo',$this->data);
+		$this->load->view('temps/footer');
+	}
+	//FUNCIÓN PARA MOSTRAR EL FORMULARIO DE AGREGAR GRUPOS
+	public function formulario_grupos(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/registrar_grupos',$this->data);
 		$this->load->view('temps/footer');
 	}
 }

@@ -66,12 +66,9 @@
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Grupo</h4>
-                        <a class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-toggle="modal" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar equipo</a>
-                      </div>
-                      <div class="card-body">
-                        <h4>Grupo actuales</h4>
-                      </div>
+                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Grupo Actuales</h4>
+                        <a href="<?= base_url() ?>Superusuario/formulario_grupos" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar grupo</a>
+                    </div>
                     </div>
                   </div>
                 </div>
