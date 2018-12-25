@@ -26,11 +26,6 @@ CREATE TABLE IF NOT EXISTS `reporteador`.`grupo` (
   `alias` VARCHAR(50) NULL,
   `rfc` VARCHAR(13) NULL,
   `descripcion` VARCHAR(255) NULL,
-  `nombre_cont` VARCHAR(45) NULL,
-  `paterno_cont` VARCHAR(45) NULL,
-  `materno_cont` VARCHAR(45) NULL,
-  `lada` INT(3) NULL,
-  `telefono` VARCHAR(10) NULL,
   PRIMARY KEY (`idgrupo`))
 ENGINE = InnoDB;
 
@@ -78,35 +73,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `reporteador`.`lada`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `reporteador`.`lada` (
-  `idlada` INT(3) NOT NULL,
-  PRIMARY KEY (`idlada`))
-ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
 -- Table `reporteador`.`contactos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `reporteador`.`contactos` (
-  `idcontactos` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NULL,
-  `ap_paterno` VARCHAR(45) NULL,
-  `ap_materno` VARCHAR(45) NULL,
-  `telefono` VARCHAR(10) NULL,
-  `fk_lada` INT(3) NULL,
-  `fk_equipos` INT NULL,
-  PRIMARY KEY (`idcontactos`),
-  CONSTRAINT `fk_lada`
-    FOREIGN KEY (`fk_lada`)
-    REFERENCES `reporteador`.`lada` (`idlada`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_equipos`
-    FOREIGN KEY (`fk_equipos`)
-    REFERENCES `reporteador`.`equipos` (`idequipos`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

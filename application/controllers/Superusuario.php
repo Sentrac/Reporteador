@@ -44,7 +44,10 @@ class Superusuario extends CI_Controller {
 		//VALIDACIONES DE CAMPOS
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
+		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
+		$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
 		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
@@ -56,6 +59,8 @@ class Superusuario extends CI_Controller {
         }else{
 			$nombre = $this->input->post('nombre');
 			$apellidos = $this->input->post('apellidos');
+			$telefono = $this->input->post('telefono');
+			$correo = $this->input->post('email');
 			$user = $this->input->post('usuario');
 			$grupo = $this->input->post('fk_grupou');
 			$psw = $this->input->post('pass');
@@ -67,6 +72,8 @@ class Superusuario extends CI_Controller {
 			$d = array(
 				'nombre' => $nombre,
 				'apellidos' => $apellidos,
+				'telefono' => $telefono,
+				'email' => $correo,
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,
