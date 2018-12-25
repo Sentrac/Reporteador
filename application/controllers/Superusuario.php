@@ -118,14 +118,8 @@ class Superusuario extends CI_Controller {
 	//FUNCIÓN PARA PODER INSERTAR LOS REGISTROS DE UN NUEVO GRUPO EN LA BD 'grupo'
 	public function registrar_grupo(){
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha');
+		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
-		$this->form_validation->set_rules('nombre_cont', 'Nombre contacto', 'trim|required|alpha');
-		$this->form_validation->set_rules('paterno_cont', 'Paterno contacto', 'trim|required|alpha');
-		$this->form_validation->set_rules('materno_cont', 'Materno contacto', 'trim|required|alpha');
-		$this->form_validation->set_rules('lada', 'Lada', 'required');
-		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[8]');
-		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 
 		if($this->form_validation->run() == FALSE){
            
@@ -136,32 +130,18 @@ class Superusuario extends CI_Controller {
 			$alias = $this->input->post('alias');
 			$rfc = $this->input->post('rfc');
 			$descripcion = $this->input->post('descripcion');
-			$n_contacto = $this->input->post('nombre_cont');
-			$p_contacto = $this->input->post('paterno_cont');
-			$m_contacto = $this->input->post('materno_cont');
-			$lada = $this->input->post('lada');
-			$telefono = $this->input->post('telefono');
-			$email = $this->input->post('email');
+			
 
 			$nombre = strtoupper($nombre);
 			$alias = strtoupper($alias);
 			$rfc = strtoupper($rfc);
 			$descripcion = strtoupper($descripcion);
-			$n_contacto = strtoupper($n_contacto);
-			$p_contacto = strtoupper($p_contacto);
-			$m_contacto = strtoupper($m_contacto);
-
+			
 			$array = array(
 				'nombre' => $nombre,
 				'alias' => $alias,
 				'rfc' => $rfc,
-				'descripcion' => $descripcion,
-				'nombre_cont' => $n_contacto,
-				'paterno_cont' => $p_contacto,
-				'materno_cont' => $m_contacto,
-				'lada' => $lada,
-				'telefono' => $telefono,
-				'email' => $email
+				'descripcion' => $descripcion
 			);
 			if($this->Modelo_grupo->registrarGrupos($array)){
 				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO EXITOSAMENTE'); 

@@ -86,7 +86,7 @@
                         <h4 class="m-b-0 text-white">Registrar Grupo</h4>
                       </div>
                       <div class="card-body">
-                        <?php echo form_open("Superusuario/registrar_grupo"); ?>
+                        <?php echo form_open("Superusuario/registrar_grupo",'id="clean_form"'); ?>
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
@@ -115,52 +115,6 @@
                               <label class="control-label text-center col-md-2">Descripción</label>
                               <div class="col-md-9">
                                 <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion"></textarea>
-                              </div>
-                            </div>
-                            <h3 class="card-title">Contacto</h3>
-                            <hr>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Nombre</label>
-                              <div class="col-md-9">
-                                <input type="text" placeholder="Nombre completo" class="form-control" style="text-transform: uppercase;" name="nombre_cont">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Apellido Paterno</label>
-                              <div class="col-md-9">
-                                <input type="text" placeholder="Apellido Paterno" class="form-control" style="text-transform: uppercase;" name="paterno_cont">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Apellido Materno</label>
-                              <div class="col-md-9">
-                                <input type="text" placeholder="Apellido Materno" class="form-control" style="text-transform: uppercase;" name="materno_cont">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Lada + Número</label>
-                              <div class="col-md-4">
-                                <select class="form-control custom-select" placeholder="lada" id="grupo_default" style="text-transform: uppercase;" name="lada">
-                                    <option value="244">244</option>
-                                    <option value="981">981</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                              </div>
-                              <div class="col-md-5">
-                                <input type="text" placeholder="Número telefónico" class="form-control" name="telefono">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Correo</label>
-                              <div class="col-md-9">
-                                <input type="email" placeholder="Correo" class="form-control" name="email">
                               </div>
                             </div>
                           </div>
