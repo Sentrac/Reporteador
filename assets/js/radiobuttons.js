@@ -29,7 +29,7 @@ $("input[type='radio']").change(function(){
 $("input:radio[name=fk_grupou]:checked").val(
     
 );
-/************************************LIMPIAR CAMPOS*********************** */
+/***************************LIMPIAR CAMPOS*********************** */
 $("#clean_form").reset();
 
 /************************ALERTAS****************** */
