@@ -76,26 +76,38 @@
                         <h4 class="m-b-0 text-white">Registrar usuario</h4>
                       </div>
                       <div class="card-body">
-                      <?php echo form_open("Superusuario/registrar_usuarios"); ?>
+                      <?php echo form_open("Superusuario/registrar_usuarios",'id="clean_form"'); ?>
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre(s)</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Nombre" class="form-control" name="nombre">
+                                <input type="text" style="text-transform: uppercase;" placeholder="Nombre" class="form-control" name="nombre">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Apellido(s)</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Apellidos(s)" class="form-control" name="apellidos">
+                                <input type="text" style="text-transform: uppercase;" placeholder="Apellidos(s)" class="form-control" name="apellidos">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Telefono</label>
+                              <div class="col-md-9">
+                                <input type="text" placeholder="TELEFONO" class="form-control" name="telefono">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Correo</label>
+                              <div class="col-md-9">
+                                <input type="email" placeholder="CORREO" class="form-control" name="email">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Usuario</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Usuario" class="form-control" name="usuario">
+                                <input type="text" placeholder="USUARIO" class="form-control" name="usuario">
                                 <small class="form-control-feedback">Ejemplo: qwer1234@warriorslabs.com</small>
                               </div>
                             </div>
@@ -140,13 +152,13 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="Contraseña" class="form-control" name="pass">
+                                <input type="password" placeholder="CONTRASEÑA" class="form-control" name="pass">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Repite la contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="Repite la contraseña" class="form-control" name="repeat_pswd">
+                                <input type="password" placeholder="CONFIRMA LA CONTRASEÑA" class="form-control" name="repeat_pswd">
                               </div>
                             </div>
                           </div>
