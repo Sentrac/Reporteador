@@ -36,3 +36,5 @@ $("#clean_form").reset();
 $('#myAlert').on('closed.bs.alert', function () {
     // do something…
   })
+/*****************MODALES************************* */
+  

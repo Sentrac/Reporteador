@@ -13,6 +13,7 @@ class Superusuario extends CI_Controller {
 		$this->load->model('Modelo_login');
 		$this->load->model('Modelo_usuarios');
 		$this->load->model('Modelo_grupo');
+		$this->load->model('Modelo_equipos');
 		$this->load->library('form_validation');//libreria de validaciones
 	}
 	public function index(){
@@ -131,7 +132,6 @@ class Superusuario extends CI_Controller {
 			$rfc = $this->input->post('rfc');
 			$descripcion = $this->input->post('descripcion');
 			
-
 			$nombre = strtoupper($nombre);
 			$alias = strtoupper($alias);
 			$rfc = strtoupper($rfc);
@@ -156,8 +156,53 @@ class Superusuario extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$idgrupo=$this->input->get('idgrupo');
 		$this->data['grupo_equipos']=$this->Modelo_grupo->getGrupo($idgrupo);
+		$this->data['equipos']=$this->Modelo_equipos->getEquipos($idgrupo);
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/equipos');
+		$this->load->view('temps/footer');
+	}
+	public function formulario_equipo(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$idgrupo=$this->input->get('idgrupo');
+		$this->data['grupo_equipos']=$this->Modelo_grupo->getGrupo($idgrupo);
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/registrar_equipo',$this->data);
+		$this->load->view('temps/footer');
+	}
+	public function registrar_equipo(){
+		$this->form_validation->set_rules('nombre_host', 'Nombre/Hostname', 'trim|required');
+		$this->form_validation->set_rules('dns', 'DNS o IP', 'trim|required');
+
+		if($this->form_validation->run() == FALSE){
+           
+            $this->error_modal();
+
+        }else{
+			$nom_host=$this->input->post('nombre_host');
+			$dns=$this->input->post('dns');
+			$descripcion=$this->input->post('descripcion');
+			$fkgrupo=$this->input->post('fk_grupo');
+
+			$descripcion = strtoupper($descripcion);
+			
+			$array = array(
+				'nombre_host' => $nom_host,
+				'dns' => $dns,
+				'fk_grupo' => $fkgrupo,
+				'descripcion' => $descripcion
+			);
+			if($this->Modelo_equipos->registrarEquipos($array)){
+				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
+				$this->grupo();
+			}else{
+				echo 'no registrado';
+			}
+		}
+	}
+	public function error_modal(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/error_modal');
 		$this->load->view('temps/footer');
 	}
 }
