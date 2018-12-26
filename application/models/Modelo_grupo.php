@@ -9,6 +9,11 @@ class Modelo_grupo extends CI_Model{
         $data=$this->db->get('grupo');
         return $data->result();
     }
+    public function getGrupo($idgrupo){
+        $this->db->where('idgrupo', $idgrupo);
+        $data=$this->db->get('grupo');
+        return $data->result();
+    }
     //FUNCIÓN PARA INSERTAR EN LA TABLA GRUPO 
     public function registrarGrupos($array){
         $count=$this->db->insert('grupo',$array);        
@@ -18,5 +23,6 @@ class Modelo_grupo extends CI_Model{
             return false;
         }
     }
+
 }
 ?>

@@ -151,4 +151,13 @@ class Superusuario extends CI_Controller {
 			}
 		}
 	}
+	/*****************************************FUNCIONES DE EQUIPOS************************ */
+	public function equipo(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$idgrupo=$this->input->get('idgrupo');
+		$this->data['grupo_equipos']=$this->Modelo_grupo->getGrupo($idgrupo);
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/equipos');
+		$this->load->view('temps/footer');
+	}
 }
