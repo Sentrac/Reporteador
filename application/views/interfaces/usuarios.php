@@ -97,6 +97,7 @@
                               <td><?php echo $row->usuario; ?></td>
                               <td>
                                   <?php echo $row->grupo; ?>
+                                  <input type="hidden" value=" <?php echo $row->grupo; ?>">
                               </td>
                               <td>
                               <?php if($row->tipo_usuario=='SU'){
@@ -106,8 +107,10 @@
                                 <?php } 
                                     if($row->tipo_usuario=='AD'){
                                         $ad='ADMINISTRADOR';
+                                        $co='CONSULTOR';
                                 ?>
-                                    <span class="label label-primary"><?php  echo $ad; ?>
+                                    <span class="label label-primary"><?php  echo $ad; ?></span>
+                                    <span class="label label-megna"><?php  echo $co; ?>
                                 <?php }
                                     if($row->tipo_usuario=='CO'){
                                         $co='CONSULTOR';?>
