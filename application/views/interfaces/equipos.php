@@ -1,4 +1,4 @@
-        <!-- ============================================================== -->
+ <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <aside class="left-sidebar">
@@ -73,31 +73,30 @@
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Grupo Actuales</h4>
-                        <a href="<?= base_url() ?>Superusuario/formulario_grupos" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar grupo</a>
-                    </div>
+                      <?php   if(isset($grupo_equipos)){?>
+                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-laptop"></i> Equipos de <?php echo $grupo_equipos[0]->nombre;?></h4>
+                      <?php }?>
+                        <a class="float-right btn btn-sm btn-rounded btn-success txt-blanco" data-toggle="modal" data-target="#myModal"><i class="mdi mdi-plus"></i> Agregar equipo</a>
+                      </div>
+                      <div class="card-body">
+                        <h6>Equipos agregados para este grupo</h6>
+                      </div>
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
-                  <?php foreach($lista_grupos as $grupo_bd){?>
                   <div class="col-lg-3 col-md-6">
                     <!-- Card -->
                     <div class="card text-center">
-                      <center><img class="card-img-top img-responsive " src="../assets/images/mac.png" alt="Card image cap"></center>
+                      <img class="card-img-top img-responsive" src="assets/images/big/mac.png" alt="Card image cap">
                       <div class="card-body">
-                        <h4 class="card-title"><?php echo $grupo_bd->nombre?></h4>
-                        <p class="card-text"><?php echo $grupo_bd->descripcion?></p>
-                        <input type="hidden" name="idgrupo" value="<?php echo $grupo_bd->idgrupo?>">
-                        <a href="<?= base_url() ?>Superusuario/equipo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>" class="btn btn-primary">Ver</a>
+                        <h4 class="card-title"></h4>
+                        <p></p>
                       </div>
                     </div>
                     <!-- Card -->
                   </div>
-                    <?php } ?>
                 </div>
-
                 <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
