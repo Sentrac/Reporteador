@@ -24,10 +24,9 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>
-                        <li><i class="fas fa-address-book"></i></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
@@ -74,7 +73,7 @@
                             ?></p>
                       </div>
                       <div class="modal-footer">
-                        <a href="<?= base_url() ?>Superusuario/grupo"">
+                        <a href="<?= base_url() ?>Grupo/grupo"">
                             <button type="button" class="btn btn-secondary">Regresar</button>
                         </a>
                       </div>

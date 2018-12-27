@@ -37,4 +37,6 @@ $('#myAlert').on('closed.bs.alert', function () {
     // do something…
   })
 /*****************MODALES************************* */
-  
+$('#btn-modal').on('shown.bs.modal', function () {
+    $('#modal').trigger('focus')
+  })

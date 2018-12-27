@@ -20,10 +20,9 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>
-                        <li><i class="fas fa-address-book"></i></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
@@ -74,7 +73,7 @@
                     <div class="card card-outline-inverse">
                       <div class="card-header">
                         <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Grupo Actuales</h4>
-                        <a href="<?= base_url() ?>Superusuario/formulario_grupos" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar grupo</a>
+                        <a href="<?= base_url() ?>Grupo/formulario_grupos" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar grupo</a>
                     </div>
                     </div>
                   </div>
@@ -90,7 +89,7 @@
                         <h4 class="card-title"><?php echo $grupo_bd->nombre?></h4>
                         <p class="card-text"><?php echo $grupo_bd->descripcion?></p>
                         <input type="hidden" name="idgrupo" value="<?php echo $grupo_bd->idgrupo?>">
-                        <a href="<?= base_url() ?>Superusuario/equipo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>" class="btn btn-primary">Ver</a>
+                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>" class="btn btn-primary">Ver</a>
                       </div>
                     </div>
                     <!-- Card -->
