@@ -20,10 +20,9 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>
-                        <li><i class="fas fa-address-book"></i></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/index"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Superusuario/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
@@ -74,7 +73,7 @@
                     <div class="card card-outline-inverse">
                       <div class="card-header">
                         <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Usuarios</h4>
-                        <a href="<?= base_url() ?>Superusuario/formulario_usuarios" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar usuario</a>
+                        <a href="<?= base_url() ?>Usuarios/formulario_usuarios" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar usuario</a>
                       </div>
                       <div class="card-body">
                       <div class="table-responsive">
@@ -97,6 +96,7 @@
                               <td><?php echo $row->usuario; ?></td>
                               <td>
                                   <?php echo $row->grupo; ?>
+                                  <input type="hidden" value=" <?php echo $row->grupo; ?>">
                               </td>
                               <td>
                               <?php if($row->tipo_usuario=='SU'){
@@ -106,8 +106,10 @@
                                 <?php } 
                                     if($row->tipo_usuario=='AD'){
                                         $ad='ADMINISTRADOR';
+                                        $co='CONSULTOR';
                                 ?>
-                                    <span class="label label-primary"><?php  echo $ad; ?>
+                                    <span class="label label-primary"><?php  echo $ad; ?></span>
+                                    <span class="label label-megna"><?php  echo $co; ?>
                                 <?php }
                                     if($row->tipo_usuario=='CO'){
                                         $co='CONSULTOR';?>
@@ -117,12 +119,12 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                    <a href="<?= base_url() ?>Superusuario/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
+                                    <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
                                         <button type="button" class="btn btn-secondary txt-azul" title="Editar">
                                           <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                         </button>
                                     </a>
-                                  <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
+                                  <button class="btn btn-secondary txt-rojo" data-toggle="modal" data-target="#myModal" title="Eliminar">
                                     <span class="mdi mdi-delete" aria-hidden="true"></span>
                                   </button>
                                 </div>
@@ -142,6 +144,28 @@
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
             </div>
+            <!-- Modal -->
+            <div class="container">   
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">    
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title text-warning"><i class="fas fa-exclamation-triangle"></i>  AVERTENCIA</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <p>¿Esta seguro de eliminar el usuario?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger">Eliminar</button>
+                    </div>
+                  </div>  
+                </div>
+            </div>
+  
+</div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -160,4 +184,5 @@
    
 </body>
 
+</div>
 </html>

@@ -29,16 +29,16 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('tipo_usuario',$row->tipo_usuario);
                 //USUARIO SUPERUSUARIO
                 if($this->session->userdata('tipo_usuario')=="SU"){
-                    redirect('superusuario/index');
+                    redirect('Roles/superusuario');
                     
                 }
                 //USUARIO ADMINISTRADOR
                 elseif($this->session->userdata('tipo_usuario')=="AD"){
-                    redirect('admin/index');
+                    redirect('Roles/admin');
                 }
                 //USUARIO CONSULTAS
                 elseif($this->session->userdata('tipo_usuario')=='CO'){
-                    redirect('consultas/index');
+                    redirect('Roles/consultor');
                 }
         }
         var_dump($checklogin);

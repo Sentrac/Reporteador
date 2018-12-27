@@ -31,7 +31,8 @@ class Modelo_login extends CI_Model{
     //Traer datos desde la vista usuarios_grupo
     function getUsuarios(){  
         $this->db->select(); 
-        $this->db->from('usuarios_grupo');  
+        $this->db->from('usuarios_grupo'); 
+        $this->db->order_by("grupo", "asc"); 
         $query = $this->db->get();
         return $query->result();
     }
