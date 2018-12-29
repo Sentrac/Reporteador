@@ -25,8 +25,8 @@ class Modelo_usuarios extends CI_Model{
     }
     public function n_grupos(){
         $this->db->distinct('grupo');
-        $this->db->where_not_in('fk_grupou', 1);
-        $data=$this->db->get('nombre_grupo');
+        $this->db->where_not_in('idgrupo', 1);
+        $data=$this->db->get('grupo');
         return $data->result();
     }
     //FUNCIÓN PARA INSERTAR LOS NUEVOS USUARIOS EN LA BD
@@ -37,6 +37,20 @@ class Modelo_usuarios extends CI_Model{
         }else{
             return false;
         }
+    }
+    public function usuario_grupo($fk_grupou){
+        //$this->db->where("usuario",$this->session->userdata("usuario"));
+        $this->db->where('fk_grupou',$fk_grupou);
+        $this->db->where_not_in('tipo_usuario', 'AD','SU');
+        $data=$this->db->get('usuarios_grupo');
+        return $data->result();
+    }
+    function getUsuarios(){  
+        $this->db->select(); 
+        $this->db->from('usuarios_grupo'); 
+        $this->db->order_by("grupo", "asc"); 
+        $query = $this->db->get();
+        return $query->result();
     }
 }
 

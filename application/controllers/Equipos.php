@@ -11,8 +11,16 @@ class Equipos extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->model('Modelo_login');
+		$this->load->model('Modelo_grupo');
 		$this->load->model('Modelo_equipos');
 		$this->load->library('form_validation');//libreria de validaciones
+	}
+	public function grupo(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->data['lista_grupos']=$this->Modelo_grupo->grupos_lista();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/grupo',$this->data);
+		$this->load->view('temps/footer');
     }
     public function equipo(){
 		$this->data['posts']=$this->Modelo_login->getRoles();

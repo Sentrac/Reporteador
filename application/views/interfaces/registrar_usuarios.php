@@ -142,7 +142,7 @@
                                   <!--JS RADIO BUTTON OPCION 2 PARA ADMIN Y CONSULTOR EN radiobuttons.js-->            
                                 <select  class="form-control custom-select" name="fk_grupou" id="grupos">
                                 <?php foreach($ex_grupos as $grupos){?>
-                                  <option value="<?php echo $grupos->fk_grupou?>"><?php echo $grupos->grupo?></option>
+                                  <option value="<?php echo $grupos->idgrupo?>"><?php echo $grupos->nombre?></option>
                                 <?php } ?>
                                 </select>
                               </div>

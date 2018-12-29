@@ -23,6 +23,8 @@ class Modelo_grupo extends CI_Model{
             return false;
         }
     }
-
+    public function usuario_grupo(){
+        
+    }
 }
 ?>

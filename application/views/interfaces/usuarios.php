@@ -20,10 +20,17 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>
+                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>
+                        <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/a"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
+                        <?php } ?>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -80,7 +87,6 @@
                         <table class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table">
                           <thead>
                             <tr>
-                              <th>ID</th>
                               <th>Nombre</th>
                               <th>Usuario</th>
                               <th>Grupo</th>
@@ -89,9 +95,9 @@
                             </tr>
                           </thead>
                           <tbody>
-                          <?php foreach ($usuarios as $row){ ?>                              
+                          <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
+                                     foreach ($usuarios as $row){ ?>                              
                             <tr>
-                              <td><?php echo $row->idusuarios; ?></td>
                               <td><?php echo $row->nombre; ?> <?php echo $row->apellidos; ?></td>
                               <td><?php echo $row->usuario; ?></td>
                               <td>
@@ -130,7 +136,52 @@
                                 </div>
                               </td>
                             </tr>
-                                  <?php } ?>
+                                  <?php } 
+                                  }?>
+                            <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                    <?php foreach ($usuario_grupo as $row){ ?>
+                                        <tr>
+                              <td><?php echo $row->nombre; ?> <?php echo $row->apellidos; ?></td>
+                              <td><?php echo $row->usuario; ?></td>
+                              <td>
+                                  <?php echo $row->grupo; ?>
+                                  <input type="hidden" value=" <?php echo $row->grupo; ?>">
+                              </td>
+                              <td>
+                              <?php if($row->tipo_usuario=='SU'){
+                                        $su='SUPER ADMINISTRADOR';
+                                ?>
+                                    <span class="label label-info"><?php  echo $su; ?>
+                                <?php } 
+                                    if($row->tipo_usuario=='AD'){
+                                        $ad='ADMINISTRADOR';
+                                        $co='CONSULTOR';
+                                ?>
+                                    <span class="label label-primary"><?php  echo $ad; ?></span>
+                                    <span class="label label-megna"><?php  echo $co; ?>
+                                <?php }
+                                    if($row->tipo_usuario=='CO'){
+                                        $co='CONSULTOR';?>
+                                    <span class="label label-megna"><?php  echo $co; ?>
+                                   <?php } ?>
+                                  </span> 
+                              </td>                                   
+                              <td class="footable-editing footable-last-visible" style="display: table-cell;">
+                                <div class="btn-group btn-group-xs" role="group">
+                                    <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
+                                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                                          <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                                        </button>
+                                    </a>
+                                  <button class="btn btn-secondary txt-rojo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                                    <?php 
+                                    }   
+                                }?>
                           </tbody>
                         </table>
                       </div>
