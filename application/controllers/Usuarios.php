@@ -17,11 +17,16 @@ class Usuarios extends CI_Controller {
     //INTERFAZ PRINCIPAL DONDE SE MUESTRAN LOS USUARIOS REGISTRADOS
 	public function usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
+		//modelo para obtener todos los usuarios registrados para el superusuario
 		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
+		//modelo para obtener todos los usuarios pertenecientes a un solo grupo
+		$grupo=$this->input->get('fk_grupou');
+		$this->data['usuario_grupo']=$this->Modelo_usuarios->usuario_grupo($grupo);
+		///////////////////////////////////////////////////////////////////////////
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/usuarios',$this->data);
 		$this->load->view('temps/footer');
-    }
+	}
     //FUNCIÓN DONDE MUESTRA LA VISTA DEL FORMULARIO PARA REGISTRAR USUARIOS
 	public function formulario_usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
@@ -88,7 +93,6 @@ class Usuarios extends CI_Controller {
 		$this->data['nombre_grupo']=$this->Modelo_usuarios->nombreGrupo($idusuario);
 		$this->data['grupos']=$this->Modelo_usuarios->grupos();
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
-		
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
 	}
 }

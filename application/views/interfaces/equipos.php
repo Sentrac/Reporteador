@@ -90,13 +90,11 @@
                         <P><?php echo $equipo->descripcion;?></P>
                       </div>
                     </div>
-                    
                     <!-- Card -->
                   </div>
                   <?php }
                         }?>
                 </div>
-               
                 <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
