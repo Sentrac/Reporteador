@@ -24,9 +24,15 @@ class Equipos extends CI_Controller {
     }
     public function equipo(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->data['grupo_admin']=$this->Modelo_grupo->getGrupoAdmin();
+		//Modelo para obtener todos los equipos y grupos para el super administrador
 		$idgrupo=$this->input->get('idgrupo');
 		$this->data['grupo_equipos']=$this->Modelo_grupo->getGrupo($idgrupo);
 		$this->data['equipos']=$this->Modelo_equipos->getEquipos($idgrupo);
+		//Modelo para mostrar todos los equipos pertenecientes al grupo del admin
+		$grupo=$this->input->get('fk_grupou');
+		$this->data['equipos_admin']=$this->Modelo_equipos->getEquiposAdmin($grupo);
+		/////////////////////////////////////////////////////////////////////
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/equipos');
 		$this->load->view('temps/footer');

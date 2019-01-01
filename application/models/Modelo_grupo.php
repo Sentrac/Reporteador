@@ -14,6 +14,17 @@ class Modelo_grupo extends CI_Model{
         $data=$this->db->get('grupo');
         return $data->result();
     }
+    function getGrupoAdmin(){  
+        $this->db->select("grupo"); 
+        $this->db->from('usuarios_grupo');  
+        $this->db->where("usuario",$this->session->userdata("usuario"));
+        $query=$this->db->get();
+        if($query->num_rows()==1){
+            return $query->result();
+        }else {
+            return false;
+        }
+    }
     //FUNCIÓN PARA INSERTAR EN LA TABLA GRUPO 
     public function registrarGrupos($array){
         $count=$this->db->insert('grupo',$array);        

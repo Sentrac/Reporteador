@@ -21,8 +21,8 @@ class Roles extends CI_Controller {
     public function admin(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
-        $this->load->view('interfaces/interfaz_admin',$this->data);
-        $this->load->view('temps/footer');
+    $this->load->view('interfaces/interfaz_admin',$this->data);
+    $this->load->view('temps/footer');
     }
     public function consultor(){
 		$this->load->view('interfaces/interfaz_consul');
