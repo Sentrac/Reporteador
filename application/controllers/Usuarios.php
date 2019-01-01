@@ -32,10 +32,12 @@ class Usuarios extends CI_Controller {
 		//Modelos para las funciones de los grupos para el superusuario para registar el usuario
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
 		$this->data['todo_grupo']=$this->Modelo_usuarios->grupostodos();
-		//
-		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
+		//Modelo para obtener el grupo del administrador para agregar un nuevo usuario a su grupo
+		$idusuario=$this->input->get('idusuarios');
+		$this->data['grupo_admin']=$this->Modelo_usuarios->getGrupo_admin($idusuario);
+		/////////////////////////////////////////////////////////////////////////////////////
 		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/registrar_usuarios');	
+		$this->load->view('interfaces/registrar_usuarios',$this->data);	
 		$this->load->view('temps/footer');
     }
     //FUNCIÓN DONDE SE REGISTRA UN NUEVO USUARIO

@@ -51,7 +51,8 @@ class Modelo_usuarios extends CI_Model{
         $query = $this->db->get();
         return $query->result();
     }
-    public function getGrupo_admin(){
+    public function getGrupo_admin($idusuario){
+        $this->db->where('idusuarios',$idusuario);
         $data=$this->db->get('usuarios_grupo');
         return $data->result();
     }
