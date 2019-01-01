@@ -1,3 +1,16 @@
+<?php
+    $name = $this->session->userdata('tipo_usuario');
+    if($name=='AD'){
+    }
+
+    elseif($name=='SU'){
+    }
+    else{
+        redirect(base_url());
+    }
+    
+?>      
+        
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -25,9 +38,14 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>
-                        <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
+                        <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
+                            <?php if(isset($posts)){?>
+                                <div class="profile-text">
+                                <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
+                                </div>
+                            <?php }?>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/a"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                         <?php } ?>
