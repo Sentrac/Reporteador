@@ -25,14 +25,14 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>
                         <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
-                            <?php foreach($posts as $post){?>
+                            <?php if(isset($posts)){?>
                                 <div class="profile-text">
                                 <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
                                 </div>
                             <?php }?>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                         <?php } ?>
                     </ul>
@@ -226,9 +226,9 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
-                              <?php if(isset($usuarios)){?>
+                              <?php if(isset($grupo_admin)){?>
                                 <div class="profile-text">
-                                <input type="text" class="form-control" value="<?php echo $usuarios[0]->grupo?>" readonly>
+                                <input type="text" class="form-control" value="<?php echo $grupo_admin[0]->grupo?>" readonly>
                                 </div>
                               </div>
                             <?php }?>
@@ -264,8 +264,13 @@
                               <div class="col-md-12">
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
+                                  <?php if(isset($posts)){?>
+                                      <div class="profile-text">
+                                      <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
+                                      </div>
+                                    <?php }?>
                                     <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <a href="<?= base_url() ?>Usuarios/usuarios">
+                                    <a href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>">
                                       <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
                                     </a>
                                     </div>
