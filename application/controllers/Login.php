@@ -17,11 +17,11 @@ class Login extends CI_Controller {
 	public function index(){        
 		$this->load->view('interfaces/index');
     }
-    public function proceso_login(){
+    public function proceso_login(){        
 		$usuario=$this->input->post('usuario');
 		md5($pass=$this->input->post('pass'));
-		
-		$checklogin=$this->Modelo_login->login($usuario,$pass);
+        
+        $checklogin=$this->Modelo_login->login($usuario,$pass);
 
         if($checklogin){
             foreach ($checklogin as $row);
@@ -40,10 +40,12 @@ class Login extends CI_Controller {
                 elseif($this->session->userdata('tipo_usuario')=='CO'){
                     redirect('Roles/consultor');
                 }
+            }
+            else{
+                $this->session->set_flashdata('error','USUARIO O CONTRASEÑA INCORRECTOS'); 
+                redirect(base_url());
         }
-        var_dump($checklogin);
     }
-
     public function perfil(){
         $this->data['posts']=$this->Modelo_login->getRoles();
         $this->load->view('temps/header',$this->data); 
