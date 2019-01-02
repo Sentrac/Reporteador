@@ -27,7 +27,20 @@ $("input[type='radio']").change(function(){
 
 /*********************EDITAR USUARIOS RADIO BUTTONS*************** */
 /***************************LIMPIAR CAMPOS*********************** */
-$("#clean_form").reset();
+
+$(document).ready(function(){
+    $('form[name=form]').on('submit', function() {
+          //other code
+          $('input[name=nombre]').val("")
+          $('input[name=apellidos]').val("")
+          $('input[name=telefono]').val("")
+          $('input[name=email]').val("")
+          $('input[name=usuario]').val("")
+          $('input[name=tipo_usuario]').val("")
+          $('input[name=pass]').val("")
+          $('input[name=repeat_pswd]').val("")
+        });
+});
 
 /************************ALERTAS****************** */
 $('#myAlert').on('closed.bs.alert', function () {

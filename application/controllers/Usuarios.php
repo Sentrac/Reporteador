@@ -48,7 +48,7 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
 		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
-		$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
+		//$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
 		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
@@ -88,6 +88,52 @@ class Usuarios extends CI_Controller {
 				}
 		}
 	}
+	public function registrar_usuarios_admin(){		
+		//VALIDACIONES DE CAMPOS
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
+		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
+		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
+		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
+		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
+		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
+
+		if($this->form_validation->run() == FALSE){
+           
+            $this->error_usuario_modal();
+
+        }else{
+			$nombre = $this->input->post('nombre');
+			$apellidos = $this->input->post('apellidos');
+			$telefono = $this->input->post('telefono');
+			$correo = $this->input->post('email');
+			$user = $this->input->post('usuario');
+			$grupo = $this->input->post('fk_grupou');
+			$psw = $this->input->post('pass');
+			$tipouser = $this->input->post('tipo_usuario');
+			//REGISTRAR EN MAYUSCULAS
+			$nombre = strtoupper($nombre);
+			$apellidos = strtoupper($apellidos);
+		
+			$d = array(
+				'nombre' => $nombre,
+				'apellidos' => $apellidos,
+				'telefono' => $telefono,
+				'email' => $correo,
+				'usuario' => $user,
+				'pass' => md5($psw),
+				'tipo_usuario' => $tipouser,
+				'fk_grupou' => $grupo
+			);
+				if($this->Modelo_usuarios->registrarUsuarios($d)){
+					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
+					$this->success_usuario_modal();
+				}else{
+					echo 'no registrado';
+				}
+		}
+	}
 	//Función para mostrar datos en formulario de editar->gestion_usuarios.php
 	public function editarUsuario(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
@@ -98,6 +144,18 @@ class Usuarios extends CI_Controller {
 		$this->data['grupos']=$this->Modelo_usuarios->grupos();
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
+	}
+	public function success_usuario_modal(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/success_usuario_modal');
+		$this->load->view('temps/footer');
+	}
+	public function error_usuario_modal(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/error_usuario_modal');
+		$this->load->view('temps/footer');
 	}
 }
 ?>
