@@ -188,7 +188,7 @@
                           </div>
                         <?php echo form_close(); ?>     
                                 <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?> 
-                                  <?php echo form_open("Usuarios/registrar_usuarios",'id="clean_form"'); ?>
+                                  <?php echo form_open("Usuarios/registrar_usuarios_admin",'id="clean_form"','name="form"'); ?>
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
@@ -229,6 +229,7 @@
                               <?php if(isset($grupo_admin)){?>
                                 <div class="profile-text">
                                 <input type="text" class="form-control" value="<?php echo $grupo_admin[0]->grupo?>" readonly>
+                                <input type="hidden" class="form-control" value="<?php echo $grupo_admin[0]->fk_grupou?>" name="fk_grupou">
                                 </div>
                               </div>
                             <?php }?>
