@@ -73,16 +73,17 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title text-danger"><i class="fas fa-exclamation-triangle"></i></i> ERROR</h5>
+                        <h5 class="modal-title text-green"><i class="fas fa-check"></i> EXITO</h5>
                       </div>
                       <div class="modal-body">
-                        <p><?php echo validation_errors(
-                            '<div class="alert alert-danger alert-dismissible fade show">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>',
-                            '</div>'); 
-                            ?></p>
+                      <?php if($this->session->flashdata('registro')){?>
+                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $this->session->flashdata('registro'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                        <?php } ?>
                       </div>
                       <div class="modal-footer">
                       <?php if(isset($posts)){?>
@@ -90,15 +91,9 @@
                                 <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
                             </div>
                       <?php } ?>
-                      <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                        <a href="<?= base_url() ?>Grupo/grupo"">
-                            <button type="button" class="btn btn-secondary">Regresar</button>
-                        </a>
-                      <?php } if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                         <a href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>">
-                            <button type="button" class="btn btn-secondary">Regresar</button>
+                            <button type="button" class="btn btn-secondary">Mostrar</button>
                         </a>
-                      <?php } ?>
                       </div>
                     </div>
                   </div>
