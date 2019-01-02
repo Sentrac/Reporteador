@@ -125,22 +125,24 @@
                   </div>
                 </div>
                 <div class="row">
-                <?php if(isset($equipos_admin)){ ?>
+                <?php if(isset($equipos_admin)){ 
+                          foreach($equipos_admin as $equipo){?>
                   <div class="col-lg-3 col-md-6">
                     <!-- Card -->
                     <div class="card text-center">
                         
                       <div class="card-body">
                       <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
-                        <h4 class="card-title"><?php echo $equipos_admin[0]->nombre_host;?></h4>
-                        <p><?php echo $equipos_admin[0]->dns;?></p>
-                        <P><?php echo $equipos_admin[0]->descripcion;?></P>
+                        <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
+                        <p><?php echo $equipo->dns;?></p>
+                        <P><?php echo $equipo->descripcion;?></P>
                       </div>
                     </div>
                     <!-- Card -->
                   </div>
                   <?php 
-                    }?>
+                    }
+                  }?>
                 </div>
                 <?php }?>
                 <!-- Row -->
