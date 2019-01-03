@@ -169,11 +169,6 @@ class Usuarios extends CI_Controller {
 			$telefono = $this->input->post('telefono');
 			$correo = $this->input->post('email');
 			$tipouser = $this->input->post('tipo_usuario');
-			if($tipouser=='AD'){
-				$tipouser='AD';
-			}else{
-				$tipouser = $this->input->post('tipo_usuario');
-			}
 			if($tipouser=='SU'){
 				$grupo = 1;
 			} else {

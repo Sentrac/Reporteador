@@ -243,32 +243,38 @@
                               </div>
                             </div>
                             <div class="form-group row">
-                            <?php foreach ($mostrardatosUsuario as $mostrar) { ?>
                               <label class="control-label text-center col-md-2">Rol</label>
-                                <div class="col-md-9">
-                                <?php if($mostrar->tipo_usuario=='SU'){
-                                    $su='SUPER ADMINISTRADOR';?>
-                                   
-                                            <input type="text" class="form-control" name="telefono" value="<?php echo $su;?>">
-                                    
-                                <?php }?>
-                                <?php if($mostrar->tipo_usuario=='AD'){
-                                    $ad='ADMINISTRADOR';?>
-                                    
-                                            <input type="text" class="form-control" name="tipo_usuario" value="<?php echo $ad;?>">
-                                    
-                                <?php }?>
-                                <?php if($mostrar->tipo_usuario=='CO'){?>
-                                    <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                     <label class="btn btn-secondary active">
-                                        <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO" checked>CONSULTOR
-                                      </label>
-                                    </div>
-                                <?php }
-                            }?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
+                            <div class="col-md-9">
+                              <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
+                              <?php if($mostrardatosUsuario[0]->tipo_usuario=='SU'){?>
+                                <label class="btn btn-secondary active">
+                                    <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU" checked>Super Administrador
+                                </label>
+                                <?php }else{?>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
+                                </label>
+                                <?php }if($mostrardatosUsuario[0]->tipo_usuario=='AD'){?>
+                                <label class="btn btn-secondary active">
+                                    <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD" checked> Administrador
+                                </label>
+                                <?php }else{?>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> Administrador
+                                </label>
+                                <?php }if($mostrardatosUsuario[0]->tipo_usuario=='CO'){ ?>
+                                <label class="btn btn-secondary active">
+                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO" checked> Consultor
+                                </label>
+                                <?php }else{?>
+                                <label class="btn btn-secondary">
+                                  <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
+                                </label>
+                                <?php } ?>
+                              </div>   
+                              </div>
+                            </div>   
+                            <div class="form-group row" id="hide_grupo">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
                                  <select class="form-control custom-select" name="fk_grupou">
@@ -279,82 +285,6 @@
                             </div>                                
                             <?php } 
                             }?>
-                            <div class="form-group row">
-                                <label class="control-label text-center col-md-2"></label>
-                                <div class="col-md-9">
-                                    ¿Desea cambiar el usuario de Rol o Grupo? 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="control-label text-center col-md-2"></label>
-                                <div class="col-md-9">
-                                    <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary">
-                                          <input type="radio" id="option1" autocomplete="off" value="SI">Si cambiar
-                                        </label>                               
-                                    </div>  
-                                </div>
-                            </div>
-                            <?php if($mostrar->tipo_usuario=='SU'){?>
-                            <div class="form-group row" style="display:none;" id="ad_co">
-                              <label class="control-label text-center col-md-2"></label>
-                              <div class="col-md-9">
-                                <!--JS RADIO BUTTON OPCION 1 SUPER USUARIO EN radiobuttons.js-->            
-                                <input  type="hidden" name="tipo_usuario" id="este" autocomplete="off" >
-                                <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador 
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD">Administrador 
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO">Consultor
-                                    </label>
-                                </div>
-                               </div>
-                            </div>
-                            <?php } ?>
-                            <?php if($mostrar->tipo_usuario=='AD'){?>
-                            <div class="form-group row" style="display:none;" id="ad_co">
-                              <label class="control-label text-center col-md-2"></label>
-                              <div class="col-md-9">
-                                <!--JS RADIO BUTTON OPCION 1 SUPER USUARIO EN radiobuttons.js-->            
-                                <input  type="hidden" name="tipo_usuario" id="este" autocomplete="off" >
-                                <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option4" autocomplete="off" value="SU">Super administrador 
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option5" autocomplete="off" value="AD">Administrador 
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option6" autocomplete="off" value="CO">Consultor
-                                    </label>
-                                </div>
-                               </div>
-                            </div>
-                            <?php } ?>
-                            <?php if($mostrar->tipo_usuario=='CO'){?>
-                            <div class="form-group row" style="display:none;" id="ad_co">
-                              <label class="control-label text-center col-md-2"></label>
-                              <div class="col-md-9">
-                                <!--JS RADIO BUTTON OPCION 1 SUPER USUARIO EN radiobuttons.js-->            
-                                <input  type="hidden" name="tipo_usuario" id="este" autocomplete="off" >
-                                <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option7" autocomplete="off" value="SU">Super administrador 
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option8" autocomplete="off" value="AD">Administrador
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                      <input type="radio" name="tipo_usuario" id="option9" autocomplete="off" value="CO">Consultor
-                                    </label>
-                                </div>
-                               </div>
-                            </div>
-                            <?php } ?>
                             <div class="form-group row" style="display:none;" id="grupo_default">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
