@@ -22,7 +22,9 @@ $("input[type='radio']").change(function(){
         $("#grupo_default").hide();
         console.log(g);
     }
+    
 });
+/****************************************************************** */
 
 
 /*********************EDITAR USUARIOS RADIO BUTTONS*************** */

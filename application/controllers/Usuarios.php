@@ -63,9 +63,14 @@ class Usuarios extends CI_Controller {
 			$telefono = $this->input->post('telefono');
 			$correo = $this->input->post('email');
 			$user = $this->input->post('usuario');
-			$grupo = $this->input->post('fk_grupou');
-			$psw = $this->input->post('pass');
 			$tipouser = $this->input->post('tipo_usuario');
+			if($tipouser=='SU'){
+				$grupo = 1;
+			} else {
+				$grupo = $this->input->post('fk_grupou');
+			}
+			$psw = $this->input->post('pass');
+			
 			//REGISTRAR EN MAYUSCULAS
 			$nombre = strtoupper($nombre);
 			$apellidos = strtoupper($apellidos);
@@ -140,10 +145,59 @@ class Usuarios extends CI_Controller {
 		$idusuario=$this->input->get('idusuario');
 		$this->data['mostrardatosUsuario']=$this->Modelo_usuarios->traerdatosUsuario($idusuario);
 		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
-		$this->data['nombre_grupo']=$this->Modelo_usuarios->nombreGrupo($idusuario);
+		$this->data['getGrupo_admin']=$this->Modelo_usuarios->getGrupo_admin($idusuario);
 		$this->data['grupos']=$this->Modelo_usuarios->grupos();
+		$this->data['todo_grupo']=$this->Modelo_usuarios->grupostodos();
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
+	}
+	public function actualizarUsuario(){
+		//VALIDACIONES DE CAMPOS
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
+		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
+
+		if($this->form_validation->run() == FALSE){
+           
+            $this->error_registaruser_modal();
+
+        }else{
+			$idusuario = $this->input->post('idusuarios');
+			$nombre = $this->input->post('nombre');
+			$apellidos = $this->input->post('apellidos');
+			$telefono = $this->input->post('telefono');
+			$correo = $this->input->post('email');
+			$tipouser = $this->input->post('tipo_usuario');
+			if($tipouser=='AD'){
+				$tipouser='AD';
+			}else{
+				$tipouser = $this->input->post('tipo_usuario');
+			}
+			if($tipouser=='SU'){
+				$grupo = 1;
+			} else {
+				$grupo = $this->input->post('fk_grupou');
+			}
+			//REGISTRAR EN MAYUSCULAS
+			$nombre = strtoupper($nombre);
+			$apellidos = strtoupper($apellidos);
+		
+			$array = array(
+				'nombre' => $nombre,
+				'apellidos' => $apellidos,
+				'telefono' => $telefono,
+				'email' => $correo,
+				'tipo_usuario' => $tipouser,
+				'fk_grupou' => $grupo
+			);
+				if($this->Modelo_usuarios->updateUsuarios($array,$idusuario)){
+					$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
+					$this->usuarios();
+				}else{
+					echo 'no registrado';
+				}
+		}
 	}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
@@ -155,6 +209,12 @@ class Usuarios extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/error_usuario_modal');
+		$this->load->view('temps/footer');
+	}
+	public function error_registaruser_modal(){
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/error_registaruser_modal');
 		$this->load->view('temps/footer');
 	}
 }
