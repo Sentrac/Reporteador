@@ -87,13 +87,21 @@
                 <!-- Row -->
                 <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
                          if($this->session->flashdata('registro')){?>
-                    <div  class="alert alert-success alert-dismissible fade show" role="alert">
+                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
                         <?php echo $this->session->flashdata('registro'); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div> 
-                <?php } 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                         <?php }if($this->session->flashdata('editar')){?>
+                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('editar'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                <?php  
+                    }
                 }?>
                 <div class="row">
                   <div class="col-lg-12">
@@ -141,10 +149,8 @@
                                 <?php } 
                                     if($row->tipo_usuario=='AD'){
                                         $ad='ADMINISTRADOR';
-                                        $co='CONSULTOR';
                                 ?>
                                     <span class="label label-primary"><?php  echo $ad; ?></span>
-                                    <span class="label label-megna"><?php  echo $co; ?>
                                 <?php }
                                     if($row->tipo_usuario=='CO'){
                                         $co='CONSULTOR';?>
@@ -184,10 +190,9 @@
                                 <?php } 
                                     if($row->tipo_usuario=='AD'){
                                         $ad='ADMINISTRADOR';
-                                        $co='CONSULTOR';
                                 ?>
                                     <span class="label label-primary"><?php  echo $ad; ?></span>
-                                    <span class="label label-megna"><?php  echo $co; ?>
+                                    
                                 <?php }
                                     if($row->tipo_usuario=='CO'){
                                         $co='CONSULTOR';?>
