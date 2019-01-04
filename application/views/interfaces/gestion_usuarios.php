@@ -277,7 +277,9 @@
                             <div class="form-group row" id="hide_grupo">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
+                                  <input value="<?php echo $getGrupo_admin[0]->idgrupo; ?>" type="" name="antval">
                                  <select class="form-control custom-select" name="fk_grupou">
+
                                     <?php if(isset($getGrupo_admin)){?>
                                     <option value="<?php echo $getGrupo_admin[0]->idgrupo; ?>"><?php echo $getGrupo_admin[0]->grupo;?></option>
                                  </select>
@@ -291,6 +293,7 @@
                                   <!--JS RADIO BUTTON OPCION 2 PARA ADMIN Y CONSULTOR EN radiobuttons.js-->            
                                   <select  class="form-control custom-select" name="fk_grupou" id="todos">
                                 <?php foreach($todo_grupo as $todos){?>
+
                                   <option value="<?php echo $todos->fk_grupou?>"><?php echo $todos->grupo?></option>
                                 <?php } ?>
                                 </select>
