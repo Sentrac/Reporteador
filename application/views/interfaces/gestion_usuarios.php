@@ -277,7 +277,7 @@
                             <div class="form-group row" id="hide_grupo">
                               <label class="control-label text-center col-md-2">Grupo</label>
                               <div class="col-md-9">
-                                  <input value="<?php echo $getGrupo_admin[0]->idgrupo; ?>" type="" name="antval">
+                                  <input value="<?php echo $getGrupo_admin[0]->idgrupo; ?>" type="hidden" name="antval">
                                  <select class="form-control custom-select" name="fk_grupou">
 
                                     <?php if(isset($getGrupo_admin)){?>

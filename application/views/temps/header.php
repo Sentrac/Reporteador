@@ -18,6 +18,9 @@
     <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <link href="../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.all.min.js"></script>
+    <!--<link href="../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>-->
     <!--This page css - Morris CSS -->
     <link href="../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -27,6 +30,7 @@
     <link href="../assets/css/colors/red.css" id="theme" rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="../assets/icons/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/plugins/package/dist/sweetalert2.min.css">
     <!--<link rel="stylesheet" href="http://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and mfile:///home/sentrack/Documentos/edia queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

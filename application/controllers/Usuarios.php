@@ -170,16 +170,17 @@ class Usuarios extends CI_Controller {
 			$correo = $this->input->post('email');
 			$tipouser = $this->input->post('tipo_usuario');
 			$antval = $this->input->post('antval');
+			$grupo = $this->input->post('fk_grupou');
+			if($grupo==$grupo){
+				$grupo = $this->input->post('antval');
+			}
 			if($tipouser=='SU'){
 				$grupo = 1;
 			} else {
 				$grupo = $this->input->post('fk_grupou');
 			}
-			if($grupo==$grupo){
-				$grupo = $this->input->post('antval');
-			}else{
-				$grupo = $this->input->post('fk_grupou');
-			}
+			
+			
 			//REGISTRAR EN MAYUSCULAS
 			$nombre = strtoupper($nombre);
 			$apellidos = strtoupper($apellidos);
@@ -219,4 +220,3 @@ class Usuarios extends CI_Controller {
 		$this->load->view('temps/footer');
 	}
 }
-?>

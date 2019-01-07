@@ -13,6 +13,7 @@
     <!--Custom JavaScript -->
     <script src="../assets/js/custom.min.js"></script>
     <script src="../assets/js/radiobuttons.js"></script>
+    <script src="../assets/plugins/package/dist/sweetalert2.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
@@ -27,4 +28,5 @@
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
-    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    
+    
