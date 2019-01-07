@@ -34,6 +34,15 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
                         <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
+                        <?php }elseif($this->session->userdata('tipo_usuario')=='CO'){?>
+                            <?php if(isset($posts)){?>
+                                <div class="profile-text">
+                                <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
+                                </div>
+                            <?php }?>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/consultor"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
+                        <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                         <?php } ?>
                     </ul>
                 </nav>
@@ -109,6 +118,43 @@
                 <?php }?>
                 <!-- Row -->
                 <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card card-outline-inverse">
+                      <div class="card-header">
+                      <?php   if(isset($grupo_admin)){?>
+                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-laptop"></i> Equipos de <?php echo $grupo_admin[0]->grupo;?></h4>
+                      <?php }?>
+                        <a href="<?= base_url() ?>Equipos/formulario_equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar equipo</a>
+                      </div>
+                      <div class="card-body">
+                        <h6>Equipos agregados para este grupo</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                <?php if(isset($equipos_admin)){ 
+                          foreach($equipos_admin as $equipo){?>
+                  <div class="col-lg-3 col-md-6">
+                    <!-- Card -->
+                    <div class="card text-center">
+                        
+                      <div class="card-body">
+                      <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
+                        <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
+                        <p><?php echo $equipo->dns;?></p>
+                        <P><?php echo $equipo->descripcion;?></P>
+                      </div>
+                    </div>
+                    <!-- Card -->
+                  </div>
+                  <?php 
+                    }
+                  }?>
+                </div>
+                <?php }?>
+                <?php if($this->session->userdata('tipo_usuario')=='CO'){ ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
