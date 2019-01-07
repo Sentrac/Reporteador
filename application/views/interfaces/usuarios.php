@@ -165,14 +165,51 @@
                                           <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                         </button>
                                     </a>
-                                  <button class="btn btn-secondary txt-rojo" data-toggle="modal" data-target="#myModal" title="Eliminar">
-                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                  </button>
+                                    <input value="<?php echo $row->idusuarios; ?>" name="idusuarios">
+                                  <a href="#" class="del" id="<?php echo $row->idusuarios; ?>" title="Eliminar">
+                                   Delete <span class="mdi mdi-delete" aria-hidden="true"></span>
+                                    </a>
                                 </div>
                               </td>
                             </tr>
                                   <?php } 
                                   }?>
+                            <script>
+                            //AQUI NO ME ESTA AGRRANDO MI IDUSUARIOS POR ESO NO ME HACE LA FUNCION LO CHECAS EN LA CONSOLA
+                                 var variable=document.getElementById('<?php echo $row->idusuarios; ?>').value;
+                                $('.del').click(function(){
+                                var del = $(this).attr('idusuarios');//QUE ES ESTA PARTE, ARRIBA EN EL BOTÓN eliminar TIENE UN ID=<PHP> y lo esta tomandno aqui
+                                console.log(variable);
+                                var iddata = 'idusuarios=' + del;
+
+                                Swal({
+                                  title: 'Are you sure?',
+                                  text: "You won't be able to revert this!",
+                                  type: 'warning',
+                                  showCancelButton: true,
+                                  confirmButtonColor: '#3085d6',
+                                  cancelButtonColor: '#d33',
+                                  confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                  if (result.value) {
+                                    $.ajax({
+                                        url: "<?php echo base_url().'Usuarios/EliminarUsuario/idusuario?'?>" + iddata,
+                                        type: 'post',
+                                        uid: iddata,
+                                        success: function(){
+                                    Swal(
+                                      'Deleted!',
+                                      'Your file has been deleted.',
+                                      'success'
+                                    )
+                                    //OMITI LA REDIRECCIÓN A LA PÁGINA POR LO TANTO TIENES QUE RECARGAR PARA ELIMINAR EL USUARIO
+                                    //Y OBVIAMNETE NO LO VA A BORRAR
+                                        }
+                                    })
+                                    }
+                                })
+                            });
+                            </script>
                             <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                                     <?php foreach ($usuario_grupo as $row){ ?>
                                         <tr>

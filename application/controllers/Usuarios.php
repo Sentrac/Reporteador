@@ -201,6 +201,12 @@ class Usuarios extends CI_Controller {
 				}
 		}
 	}
+	public function EliminarUsuario(){
+		$idusuario=$this->input->get('idusuario');
+		$this->Modelo_usuarios->EliminardatosUsuario($idusuario);
+		
+
+	}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 

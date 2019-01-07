@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -30,7 +31,7 @@
     <link href="../assets/css/colors/red.css" id="theme" rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="../assets/icons/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/plugins/package/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/sweetalert2.min.css">
     <!--<link rel="stylesheet" href="http://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and mfile:///home/sentrack/Documentos/edia queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
