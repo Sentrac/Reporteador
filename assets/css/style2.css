@@ -48,6 +48,9 @@
 .txt-verde {
 	color: #228B22 !important;
 }
+.text-primary{
+	color: #7460ee !important;
+}
 
 .placeOk::placeholder {
 	color: #f18d9e !important;

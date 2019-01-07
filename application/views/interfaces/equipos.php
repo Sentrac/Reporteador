@@ -108,6 +108,12 @@
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
                         <P><?php echo $equipo->descripcion;?></P>
+                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                            <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
+                            <span class="mdi mdi-delete" aria-hidden="true"></span>
+                        </button>
                       </div>
                     </div>
                     <!-- Card -->
@@ -145,6 +151,12 @@
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
                         <P><?php echo $equipo->descripcion;?></P>
+                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                            <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
+                            <span class="mdi mdi-delete" aria-hidden="true"></span>
+                        </button>
                       </div>
                     </div>
                     <!-- Card -->
@@ -162,7 +174,6 @@
                       <?php   if(isset($grupo_admin)){?>
                         <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-laptop"></i> Equipos de <?php echo $grupo_admin[0]->grupo;?></h4>
                       <?php }?>
-                        <a href="<?= base_url() ?>Equipos/formulario_equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar equipo</a>
                       </div>
                       <div class="card-body">
                         <h6>Equipos agregados para este grupo</h6>
