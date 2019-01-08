@@ -160,14 +160,14 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                    <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
-                                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                          <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                        </button>
+                                    <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>" class="btn btn-secondary txt-azul" title="Editar">
+                                        <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
-                                    
-                                  <a href="#" class="del" onclick="delete_person(<?php echo $row->idusuarios; ?>)" title="Eliminar">
-                                   Delete <span class="mdi mdi-delete" aria-hidden="true"></span>
+                                    <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
+                                        <span class="mdi mdi-delete" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="javascript:void(0)" onclick="getContacts(<?= $row->fk_grupou; ?>);" class="btn btn-secondary txt-verde" title="Contactos">
+                                        <span class="mdi mdi-eye" aria-hidden="true"></span>
                                     </a>
                                 </div>
                               </td>
@@ -175,45 +175,73 @@
                                   <?php } 
                                   }?>
                             <script>
-                            function delete_person(idusuarios)
-{
-    swal({
-        title: 'Estas Seguro?'+idusuarios,
-        text: "No podras deshacer esta opción!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, eliminar!',
-        cancelButtonText: 'No, cancelar!'
-    })
-    .then(function(isConfirm) {
-        if (isConfirm === true) {
-            $.ajax({
-                url: '<?php echo base_url('Usuarios/ajax_delete')?>/'+idusuarios,
-                type: 'POST',
-                data: 'delete='+idusuarios,
-                dataType: 'JSON'
-            })
-            .done(function(response){
-                swal('Eliminado!', response.message, response.status);
-                reload_table();
-            })
-            .fail(function(){
-                swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
-            });
-        } else if (isConfirm === false) {
-            swal(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-            );
-        } else {
-            // Esc, close button or outside click
-            // isConfirm is undefined
-        }
-    });
-}
+                                var table;
+                                function redirect() {
+                                    window.location.href = "<?php echo site_url('/Usuarios/usuarios'); ?>";
+                                }
+
+                                function delreg(id) {
+                                    Swal({
+                                        title: 'Estas Seguro de eliminarlo?',
+                                        text: "Esta acción no se podra deshacer!",
+                                        type: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'SI',
+                                        cancelButtonText: 'NO'
+                                    })
+                                    .then((result) => {
+                                        if (result.value) {
+                                            $.ajax({
+                                                url: '<?php echo site_url('Usuarios/EliminarUsuario')?>/'+id,
+                                                type: 'GET',
+                                                dataType: 'JSON'
+                                            })
+                                            .done(function(response){
+                                                swal({
+                                                    type: response.status,
+                                                    title: response.message,
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                });
+                                                setTimeout(redirect, 1500);
+                                            })
+                                            .fail(function(){
+                                                swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                                            });
+                                        } else {
+                                            // escape
+                                        }
+                                    });
+                                }
+
+                                function getContacts(id) {
+                                    table = $('#modal_tabla').DataTable({
+                                        "processing": true, //Feature control the processing indicator.
+                                        "serverSide": true, //Feature control DataTables' server-side processing mode.
+                                        "order": [], //Initial no order.
+
+                                        // Load data for the table's content from an Ajax source
+                                        "ajax": {
+                                            "url": '<?php echo site_url('Usuarios/contactos')?>/'+id,
+                                            "type": "POST"
+                                        },
+
+                                        //Set column definition initialisation properties.
+                                        "columnDefs": [
+                                        { 
+                                            "targets": [ -1 ], //last column
+                                            "orderable": false, //set not orderable
+                                        },
+                                        ],
+
+                                    });
+                                    $('#modal_contac').modal('show');
+                                    $('.modal-title').text('Contactos');
+                                    table.destroy();
+                                }
+                                
                             </script>
                             <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                                     <?php foreach ($usuario_grupo as $row){ ?>
@@ -273,26 +301,39 @@
             </div>
             <!-- Modal -->
             <div class="container">   
-                <div class="modal fade" id="myModal" role="dialog">
-                  <div class="modal-dialog">    
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title text-warning"><i class="fas fa-exclamation-triangle"></i>  AVERTENCIA</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-                      <div class="modal-body">
-                        <p>¿Esta seguro de eliminar el usuario?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
-                    </div>
-                  </div>  
+                
+                <div class="modal fade" id="modal_contac" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title"></h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive">
+                                    <table id="modal_tabla" class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th>Telefono</th>
+                                                <th>Correo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>  
                 </div>
+
             </div>
-  
-</div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->

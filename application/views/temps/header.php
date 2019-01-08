@@ -13,6 +13,8 @@
     <title>Reporteador</title>
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../assets/plugins/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- chartist CSS -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
