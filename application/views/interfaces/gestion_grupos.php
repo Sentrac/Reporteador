@@ -1,3 +1,4 @@
+        
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -9,11 +10,13 @@
                     <!-- User profile image -->
                     <div class="profile-img"> <img src="../assets/images/users/user.png" alt="user" /> </div>
                     <!-- User profile text-->
-                    <?php foreach($posts as $post){?>
+                    <?php if(isset($posts)){
+                            foreach($posts as $post){?>
                     <div class="profile-text">
                         <a class="u-dropdown clikem"><?php echo $post->nombre;?> <?php echo $post->apellidos;?></a>
                     </div>
-                    <?php }?>
+                    <?php }
+                    }?>
                 </div>
                 <!-- End User profile text-->
                 <!-- Sidebar navigation-->
@@ -36,8 +39,7 @@
                 <!-- item--><a href="<?= base_url() ?>Login/logout" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
             </div>
             <!-- End Bottom points-->
-        </aside>
-        <!-- ============================================================== -->
+        </aside><!--========================================================= -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -52,6 +54,7 @@
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
+                    
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -60,52 +63,65 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <?php if($this->session->flashdata('registro')){?>
-                    <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('registro'); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div> 
-                <?php } ?>
-                <div class="row">
+
+                <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Grupo Actuales</h4>
-                        <a href="<?= base_url() ?>Grupo/formulario_grupos" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar grupo</a>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <?php foreach($lista_grupos as $grupo_bd){?>
-                  <div class="col-lg-3 col-md-6">
-                    <!-- Card -->
-                    <div class="card text-center">
-                      <center><img class="card-img-top img-responsive " src="../assets/images/mac.png" alt="Card image cap"></center>
+                        <h4 class="m-b-0 text-white">Editar Grupo</h4>
+                      </div>
                       <div class="card-body">
-                        <h4 class="card-title"><?php echo $grupo_bd->nombre?></h4>
-                        <input type="hidden" name="idgrupo" value="<?php echo $grupo_bd->idgrupo?>">
-                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>">
-                            <button type="button" class="btn btn-secondary text-primary" title="Ver">
-                                <span class="fas fa-eye" aria-hidden="true"></span>
-                            </button>
-                        </a>
-                        <a href="<?= base_url() ?>Grupo/editarGrupo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>">
-                            <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                            </button>
-                        </a>
-                        <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
-                            <span class="mdi mdi-delete" aria-hidden="true"></span>
-                        </button>
+                      <?php echo form_open("Grupo/actualizarGrupo"); ?> 
+                          <div class="form-body">
+                            <hr>
+                            <?php if (isset($mostrardatosgrupo)){
+                                    ?>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Nombre</label>
+                              <div class="col-md-9">
+                                  <input type="hidden" value="<?php echo $mostrardatosgrupo[0]->idgrupo?>" name="idgrupo">
+                              <input type="hidden" class="form-control" name="idusuarios" value="">
+                                <input type="text" style="text-transform: uppercase;" class="form-control" name="nombre" value="<?php echo $mostrardatosgrupo[0]->nombre; ?>">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Alias</label>
+                              <div class="col-md-9">
+                                <input type="text" style="text-transform: uppercase;" class="form-control" name="alias" value="<?php echo $mostrardatosgrupo[0]->alias; ?>">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">rfc</label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" name="rfc" value="<?php echo $mostrardatosgrupo[0]->rfc; ?>">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Descripción</label>
+                              <div class="col-md-9">
+                                <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion" ><?php echo $mostrardatosgrupo[0]->descripcion; ?></textarea>
+                              </div>
+                            </div>    
+                            <?php } ?>
+                            <div class="form-actions">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="offset-sm-4 col-md-8">
+                                    <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <a href="<?= base_url() ?>Grupo/grupo">
+                                      <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                         </div>  
+                        <?php echo form_close(); ?>                       
                       </div>
                     </div>
-                    <!-- Card -->
                   </div>
-                    <?php } ?>
                 </div>
 
                 <!-- Row -->
@@ -127,7 +143,3 @@
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
