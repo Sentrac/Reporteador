@@ -205,7 +205,12 @@ class Usuarios extends CI_Controller {
 		$idusuario=$this->input->get('idusuario');
 		$this->Modelo_usuarios->EliminardatosUsuario($idusuario);
 		
-
+	}
+	public function ajax_delete(){
+		$this->Modelo_usuarios->delete_by_id($idusuarios);
+		$response['status']  = 'success';
+		$response['message'] = 'Producto eliminado correctamente ...';
+		echo json_encode($response);
 	}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();

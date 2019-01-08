@@ -68,6 +68,10 @@ class Modelo_usuarios extends CI_Model{
         $this->db->where('idusuarios', $idusuario);
         $this->db->delete('usuarios');
     }
+    public function delete_by_id($idusuario){
+        $this->db->where('idusuarios', $idusuario);
+		$this->db->delete('usuarios');
+    }
 }
 
 ?>

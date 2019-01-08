@@ -89,7 +89,17 @@
                         <h4 class="card-title"><?php echo $grupo_bd->nombre?></h4>
                         <p class="card-text"><?php echo $grupo_bd->descripcion?></p>
                         <input type="hidden" name="idgrupo" value="<?php echo $grupo_bd->idgrupo?>">
-                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>" class="btn btn-primary">Ver</a>
+                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $grupo_bd->idgrupo; ?>">
+                            <button type="button" class="btn btn-secondary text-primary" title="Ver">
+                                <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                            </button>
+                        </a>
+                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                            <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
+                            <span class="mdi mdi-delete" aria-hidden="true"></span>
+                        </button>
                       </div>
                     </div>
                     <!-- Card -->
