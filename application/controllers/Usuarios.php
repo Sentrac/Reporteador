@@ -86,8 +86,8 @@ class Usuarios extends CI_Controller {
 				'fk_grupou' => $grupo
 			);
 				if($this->Modelo_usuarios->registrarUsuarios($d)){
-					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
-					$this->usuarios();
+					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE');
+					redirect('/Usuarios/usuarios','refresh');
 				}else{
 					echo 'no registrado';
 				}
@@ -201,11 +201,13 @@ class Usuarios extends CI_Controller {
 				}
 		}
 	}
-	public function EliminarUsuario(){
-		$idusuario=$this->input->get('idusuario');
+	public function EliminarUsuario($id){
+		//$idusuario=$this->input->get('idusuario');
+		$idusuario = $id;
 		$this->Modelo_usuarios->EliminardatosUsuario($idusuario);
-		
-
+		$response['status']  = 'success';
+		$response['message'] = 'Registro eliminado correctamente ...';
+		echo json_encode($response);
 	}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
@@ -224,5 +226,30 @@ class Usuarios extends CI_Controller {
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/error_registaruser_modal');
 		$this->load->view('temps/footer');
+	}
+	public function contactos($id)
+	{
+		$list = $this->Modelo_usuarios->getContactos($id);
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $person) {
+			$no++;
+			$row = array();
+			$row[] = $person->nombre;
+			$row[] = $person->apellidos;
+			$row[] = $person->telefono;
+			$row[] = $person->email;
+
+			$data[] = $row;
+		}
+
+		$respons = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->Modelo_usuarios->count_all(),
+			"recordsFiltered" => $this->Modelo_usuarios->count_filtered(),
+			"data" => $data,
+		);
+		
+		echo json_encode($respons);
 	}
 }

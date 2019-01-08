@@ -68,6 +68,23 @@ class Modelo_usuarios extends CI_Model{
         $this->db->where('idusuarios', $idusuario);
         $this->db->delete('usuarios');
     }
+    public function getContactos($id)
+    {
+        $this->db->select('nombre,apellidos,telefono,email');
+        $this->db->from('usuarios');
+        $this->db->where('fk_grupou',$id);
+        $query=$this->db->get();
+        return $query->result();
+    }
+    public function count_all()
+	{
+		$this->db->from('usuarios');
+		return $this->db->count_all_results();
+    }
+    function count_filtered(){
+		$query = $this->db->get('usuarios');
+		return $query->num_rows();
+	}
 }
 
 ?>

@@ -10,6 +10,9 @@
     <!--stickey kit -->
     <script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- Datatables -->
+    <script src="../assets/plugins/datatables/datatables.min.js"></script>
+    <script src="../assets/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
     <!--Custom JavaScript -->
     <script src="../assets/js/custom.min.js"></script>
     <script src="../assets/js/radiobuttons.js"></script>
