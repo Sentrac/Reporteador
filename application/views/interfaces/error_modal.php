@@ -21,6 +21,7 @@
                 </div>
                 <!-- End User profile text-->
                 <!-- Sidebar navigation-->
+                <?php ?>
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Menú</li>

@@ -9,6 +9,7 @@ class Modelo_grupo extends CI_Model{
         $data=$this->db->get('grupo');
         return $data->result();
     }
+    //FUNCIÓN PARA MOSTRAR LOS DATOS DEL GRUPO PERTENECIENTES AL ID
     public function getGrupo($idgrupo){
         $this->db->where('idgrupo', $idgrupo);
         $data=$this->db->get('grupo');
@@ -34,8 +35,11 @@ class Modelo_grupo extends CI_Model{
             return false;
         }
     }
-    public function usuario_grupo(){
-        
+    //FUNCIÓN PARA ACTUALIZAR EL GRUPO MEDIANTE LA ID
+    public function updateGrupo($array,$idgrupo){
+        $this->db->where('idgrupo',$idgrupo);
+        $this->db->update('grupo', $array);
+        return true;
     }
 }
 ?>
