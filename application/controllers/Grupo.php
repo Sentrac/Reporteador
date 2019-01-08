@@ -99,7 +99,7 @@ class Grupo extends CI_Controller {
 				'rfc' => $rfc,
 				'descripcion' => $descripcion
 			);
-			if($this->Modelo_grupo->registrarGrupos($array,$idgrupo)){
+			if($this->Modelo_grupo->updateGrupo($array,$idgrupo)){
 				$this->session->set_flashdata('editar','EL GRUPO SE HA CAMBIADO EXITOSAMENTE'); 
 				$this->grupo();
 			}else{

@@ -35,5 +35,11 @@ class Modelo_grupo extends CI_Model{
             return false;
         }
     }
+    //FUNCIÓN PARA ACTUALIZAR EL GRUPO MEDIANTE LA ID
+    public function updateGrupo($array,$idgrupo){
+        $this->db->where('idgrupo',$idgrupo);
+        $this->db->update('grupo', $array);
+        return true;
+    }
 }
 ?>
