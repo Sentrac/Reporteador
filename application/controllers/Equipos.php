@@ -69,7 +69,7 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
-				$this->grupo();
+				redirect('/Equipos/grupo','refresh');
 			}else{
 				echo 'no registrado';
 			}
@@ -99,6 +99,45 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
+				redirect('/Equipos/success_equipo_modal','refresh');
+			}else{
+				echo 'no registrado';
+			}
+		}
+	}
+	public function editarEquipo(){
+		$idequipo=$this->input->get('idequipo');
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->data['mostrardatosequipo']=$this->Modelo_equipos->equipos($idequipo);
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/gestion_equipos',$this->data);
+		$this->load->view('temps/footer');
+	}
+	public function actualizarEquipo(){
+		$this->form_validation->set_rules('nombre_host', 'Nombre/Hostname', 'trim|required');
+		$this->form_validation->set_rules('dns', 'DNS o IP', 'trim|required');
+
+		if($this->form_validation->run() == FALSE){
+           
+            $this->error_modal();
+
+        }else{
+			$idequipo=$this->input->post('idequipos');
+			$nom_host=$this->input->post('nombre_host');
+			$dns=$this->input->post('dns');
+			$descripcion=$this->input->post('descripcion');
+			$fkgrupo=$this->input->post('fk_grupo');
+
+			$descripcion = strtoupper($descripcion);
+			
+			$array = array(
+				'nombre_host' => $nom_host,
+				'dns' => $dns,
+				'fk_grupo' => $fkgrupo,
+				'descripcion' => $descripcion
+			);
+			if($this->Modelo_equipos->updateEquipo($array,$idequipo)){
+				$this->session->set_flashdata('registro','EL EQUIPO SE HA CAMBIADO EXITOSAMENTE'); 
 				$this->success_equipo_modal();
 			}else{
 				echo 'no registrado';

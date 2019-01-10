@@ -133,7 +133,7 @@ class Usuarios extends CI_Controller {
 			);
 				if($this->Modelo_usuarios->registrarUsuarios($d)){
 					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
-					$this->success_usuario_modal();
+					redirect('/Usuarios/success_usuario_modal','refresh');
 				}else{
 					echo 'no registrado';
 				}
@@ -195,16 +195,14 @@ class Usuarios extends CI_Controller {
 			);
 				if($this->Modelo_usuarios->updateUsuarios($array,$idusuario)){
 					$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
-					$this->usuarios();
+					redirect('/Usuarios/usuarios','refresh');
 				}else{
 					echo 'no registrado';
 				}
 		}
 	}
 	public function EliminarUsuario($id){
-		//$idusuario=$this->input->get('idusuario');
-		$idusuario = $id;
-		$this->Modelo_usuarios->EliminardatosUsuario($idusuario);
+		$this->Modelo_usuarios->EliminardatosUsuario($id);
 		$response['status']  = 'success';
 		$response['message'] = 'Registro eliminado correctamente ...';
 		echo json_encode($response);
@@ -231,9 +229,7 @@ class Usuarios extends CI_Controller {
 	{
 		$list = $this->Modelo_usuarios->getContactos($id);
 		$data = array();
-		$no = $_POST['start'];
 		foreach ($list as $person) {
-			$no++;
 			$row = array();
 			$row[] = $person->nombre;
 			$row[] = $person->apellidos;
@@ -251,5 +247,21 @@ class Usuarios extends CI_Controller {
 		);
 		
 		echo json_encode($respons);
+	}
+	public function grupos()
+	{
+		$sel = $this->Modelo_usuarios->getGrupos();
+		$itm = array();
+		foreach ($sel as $group) {
+			$reg = array();
+			$reg[] = $group;
+			$itm[] = $reg;
+		}
+		echo json_encode($itm);
+	}
+	public function editusuari($id)
+	{
+		$dts = $this->Modelo_usuarios->traerdatosUsuario($id);
+		echo json_encode($dts);
 	}
 }
