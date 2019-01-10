@@ -208,7 +208,9 @@
 
                 <div class="Row">
                   <div class="col-lg-12">
-                    <div class="card card-outline-inverse">
+                    <div class="card card-outline-inverse"><a href="<?= base_url() ?>Usuarios/usuarios">
+                                      <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                    </a>
                       <div class="card-header">
                         <h4 class="m-b-0 text-white">Editar Usuario</h4>
                       </div>
@@ -316,16 +318,14 @@
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
                                     <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <a href="<?= base_url() ?>Usuarios/usuarios">
-                                      <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
-                                    </a>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                           </div>  
-                        <?php echo form_close(); ?>                       
+                        <?php echo form_close(); ?>                      
                       </div>
                     </div>
                   </div>

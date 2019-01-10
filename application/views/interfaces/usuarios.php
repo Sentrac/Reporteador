@@ -163,6 +163,9 @@
                                     <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>" class="btn btn-secondary txt-azul" title="Editar">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
+                                    <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-verde" title="Editar Modal">
+                                        <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                                    </a>
                                     <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
                                         <span class="mdi mdi-delete" aria-hidden="true"></span>
                                     </a>
@@ -175,6 +178,7 @@
                                   <?php } 
                                   }?>
                             <script>
+
                                 var table;
                                 function redirect() {
                                     window.location.href = "<?php echo site_url('/Usuarios/usuarios'); ?>";
@@ -240,6 +244,70 @@
                                     $('#modal_contac').modal('show');
                                     $('.modal-title').text('Contactos');
                                     table.destroy();
+                                }
+
+                                function loadGrupos() {
+                                    $.ajax({
+                                        url: '<?php echo site_url('Usuarios/grupos')?>/',
+                                        type: 'GET',
+                                        dataType: 'JSON'
+                                    })
+                                    .done(function(response){
+                                        $('#Grupo').empty();
+                                        $.each(response, function (i, item) {
+                                            $('#Grupo').append($('<option>', { 
+                                                value: item[0]['idgrupo'],
+                                                text : item[0]['nombre']
+                                            }));
+                                        });
+                                    })
+                                    .fail(function(){
+                                        swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                                    });
+                                }
+                                
+                                function editreg(id) {
+                                    $('#modal_edit').modal('show');
+                                    $('.modal-title').text('Editar registro');
+                                    $('#idus').val(id);
+                                    
+                                    loadGrupos();
+                                    
+                                    /* $('#Rol').change(function () {
+                                        var rol = document.getElementById("Rol");
+                                        if (rol.value == 'SU') {
+                                            $('#Grupo').empty().append('<option value="1">Todos</option>');
+                                        }
+                                        if(rol.value == 'AD' || rol.value == 'CO') {
+                                            loadGrupos();
+                                        }
+                                    }); */
+
+                                    $.ajax({
+                                        url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
+                                        type: 'GET',
+                                        dataType: 'JSON'
+                                    })
+                                    .done(function(response){
+                                        $('#Nombre').val(response[0]['nombre']);
+                                        $('#Apellidos').val(response[0]['apellidos']);
+                                        $('#Telefono').val(response[0]['telefono']);
+                                        $('#Correo').val(response[0]['email']);
+                                        $('#Rol').val(response[0]['tipo_usuario']);
+                                        $('#Grupo').val(response[0]['fk_grupou']);
+                                        var rol = document.getElementById("Rol").value;
+                                        var gro = document.getElementById("Grupo").value;
+                                        var idu = document.getElementById("idus").value;
+                                        if (gro == '') {
+                                            $('#Grupo').empty().append('<option value="1">Todos</option>');
+                                        }
+                                        console.log(id);
+                                        console.log(rol);
+                                        console.log(gro);
+                                    })
+                                    .fail(function(){
+                                        swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                                    });
                                 }
                                 
                             </script>
@@ -326,6 +394,77 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="modal fade" id="modal_edit" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title"></h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="#" id="form" class="form-horizontal">
+                                    <input type="hidden" value="" name="idus" id="idus"/> 
+                                    <div class="form-body">
+                                        
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Nombre</label>
+                                            <div class="col-md-9">
+                                                <input name="Nombre" id="Nombre" placeholder="Nombre" class="form-control" type="text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Apellidos</label>
+                                            <div class="col-md-9">
+                                                <input name="Apellidos" id="Apellidos" placeholder="Apellidos" class="form-control" type="text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Teléfono</label>
+                                            <div class="col-md-9">
+                                                <input name="Teléfono" id="Telefono" placeholder="Teléfono" class="form-control" type="text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Correo</label>
+                                            <div class="col-md-9">
+                                                <input name="Correo" id="Correo" placeholder="Correo" class="form-control" type="text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Rol</label>
+                                            <div class="col-md-9">
+                                                <select name="Rol" id="Rol" class="form-control">
+                                                    <option value="SU">Superusuario</option>
+                                                    <option value="AD">Administrador</option>
+                                                    <option value="CO">Consultor</option>
+                                                </select>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Grupo</label>
+                                            <div class="col-md-9">
+                                                <select name="Grupo" id="Grupo" class="form-control">
+                                                </select>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
                             </div>

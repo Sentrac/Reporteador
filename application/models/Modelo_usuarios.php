@@ -84,7 +84,15 @@ class Modelo_usuarios extends CI_Model{
     function count_filtered(){
 		$query = $this->db->get('usuarios');
 		return $query->num_rows();
-	}
+    }
+    public function getGrupos()
+    {
+        $this->db->select('idgrupo,nombre');
+        $this->db->from('grupo');
+        $this->db->where_not_in('idgrupo','1');
+        $query=$this->db->get();
+        return $query->result();
+    }
 }
 
 ?>

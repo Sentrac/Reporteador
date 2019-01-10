@@ -69,7 +69,7 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
-				$this->grupo();
+				redirect('/Equipos/grupo','refresh');
 			}else{
 				echo 'no registrado';
 			}
@@ -99,7 +99,7 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
-				$this->success_equipo_modal();
+				redirect('/Equipos/success_equipo_modal','refresh');
 			}else{
 				echo 'no registrado';
 			}

@@ -43,7 +43,6 @@ class Grupo extends CI_Controller {
 			$alias = $this->input->post('alias');
 			$rfc = $this->input->post('rfc');
 			$descripcion = $this->input->post('descripcion');
-			
 			$nombre = strtoupper($nombre);
 			$alias = strtoupper($alias);
 			$rfc = strtoupper($rfc);
@@ -57,7 +56,7 @@ class Grupo extends CI_Controller {
 			);
 			if($this->Modelo_grupo->registrarGrupos($array)){
 				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO EXITOSAMENTE'); 
-				$this->grupo();
+				redirect('/Grupo/grupo','refresh');
 			}else{
 				echo 'no registrado';
 			}
