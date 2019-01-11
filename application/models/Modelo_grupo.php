@@ -43,5 +43,6 @@ class Modelo_grupo extends CI_Model{
         $this->db->update('grupo', $array);
         return true;
     }
+    
 }
 ?>
