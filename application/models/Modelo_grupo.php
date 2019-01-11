@@ -43,6 +43,11 @@ class Modelo_grupo extends CI_Model{
         $this->db->update('grupo', $array);
         return true;
     }
+    public function delGrp($id)
+    {
+        $this->db->where('idgrupo', $id);
+        $this->db->delete('grupo');   
+    }
     
 }
 ?>

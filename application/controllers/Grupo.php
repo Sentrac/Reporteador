@@ -112,5 +112,13 @@ class Grupo extends CI_Controller {
 		$this->load->view('interfaces/error_modal');
 		$this->load->view('temps/footer');
 	}
+	public function delgrupo($id)
+	{
+		$this->Modelo_grupo->delGrp($id);
+		$response['status']  = 'success';
+		$response['message'] = 'Grupo eliminado correctamente ...';
+		echo json_encode($response);
+	}
+
 }
 ?>

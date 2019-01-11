@@ -98,9 +98,9 @@
                                 <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                             </button>
                         </a>
-                        <button type="button" class="btn btn-danger" title="Eliminar">
+                  <a href="javascript:void(0)" onclick="delgrp(<?= $grupo_bd->idgrupo; ?>);" type="button" class="btn btn-danger" title="Eliminar">
                             <span class="mdi mdi-delete" aria-hidden="true"></span>
-                        </button>
+                        </a>
                       </div>
                     </div>
                     <!-- Card -->
@@ -131,3 +131,43 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+    <script>
+        function redirect() {
+            window.location.href = "<?php echo site_url('/Grupo/grupo'); ?>";
+        }
+        function delgrp(id) {
+            Swal({
+                title: 'Estas Seguro de eliminarlo?',
+                text: "Esta acción no se podra deshacer!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'SI',
+                cancelButtonText: 'NO'
+            })
+            .then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: '<?php echo site_url('Grupo/delgrupo')?>/'+id,
+                        type: 'GET',
+                        dataType: 'JSON'
+                    })
+                    .done(function(response){
+                        swal({
+                            type: response.status,
+                            title: response.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(redirect, 1500);
+                    })
+                    .fail(function(){
+                        swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                    });
+                } else {
+                    // escape
+                }
+            });
+        }
+    </script>
