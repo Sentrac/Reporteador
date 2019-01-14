@@ -37,7 +37,6 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>
                         <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
                             <?php if(isset($posts)){?>
                                 <div class="profile-text">
@@ -47,7 +46,6 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
-                        <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                         <?php } ?>
                     </ul>
                 </nav>
@@ -160,10 +158,10 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                    <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>" class="btn btn-secondary txt-azul" title="Editar">
+                                    <!-- <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>" class="btn btn-secondary txt-azul" title="Editar">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-verde" title="Editar Modal">
+                                    </a> -->
+                                    <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
                                     <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
@@ -272,16 +270,6 @@
                                     $('#idus').val(id);
                                     
                                     loadGrupos();
-                                    
-                                    /* $('#Rol').change(function () {
-                                        var rol = document.getElementById("Rol");
-                                        if (rol.value == 'SU') {
-                                            $('#Grupo').empty().append('<option value="1">Todos</option>');
-                                        }
-                                        if(rol.value == 'AD' || rol.value == 'CO') {
-                                            loadGrupos();
-                                        }
-                                    }); */
 
                                     $.ajax({
                                         url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
@@ -301,14 +289,47 @@
                                         if (gro == '') {
                                             $('#Grupo').empty().append('<option value="1">Todos</option>');
                                         }
-                                        console.log(id);
-                                        console.log(rol);
-                                        console.log(gro);
                                     })
                                     .fail(function(){
                                         swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
                                     });
                                 }
+
+                                $(document).ready(function() {
+                                    $('#Rol').change(function () {
+                                        var rol = document.getElementById("Rol").value;
+                                        if (rol == 'SU') {
+                                            $('#Grupo').empty().append('<option value="1">Todos</option>');
+                                        }
+                                        if(rol == 'AD' || rol == 'CO') {
+                                            loadGrupos();
+                                        }
+                                    });
+
+                                    $('#form-edit').submit(function (event) {
+                                        var datos = $('#form-edit').serialize();
+
+                                        $.ajax({
+                                            url: "<?php echo site_url('Usuarios/actusuari')?>",
+                                            type: "POST",
+                                            data: datos,
+                                            beforeSend: function() {
+                                                $("#Guardar").html("Guardando...");
+                                            }
+                                        })
+                                        .done(function(){
+                                            swal('Guardado','','success');
+                                            $('#modal_edit').modal('hide');
+                                            setTimeout(redirect, 1500);
+                                        })
+                                        .fail(function(){
+                                            swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                                        });
+
+
+                                        event.preventDefault();
+                                    }); 
+                                });
                                 
                             </script>
                             <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
@@ -409,7 +430,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form action="#" id="form" class="form-horizontal">
+                                <form id="form-edit" class="form-horizontal" method="POST">
                                     <input type="hidden" value="" name="idus" id="idus"/> 
                                     <div class="form-body">
                                         
@@ -430,7 +451,7 @@
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Teléfono</label>
                                             <div class="col-md-9">
-                                                <input name="Teléfono" id="Telefono" placeholder="Teléfono" class="form-control" type="text">
+                                                <input name="Telefono" id="Telefono" placeholder="Teléfono" class="form-control" type="text">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
@@ -463,10 +484,21 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 offset-sm-3">
+                                                            <button class="btn btn-success" id="Guardar"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
                             </div>
                         </div>
                     </div>  
