@@ -57,9 +57,13 @@ class Grupo extends CI_Controller {
 			);
 			if($this->Modelo_grupo->registrarGrupos($array)){
 				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO EXITOSAMENTE'); 
+
 				redirect('/Grupo/grupo','refresh');
+
 			}else{
-				echo 'no registrado';
+				$this->session->set_flashdata('grupo','EL GRUPO YA EXISTE'); 
+				redirect('/Grupo/grupo','refresh');
+
 			}
 		}
 	}

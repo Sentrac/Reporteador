@@ -28,15 +28,23 @@ class Modelo_grupo extends CI_Model{
         }
     }
     
-    //FUNCIÓN PARA INSERTAR EN LA TABLA GRUPO 
+    //FUNCIÓN PARA INSERTAR EN LA TABLA GRUPO Y NO INSERTAR SI EL GRUPO YA EXISTE
     public function registrarGrupos($array){
-        $count=$this->db->insert('grupo',$array);        
-        if($count>0){
-            return true;
-        }else{
-            return false;
-        }
+       $query = $array['nombre'];
+       $this->db->where('nombre',$query);
+       $validar=$this->db->get('grupo');
+       if($validar->num_rows()>0){
+          return false;
+       } else {
+            $count=$this->db->insert('grupo',$array);  
+             if($count->num_rows()>0){
+                return false;
+                }else{
+                return true;
+                }
+        }    
     }
+
     //FUNCIÓN PARA ACTUALIZAR EL GRUPO MEDIANTE LA ID
     public function updateGrupo($array,$idgrupo){
         $this->db->where('idgrupo',$idgrupo);

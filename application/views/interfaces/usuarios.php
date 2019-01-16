@@ -1,16 +1,9 @@
 <?php
     $name = $this->session->userdata('tipo_usuario');
-    if($name=='AD'){
-    }
-
-    elseif($name=='SU'){
-    }
-    else{
+    if($name==null){
         redirect(base_url());
     }
-    
 ?>      
-        
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->

@@ -68,6 +68,14 @@
                     </button>
                     </div> 
                 <?php } ?>
+                <?php if($this->session->flashdata('grupo')){?>
+                    <div  class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('grupo'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div> 
+                <?php } ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
