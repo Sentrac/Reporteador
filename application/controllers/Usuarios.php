@@ -201,12 +201,12 @@ class Usuarios extends CI_Controller {
 				}
 		}
 	}
-	public function EliminarUsuario($id){
-		$this->Modelo_usuarios->EliminardatosUsuario($id);
-		$response['status']  = 'success';
-		$response['message'] = 'Registro eliminado correctamente ...';
-		echo json_encode($response);
-	}
+		public function EliminarUsuario($id){
+			$this->Modelo_usuarios->EliminardatosUsuario($id);
+			$response['status']  = 'success';
+			$response['message'] = 'Registro eliminado correctamente ...';
+			echo json_encode($response);
+		}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
@@ -263,5 +263,34 @@ class Usuarios extends CI_Controller {
 	{
 		$dts = $this->Modelo_usuarios->traerdatosUsuario($id);
 		echo json_encode($dts);
+	}
+	public function actusuari()
+	{
+		$ids = $this->input->post('idus');
+		$nom = $this->input->post('Nombre');
+		$ape = $this->input->post('Apellidos');
+		$tel = $this->input->post('Telefono');
+		$cor = $this->input->post('Correo');
+		$rol = $this->input->post('Rol');
+		$grp = $this->input->post('Grupo');
+
+		$nom = strtoupper($nom);
+		$ape = strtoupper($ape);
+	
+		$array = array(
+			'nombre' => $nom,
+			'apellidos' => $ape,
+			'telefono' => $tel,
+			'email' => $cor,
+			'tipo_usuario' => $rol,
+			'fk_grupou' => $grp
+		);
+		
+		if($this->Modelo_usuarios->updateUsuarios($array,$ids)){
+			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
+			// redirect('/Usuarios/usuarios','refresh');
+		}else{
+			echo 'no registrado';
+		}
 	}
 }

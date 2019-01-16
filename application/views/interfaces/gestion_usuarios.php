@@ -313,17 +313,17 @@
                               </div>
                             </div>
                             <div class="form-actions">
-                            <div class="row">
-                              <div class="col-md-12">
                                 <div class="row">
-                                  <div class="offset-sm-4 col-md-8">
-                                    <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                  </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                    <div class="offset-sm-4 col-md-8">
+                                        <button class="btn btnq<-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                    </div>
                                 </div>
-                              </div>
+                                </div>
                             </div>
-                          </div>
                           </div>  
                         <?php echo form_close(); ?>                      
                       </div>
