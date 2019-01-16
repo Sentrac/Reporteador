@@ -113,9 +113,9 @@
                               <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                           </button>
                         </a>
-                        <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
+                        <a href="javascript:void(0)" type="button" class="btn btn-secondary txt-rojo" title="Eliminar" onclick="delEqp(<?= $equipo->idequipos;?>,<?= $equipo->fk_grupo;?>);">
                             <span class="mdi mdi-delete" aria-hidden="true"></span>
-                        </button>
+                        </a>
                       </div>
                     </div>
                     <!-- Card -->
@@ -152,13 +152,12 @@
                       <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
-                        <P><?php echo $equipo->descripcion;?></P>
                         <button type="button" class="btn btn-secondary txt-azul" title="Editar">
                             <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn btn-secondary txt-rojo" title="Eliminar">
+                        <a href="javascript:void(0)" type="button" class="btn btn-secondary txt-rojo" title="Eliminar" onclick="delEqp(<?= $equipo->idequipos;?>,<?= $equipo->fk_grupo;?>);">
                             <span class="mdi mdi-delete" aria-hidden="true"></span>
-                        </button>
+                        </a>
                       </div>
                     </div>
                     <!-- Card -->
@@ -197,8 +196,8 @@
                         <P><?php echo $equipo->descripcion;?></P>
                       </div>
                     </div>
-                    <!-- Card -->
                   </div>
+                    <!-- Card -->
                   <?php 
                     }
                   }?>
@@ -227,3 +226,52 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+    <script>
+        function redirect(fk) {
+          <?php
+          if($this->session->userdata('tipo_usuario')=='SU'){
+          ?>
+            window.location.href = "<?php echo site_url('Equipos/equipo'); ?>?idgrupo="+fk;
+          <?php
+          }
+          if($this->session->userdata('tipo_usuario')=='AD'){
+          ?>
+            window.location.href = "<?php echo site_url('Equipos/equipo'); ?>?fk_grupou="+fk;
+          <?php } ?>
+        }
+        function delEqp(id,fk) {
+            Swal({
+                title: 'Estas Seguro de eliminarlo?',
+                text: "Esta acción no se podra deshacer.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Acceptar',
+                cancelButtonText: 'Cancelar'
+            })
+            .then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: '<?php echo site_url('Equipos/EliminarEquipo')?>/'+id,
+                        type: 'GET',
+                        dataType: 'JSON'
+                    })
+                    .done(function(response){
+                        swal({
+                            type: response.status,
+                            title: response.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(redirect(fk), 1500);
+                    })
+                    .fail(function(){
+                        swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                    });
+                } else {
+                    // escape
+                }
+            });
+        }
+    </script>

@@ -9,7 +9,7 @@
     <meta name="author" content="WarrioPracticantes">
     <!-- Favicon icon -->
     <link rel="icon" type="image/ico" sizes="16x16" href="../assets/images/favicon.ico">
-    <title>Reporteador</title>
+    <title>WReporter</title>
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Datatables -->
@@ -78,7 +78,7 @@
                             <!-- dark Logo text -->
                             <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <font class="h1title">Reporteador</font>
+                            <font class="h1title">WReporter</font>
                         </span>
                     </a>
                 </div>

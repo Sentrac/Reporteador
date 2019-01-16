@@ -30,6 +30,11 @@ class Modelo_equipos extends CI_Model{
         $this->db->update('equipos', $array);
         return true;
     }
+    public function delEquipo($id)
+    {
+        $this->db->where('idequipos',$id);
+        $this->db->delete('equipos');
+    }
 }
 
 ?>

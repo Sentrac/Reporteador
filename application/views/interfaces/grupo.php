@@ -138,13 +138,13 @@
         function delgrp(id) {
             Swal({
                 title: 'Estas Seguro de eliminarlo?',
-                text: "Esta acción no se podra deshacer!",
+                text: "Se eliminaran todos los  equipos y usuarios de dicho grupo!. Esta acción no se podra deshacer.",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'SI',
-                cancelButtonText: 'NO'
+                confirmButtonText: 'Acceptar',
+                cancelButtonText: 'Cancelar'
             })
             .then((result) => {
                 if (result.value) {
