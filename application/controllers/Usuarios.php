@@ -201,12 +201,12 @@ class Usuarios extends CI_Controller {
 				}
 		}
 	}
-	public function EliminarUsuario($id){
-		$this->Modelo_usuarios->EliminardatosUsuario($id);
-		$response['status']  = 'success';
-		$response['message'] = 'Registro eliminado correctamente ...';
-		echo json_encode($response);
-	}
+		public function EliminarUsuario($id){
+			$this->Modelo_usuarios->EliminardatosUsuario($id);
+			$response['status']  = 'success';
+			$response['message'] = 'Registro eliminado correctamente ...';
+			echo json_encode($response);
+		}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 

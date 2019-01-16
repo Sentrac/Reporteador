@@ -156,5 +156,11 @@ class Equipos extends CI_Controller {
 		$this->load->view('interfaces/success_equipo_modal');
 		$this->load->view('temps/footer');
 	}
+	public function EliminarEquipo($id){
+		$this->Modelo_equipos->delEquipo($id);
+		$response['status']  = 'success';
+		$response['message'] = 'Equipo eliminado correctamente ...';
+		echo json_encode($response);
+	}
 }
 ?>
