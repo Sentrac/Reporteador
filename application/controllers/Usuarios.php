@@ -151,56 +151,7 @@ class Usuarios extends CI_Controller {
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
 	}
-	public function actualizarUsuario(){
-		//VALIDACIONES DE CAMPOS
-		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
-		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
-
-		if($this->form_validation->run() == FALSE){
-           
-            $this->error_registaruser_modal();
-
-        }else{
-			$idusuario = $this->input->post('idusuarios');
-			$nombre = $this->input->post('nombre');
-			$apellidos = $this->input->post('apellidos');
-			$telefono = $this->input->post('telefono');
-			$correo = $this->input->post('email');
-			$tipouser = $this->input->post('tipo_usuario');
-			$antval = $this->input->post('antval');
-			$grupo = $this->input->post('fk_grupou');
-			if($grupo==$grupo){
-				$grupo = $this->input->post('antval');
-			}
-			if($tipouser=='SU'){
-				$grupo = 1;
-			} else {
-				$grupo = $this->input->post('fk_grupou');
-			}
-			
-			
-			//REGISTRAR EN MAYUSCULAS
-			$nombre = strtoupper($nombre);
-			$apellidos = strtoupper($apellidos);
-		
-			$array = array(
-				'nombre' => $nombre,
-				'apellidos' => $apellidos,
-				'telefono' => $telefono,
-				'email' => $correo,
-				'tipo_usuario' => $tipouser,
-				'fk_grupou' => $grupo
-			);
-				if($this->Modelo_usuarios->updateUsuarios($array,$idusuario)){
-					$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
-					redirect('/Usuarios/usuarios','refresh');
-				}else{
-					echo 'no registrado';
-				}
-		}
-	}
+	
 		public function EliminarUsuario($id){
 			$this->Modelo_usuarios->EliminardatosUsuario($id);
 			$response['status']  = 'success';
@@ -264,6 +215,11 @@ class Usuarios extends CI_Controller {
 		$dts = $this->Modelo_usuarios->traerdatosUsuario($id);
 		echo json_encode($dts);
 	}
+	public function editusuarioAdmin($id)
+	{
+		$dts = $this->Modelo_usuarios->traerdatosUsuariosAdmin($id);
+		echo json_encode($dts);
+	}
 	public function actusuari()
 	{
 		$ids = $this->input->post('idus');
@@ -285,9 +241,11 @@ class Usuarios extends CI_Controller {
 			'tipo_usuario' => $rol,
 			'fk_grupou' => $grp
 		);
+
+		// echo json_encode($array);
 		
 		if($this->Modelo_usuarios->updateUsuarios($array,$ids)){
-			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
+			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO'); 
 			// redirect('/Usuarios/usuarios','refresh');
 		}else{
 			echo 'no registrado';
