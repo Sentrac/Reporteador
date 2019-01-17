@@ -1,9 +1,3 @@
-<?php
-    $name = $this->session->userdata('tipo_usuario');
-    if($name==null){
-        redirect(base_url());
-    }
-?>      
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -77,20 +71,42 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
                 <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
-                         if($this->session->flashdata('registro')){?>
-                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('registro'); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
-                         <?php }if($this->session->flashdata('editar')){?>
-                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('editar'); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
+                        if($this->session->flashdata('registro')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Info',
+                                    text: '<?= $this->session->flashdata('registro'); ?>',
+                                    icon: 'success',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
+                        <?php }if($this->session->flashdata('editar')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Info',
+                                    text: '<?= $this->session->flashdata('editar'); ?>',
+                                    icon: 'success',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
                 <?php  
                     }
                 }?>
@@ -151,9 +167,6 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                    <!-- <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>" class="btn btn-secondary txt-azul" title="Editar">
-                                        <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                    </a> -->
                                     <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
