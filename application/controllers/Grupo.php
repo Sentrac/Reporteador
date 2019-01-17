@@ -56,7 +56,7 @@ class Grupo extends CI_Controller {
 				'descripcion' => $descripcion
 			);
 			if($this->Modelo_grupo->registrarGrupos($array)){
-				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO EXITOSAMENTE'); 
+				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO'); 
 
 				redirect('/Grupo/grupo','refresh');
 

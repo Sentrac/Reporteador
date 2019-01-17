@@ -1,3 +1,9 @@
+<?php
+    $name = $this->session->userdata('tipo_usuario');
+    if($name==null){
+        redirect(base_url());
+    }
+?>
 <!DOCTYPE html>
 <html lang="es_MX">
 <head>
@@ -12,6 +18,7 @@
     <title>WReporter</title>
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Datatables -->
     <link href="../assets/plugins/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- chartist CSS -->

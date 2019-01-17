@@ -23,7 +23,6 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
-                        <!--<li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>-->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -61,20 +60,42 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
                 <?php if($this->session->flashdata('registro')){?>
-                    <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('registro'); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div> 
+                    <script>
+                        $(document).ready(function () {
+                            $.toast({
+                                heading: 'Éxito',
+                                text: '<?= $this->session->flashdata('registro'); ?>',
+                                icon: 'success',
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                hideAfter: 3500,
+                                stack: false,
+                                position: 'top-right',
+                                textAlign: 'left',
+                                loader: true,
+                                loaderBg: '#000000',
+                            }); 
+                        });
+                    </script>
                 <?php } ?>
                 <?php if($this->session->flashdata('grupo')){?>
-                    <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('grupo'); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div> 
+                    <script>
+                        $(document).ready(function () {
+                            $.toast({
+                                heading: 'Advertencia',
+                                text: '<?= $this->session->flashdata('grupo'); ?>',
+                                icon: 'warning',
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                hideAfter: 3500,
+                                stack: false,
+                                position: 'top-right',
+                                textAlign: 'left',
+                                loader: true,
+                                loaderBg: '#000000',
+                            }); 
+                        });
+                    </script>
                 <?php } ?>
                 <div class="row">
                   <div class="col-lg-12">

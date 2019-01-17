@@ -1,4 +1,11 @@
-<script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <?php
+        $name = $this->session->userdata('tipo_usuario');
+        if($name==null){
+            redirect(base_url());
+        }
+    ?>
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/plugins/toast-master/js/jquery.toast.js"></script>
     <script src="../assets/plugins/popper/popper.min.js"></script>
     <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->

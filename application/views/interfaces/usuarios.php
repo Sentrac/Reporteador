@@ -1,9 +1,9 @@
-<?php
-    $name = $this->session->userdata('tipo_usuario');
-    if($name==null){
-        redirect(base_url());
-    }
-?>      
+        <?php
+        
+        if($this->session->userdata('tipo_usuario')=='CO'){ 
+            redirect(base_url()."Roles/consultor"); 
+        }
+        ?>
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -77,20 +77,42 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
                 <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
-                         if($this->session->flashdata('registro')){?>
-                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('registro'); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
-                         <?php }if($this->session->flashdata('editar')){?>
-                        <div  class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('editar'); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
+                        if($this->session->flashdata('registro')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Info',
+                                    text: '<?= $this->session->flashdata('registro'); ?>',
+                                    icon: 'success',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
+                        <?php }if($this->session->flashdata('editar')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Éxito',
+                                    text: '<?= $this->session->flashdata('editar'); ?>',
+                                    icon: 'success',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
                 <?php  
                     }
                 }?>
@@ -151,9 +173,6 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                    <!-- <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>" class="btn btn-secondary txt-azul" title="Editar">
-                                        <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                    </a> -->
                                     <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
@@ -171,9 +190,16 @@
                             <script>
 
                                 var table;
+                               
                                 function redirect() {
+                                    <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                                     window.location.href = "<?php echo site_url('/Usuarios/usuarios'); ?>";
+                                    <?php }
+                                    if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                    window.location.href = "<?php echo site_url('/Usuarios/usuarios'); ?>?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>";
+                                    <?php }?>
                                 }
+                                
 
                                 function delreg(id) {
                                     Swal({
@@ -265,30 +291,44 @@
                                     loadGrupos();
 
                                     $.ajax({
+                                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                                         url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
+                                        <?php } ?>
+                                        <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                        url: '<?php echo site_url('Usuarios/editusuarioAdmin')?>/'+id,
+                                        <?php } ?>
                                         type: 'GET',
                                         dataType: 'JSON'
                                     })
                                     .done(function(response){
+                                        <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                        $('#Grupo').empty().append('<option value="'+response[0]['idgrupo']+'">'+response[0]['grupo']+'</option>');
+                                        <?php } ?>
                                         $('#Nombre').val(response[0]['nombre']);
                                         $('#Apellidos').val(response[0]['apellidos']);
                                         $('#Telefono').val(response[0]['telefono']);
                                         $('#Correo').val(response[0]['email']);
                                         $('#Rol').val(response[0]['tipo_usuario']);
                                         $('#Grupo').val(response[0]['fk_grupou']);
-                                        var rol = document.getElementById("Rol").value;
+                                
                                         var gro = document.getElementById("Grupo").value;
                                         var idu = document.getElementById("idus").value;
-                                        if (gro == '') {
-                                            $('#Grupo').empty().append('<option value="1">Todos</option>');
-                                        }
+                                        <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
+                                            if (gro == '') {
+                                                $('#Grupo').empty().append('<option value="1">Todos</option>');
+                                            }
+                                        <?php } ?>
+                                        <?php if($this->session->userdata('tipo_usuario')=='AD'){?>
+                                            $('#Rol').empty().append('<option value="AD">Administrador</option><option value="CO">Consultor</option>');
+                                        <?php } ?>
                                     })
                                     .fail(function(){
                                         swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
                                     });
                                 }
-
+                              
                                 $(document).ready(function() {
+                                    <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                                     $('#Rol').change(function () {
                                         var rol = document.getElementById("Rol").value;
                                         if (rol == 'SU') {
@@ -298,7 +338,8 @@
                                             loadGrupos();
                                         }
                                     });
-
+                                    <?php } ?>
+                              
                                     $('#form-edit').submit(function (event) {
                                         var datos = $('#form-edit').serialize();
 
@@ -310,7 +351,7 @@
                                                 $("#Guardar").html("Guardando...");
                                             }
                                         })
-                                        .done(function(){
+                                        .done(function(reponse){
                                             swal('Guardado','','success');
                                             $('#modal_edit').modal('hide');
                                             setTimeout(redirect, 1500);
@@ -354,10 +395,8 @@
                               </td>                                   
                               <td class="footable-editing footable-last-visible" style="display: table-cell;">
                                 <div class="btn-group btn-group-xs" role="group">
-                                    <a href="<?= base_url() ?>Usuarios/editarUsuario/?idusuario=<?php echo $row->idusuarios; ?>">
-                                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                                          <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                        </button>
+                                    <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
+                                        <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
                                   <button class="btn btn-secondary txt-rojo" data-toggle="modal" data-target="#myModal" title="Eliminar">
                                     <span class="mdi mdi-delete" aria-hidden="true"></span>
@@ -482,8 +521,10 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-6 offset-sm-3">
+                                                            <center>
                                                             <button class="btn btn-success" id="Guardar"> <i class="mdi mdi-content-save"></i> Guardar</button>
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                                            </center>
                                                         </div>
                                                     </div>
                                                 </div>
