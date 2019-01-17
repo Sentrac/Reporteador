@@ -287,7 +287,9 @@
                                     $('.modal-title').text('Editar registro');
                                     $('#idus').val(id);
                                     
-                                    loadGrupos();
+                                    <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                                        loadGrupos();
+                                    <?php } ?>
 
                                     $.ajax({
                                         <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
