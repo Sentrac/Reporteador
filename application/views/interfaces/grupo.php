@@ -63,7 +63,7 @@
                     <script>
                         $(document).ready(function () {
                             $.toast({
-                                heading: 'Info',
+                                heading: 'Éxito',
                                 text: '<?= $this->session->flashdata('registro'); ?>',
                                 icon: 'success',
                                 showHideTransition: 'fade',
@@ -82,9 +82,9 @@
                     <script>
                         $(document).ready(function () {
                             $.toast({
-                                heading: 'Info',
+                                heading: 'Advertencia',
                                 text: '<?= $this->session->flashdata('grupo'); ?>',
-                                icon: 'success',
+                                icon: 'warning',
                                 showHideTransition: 'fade',
                                 allowToastClose: true,
                                 hideAfter: 3500,
