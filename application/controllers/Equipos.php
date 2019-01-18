@@ -68,7 +68,7 @@ class Equipos extends CI_Controller {
 				'descripcion' => $descripcion
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
-				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
+				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO'); 
 				redirect('/Equipos/grupo','refresh');
 			}else{
 				echo 'no registrado';

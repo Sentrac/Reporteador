@@ -200,3 +200,29 @@
             });
         }
     </script>
+
+
+
+   Message: Invalid argument supplied for foreach()
+
+Filename: interfaces/usuarios.php
+
+Line Number: 19
+
+Backtrace:
+
+File: /var/www/html/Reporteador/application/views/interfaces/usuarios.php
+Line: 19
+Function: _error_handler
+
+File: /var/www/html/Reporteador/application/controllers/Usuarios.php
+Line: 26
+Function: view
+
+File: /var/www/html/Reporteador/index.php
+Line: 315
+Function: require_once
+
+Menú
+ Usuarios
+Nombr

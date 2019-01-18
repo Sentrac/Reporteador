@@ -76,12 +76,12 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
-                        if($this->session->flashdata('registro')){?>
+                
+                    <?php   if($this->session->flashdata('registro')){?>
                         <script>
                             $(document).ready(function () {
                                 $.toast({
-                                    heading: 'Info',
+                                    heading: 'Éxito',
                                     text: '<?= $this->session->flashdata('registro'); ?>',
                                     icon: 'success',
                                     showHideTransition: 'fade',
@@ -113,9 +113,27 @@
                                 }); 
                             });
                         </script>
+                        <?php }if($this->session->flashdata('usuario_existe')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Advertencia',
+                                    text: '<?= $this->session->flashdata('usuario_existe'); ?>',
+                                    icon: 'warning',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
                 <?php  
-                    }
-                }?>
+                        }
+                ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">

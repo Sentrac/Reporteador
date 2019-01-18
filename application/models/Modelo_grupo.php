@@ -37,9 +37,7 @@ class Modelo_grupo extends CI_Model{
           return false;
        } else {
             $count=$this->db->insert('grupo',$array);  
-           
-                return true;
-                
+                return true;   
         }    
     }
 
