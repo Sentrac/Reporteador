@@ -416,9 +416,9 @@
                                     <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
-                                  <button class="btn btn-secondary txt-rojo" data-toggle="modal" data-target="#myModal" title="Eliminar">
-                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                  </button>
+                                    <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
+                                        <span class="mdi mdi-delete" aria-hidden="true"></span>
+                                    </a>
                                 </div>
                               </td>
                             </tr>

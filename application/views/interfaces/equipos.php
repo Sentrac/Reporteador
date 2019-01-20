@@ -149,9 +149,11 @@
                       <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
-                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                            <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                        </button>
+                        <a href="<?= base_url() ?>Equipos/editarEquipo?idequipo=<?php echo $equipo->idequipos; ?>">
+                          <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                              <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                          </button>
+                        </a>
                         <a href="javascript:void(0)" type="button" class="btn btn-secondary txt-rojo" title="Eliminar" onclick="delEqp(<?= $equipo->idequipos;?>,<?= $equipo->fk_grupo;?>);">
                             <span class="mdi mdi-delete" aria-hidden="true"></span>
                         </a>
