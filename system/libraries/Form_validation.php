@@ -1320,7 +1320,21 @@ class CI_Form_validation {
 	 */
 	public function alpha_numeric_spaces($str)
 	{
-		return (bool) preg_match('/^[A-Z0-9.$@*+_-]+$/i', $str);
+		$upp = preg_match('@[A-Z]@', $str);
+		$low = preg_match('@[a-z]@', $str);
+		$num = preg_match('@[0-9]@', $str);
+		$nan = preg_match('@[!\@.$%\?&\*_\-\+]@', $str);
+
+		// echo $str."<br>";
+		// echo strlen($str)."<br>";
+
+		if (!$num or !$low or !$upp or !$nan or strlen($str) < 8 or strlen($str) > 16) {
+			$ret = 0;
+		} else {
+			$ret = 1;
+		}
+
+		return (bool) $ret;
 	}
 
 	// --------------------------------------------------------------------

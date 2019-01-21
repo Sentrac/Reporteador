@@ -73,7 +73,7 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title text-green"><i class="fas fa-check"></i> EXITO</h5>
+                        <h5 class="modal-title text-green"><i class="fas fa-check"></i> ÉXITO</h5>
                       </div>
                       <div class="modal-body">
                       <?php if($this->session->flashdata('registro')){?>

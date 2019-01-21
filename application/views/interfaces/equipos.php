@@ -22,7 +22,7 @@
                     <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grup<o"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
                             <?php if(isset($posts)){?>
                                 <div class="profile-text">
@@ -149,9 +149,11 @@
                       <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
-                        <button type="button" class="btn btn-secondary txt-azul" title="Editar">
-                            <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                        </button>
+                        <a href="<?= base_url() ?>Equipos/editarEquipo?idequipo=<?php echo $equipo->idequipos; ?>">
+                          <button type="button" class="btn btn-secondary txt-azul" title="Editar">
+                              <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                          </button>
+                        </a>
                         <a href="javascript:void(0)" type="button" class="btn btn-secondary txt-rojo" title="Eliminar" onclick="delEqp(<?= $equipo->idequipos;?>,<?= $equipo->fk_grupo;?>);">
                             <span class="mdi mdi-delete" aria-hidden="true"></span>
                         </a>

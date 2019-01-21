@@ -57,13 +57,10 @@ class Grupo extends CI_Controller {
 			);
 			if($this->Modelo_grupo->registrarGrupos($array)){
 				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO'); 
-
 				redirect('/Grupo/grupo','refresh');
-
 			}else{
 				$this->session->set_flashdata('grupo','EL GRUPO YA EXISTE'); 
 				redirect('/Grupo/grupo','refresh');
-
 			}
 		}
 	}
@@ -103,7 +100,7 @@ class Grupo extends CI_Controller {
 				'descripcion' => $descripcion
 			);
 			if($this->Modelo_grupo->updateGrupo($array,$idgrupo)){
-				$this->session->set_flashdata('editar','EL GRUPO SE HA CAMBIADO EXITOSAMENTE'); 
+				$this->session->set_flashdata('editar','EL GRUPO SE HA CAMBIADO EXITOSAMENTE');
 				$this->grupo();
 			}else{
 				echo 'no registrado';

@@ -14,6 +14,11 @@ class Modelo_usuarios extends CI_Model{
         return $data->result();
     } 
 
+
+
+
+
+
     public function nombreGrupo($idusuarios){
         $this->db->where('',$idusuarios);
         $data=$this->db->get('nombre_grupo');
@@ -38,12 +43,15 @@ class Modelo_usuarios extends CI_Model{
     }
     //FUNCIÓN PARA INSERTAR LOS NUEVOS USUARIOS EN LA BD
     public function registrarUsuarios($d){
-        $count=$this->db->insert('usuarios',$d);        
-        if($count>0){
-            return true;
-        }else{
+        $query = $d['usuario'];
+        $this->db->where('usuario',$query);
+        $validar=$this->db->get('usuarios');
+        if($validar->num_rows()>0){
             return false;
-        }
+         } else {
+            $count=$this->db->insert('usuarios',$d);        
+            return true;
+         }
     }
     public function usuario_grupo($fk_grupou){
         $this->db->where('fk_grupou',$fk_grupou);
@@ -101,13 +109,7 @@ class Modelo_usuarios extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
-
-
-
-
-    
+        
 }
-
-
 
 ?>

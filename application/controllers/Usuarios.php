@@ -48,7 +48,7 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
 		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
-		//$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
+		$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
 		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
@@ -86,10 +86,11 @@ class Usuarios extends CI_Controller {
 				'fk_grupou' => $grupo
 			);
 				if($this->Modelo_usuarios->registrarUsuarios($d)){
-					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE');
+					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
 					redirect('/Usuarios/usuarios','refresh');
 				}else{
-					echo 'no registrado';
+					$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+					redirect('/Usuarios/usuarios','refresh');
 				}
 		}
 	}
@@ -131,12 +132,13 @@ class Usuarios extends CI_Controller {
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo
 			);
-				if($this->Modelo_usuarios->registrarUsuarios($d)){
-					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
-					redirect('/Usuarios/success_usuario_modal','refresh');
-				}else{
-					echo 'no registrado';
-				}
+			if($this->Modelo_usuarios->registrarUsuarios($d)){
+				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
+				redirect('/Usuarios/success_usuario_modal','refresh');
+			}else{
+				$this->session->set_flashdata('usuario_existe','EL USUARIO YA ESXISTE'); 
+				redirect('/Usuarios/error_usuario_modal','refresh');
+			}
 		}
 	}
 	//Función para mostrar datos en formulario de editar->gestion_usuarios.php
@@ -151,13 +153,12 @@ class Usuarios extends CI_Controller {
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
 		$this->load->view('interfaces/gestion_usuarios',$this->data);
 	}
-	
-		public function EliminarUsuario($id){
-			$this->Modelo_usuarios->EliminardatosUsuario($id);
-			$response['status']  = 'success';
-			$response['message'] = 'Registro eliminado correctamente ...';
-			echo json_encode($response);
-		}
+	public function EliminarUsuario($id){
+		$this->Modelo_usuarios->EliminardatosUsuario($id);
+		$response['status']  = 'success';
+		$response['message'] = 'Registro eliminado correctamente ...';
+		echo json_encode($response);
+	}
 	public function success_usuario_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
