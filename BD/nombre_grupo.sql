@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-12-2018 a las 16:59:23
+-- Tiempo de generación: 21-01-2019 a las 02:35:10
 -- Versión del servidor: 5.5.60-MariaDB
--- Versión de PHP: 7.2.13
+-- Versión de PHP: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";

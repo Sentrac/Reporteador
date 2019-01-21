@@ -75,12 +75,12 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
-                        if($this->session->flashdata('registro')){?>
+                
+                    <?php   if($this->session->flashdata('registro')){?>
                         <script>
                             $(document).ready(function () {
                                 $.toast({
-                                    heading: 'Info',
+                                    heading: 'Éxito',
                                     text: '<?= $this->session->flashdata('registro'); ?>',
                                     icon: 'success',
                                     showHideTransition: 'fade',
@@ -112,9 +112,27 @@
                                 }); 
                             });
                         </script>
+                        <?php }if($this->session->flashdata('usuario_existe')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Advertencia',
+                                    text: '<?= $this->session->flashdata('usuario_existe'); ?>',
+                                    icon: 'warning',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
                 <?php  
-                    }
-                }?>
+                        }
+                ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
@@ -399,9 +417,9 @@
                                     <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
                                         <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
                                     </a>
-                                  <button class="btn btn-secondary txt-rojo" data-toggle="modal" data-target="#myModal" title="Eliminar">
-                                    <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                  </button>
+                                    <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
+                                        <span class="mdi mdi-delete" aria-hidden="true"></span>
+                                    </a>
                                 </div>
                               </td>
                             </tr>
@@ -470,14 +488,14 @@
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Nombre</label>
                                             <div class="col-md-9">
-                                                <input name="Nombre" id="Nombre" placeholder="Nombre" class="form-control" type="text">
+                                                <input name="Nombre" id="Nombre" placeholder="Nombre" class="form-control" type="text" style="text-transform: uppercase;">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Apellidos</label>
                                             <div class="col-md-9">
-                                                <input name="Apellidos" id="Apellidos" placeholder="Apellidos" class="form-control" type="text">
+                                                <input name="Apellidos" id="Apellidos" placeholder="Apellidos" class="form-control" type="text" style="text-transform: uppercase;">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>

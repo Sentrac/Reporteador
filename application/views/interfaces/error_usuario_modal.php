@@ -83,6 +83,14 @@
                                 </button>',
                             '</div>'); 
                             ?></p>
+                         <?php if($this->session->flashdata('usuario_existe')){?>
+                        <div  class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo $this->session->flashdata('usuario_existe'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                        <?php } ?>
                       </div>
                       <div class="modal-footer">
                       <?php if(isset($posts)){?>

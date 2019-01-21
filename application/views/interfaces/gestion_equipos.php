@@ -26,7 +26,18 @@
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
-                        <?php }?>
+                        <li><a class="waves-effect waves-dark" href="#"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Reportes</span></a></li>
+                        <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
+                            <?php if(isset($posts)){?>
+                                <div class="profile-text">
+                                <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
+                                </div>
+                            <?php }?>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
+                            <?php 
+                            } ?>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -104,9 +115,16 @@
                                   <div class="offset-sm-4 col-md-8">
                                     <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
                                         <input type="hidden" name="idgrupo" value="<?php echo $mostrardatosequipo[0]->fk_grupo?>">
-                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $mostrardatosequipo[0]->fk_grupo; ?>">
-                                            <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
-                                        </a>
+                                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                                          <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $mostrardatosequipo[0]->fk_grupo; ?>">
+                                              <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                          </a>
+                                        <?php } ?>
+                                        <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                          <a href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>">
+                                              <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                          </a>
+                                        <?php } ?>
                                   </div>
                                 </div>
                               </div>
