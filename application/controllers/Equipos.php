@@ -138,7 +138,10 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->updateEquipo($array,$idequipo)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA CAMBIADO EXITOSAMENTE'); 
-				redirect('/Equipos/success_equipo_modal','refresh');
+				if($this->session->userdata('tipo_usuario')=='SU'){
+					redirect('/Equipos/grupo','refresh');
+				}
+					redirect('/Equipos/success_equipo_modal','refresh');
 			}else{
 				echo 'no registrado';
 			}
