@@ -138,7 +138,7 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->updateEquipo($array,$idequipo)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA CAMBIADO EXITOSAMENTE'); 
-				$this->success_equipo_modal();
+				redirect('/Equipos/success_equipo_modal','refresh');
 			}else{
 				echo 'no registrado';
 			}

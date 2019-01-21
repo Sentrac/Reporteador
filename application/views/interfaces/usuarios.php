@@ -487,14 +487,14 @@
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Nombre</label>
                                             <div class="col-md-9">
-                                                <input name="Nombre" id="Nombre" placeholder="Nombre" class="form-control" type="text">
+                                                <input name="Nombre" id="Nombre" placeholder="Nombre" class="form-control" type="text" style="text-transform: uppercase;">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Apellidos</label>
                                             <div class="col-md-9">
-                                                <input name="Apellidos" id="Apellidos" placeholder="Apellidos" class="form-control" type="text">
+                                                <input name="Apellidos" id="Apellidos" placeholder="Apellidos" class="form-control" type="text" style="text-transform: uppercase;">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
