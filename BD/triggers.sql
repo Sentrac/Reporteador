@@ -120,7 +120,7 @@ for each ROW
 insert into bitacora_equipo(
 idbitacora,accion,id_equipo,nombre_host_nuevo,nombre_host_viejo,dns_nuevo,dns_viejo,descripcion_nuevo,descripcion_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'AGREGO EQUIPO',old.idequipos,new.nombre_host,old.nombre_host,new.dns,old.dns,new.descripcion,old.descripcion,new.fk_grupo,old.fk_grupo,user(),now());
+(null,'MODIFICAR EQUIPO',old.idequipos,new.nombre_host,old.nombre_host,new.dns,old.dns,new.descripcion,old.descripcion,new.fk_grupo,old.fk_grupo,user(),now());
 
 --ELIMINO EQUIPO--
 CREATE TRIGGER equipo_delete after DELETE
@@ -129,4 +129,4 @@ for each ROW
 insert into bitacora_equipo(
 idbitacora,accion,id_equipo,nombre_host_nuevo,nombre_host_viejo,dns_nuevo,dns_viejo,descripcion_nuevo,descripcion_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'AGREGO EQUIPO',old.idequipos,null,old.nombre_host,null,old.dns,null,old.descripcion,null,old.fk_grupo,null,user(),now());
+(null,'ELIMINO EQUIPO',old.idequipos,old.nombre_host,null,old.dns,null,old.descripcion,null,old.fk_grupo,null,user(),now());

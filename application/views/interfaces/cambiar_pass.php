@@ -89,9 +89,8 @@
                       <div class="card-header">
                         <h4 class="m-b-0 text-white">Cambiar Contraseña</h4>
                       </div>
-                      <center><?php echo validation_errors('<div class="label-danger text-white">', '</div>'); ?></center>
+                      <center><?php echo validation_errors(); ?></center>
                       <?php echo $this->session->flashdata('pass'); ?>
-                      <?php echo $this->session->flashdata('passError'); ?>
                       <div class="card-body">
                           <div class="form-body">
                             <hr>

@@ -68,64 +68,13 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <div class="row">
-                  <div class="col-md-6 col-lg-4">
-                      <div class="card card-body">
-                          <!-- Row -->
-                          <div class="row padleft">
-                              <!-- Column -->
-                              <div class="round round-lg round-success align-self-center">
-                                  <i class="mdi mdi-harddisk"></i>
-                              </div>
-                              <div class="col p-r-0 align-self-center">
-                                  <h2 class="font-light m-b-0 text-center">CPU</h2>
-                              </div>
-                              <div class="col align-self-center padleftmin">
-                                  <div data-label="20%" class="css-bar m-b-0 css-bar-cgraf css-bar-20"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6 col-lg-4">
-                      <div class="card card-body">
-                          <!-- Row -->
-                          <div class="row padleft">
-                              <!-- Column -->
-                              <div class="round round-lg round-warning align-self-center">
-                                  <i class="mdi mdi-harddisk"></i>
-                              </div>
-                              <div class="col p-r-0 align-self-center">
-                                  <h2 class="font-light m-b-0 text-center">Disco Duro</h2>
-                              </div>
-                              <div class="col align-self-center padleftmin">
-                                  <div data-label="20%" class="css-bar m-b-0 css-bar-warning css-bar-20"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4">
-                      <div class="card card-body">
-                          <!-- Row -->
-                          <div class="row padleft">
-                              <!-- Column -->
-                              <div class="round round-lg round-danger align-self-center">
-                                  <i class="mdi mdi-harddisk"></i>
-                              </div>
-                              <div class="col p-r-0 align-self-center">
-                                  <h2 class="font-light m-b-0 text-center">Trafico</h2>
-                                  <h6 class="font-light m-b-0 text-center">Ancho de banda</h6>
-                              </div>
-                              <div class="col align-self-center padleftmin">
-                                  <div data-label="20%" class="css-bar m-b-0 css-bar-danger css-bar-20"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+               
+                  
+                  
                 </div>
                 <div class="row">
                   <div class="embed-responsive embed-responsive-1by1">
-                    <iframe class="embed-responsive-item" src="http://192.168.0.40:5601/app/kibana#/dashboard/32e1f900-d87a-11e8-9ed7-8f41f487c1dd?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-6M%2Cmode%3Aquick%2Cto%3Anow))"></iframe>
+                    
                   </div>
                 </div>
 

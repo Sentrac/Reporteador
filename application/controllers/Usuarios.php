@@ -50,7 +50,7 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
 		$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
-		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
+		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[16]|alpha_numeric_spaces');
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
 
 		if($this->form_validation->run() == FALSE){
@@ -102,7 +102,7 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
-		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[10]|alpha_numeric_spaces');
+		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[16]|alpha_numeric_spaces');
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
 
 		if($this->form_validation->run() == FALSE){

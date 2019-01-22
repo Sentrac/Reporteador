@@ -18,11 +18,14 @@ class Modelo_equipos extends CI_Model{
         return $data->result();
     }
     public function registrarEquipos($array){
-        $count=$this->db->insert('equipos',$array);        
-        if($count>0){
-            return true;
-        }else{
+        $query = $array['dns'];
+        $this->db->where('dns',$query);
+        $validar=$this->db->get('equipos');
+        if($validar->num_rows()>0){
             return false;
+        }else{
+            $count=$this->db->insert('equipos',$array);        
+            return true;
         }
     }
     public function updateEquipo($array,$idequipo){

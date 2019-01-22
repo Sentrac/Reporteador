@@ -100,7 +100,7 @@ class Grupo extends CI_Controller {
 				'descripcion' => $descripcion
 			);
 			if($this->Modelo_grupo->updateGrupo($array,$idgrupo)){
-				$this->session->set_flashdata('editar','EL GRUPO SE HA CAMBIADO EXITOSAMENTE');
+				$this->session->set_flashdata('editar_grupo','EL GRUPO SE HA MODIFICADO');
 				$this->grupo();
 			}else{
 				echo 'no registrado';

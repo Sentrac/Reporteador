@@ -71,7 +71,8 @@ class Equipos extends CI_Controller {
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO'); 
 				redirect('/Equipos/grupo','refresh');
 			}else{
-				echo 'no registrado';
+				$this->session->set_flashdata('ip_existe','LA IP YA EXISTE'); 
+				redirect('/Equipos/grupo','refresh');
 			}
 		}
 	}

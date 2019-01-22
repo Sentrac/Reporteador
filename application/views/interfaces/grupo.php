@@ -77,13 +77,48 @@
                             }); 
                         });
                     </script>
-                <?php } ?>
-                <?php if($this->session->flashdata('grupo')){?>
+                <?php }if($this->session->flashdata('editar_grupo')){ ?>
+                    <script>
+                        $(document).ready(function () {
+                            $.toast({
+                                heading: 'Éxito',
+                                text: '<?= $this->session->flashdata('editar_grupo'); ?>',
+                                icon: 'success',
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                hideAfter: 3500,
+                                stack: false,
+                                position: 'top-right',
+                                textAlign: 'left',
+                                loader: true,
+                                loaderBg: '#000000',
+                            }); 
+                        });
+                    </script>
+                <?php }if($this->session->flashdata('grupo')){?>
                     <script>
                         $(document).ready(function () {
                             $.toast({
                                 heading: 'Advertencia',
                                 text: '<?= $this->session->flashdata('grupo'); ?>',
+                                icon: 'warning',
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                hideAfter: 3500,
+                                stack: false,
+                                position: 'top-right',
+                                textAlign: 'left',
+                                loader: true,
+                                loaderBg: '#000000',
+                            }); 
+                        });
+                    </script>
+                <?php } if($this->session->flashdata('ip_existe')){?>
+                    <script>
+                        $(document).ready(function () {
+                            $.toast({
+                                heading: 'Advertencia',
+                                text: '<?= $this->session->flashdata('ip_existe'); ?>',
                                 icon: 'warning',
                                 showHideTransition: 'fade',
                                 allowToastClose: true,

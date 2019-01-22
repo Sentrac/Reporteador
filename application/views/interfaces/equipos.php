@@ -144,7 +144,6 @@
                   <div class="col-lg-3 col-md-6">
                     <!-- Card -->
                     <div class="card text-center">
-                        
                       <div class="card-body">
                       <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
