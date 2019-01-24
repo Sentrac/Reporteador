@@ -89,7 +89,24 @@
                       <div class="card-header">
                         <h4 class="m-b-0 text-white">Cambiar Contraseña</h4>
                       </div>
-                      <center><?php echo validation_errors(); ?></center>
+                      <?php echo validation_errors('
+                      <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: "Advertencia",
+                                    text: "','",
+                                    icon: "warning",
+                                    showHideTransition: "fade",
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: "top-right",
+                                    textAlign: "left",
+                                    loader: true,
+                                    loaderBg: "#000000",
+                                }); 
+                            });
+                        </script>');?>
                       <?php echo $this->session->flashdata('pass'); ?>
                       <div class="card-body">
                           <div class="form-body">

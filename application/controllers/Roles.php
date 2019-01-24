@@ -11,6 +11,7 @@ class Roles extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->model('Modelo_login');
+		$this->load->model('Modelo_grupo');
 	}
 	public function superusuario(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
@@ -21,14 +22,15 @@ class Roles extends CI_Controller {
     public function admin(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
-    $this->load->view('interfaces/interfaz_admin',$this->data);
-    $this->load->view('temps/footer');
+		$this->data['grupo_admin']=$this->Modelo_grupo->getGrupoAdmin();
+    	$this->load->view('interfaces/interfaz_admin',$this->data);
+    	$this->load->view('temps/footer');
     }
     public function consultor(){
-			$this->data['posts']=$this->Modelo_login->getRoles();
-			$this->load->view('temps/header',$this->data); 
-			$this->load->view('interfaces/interfaz_consul',$this->data);
-			$this->load->view('temps/footer');
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->load->view('temps/header',$this->data); 
+		$this->load->view('interfaces/interfaz_consul',$this->data);
+		$this->load->view('temps/footer');
     }
 }
 ?>

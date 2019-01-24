@@ -103,7 +103,8 @@ class Grupo extends CI_Controller {
 				$this->session->set_flashdata('editar_grupo','EL GRUPO SE HA MODIFICADO');
 				$this->grupo();
 			}else{
-				echo 'no registrado';
+				$this->session->set_flashdata('grupo_modificar','EL GRUPO NO SE PUEDE MODIFICAR, EL GRUPO YA EXISTE'); 
+				redirect('/Grupo/grupo','refresh');
 			}
 		}
 	}

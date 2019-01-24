@@ -72,12 +72,38 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <?php echo validation_errors('<div class="alert alert-danger alert-dismissible fade show">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                 </button>',
-                                              '</div>'); 
-                ?>
+                <script>
+                  $(document).ready(function () {
+                                $.toast({
+                                    heading: "Advertencia",
+                                    text: "','",
+                                    icon: "warning",
+                                    showHideTransition: "fade",
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: "top-right",
+                                    textAlign: "left",
+                                    loader: true,
+                                    loaderBg: "#000000",
+                                });
+                <?php echo validation_errors('
+                      
+                                $.toast({
+                                    heading: "Advertencia",
+                                    text: "','",
+                                    icon: "warning",
+                                    showHideTransition: "fade",
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: "top-right",
+                                    textAlign: "left",
+                                    loader: true,
+                                    loaderBg: "#000000",
+                                });');?>
+                    });
+                </script>');
                 <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
