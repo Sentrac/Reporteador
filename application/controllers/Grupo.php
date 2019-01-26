@@ -76,6 +76,7 @@ class Grupo extends CI_Controller {
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
+		$this->form_validation->set_rules('iframe', 'Iframe', 'trim|required');
 
 		if($this->form_validation->run() == FALSE){
            
@@ -86,6 +87,7 @@ class Grupo extends CI_Controller {
 			$nombre = $this->input->post('nombre');
 			$alias = $this->input->post('alias');
 			$rfc = $this->input->post('rfc');
+			$iframe = $this->input->post('iframe');
 			$descripcion = $this->input->post('descripcion');
 			
 			$nombre = strtoupper($nombre);
@@ -97,13 +99,14 @@ class Grupo extends CI_Controller {
 				'nombre' => $nombre,
 				'alias' => $alias,
 				'rfc' => $rfc,
+				'iframe' => $iframe,
 				'descripcion' => $descripcion
 			);
 			if($this->Modelo_grupo->updateGrupo($array,$idgrupo)){
 				$this->session->set_flashdata('editar_grupo','EL GRUPO SE HA MODIFICADO');
 				$this->grupo();
 			}else{
-				$this->session->set_flashdata('grupo_modificar','EL GRUPO NO SE PUEDE MODIFICAR, EL GRUPO YA EXISTE'); 
+				$this->session->set_flashdata('grupo_modificar','EL NOMBRE DEL GRUPO NO SE PUEDE MODIFICAR, EL GRUPO YA EXISTE'); 
 				redirect('/Grupo/grupo','refresh');
 			}
 		}

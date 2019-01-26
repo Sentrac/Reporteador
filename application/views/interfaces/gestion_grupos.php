@@ -97,6 +97,12 @@
                               </div>
                             </div>
                             <div class="form-group row">
+                              <label class="control-label text-center col-md-2">Iframe</label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" name="iframe" value='<?php echo $mostrardatosgrupo[0]->iframe; ?>'>
+                              </div>
+                            </div>
+                            <div class="form-group row">
                               <label class="control-label text-center col-md-2">Descripción</label>
                               <div class="col-md-9">
                                 <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion" ><?php echo $mostrardatosgrupo[0]->descripcion; ?></textarea>

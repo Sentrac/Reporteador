@@ -72,7 +72,7 @@
                 <div class="row">
                   <div class="embed-responsive embed-responsive-1by1">
                   <?php if(isset($grupo_admin)){?>
-                    <iframe src="http://<?php echo $grupo_admin[0]->iframe;?>" height="600" width="800"></iframe>
+                    <?php echo $grupo_admin[0]->iframe;?>
                     <?php }?>
                   </div>
                 </div>
