@@ -141,3 +141,78 @@
                 </div>
             </nav>
         </header>
+ <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile" style="background: url(../assets/images/users/user-info.jpg) no-repeat;">
+                    <!-- User profile image -->
+                    <div class="profile-img"> <img src="../assets/images/users/user.png" alt="user" /> </div>
+                    <!-- User profile text-->
+                    <?php foreach($posts as $post){?>
+                    <div class="profile-text">
+                        <a class="u-dropdown clikem"><?php echo $post->nombre;?> <?php echo $post->apellidos;?></a>
+                    </div>
+                    <?php }?>
+                </div>
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                    <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
+                        <li class="sidebar-item ng-star-inserted">
+                            <a class="sidebar-link waves-effect waves-dark has-arrow ng-star-inserted" href="#">
+                                <i class="fas fa-book"></i>
+                                <span class="hide-menu">Bitacora</span>
+                            </a>
+                            <ul  class="collapse first-level ng-star-inserted">
+                                <li class="sidebar-item ng-star-inserted active">
+                                    <a class="sidebar-link ng-star-inserted router-link-active" href="<?= base_url() ?>Bitacora/usuarios">
+                                        <i class="fas fa-user"></i>
+                                        <span class="hide-menu">Bitacora Usuarios</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item ng-star-inserted active">
+                                    <a class="sidebar-link ng-star-inserted router-link-active" href="<?= base_url() ?>Bitacora/grupos">
+                                    <i class="fas fa-warehouse"></i>
+                                        <span class="hide-menu">Bitacora Grupos</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item ng-star-inserted active">
+                                    <a class="sidebar-link ng-star-inserted router-link-active" href="<?= base_url() ?>Bitacora/equipos">
+                                        <i class="fas fa-laptop"></i>
+                                        <span class="hide-menu">Bitacora Equipos</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
+                            <?php if(isset($posts)){?>
+                                <div class="profile-text">
+                                <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
+                                </div>
+                            <?php }?>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
+                        <?php }elseif($this->session->userdata('tipo_usuario')=='CO'){?>
+                            <?php if(isset($posts)){?>
+                                <div class="profile-text">
+                                <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
+                                </div>
+                            <?php }?>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/consultor"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
+                        <?php } ?>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            </aside>

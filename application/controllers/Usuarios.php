@@ -141,18 +141,6 @@ class Usuarios extends CI_Controller {
 			}
 		}
 	}
-	//Función para mostrar datos en formulario de editar->gestion_usuarios.php
-	public function editarUsuario(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$idusuario=$this->input->get('idusuario');
-		$this->data['mostrardatosUsuario']=$this->Modelo_usuarios->traerdatosUsuario($idusuario);
-		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
-		$this->data['getGrupo_admin']=$this->Modelo_usuarios->getGrupo_admin($idusuario);
-		$this->data['grupos']=$this->Modelo_usuarios->grupos();
-		$this->data['todo_grupo']=$this->Modelo_usuarios->grupostodos();
-		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
-		$this->load->view('interfaces/gestion_usuarios',$this->data);
-	}
 	public function EliminarUsuario($id){
 		$this->Modelo_usuarios->EliminardatosUsuario($id);
 		$response['status']  = 'success';
