@@ -26,13 +26,31 @@
                       <div class="card-header">
                         <h4 class="m-b-0 text-white">Cambiar Contraseña</h4>
                       </div>
-                      <?php echo validation_errors('
+                      <center><?php echo validation_errors('
                       <script>
                             $(document).ready(function () {
                                 $.toast({
                                     heading: "Advertencia",
                                     text: "','",
-                                    icon: "warning",
+                                    icon: "error",
+                                    showHideTransition: "fade",
+                                    allowToastClose: true,
+                                    hideAfter: 4000,
+                                    stack: false,
+                                    position: "top-right",
+                                    textAlign: "left",
+                                    loader: true,
+                                    loaderBg: "#000000",
+                                }); 
+                            });
+                        </script>');?>
+                        <?php if(!empty($this->session->flashdata('pass'))) {?>
+                      <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: "Exito",
+                                    text: "<?= $this->session->flashdata('pass'); ?>",
+                                    icon: "success",
                                     showHideTransition: "fade",
                                     allowToastClose: true,
                                     hideAfter: 3500,
@@ -43,8 +61,26 @@
                                     loaderBg: "#000000",
                                 }); 
                             });
-                        </script>');?>
-                      <?php echo $this->session->flashdata('pass'); ?>
+                        </script>
+                        <?php } if(!empty($this->session->flashdata('passError'))) { ?>
+                      <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: "Error",
+                                    text: "<?= $this->session->flashdata('passError'); ?>",
+                                    icon: "error",
+                                    showHideTransition: "fade",
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: "top-right",
+                                    textAlign: "left",
+                                    loader: true,
+                                    loaderBg: "#000000",
+                                }); 
+                            });
+                        </script>
+                        <?php } ?>
                       <div class="card-body">
                           <div class="form-body">
                             <hr>
