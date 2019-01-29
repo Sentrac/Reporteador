@@ -49,6 +49,7 @@ $lang['form_validation_exact_length']		= 'El campo {field} debe tener exactament
 $lang['form_validation_alpha']			= 'El campo {field} solo debe contener caracteres alfabeticos.';
 $lang['form_validation_alpha_numeric']		= 'The {field} field may only contain alpha-numeric characters.';
 $lang['form_validation_alpha_numeric_spaces']	= 'El campo {field} debe contener caracteres alfa-numericos, un caracter especial, mínimo 8 caracteres y máximo 16.';
+$lang['form_validation_alpha_numeric_dot']	= 'El campo {field} debe contener caracteres alfa-numericos y el caracter especial "." ';
 $lang['form_validation_alpha_dash']		= 'The campo {field} solo debe contener alfabeticos y espacios.';
 $lang['form_validation_numeric']		= 'El campo {field} solo debe contener caracteres númericos.';
 $lang['form_validation_is_numeric']		= 'El campo {field} solo debe contener caracteres númericos.';

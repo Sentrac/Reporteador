@@ -88,7 +88,7 @@ class Modelo_usuarios extends CI_Model{
     {
         $this->db->select('nombre,apellidos,telefono,email');
         $this->db->from('usuarios');
-        $this->db->where('fk_grupou',$id);
+        $this->db->where('idusuarios',$id);
         $query=$this->db->get();
         return $query->result();
     }

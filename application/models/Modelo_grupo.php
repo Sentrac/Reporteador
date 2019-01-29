@@ -15,9 +15,8 @@ class Modelo_grupo extends CI_Model{
         $data=$this->db->get('grupo');
         return $data->result();
     }
-
     function getGrupoAdmin(){  
-        $this->db->select("grupo"); 
+        $this->db->select("grupo,iframe"); 
         $this->db->from('usuarios_grupo');  
         $this->db->where("usuario",$this->session->userdata("usuario"));
         $query=$this->db->get();
@@ -27,7 +26,6 @@ class Modelo_grupo extends CI_Model{
             return false;
         }
     }
-    
     //FUNCIÓN PARA INSERTAR EN LA TABLA GRUPO Y NO INSERTAR SI EL GRUPO YA EXISTE
     public function registrarGrupos($array){
        $query = $array['nombre'];
@@ -37,15 +35,22 @@ class Modelo_grupo extends CI_Model{
           return false;
        } else {
             $count=$this->db->insert('grupo',$array);  
-                return true;   
+            return true;   
         }    
     }
 
     //FUNCIÓN PARA ACTUALIZAR EL GRUPO MEDIANTE LA ID
     public function updateGrupo($array,$idgrupo){
-        $this->db->where('idgrupo',$idgrupo);
-        $this->db->update('grupo', $array);
-        return true;
+        $query = $array['nombre'];
+        $this->db->where('nombre',$query);
+        $validar = $this->db->get('grupo');
+        if($validar->num_rows()>0){
+            return false;
+         } else {
+            $this->db->where('idgrupo',$idgrupo);
+            $this->db->update('grupo', $array);
+            return true;
+         }
     }
     public function delGrp($id)
     {

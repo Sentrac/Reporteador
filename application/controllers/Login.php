@@ -60,26 +60,37 @@ class Login extends CI_Controller {
     }
     //FUNCIÓN PARA CAMBIAR LA CONTRASEÑA DEL SUPER USUARIO PARA LA TABLA 'usuarios'
 	function cambiarPassword(){
+        $this->data['posts']=$this->Modelo_login->getRoles();
+        $this->load->view('temps/header',$this->data); 
         //VALIDACIONES
         $this->form_validation->set_rules('actual_pswd','Contraseña actual','required');
-        $this->form_validation->set_rules('new_pswd','Nueva contraseña','required|max_length[20]|min_length[6]');
-        $this->form_validation->set_rules('repeat_pswd','Repetir contraseña','required|matches[new_pswd]');
-
+        $this->form_validation->set_rules('new_pswd','Nueva contraseña','required|min_length[8]|max_length[16]|alpha_numeric_spaces');
+        $this->form_validation->set_rules('repeat_pswd','Repetir contraseña','required|matches[new_pswd]|min_length[8]|max_length[16]|alpha_numeric_spaces');
+        
         if($this->form_validation->run()==FALSE){
+            $this->load->view('temps/header');
             $this->data['posts']=$this->Modelo_login->getRoles();
-            $this->load->view('interfaces/cambiar_pass',$this->data);
+            redirect('Login/vistaPassword','refresh');
         }else {
-            $sql=$this->db->select("*")->from("usuarios")->where("usuario",$this->session->userdata("usuario"))->get();
-            foreach ($sql->result() as $my_pswd) {
-                md5($db_password=$my_pswd->pass);
-                $db_user=$my_pswd->usuario;        
-                $this->session->set_flashdata('pass', 'LA CONTRASEÑA SE HA CAMBIADO EXITOSAMENTE');
-                $fixed_pw=md5($this->input->post("new_pswd"));
-				$update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE usuario='$db_user'")or die(mysqli_error());
-				$this->vistaPassword();
-            } 
-        } 
-        $this->load->view('temps/footer');  
+            $sql=$this->db->select("*")->from("usuarios")
+                                        ->where("usuario",$this->session->userdata("usuario"))
+                                        ->where("pass",md5($this->input->post("actual_pswd")))->get();
+            if($sql->num_rows()==1) {
+                foreach ($sql->result() as $user) {
+                    $db_password=$user->pass;
+                    $db_user=$user->usuario;        
+                    $this->session->set_flashdata('pass', 'LA CONTRASEÑA SE HA CAMBIADO EXITOSAMENTE');
+                    $fixed_pw=md5($this->input->post("new_pswd"));
+                    $update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE usuario='$db_user'")or die(mysqli_error());
+                    $this->vistaPassword();
+                    redirect('Login/vistaPassword','refresh');
+                }
+            } else {
+                $this->session->set_flashdata('passError', 'INGRESE SU CONTRASEÑA ACTUAL CORRECTAMENTE');
+                redirect('Login/vistaPassword','refresh');
+            }
+        }
+        $this->load->view('temps/footer');
 	}
 	public function logout(){
         $this->session->sess_destroy();
