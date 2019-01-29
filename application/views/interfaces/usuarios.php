@@ -196,7 +196,7 @@
                                     <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
                                         <span class="mdi mdi-delete" aria-hidden="true"></span>
                                     </a>
-                                    <a href="javascript:void(0)" onclick="getContacts(<?= $row->fk_grupou; ?>);" class="btn btn-secondary txt-verde" title="Contactos">
+                                    <a href="javascript:void(0)" onclick="getContacts(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-verde" title="Contactos">
                                         <span class="mdi mdi-eye" aria-hidden="true"></span>
                                     </a>
                                 </div>

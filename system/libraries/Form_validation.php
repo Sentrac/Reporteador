@@ -1325,9 +1325,6 @@ class CI_Form_validation {
 		$num = preg_match('@[0-9]@', $str);
 		$nan = preg_match('@[!\@.$%\?&\*_\-\+]@', $str);
 
-		// echo $str."<br>";
-		// echo strlen($str)."<br>";
-
 		if (!$num or !$low or !$upp or !$nan or strlen($str) < 8 or strlen($str) > 16) {
 			$ret = 0;
 		} else {
@@ -1583,6 +1580,23 @@ class CI_Form_validation {
 		return str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $str);
 	}
 
+	// --------------------------------------------------------------------
+	
+	public function alpha_numeric_dot($str)
+	{
+		$low = preg_match('@[a-z]@', $str);
+		$num = preg_match('@[0-9]@', $str);
+		$nan = preg_match('@[.]@', $str);
+
+		if(!$num or !$low or !$nan) {
+			$ret = 0;
+		} else {
+			$ret = 1;
+		}
+
+		return (bool) $ret;
+	}
+	
 	// --------------------------------------------------------------------
 
 	/**
