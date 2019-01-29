@@ -19,6 +19,11 @@
 
 
 --INSERTAR USUARIO--
+
+
+
+
+
 CREATE TRIGGER usuario_insert after INSERT
 on usuarios
 for each ROW
@@ -26,6 +31,24 @@ insert into bitacora_usuario(
 idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
 (null,'AGREGO USUARIO',new.idusuarios,new.nombre,null,new.apellidos,null,new.telefono,null,new.email,null,new.tipo_usuario,null,new.fk_grupou,null,user(),now());
+
+
+
+SELECT @usuario := usuario FROM usuarios;
+
+
+CREATE TRIGGER usuario_insert after INSERT
+on usuarios
+for each ROW
+insert into bitacora_usuario(
+idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+VALUES
+(null,'AGREGO USUARIO',new.idusuarios,new.nombre,null,new.apellidos,null,new.telefono,null,new.email,null,new.tipo_usuario,null,new.fk_grupou,null,@usuario,now());
+
+
+
+
+
 
 --ELIMINAR USUARIO--
 CREATE TRIGGER usuario_delete after DELETE
@@ -130,3 +153,15 @@ insert into bitacora_equipo(
 idbitacora,accion,id_equipo,nombre_host_nuevo,nombre_host_viejo,dns_nuevo,dns_viejo,descripcion_nuevo,descripcion_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
 (null,'ELIMINO EQUIPO',old.idequipos,old.nombre_host,null,old.dns,null,old.descripcion,null,old.fk_grupo,null,user(),now());
+
+
+
+
+
+CREATE TRIGGER usuario_insert after INSERT
+on usuarios
+for each ROW
+insert into bitacora_usuario(
+idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+VALUES
+(null,'AGREGO USUARIO',new.idusuarios,new.nombre,null,new.apellidos,null,new.telefono,null,new.email,null,new.tipo_usuario,null,new.fk_grupou,null,user(),now());

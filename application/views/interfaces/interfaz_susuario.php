@@ -22,13 +22,13 @@
                 </div>
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                </div>
                 <div class="row">
                   <div class="embed-responsive embed-responsive-1by1">
-                    
+                  <iframe src="http://189.204.31.154:5601/app/kibana#/dashboard/afd1e520-2338-11e9-9a1c-a5a19cdb4b6e?embed=true&_g=()" height="600" width="800"></iframe>
                   </div>
                 </div>
-
+                </div>
+                
                 <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
