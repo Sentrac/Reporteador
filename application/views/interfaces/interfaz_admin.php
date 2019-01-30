@@ -24,7 +24,7 @@
                 <!-- Row -->
               
                 <div class="row">
-                  <div class="embed-responsive embed-responsive-1by1">
+                  <div class="embed-responsive embed-responsive-1by1" id="1">
                   <?php if(isset($grupo_admin)){?>
                     <?php echo $grupo_admin[0]->iframe;?>
                     <?php }?>
