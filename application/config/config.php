@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://wreporter.warriorslabs.com:81/Reporteador/';
-
+$config['base_url'] = 'http://189.204.31.154/';
+http://wreporter.warriorslabs.com:81/
 /*
 |--------------------------------------------------------------------------
 | Index File
