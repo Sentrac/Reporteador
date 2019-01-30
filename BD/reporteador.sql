@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-01-2019 a las 02:34:29
--- Versión del servidor: 5.5.60-MariaDB
+-- Tiempo de generación: 30-01-2019 a las 16:17:20
+-- Versión del servidor: 5.6.43
 -- Versión de PHP: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `bitacora_equipo` (
   `grupo_viejo` int(11) DEFAULT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `bitacora_equipo`
@@ -59,7 +59,24 @@ INSERT INTO `bitacora_equipo` (`idbitacora`, `accion`, `id_equipo`, `nombre_host
 (10, 'AGREGO EQUIPO', 13, 'localdomain12.com', 'localdomain12.com', '192.122.0.2', '192.122.0.2', 'UBUNTU', 'UBUNTU', 4, 4, 'root@localhost', '2019-01-20 19:53:05'),
 (11, 'AGREGO EQUIPO', 7, 'localdomain.com', 'localdomain.com', '192.168.2.11', '192.168.2.11', 'LINUX MINT', 'LINUX MINT', 4, 4, 'root@localhost', '2019-01-20 19:58:16'),
 (12, 'AGREGO EQUIPO', 7, 'localdomain.com', 'localdomain.com', '192.168.2.11', '192.168.2.11', 'LINUX MINT', 'LINUX MINT', 4, 4, 'root@localhost', '2019-01-20 20:02:00'),
-(13, 'AGREGO EQUIPO', 28, 'apple.com', 'apple.com', '192.168.2.14', '192.168.2.14', 'SLOW COMPUTER', 'SLOW COMPUTER', 3, 3, 'root@localhost', '2019-01-20 20:10:37');
+(13, 'AGREGO EQUIPO', 28, 'apple.com', 'apple.com', '192.168.2.14', '192.168.2.14', 'SLOW COMPUTER', 'SLOW COMPUTER', 3, 3, 'root@localhost', '2019-01-20 20:10:37'),
+(14, 'AGREGO EQUIPO', 5, 'warriors12.com', 'warriors12.com', '192.168.0.44', '192.168.0.44', '', '', 3, 3, 'root@localhost', '2019-01-21 10:59:22'),
+(15, 'AGREGO EQUIPO', 5, 'warriors12.com', 'warriors12.com', '192.168.0.44', '192.168.0.44', '', '', 3, 3, 'root@localhost', '2019-01-21 11:24:09'),
+(16, 'AGREGO EQUIPO', 5, 'warriors12.com', 'warriors12.com', '192.168.0.44', '192.168.0.44', '', '', 3, 3, 'root@localhost', '2019-01-21 11:27:17'),
+(17, 'AGREGO EQUIPO', 5, 'warriors12.com', 'warriors12.com', '192.168.0.44', '192.168.0.44', '', '', 3, 3, 'root@localhost', '2019-01-21 11:27:55'),
+(18, 'AGREGO EQUIPO', 30, 'localdomain.com', NULL, '192.168.0.40', NULL, 'SDFGHJK', NULL, 14, NULL, 'root@localhost', '2019-01-21 13:20:31'),
+(19, 'AGREGO EQUIPO', 30, 'ewf.com', 'localdomain.com', '192.168.0.40', '192.168.0.40', 'SDFGHJK', 'SDFGHJK', 14, 14, 'root@localhost', '2019-01-21 13:23:18'),
+(20, 'ELIMINO EQUIPO', 30, 'ewf.com', NULL, '192.168.0.40', NULL, 'SDFGHJK', NULL, 14, NULL, 'root@localhost', '2019-01-21 13:46:31'),
+(21, 'AGREGO EQUIPO', 31, 'dfgh', NULL, '192.168.0.44', NULL, '', NULL, 5, NULL, 'root@localhost', '2019-01-21 13:56:12'),
+(22, 'AGREGO EQUIPO', 31, 'dfghgrgtht', 'dfgh', '192.168.0.44', '192.168.0.44', '', '', 5, 5, 'root@localhost', '2019-01-21 13:56:24'),
+(23, 'ELIMINO EQUIPO', 31, 'dfghgrgtht', NULL, '192.168.0.44', NULL, '', NULL, 5, NULL, 'root@localhost', '2019-01-21 13:56:32'),
+(24, 'ELIMINO EQUIPO', 29, 'ggwr', NULL, '192.168.0.44', NULL, '', NULL, 5, NULL, 'root@localhost', '2019-01-21 13:56:40'),
+(25, 'ELIMINO EQUIPO', 26, 'warriors.com', NULL, '192.168.0.44', NULL, '', NULL, 7, NULL, 'root@localhost', '2019-01-21 18:26:27'),
+(26, 'AGREGO EQUIPO', 5, 'warriors12.com', 'warriors12.com', '192.168.0.44', '192.168.0.44', '', '', 3, 3, 'root@localhost', '2019-01-21 19:19:06'),
+(27, 'AGREGO EQUIPO', 32, 'ssgmjh,', NULL, '192.168.0.44', NULL, '', NULL, 3, NULL, 'root@localhost', '2019-01-21 19:19:33'),
+(28, 'AGREGO EQUIPO', 5, 'warriwe.localdomain', 'warriors12.com', '192.168.0.44', '192.168.0.44', '', '', 3, 3, 'root@localhost', '2019-01-22 09:25:07'),
+(29, 'AGREGO EQUIPO', 33, 'localdomain.com', NULL, '192.122.1.23', NULL, '', NULL, 16, NULL, 'root@localhost', '2019-01-22 18:19:02'),
+(30, 'ELIMINO EQUIPO', 20, 'warriors.com', NULL, '192.122.0.2', NULL, '', NULL, 4, NULL, 'root@localhost', '2019-01-22 18:22:18');
 
 -- --------------------------------------------------------
 
@@ -81,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `bitacora_grupo` (
   `descripcion_viejo` varchar(255) DEFAULT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `bitacora_grupo`
@@ -92,7 +109,27 @@ INSERT INTO `bitacora_grupo` (`idbitacora`, `accion`, `id_grupo`, `nombre_nuevo`
 (2, 'MODIFICO GRUPO', 12, 'VDGEWE', 'OZUMBA', 'GEGRE', 'OZUMBITA', 'POI1624345SDE', 'POI1624345SDE', '', 'BUENA COMIDA', 'root@localhost', '2019-01-20 19:02:43'),
 (3, 'MODIFICO GRUPO', 8, 'PANTITLAN', 'PANTITLAN', 'PANTITLAAAAAN', 'PANTI', 'EISR123456785', 'EISR123456785', '', 'CERCA DEL METRO', 'root@localhost', '2019-01-20 19:05:53'),
 (4, 'ELIMINO GRUPO', 12, 'OZUMBA', NULL, 'OZUMBITA', NULL, 'POI1624345SDE', NULL, 'BUENA COMIDA', NULL, 'root@localhost', '2019-01-20 19:06:59'),
-(5, 'MODIFICO GRUPO', 4, 'CHABACANO', 'CHABACANO', 'EL CHABACANO', 'EL CHABACANO', 'POI1624345QSE', 'POI1624345QSE', '', '', 'root@localhost', '2019-01-20 19:39:31');
+(5, 'MODIFICO GRUPO', 4, 'CHABACANO', 'CHABACANO', 'EL CHABACANO', 'EL CHABACANO', 'POI1624345QSE', 'POI1624345QSE', '', '', 'root@localhost', '2019-01-20 19:39:31'),
+(6, 'AGREGO GRUPO', 13, 'WEGRTHYJUK', NULL, 'ERTHYU', NULL, 'POI1624345SDE', NULL, 'HSRTYJMK', NULL, 'root@localhost', '2019-01-21 11:32:16'),
+(7, 'MODIFICO GRUPO', 13, 'HOLA', 'WEGRTHYJUK', 'HOLA', 'ERTHYU', 'POI1624345SDE', 'POI1624345SDE', 'HOLA', 'HSRTYJMK', 'root@localhost', '2019-01-21 11:32:52'),
+(8, 'ELIMINO GRUPO', 13, 'HOLA', NULL, 'HOLA', NULL, 'POI1624345SDE', NULL, 'HOLA', NULL, 'root@localhost', '2019-01-21 11:33:16'),
+(9, 'AGREGO GRUPO', 14, 'WARRIORS LABS', NULL, 'GUERREROS', NULL, 'POI1624345SDE', NULL, '', NULL, 'root@localhost', '2019-01-21 13:11:58'),
+(10, 'MODIFICO GRUPO', 14, 'WARRIORS LABS', 'WARRIORS LABS', 'GUERREROS', 'GUERREROS', 'POI1624345SDE', 'POI1624345SDE', 'ZSDFGHJK', '', 'root@localhost', '2019-01-21 13:12:06'),
+(11, 'ELIMINO GRUPO', 8, 'PANTITLAN', NULL, 'PANTITLAAAAAN', NULL, 'EISR123456785', NULL, '', NULL, 'root@localhost', '2019-01-21 13:27:31'),
+(12, 'ELIMINO GRUPO', 14, 'WARRIORS LABS', NULL, 'GUERREROS', NULL, 'POI1624345SDE', NULL, 'ZSDFGHJK', NULL, 'root@localhost', '2019-01-21 18:26:16'),
+(13, 'MODIFICO GRUPO', 3, 'XOLA', 'XOLA', 'XOLITA', 'XOLA', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 09:25:45'),
+(14, 'MODIFICO GRUPO', 3, 'XOLA', 'XOLA', 'XOLITA', 'XOLITA', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 09:35:56'),
+(15, 'MODIFICO GRUPO', 3, 'CHABACANO', 'XOLA', 'XOLITA', 'XOLITA', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 09:44:18'),
+(16, 'MODIFICO GRUPO', 3, 'XOLA', 'CHABACANO', 'XOLITA', 'XOLITA', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 09:47:16'),
+(17, 'MODIFICO GRUPO', 3, 'XOLA', 'XOLA', 'XOLITA', 'XOLITA', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 10:00:11'),
+(18, 'MODIFICO GRUPO', 3, 'XOLA', 'XOLA', 'XOLITANV', 'XOLITA', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 10:00:41'),
+(19, 'MODIFICO GRUPO', 3, 'XOLA', 'XOLA', 'XOLITANV', 'XOLITANV', 'BVI1224345ZER', 'BVI1224345ZER', '', '', 'root@localhost', '2019-01-22 10:00:49'),
+(20, 'AGREGO GRUPO', 15, 'OZUMBA', NULL, 'NVIFRVIR', NULL, 'POI1624345QSE', NULL, '', NULL, 'root@localhost', '2019-01-22 10:01:48'),
+(21, 'AGREGO GRUPO', 16, 'IZTACCIHUATL', NULL, 'OFICINA WARRIORS', NULL, 'POI1624345QSE', NULL, '', NULL, 'root@localhost', '2019-01-22 18:17:51'),
+(22, 'ELIMINO GRUPO', 3, 'XOLA', NULL, 'XOLITANV', NULL, 'BVI1224345ZER', NULL, '', NULL, 'root@localhost', '2019-01-22 18:22:33'),
+(23, 'MODIFICO GRUPO', 4, 'CHABACANO', 'CHABACANO', 'EL CHABACANO', 'EL CHABACANO', 'POI1624345QSE', 'POI1624345QSE', '', '', 'root@localhost', '2019-01-24 12:26:09'),
+(24, 'MODIFICO GRUPO', 4, 'CHABACANO', 'CHABACANO', 'EL CHABACANO', 'EL CHABACANO', 'POI1624345QSE', 'POI1624345QSE', '', '', 'root@localhost', '2019-01-24 13:18:39'),
+(25, 'MODIFICO GRUPO', 4, 'CHABACANO', 'CHABACANO', 'EL CHABACANO', 'EL CHABACANO', 'POI1624345QSE', 'POI1624345QSE', '', '', 'root@localhost', '2019-01-24 13:23:25');
 
 -- --------------------------------------------------------
 
@@ -118,17 +155,17 @@ CREATE TABLE IF NOT EXISTS `bitacora_usuario` (
   `grupo_viejo` int(11) DEFAULT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `bitacora_usuario`
 --
 
 INSERT INTO `bitacora_usuario` (`idbitacora`, `accion`, `id_usuario`, `nombre_nuevo`, `nombre_viejo`, `apellidos_nuevo`, `apellidos_viejo`, `telefono_nuevo`, `telefono_viejo`, `email_nuevo`, `email_viejo`, `rol_nuevo`, `rol_viejo`, `grupo_nuevo`, `grupo_viejo`, `usuario`, `fecha`) VALUES
-(1, 'AGREGO USUARIO', 60, 'GRHTEH', NULL, 'BHTHT', NULL, '5534215674', NULL, 'danny@hotmail.com', NULL, 'SU', NULL, 1, NULL, 'root@localhost', '2019-01-20 15:56:59'),
-(2, 'AGREGO USUARIO', 60, 'GRHTEH', NULL, 'BHTHT', NULL, '5534215674', NULL, 'danny@hotmail.com', NULL, 'SU', NULL, 1, NULL, 'root@localhost', '2019-01-20 15:59:57'),
-(3, 'ELIMINO USUARIO', 35, 'URIEL', NULL, 'BARON', NULL, '5534567231', NULL, 'dfgh@gmail.com', NULL, 'AD', NULL, 7, NULL, 'root@localhost', '2019-01-20 16:01:31'),
-(4, 'ACTUALIZO USUARIO', 40, 'CESAR', 'JULIO CESAR', 'AGUSTO', 'GARCIA', '5534231234', '1234567834', 'danny@hotmail.com', 'danny@hotmail.com', 'SU', 'AD', 1, 4, 'root@localhost', '2019-01-20 16:05:20');
+(1, 'ACTUALIZO USUARIO', 62, 'ALFONSO', 'ALFONSO', 'CONTRERAS', 'CONTRERAS', '5534215676', '5534215674', 'ponchito@yahoo.com', 'ponchito@yahoo.com', 'AD', 'AD', 4, 4, 'root@localhost', '2019-01-28 16:53:53'),
+(2, 'ACTUALIZO USUARIO', 61, 'DFRGHR', 'DFRGHR', 'GSGUG', 'GS', '5534532145', '5534532145', 'danny@hotmail.com', 'danny@hotmail.com', 'AD', 'CO', 4, 6, 'root@localhost', '2019-01-28 17:21:28'),
+(4, 'ELIMINO USUARIO', 63, 'XOLA', NULL, 'GARCIA', NULL, '5534532145', NULL, 'sergio@warriorslabs.com', NULL, 'SU', NULL, 1, NULL, 'root@localhost', '2019-01-28 20:02:45'),
+(5, 'AGREGO USUARIO', 64, 'JULIO CESAR', NULL, 'GARCIA', NULL, '5534532145', NULL, 'sergio@warriorslabs.com', NULL, 'SU', NULL, 1, NULL, 'root@localhost', '2019-01-28 20:05:03');
 
 -- --------------------------------------------------------
 
@@ -142,27 +179,20 @@ CREATE TABLE IF NOT EXISTS `equipos` (
   `dns` varchar(15) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `fk_grupo` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `equipos`
 --
 
 INSERT INTO `equipos` (`idequipos`, `nombre_host`, `dns`, `descripcion`, `fk_grupo`) VALUES
-(5, 'warriors12.com', '192.168.0.44', '', 3),
 (7, 'localdomain.com', '192.168.2.11', 'LINUX MINT', 4),
 (8, 'sentrac.com', '192.168.3.2', '', 6),
 (13, 'localdomain12.com', '192.122.0.2', 'UBUNTU', 4),
 (14, 'localdomain12.com', '192.122.0.2', 'UBUNTU', 4),
 (15, 'local.com', '192.122.0.2', 'UBUNTU', 4),
 (16, 'plamesi.com', '192.122.3.44', '', 4),
-(20, 'warriors.com', '192.122.0.2', '', 4),
-(21, 'warriors.com', '192.168.0.44', '', 8),
-(22, 'reporteador.com', '192.168.2.11', '', 8),
-(24, 'localdomain.com', '192.168.0.44', '', 8),
-(26, 'warriors.com', '192.168.0.44', '', 7),
-(28, 'apple.com', '192.168.2.14', 'SLOW COMPUTER', 3),
-(29, 'ggwr', '192.168.0.44', '', 5);
+(33, 'localdomain.com', '192.122.1.23', '', 16);
 
 --
 -- Disparadores `equipos`
@@ -172,7 +202,7 @@ CREATE TRIGGER `equipo_delete` AFTER DELETE ON `equipos`
  FOR EACH ROW insert into bitacora_equipo(
 idbitacora,accion,id_equipo,nombre_host_nuevo,nombre_host_viejo,dns_nuevo,dns_viejo,descripcion_nuevo,descripcion_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'AGREGO EQUIPO',old.idequipos,null,old.nombre_host,null,old.dns,null,old.descripcion,null,old.fk_grupo,null,user(),now())
+(null,'ELIMINO EQUIPO',old.idequipos,old.nombre_host,null,old.dns,null,old.descripcion,null,old.fk_grupo,null,user(),now())
 $$
 DELIMITER ;
 DELIMITER $$
@@ -203,21 +233,22 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `nombre` varchar(45) DEFAULT NULL,
   `alias` varchar(50) DEFAULT NULL,
   `rfc` varchar(13) DEFAULT NULL,
+  `iframe` varchar(250) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `grupo`
 --
 
-INSERT INTO `grupo` (`idgrupo`, `nombre`, `alias`, `rfc`, `descripcion`) VALUES
-(1, 'TODOS', NULL, NULL, NULL),
-(3, 'XOLA', 'XOLA', 'BVI1224345ZER', ''),
-(4, 'CHABACANO', 'EL CHABACANO', 'POI1624345QSE', ''),
-(5, 'INSURGENTES', 'INSUR', 'POI1624345SDE', ''),
-(6, 'CHALCO', 'CHALQUITO', 'POI1624345WER', ''),
-(7, 'VILLA DE CORTES', 'GUARDIA', 'EISR123456785', ''),
-(8, 'PANTITLAN', 'PANTITLAAAAAN', 'EISR123456785', '');
+INSERT INTO `grupo` (`idgrupo`, `nombre`, `alias`, `rfc`, `iframe`, `descripcion`) VALUES
+(1, 'TODOS', NULL, NULL, '', NULL),
+(4, 'CHABACANO', 'EL CHABACANO', 'POI1624345QSE', '<iframe src="http://189.204.31.154:5601/app/kibana#/dashboard/14173c70-1ff0-11e9-8f4c-6b11e5ded0e8?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cmode%3Aquick%2Cto%3Anow))" height="600" width="800"></iframe>', ''),
+(5, 'INSURGENTES', 'INSUR', 'POI1624345SDE', '', ''),
+(6, 'CHALCO', 'CHALQUITO', 'POI1624345WER', '', ''),
+(7, 'VILLA DE CORTES', 'GUARDIA', 'EISR123456785', '', ''),
+(15, 'OZUMBA', 'NVIFRVIR', 'POI1624345QSE', '', ''),
+(16, 'IZTACCIHUATL', 'OFICINA WARRIORS', 'POI1624345QSE', '', '');
 
 --
 -- Disparadores `grupo`
@@ -275,6 +306,32 @@ CREATE TABLE IF NOT EXISTS `nombre_grupo` (
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `prueba`
+--
+CREATE TABLE IF NOT EXISTS `prueba` (
+`idbitacora` int(11)
+,`accion` varchar(17)
+,`nombre_nuevo` varchar(45)
+,`nombre_viejo` varchar(45)
+,`apellidos_nuevo` varchar(45)
+,`apellidos_viejo` varchar(45)
+,`telefono_nuevo` varchar(10)
+,`telefono_viejo` varchar(10)
+,`email_nuevo` varchar(50)
+,`email_viejo` varchar(50)
+,`rol_nuevo` varchar(2)
+,`rol_viejo` varchar(2)
+,`grupo_nuevo` int(11)
+,`grupo_nuevo1` varchar(45)
+,`grupo_viejo2` int(11)
+,`nombre` varchar(45)
+,`usuario` varchar(45)
+,`fecha` datetime
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -288,17 +345,17 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `pass` varchar(100) DEFAULT NULL,
   `tipo_usuario` varchar(2) DEFAULT NULL,
   `fk_grupou` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idusuarios`, `nombre`, `apellidos`, `telefono`, `email`, `usuario`, `pass`, `tipo_usuario`, `fk_grupou`) VALUES
-(1, 'JOSUE', 'MARIN ROMERO', '5587125364', 'admin@gmail.com', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'SU', 1),
-(40, 'CESAR', 'AGUSTO', '5534231234', 'danny@hotmail.com', 'poncho@yahoo.com', '25d55ad283aa400af464c76d713c07ad', 'SU', 1),
-(47, 'OSIEL', 'GARCIA', '5534567231', 'enriq.rosa@yahoo.com', 'consultas@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'CO', 3),
-(58, 'PANCHO', 'LOPEZ', '5534567844', 'consultas@gmail.com', 'fewe@hotmail.com', '25d55ad283aa400af464c76d713c07ad', 'AD', 5);
+(1, 'JOSUE', 'MARIN ROMERO', '5587125364', 'admin@gmail.com', 'admin@gmail.com', 'ad0d15b3e9b9c209962391db3cdae0fa', 'SU', 1),
+(61, 'DFRGHR', 'GSGUG', '5534532145', 'danny@hotmail.com', 'consultas32@gmail.com', '2be3d6aff9ed86abe667151e3847e092', 'AD', 4),
+(62, 'ALFONSO', 'CONTRERAS', '5534215676', 'ponchito@yahoo.com', 'osiel@hotmail.com', '25d55ad283aa400af464c76d713c07ad', 'CO', 5),
+(64, 'JULIO CESAR', 'GARCIA', '5534532145', 'sergio@warriorslabs.com', 'ser@gmail.com', 'e347e7ab59cc195f8aa5ce26c6bdbc48', 'SU', 1);
 
 --
 -- Disparadores `usuarios`
@@ -344,6 +401,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_grupo` (
 ,`telefono` varchar(10)
 ,`tipo_usuario` varchar(2)
 ,`grupo` varchar(45)
+,`iframe` varchar(250)
 );
 
 -- --------------------------------------------------------
@@ -367,11 +425,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Estructura para la vista `prueba`
+--
+DROP TABLE IF EXISTS `prueba`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prueba` AS (select `bitacora_usuario`.`idbitacora` AS `idbitacora`,`bitacora_usuario`.`accion` AS `accion`,`bitacora_usuario`.`nombre_nuevo` AS `nombre_nuevo`,`bitacora_usuario`.`nombre_viejo` AS `nombre_viejo`,`bitacora_usuario`.`apellidos_nuevo` AS `apellidos_nuevo`,`bitacora_usuario`.`apellidos_viejo` AS `apellidos_viejo`,`bitacora_usuario`.`telefono_nuevo` AS `telefono_nuevo`,`bitacora_usuario`.`telefono_viejo` AS `telefono_viejo`,`bitacora_usuario`.`email_nuevo` AS `email_nuevo`,`bitacora_usuario`.`email_viejo` AS `email_viejo`,`bitacora_usuario`.`rol_nuevo` AS `rol_nuevo`,`bitacora_usuario`.`rol_viejo` AS `rol_viejo`,`bitacora_usuario`.`grupo_nuevo` AS `grupo_nuevo`,`grupo`.`nombre` AS `grupo_nuevo1`,`bitacora_usuario`.`grupo_viejo` AS `grupo_viejo2`,`grupo`.`nombre` AS `nombre`,`bitacora_usuario`.`usuario` AS `usuario`,`bitacora_usuario`.`fecha` AS `fecha` from (`bitacora_usuario` join `grupo` on(((`bitacora_usuario`.`grupo_nuevo` = `grupo`.`idgrupo`) and (`bitacora_usuario`.`grupo_viejo` = `grupo`.`idgrupo`) and (`bitacora_usuario`.`grupo_viejo` = NULL)))));
+
+-- --------------------------------------------------------
+
+--
 -- Estructura para la vista `usuarios_grupo`
 --
 DROP TABLE IF EXISTS `usuarios_grupo`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuarios_grupo` AS (select `usuarios`.`idusuarios` AS `idusuarios`,`usuarios`.`fk_grupou` AS `fk_grupou`,`grupo`.`idgrupo` AS `idgrupo`,`usuarios`.`nombre` AS `nombre`,`usuarios`.`apellidos` AS `apellidos`,`usuarios`.`email` AS `email`,`usuarios`.`usuario` AS `usuario`,`usuarios`.`telefono` AS `telefono`,`usuarios`.`tipo_usuario` AS `tipo_usuario`,`grupo`.`nombre` AS `grupo` from (`usuarios` join `grupo` on((`usuarios`.`fk_grupou` = `grupo`.`idgrupo`))));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuarios_grupo` AS (select `usuarios`.`idusuarios` AS `idusuarios`,`usuarios`.`fk_grupou` AS `fk_grupou`,`grupo`.`idgrupo` AS `idgrupo`,`usuarios`.`nombre` AS `nombre`,`usuarios`.`apellidos` AS `apellidos`,`usuarios`.`email` AS `email`,`usuarios`.`usuario` AS `usuario`,`usuarios`.`telefono` AS `telefono`,`usuarios`.`tipo_usuario` AS `tipo_usuario`,`grupo`.`nombre` AS `grupo`,`grupo`.`iframe` AS `iframe` from (`usuarios` join `grupo` on((`usuarios`.`fk_grupou` = `grupo`.`idgrupo`))));
 
 --
 -- Índices para tablas volcadas
@@ -423,32 +490,32 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `bitacora_equipo`
 --
 ALTER TABLE `bitacora_equipo`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `bitacora_grupo`
 --
 ALTER TABLE `bitacora_grupo`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `bitacora_usuario`
 --
 ALTER TABLE `bitacora_usuario`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `idequipos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `idequipos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
 --
 -- Restricciones para tablas volcadas
 --
