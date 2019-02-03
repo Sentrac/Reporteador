@@ -80,7 +80,7 @@ class Modelo_usuarios extends CI_Model{
     }
     public function getContactos($id)
     {
-        $this->db->select('nombre,apellidos,telefono,email');
+        $this->db->select('nombre,apellidos,telefono,usuario');
         $this->db->from('usuarios');
         $this->db->where('idusuarios',$id);
         $query=$this->db->get();
