@@ -18,7 +18,7 @@ class Usuarios extends CI_Controller {
 	public function usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		//modelo para obtener todos los usuarios registrados para el superusuario
-		$this->data['usuarios']=$this->Modelo_login->getUsuarios();
+		$this->data['usuarios']=$this->Modelo_usuarios->getUsuarios();
 		//modelo para obtener todos los usuarios pertenecientes a un solo grupo
 		$grupo=$this->input->get('fk_grupou');
 		$this->data['usuario_grupo']=$this->Modelo_usuarios->usuario_grupo($grupo);
@@ -46,7 +46,6 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
-		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
 		$this->form_validation->set_rules('fk_grupou', 'Grupo', 'trim|required');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
@@ -61,7 +60,6 @@ class Usuarios extends CI_Controller {
 			$nombre = $this->input->post('nombre');
 			$apellidos = $this->input->post('apellidos');
 			$telefono = $this->input->post('telefono');
-			$correo = $this->input->post('email');
 			$user = $this->input->post('usuario');
 			$tipouser = $this->input->post('tipo_usuario');
 			if($tipouser=='SU'){
@@ -79,7 +77,6 @@ class Usuarios extends CI_Controller {
 				'nombre' => $nombre,
 				'apellidos' => $apellidos,
 				'telefono' => $telefono,
-				'email' => $correo,
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,
@@ -99,7 +96,6 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('telefono', 'Telefono', 'trim|required|numeric|exact_length[10]');
-		$this->form_validation->set_rules('email', 'Correo', 'trim|required|valid_email');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|valid_email');
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
 		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[16]|alpha_numeric_spaces');
@@ -113,7 +109,6 @@ class Usuarios extends CI_Controller {
 			$nombre = $this->input->post('nombre');
 			$apellidos = $this->input->post('apellidos');
 			$telefono = $this->input->post('telefono');
-			$correo = $this->input->post('email');
 			$user = $this->input->post('usuario');
 			$grupo = $this->input->post('fk_grupou');
 			$psw = $this->input->post('pass');
@@ -126,7 +121,6 @@ class Usuarios extends CI_Controller {
 				'nombre' => $nombre,
 				'apellidos' => $apellidos,
 				'telefono' => $telefono,
-				'email' => $correo,
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,

@@ -74,19 +74,11 @@
                         <!-- Logo icon -->
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-principal-mini.png" width="33px" height="33px" alt="homepage" class="light-logo" />
+                            <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span>
-                            <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <font class="h1title">WReporter</font>
-                        </span>
+                      
                     </a>
                 </div>
                 <!-- ============================================================== -->
@@ -112,13 +104,13 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/user.png" alt="user"
+                                aria-haspopup="true" aria-expanded="false"><img src="../assets/images/usuario.png" alt="user"
                                     class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                        <center><div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div></center>
+                                        <center><div class="u-img"><img src="../assets/images/usuario.png" alt="user"></div></center>
                                         <center><div class="u-text">
                                             <br/>
                                             <?php foreach($posts as $post){?>
@@ -148,9 +140,9 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- User profile -->
-                <div class="user-profile" style="background: url(../assets/images/users/user-info.jpg) no-repeat;">
+                <div class="user-profile" style="background: url(../assets/images/reporteador2.png) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="../assets/images/users/user.png" alt="user" /> </div>
+                    <div class="profile-img"> <img src="../assets/images/usuario.png" alt="user" /> </div>
                     <!-- User profile text-->
                     <?php foreach($posts as $post){?>
                     <div class="profile-text">
