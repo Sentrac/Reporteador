@@ -7,18 +7,11 @@ class Modelo_usuarios extends CI_Model{
         $data=$this->db->get('usuarios');
         return $data->result();
     } 
-
     public function traerdatosUsuariosAdmin($idusuarios){
         $this->db->where('idusuarios',$idusuarios);
         $data=$this->db->get('usuarios_grupo');
         return $data->result();
     } 
-
-
-
-
-
-
     public function nombreGrupo($idusuarios){
         $this->db->where('',$idusuarios);
         $data=$this->db->get('nombre_grupo');
@@ -66,6 +59,7 @@ class Modelo_usuarios extends CI_Model{
         $this->db->from('usuarios_grupo'); 
         $this->db->order_by("grupo", "asc"); 
         $this->db->order_by("tipo_usuario", "asc"); 
+        $this->db->where_not_in("usuario",$this->session->userdata("usuario"));
         $query = $this->db->get();
         return $query->result();
     }

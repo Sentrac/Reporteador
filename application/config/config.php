@@ -323,7 +323,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'oi1joi23i';
+$config['encryption_key'] = 'RUqKhsoZ5qV6y3kqARFJFdPqJvp7X2z';
 
 /*
 |--------------------------------------------------------------------------
