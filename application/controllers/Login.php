@@ -94,6 +94,11 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         redirect(base_url());
     }
+    public function verificar($tk)    {
+        $tkn = $tk;
+        // $tkn = $this->input->get('tk', TRUE);
+        echo $tkn;
+    }
 }
 
 

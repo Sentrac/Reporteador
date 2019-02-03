@@ -42,6 +42,44 @@ class Usuarios extends CI_Controller {
     }
     //FUNCIÓN DONDE SE REGISTRA UN NUEVO USUARIO
 	public function registrar_usuarios(){		
+		// function obtenCaracterAleatorio($arreglo) {
+		// 	$clave_aleatoria = array_rand($arreglo, 1);	//obtén clave aleatoria
+		// 	return $arreglo[ $clave_aleatoria ];	//devolver ítem aleatorio
+		// }
+		// function obtenCaracterMd5($car) {
+		// 	$md5Car = md5($car.Time());	//Codificar el carácter y el tiempo POSIX (timestamp) en md5
+		// 	$arrCar = str_split(strtoupper($md5Car));	//Convertir a array el md5
+		// 	$carToken = obtenCaracterAleatorio($arrCar);	//obtén un ítem aleatoriamente
+		// 	return $carToken;
+		// }
+		// function obtenToken($longitud) {
+		// 	//crear alfabeto
+		// 	$mayus = "abcdefghijklmnopqrstuvwxyz";
+		// 	$mayusculas = str_split($mayus);//Convertir a array
+		// 	//crear array de numeros 0-9
+		// 	$numeros = range(0,9);
+		// 	//revolver arrays
+		// 	shuffle($mayusculas);
+		// 	shuffle($numeros);
+			
+		// 	//Unir arrays
+		// 	$arregloTotal = array_merge($mayusculas,$numeros);
+			
+		// 	$newToken = "";
+			
+		// 	for($i=0;$i<$longitud;$i++) {
+		// 			$miCar = obtenCaracterAleatorio($arregloTotal);
+		// 			$newToken .= obtenCaracterMd5($miCar);
+		// 	}
+		// 	echo $newToken;
+		// }
+		function generarCodigo($longitud) {
+			$key = '';
+			$pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+			$max = strlen($pattern)-1;
+			for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+			return $key;
+		}
 		//VALIDACIONES DE CAMPOS
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
@@ -85,13 +123,73 @@ class Usuarios extends CI_Controller {
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo
 			);
-				if($this->Modelo_usuarios->registrarUsuarios($d)){
-					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
-					redirect('/Usuarios/usuarios','refresh');
-				}else{
-					$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
-					redirect('/Usuarios/usuarios','refresh');
-				}
+			
+			$this->load->library('email');
+
+			echo $d['nombre'].$d['email'].'<br>';
+			$url = base_url();
+			$cod = generarCodigo(15);
+			// $img1 = $url."/assets/images/email.jpg";
+			// $head = $this->email->attachment_cid($img1);
+			// $img2 = $url."/assets/images/footer.jpg";
+			// $foot = $this->email->attachment_cid($img2);
+			
+			$this->email->from('warlab2019@gmail.com', 'Warriors Labs');
+			$this->email->to($d['email']);
+			$this->email->subject('Cuenta de WReporter');
+			$this->email->message(
+				'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+				<tr>
+					<td align="center" style="padding: 0px 0 40px 0;">
+						<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+					</td>
+				</tr>
+				<tr>
+				   <td style="padding: 60px 50px 60px 50px;color:#000;">
+						<h1>Hola '.$d['nombre'].'!</h1>
+						Para comenzar a usar su cuenta de WReporter, haga clic en el botón para confirmar su dirección de correo electrónico:
+						<br><br>
+						<center>
+							<a href="'.$url.'Login/verificar/'.$cod.'">
+								<button style="display: inline-block;
+								padding: 10px 20px;
+								font-size: 14px;
+								cursor: pointer;
+								text-align: center;
+								text-decoration: none;
+								outline: none;
+								color: #fff;
+								background-color: #DD333B;
+								border: none;
+								border-radius: 15px;
+								box-shadow: 0 9px #999;" class="button">Confirmar correo electrónico</button>
+							</a>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" style="padding: 40px 0 0px 0;">
+						<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+					</td>
+				</tr>
+				</table>'
+			);
+
+			if($this->email->send()){
+				echo 'enviado'.'<br>';
+			} else {
+				echo 'no enviado'.'<br>';
+			}
+
+			echo $this->email->print_debugger();
+
+			// if($this->Modelo_usuarios->registrarUsuarios($d)){
+			// 	$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
+			// 	redirect('/Usuarios/usuarios','refresh');
+			// }else{
+			// 	$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+			// 	redirect('/Usuarios/usuarios','refresh');
+			// }
 		}
 	}
 	public function registrar_usuarios_admin(){		
