@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-02-2019 a las 03:42:21
+-- Tiempo de generación: 03-02-2019 a las 04:09:48
 -- Versión del servidor: 5.6.43
 -- Versión de PHP: 7.2.14
 
@@ -370,19 +370,27 @@ INSERT INTO `usuarios` (`idusuarios`, `nombre`, `apellidos`, `telefono`, `usuari
 -- Disparadores `usuarios`
 --
 DELIMITER $$
+CREATE TRIGGER `usuario_delete` AFTER DELETE ON `usuarios`
+ FOR EACH ROW insert into bitacora_usuario(
+idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+VALUES
+(null,'ELIMINO USUARIO',old.idusuarios,old.nombre,null,old.apellidos,null,old.telefono,null,old.tipo_usuario,null,old.fk_grupou,null,user(),now())
+$$
+DELIMITER ;
+DELIMITER $$
 CREATE TRIGGER `usuario_insert` AFTER INSERT ON `usuarios`
  FOR EACH ROW insert into bitacora_usuario(
-idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'AGREGO USUARIO',new.idusuarios,new.nombre,null,new.apellidos,null,new.telefono,null,new.email,null,new.tipo_usuario,null,new.fk_grupou,null,user(),now())
+(null,'AGREGO USUARIO',new.idusuarios,new.nombre,null,new.apellidos,null,new.telefono,null,new.tipo_usuario,null,new.fk_grupou,null,user(),now())
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `usuario_update` AFTER UPDATE ON `usuarios`
  FOR EACH ROW insert into bitacora_usuario(
-idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'ACTUALIZO USUARIO',old.idusuarios,new.nombre,old.nombre,new.apellidos,old.apellidos,new.telefono,old.telefono,new.email,old.email,new.tipo_usuario,old.tipo_usuario,new.fk_grupou,old.fk_grupou,user(),now())
+(null,'ACTUALIZO USUARIO',old.idusuarios,new.nombre,old.nombre,new.apellidos,old.apellidos,new.telefono,old.telefono,new.tipo_usuario,old.tipo_usuario,new.fk_grupou,old.fk_grupou,user(),now())
 $$
 DELIMITER ;
 
