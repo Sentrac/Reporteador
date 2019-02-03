@@ -16,7 +16,10 @@ class Modelo_grupo extends CI_Model{
         return $data->result();
     }
     function getGrupoAdmin(){  
-        $this->db->select("grupo,iframe"); 
+        if($this->session->userdata('tipo_usuario')=='AD'){
+            $this->db->select("grupo,iframe"); 
+        }
+        $this->db->select("grupo"); 
         $this->db->from('usuarios_grupo');  
         $this->db->where("usuario",$this->session->userdata("usuario"));
         $query=$this->db->get();

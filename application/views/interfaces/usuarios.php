@@ -275,7 +275,7 @@
                                         $('#Nombre').val(response[0]['nombre']);
                                         $('#Apellidos').val(response[0]['apellidos']);
                                         $('#Telefono').val(response[0]['telefono']);
-                                        $('#Correo').val(response[0]['email']);
+                                        $('#Correo').val(response[0]['usuario']);
                                         $('#Rol').val(response[0]['tipo_usuario']);
                                         $('#Grupo').val(response[0]['fk_grupou']);
                                 

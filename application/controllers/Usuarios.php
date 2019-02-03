@@ -168,7 +168,7 @@ class Usuarios extends CI_Controller {
 			$row[] = $person->nombre;
 			$row[] = $person->apellidos;
 			$row[] = $person->telefono;
-			$row[] = $person->email;
+			$row[] = $person->usuario;
 
 			$data[] = $row;
 		}
@@ -209,7 +209,7 @@ class Usuarios extends CI_Controller {
 		$nom = $this->input->post('Nombre');
 		$ape = $this->input->post('Apellidos');
 		$tel = $this->input->post('Telefono');
-		$cor = $this->input->post('Correo');
+		$cor = $this->input->post('Usuario');
 		$rol = $this->input->post('Rol');
 		$grp = $this->input->post('Grupo');
 
@@ -220,7 +220,7 @@ class Usuarios extends CI_Controller {
 			'nombre' => $nom,
 			'apellidos' => $ape,
 			'telefono' => $tel,
-			'email' => $cor,
+			'usuario' => $cor,
 			'tipo_usuario' => $rol,
 			'fk_grupou' => $grp
 		);
