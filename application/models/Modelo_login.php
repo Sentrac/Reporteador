@@ -18,7 +18,6 @@ class Modelo_login extends CI_Model{
     }
     //FUNCIÓN PARA TRAER LOS CAMPOS 'nombre,apellidos,email,tipo_usuario DE LA TABLA 'usuarios para mostrar en la vista perfil.php'
     function getRoles(){  
-        $this->db->select("idusuarios,nombre,apellidos,telefono,tipo_usuario,fk_grupou"); 
         $this->db->from('usuarios');  
         $this->db->where("usuario",$this->session->userdata("usuario"));
         $query=$this->db->get();

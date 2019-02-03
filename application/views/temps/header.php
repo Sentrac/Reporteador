@@ -115,7 +115,7 @@
                                             <br/>
                                             <?php foreach($posts as $post){?>
                                                 <h4><?php echo $post->nombre;?> <?php echo $post->apellidos;?></h4>
-                                                <p class="text-muted"><?php echo $post->email;?></p>
+                                                <p class="text-muted"><?php echo $post->usuario;?></p>
                                             <?php } ?>
                                             </div></center>
                                         </div>
