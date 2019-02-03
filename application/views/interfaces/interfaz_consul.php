@@ -22,11 +22,12 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <div class="row">
-            
+               
                 <div class="row">
                   <div class="embed-responsive embed-responsive-1by1">
-                    <iframe class="embed-responsive-item" src="http://192.168.0.40:5601/app/kibana#/dashboard/32e1f900-d87a-11e8-9ed7-8f41f487c1dd?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-6M%2Cmode%3Aquick%2Cto%3Anow))"></iframe>
+                  <?php if(isset($grupo_admin)){?>
+                    <?php echo $grupo_admin[0]->iframe;?>
+                    <?php }?>
                   </div>
                 </div>
 
