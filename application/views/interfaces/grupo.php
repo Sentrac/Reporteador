@@ -107,7 +107,7 @@
                   <div class="col-lg-3 col-md-6">
                     <!-- Card -->
                     <div class="card text-center">
-                      <center><img class="card-img-top img-responsive " src="../assets/images/mac.png" alt="Card image cap"></center>
+                      <center><br><img class="card-img-top img-responsive " src="../assets/images/grupos.png" alt="Card image cap"></center>
                       <div class="card-body">
                         <h4 class="card-title"><?php echo $grupo_bd->nombre?></h4>
                         <input type="hidden" name="idgrupo" value="<?php echo $grupo_bd->idgrupo?>">

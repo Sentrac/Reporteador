@@ -42,7 +42,7 @@
                     <div class="card text-center">
                         <input type="hidden" value=" <?php echo $grupo_equipos[0]->idgrupo;?>">
                       <div class="card-body">
-                      <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
+                      <center><img class="card-img-top img-responsive" src="../assets/images/equipos.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <input type="hidden" value="<?php echo $equipo->idequipos; ?>">
                         <p><?php echo $equipo->dns;?></p>

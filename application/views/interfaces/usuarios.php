@@ -400,13 +400,12 @@
                             </div>
                             <div class="modal-body">
                                 <div class="table-responsive">
-                                    <table id="modal_tabla" class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table" cellspacing="0" width="100%">
+                                    <table id="modal_tabla" class="table   full-dark-table hover-table" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
                                                 <th>Telefono</th>
-                                                <th>Correo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
