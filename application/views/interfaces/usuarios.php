@@ -275,7 +275,6 @@
                                         $('#Nombre').val(response[0]['nombre']);
                                         $('#Apellidos').val(response[0]['apellidos']);
                                         $('#Telefono').val(response[0]['telefono']);
-                                        $('#Correo').val(response[0]['usuario']);
                                         $('#Rol').val(response[0]['tipo_usuario']);
                                         $('#Grupo').val(response[0]['fk_grupou']);
                                 
@@ -454,14 +453,6 @@
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="control-label col-md-3 text-center">Correo</label>
-                                            <div class="col-md-9">
-                                                <input name="Correo" id="Correo" placeholder="Correo" class="form-control" type="text">
-                                                <span class="help-block"></span>
-                                            </div>
-                                        </div>
-
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Rol</label>
                                             <div class="col-md-9">

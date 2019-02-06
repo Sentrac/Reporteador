@@ -80,7 +80,8 @@ class Usuarios extends CI_Controller {
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,
-				'fk_grupou' => $grupo
+				'fk_grupou' => $grupo,
+				'usuario_agrego' => $this->session->userdata("usuario")
 			);
 				if($this->Modelo_usuarios->registrarUsuarios($d)){
 					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
@@ -124,7 +125,8 @@ class Usuarios extends CI_Controller {
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,
-				'fk_grupou' => $grupo
+				'fk_grupou' => $grupo,
+				'usuario_agrego' => $this->session->userdata("usuario")
 			);
 			if($this->Modelo_usuarios->registrarUsuarios($d)){
 				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
@@ -209,7 +211,6 @@ class Usuarios extends CI_Controller {
 		$nom = $this->input->post('Nombre');
 		$ape = $this->input->post('Apellidos');
 		$tel = $this->input->post('Telefono');
-		$cor = $this->input->post('Usuario');
 		$rol = $this->input->post('Rol');
 		$grp = $this->input->post('Grupo');
 
@@ -220,9 +221,9 @@ class Usuarios extends CI_Controller {
 			'nombre' => $nom,
 			'apellidos' => $ape,
 			'telefono' => $tel,
-			'usuario' => $cor,
 			'tipo_usuario' => $rol,
-			'fk_grupou' => $grp
+			'fk_grupou' => $grp,
+			'user_session' => $this->session->userdata("usuario")
 		);
 
 		// echo json_encode($array);
