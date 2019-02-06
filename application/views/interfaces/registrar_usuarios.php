@@ -178,12 +178,6 @@
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Correo</label>
-                              <div class="col-md-9">
-                                <input type="email" placeholder="CORREO" class="form-control" name="email">
-                              </div>
-                            </div>
-                            <div class="form-group row">
                               <label class="control-label text-center col-md-2">Usuario</label>
                               <div class="col-md-9">
                                 <input type="text" placeholder="USUARIO" class="form-control" name="usuario">

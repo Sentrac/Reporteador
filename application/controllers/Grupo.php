@@ -101,7 +101,8 @@ class Grupo extends CI_Controller {
 				'alias' => $alias,
 				'rfc' => $rfc,
 				'iframe' => $iframe,
-				'descripcion' => $descripcion
+				'descripcion' => $descripcion,
+				'usuario' => $this->session->userdata("usuario")
 			);
 			if($this->Modelo_grupo->updateGrupo($array,$idgrupo)){
 				$this->session->set_flashdata('editar_grupo','EL GRUPO SE HA MODIFICADO');

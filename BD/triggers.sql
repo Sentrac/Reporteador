@@ -20,7 +20,7 @@ CREATE TRIGGER usuario_insert after INSERT
 on usuarios
 for each ROW
 insert into bitacora_usuario(
-idbitacora,accion,id_usuario,nombre,apellidosrol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,user_session,fecha)
+idbitacora,accion,id_usuario,nombre,apellidos,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
 (null,'AGREGO USUARIO',new.idusuarios,new.nombre,new.apellidos,new.tipo_usuario,null,new.fk_grupou,null,new.user_session,now());
 
@@ -29,17 +29,18 @@ CREATE TRIGGER usuario_delete after DELETE
 on usuarios
 for each ROW
 insert into bitacora_usuario(
-idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+idbitacora,accion,id_usuario,nombre,apellidos,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'ELIMINO USUARIO',old.idusuarios,old.nombre,null,old.apellidos,null,old.telefono,null,old.email,null,old.tipo_usuario,null,old.fk_grupou,null,user(),now());
+(null,'ELIMINO USUARIO',old.idusuarios,old.nombre,old.apellidos,old.tipo_usuario,null,old.fk_grupou,null,old.user_session,now());
 
+--MODIFICAR USUARIO
 CREATE TRIGGER usuario_update after UPDATE
 on usuarios
 for each ROW
 insert into bitacora_usuario(
 idbitacora,accion,id_usuario,nombre,apellidos,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
 VALUES
-(null,'ACTUALIZO USUARIO',old.idusuarios,new.nombre,new.apellidos,new.tipo_usuario,old.tipo_usuario,new.fk_grupou,old.fk_grupou,new.user_session,now());
+(null,'MODIFICO USUARIO',old.idusuarios,new.nombre,new.apellidos,new.tipo_usuario,old.tipo_usuario,new.fk_grupou,old.fk_grupou,new.user_session,now());
 
 /*create table bitacora_grupo(
     idbitacora int not null primary key AUTO_INCREMENT,
@@ -67,19 +68,18 @@ CREATE TRIGGER grupo_update after UPDATE
 on grupo
 for each ROW
 insert into bitacora_grupo(
-idbitacora,accion,id_grupo,nombre_nuevo,nombre_viejo,alias_nuevo,alias_viejo,rfc_nuevo,rfc_viejo,descripcion_nuevo,descripcion_viejo,usuario,fecha)
+idbitacora,accion,id_grupo,nombre_nuevo,nombre_viejo,alias,rfc,iframe,usuario,fecha)
 VALUES
-(null,'MODIFICO GRUPO',old.idgrupo,new.nombre,old.nombre,new.alias,old.alias,new.rfc,old.rfc,new.descripcion,old.descripcion,user(),now());
+(null,'MODIFICO GRUPO',old.idgrupo,new.nombre,old.nombre,new.alias,new.rfc,new.iframe,new.user_session,now());
 
 --ELIMINAR GRUPO--
 CREATE TRIGGER grupo_delete after DELETE
 on grupo
 for each ROW
 insert into bitacora_grupo(
-idbitacora,accion,id_grupo,nombre_nuevo,nombre_viejo,alias_nuevo,alias_viejo,rfc_nuevo,rfc_viejo,descripcion_nuevo,descripcion_viejo,usuario,fecha)
+idbitacora,accion,id_grupo,nombre_nuevo,nombre_viejo,alias_nuevo,rfc_nuevo,iframe,usuario,fecha)
 VALUES
-(null,'ELIMINO GRUPO',old.idgrupo,old.nombre,null,old.alias,null,old.rfc,null,old.descripcion,null,user(),now());
-
+(null,'ELIMINO GRUPO',old.idgrupo,old.nombre,null,old.alias,null,old.rfc,old.iframe,old.usuario,now());
 /*create table bitacora_equipo(
     idbitacora int not null primary key AUTO_INCREMENT,
     accion VARCHAR(17),
@@ -106,27 +106,22 @@ CREATE TRIGGER equipo_update after UPDATE
 on equipos
 for each ROW
 insert into bitacora_equipo(
-idbitacora,accion,id_equipo,nombre_host_nuevo,nombre_host_viejo,dns_nuevo,dns_viejo,descripcion_nuevo,descripcion_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+idbitacora,accion,id_equipo,nombre_host,dns,dns_viejo,grupo,usuario,fecha)
 VALUES
-(null,'MODIFICAR EQUIPO',old.idequipos,new.nombre_host,old.nombre_host,new.dns,old.dns,new.descripcion,old.descripcion,new.fk_grupo,old.fk_grupo,user(),now());
+(null,'MODIFICO EQUIPO',old.idequipos,new.nombre_host,new.dns,old.dns,new.fk_grupo,new.usuario,now());
 
 --ELIMINO EQUIPO--
 CREATE TRIGGER equipo_delete after DELETE
 on equipos
 for each ROW
 insert into bitacora_equipo(
-idbitacora,accion,id_equipo,nombre_host_nuevo,nombre_host_viejo,dns_nuevo,dns_viejo,descripcion_nuevo,descripcion_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
+idbitacora,accion,id_equipo,nombre_host,dns,dns_viejo,grupo,usuario,fecha)
 VALUES
-(null,'ELIMINO EQUIPO',old.idequipos,old.nombre_host,null,old.dns,null,old.descripcion,null,old.fk_grupo,null,user(),now());
+(null,'ELIMINO EQUIPO',old.idequipos,old.nombre_host,old.dns,null,old.fk_grupo,old.usuario,now());
 
 
 
 
 
-CREATE TRIGGER usuario_insert after INSERT
-on usuarios
-for each ROW
-insert into bitacora_usuario(
-idbitacora,accion,id_usuario,nombre_nuevo,nombre_viejo,apellidos_nuevo,apellidos_viejo,telefono_nuevo,telefono_viejo,email_nuevo,email_viejo,rol_nuevo,rol_viejo,grupo_nuevo,grupo_viejo,usuario,fecha)
-VALUES
-(null,'AGREGO USUARIO',new.idusuarios,new.nombre,null,new.apellidos,null,new.telefono,null,new.email,null,new.tipo_usuario,null,new.fk_grupou,null,user(),now());
+
+
