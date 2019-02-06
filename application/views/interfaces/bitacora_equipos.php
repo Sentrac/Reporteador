@@ -1,4 +1,4 @@
- <!-- ============================================================== -->
+<!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -26,7 +26,7 @@
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
                       <div class="card-header">
-                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Usuarios</h4>
+                        <h4 class="float-left m-b-0 text-white"><i class="mdi mdi-account-multiple"></i> Equipos</h4>
                       </div>
                       <div class="card-body">
                       <div class="table-responsive">
@@ -35,60 +35,27 @@
                             <tr>
                               <th>Usuario</th>
                               <th>Acción</th>
-                              <th>Nombre</th>
-                              <th>Apellido</th>
-                              <th>Rol actual</th>
-                              <th>Rol anterior</th>
-                              <th>Grupo Actual</th>
-                              <th>Grupo anterior</th>
+                              <th>Nombre Host</th>
+                              <th>DNS Actual</th>
+                              <th>DNS Anterior</th>
+                              <th>Grupo</th>
                               <th>Fecha</th>
                             </tr>
                           </thead>
                           <tbody>
-                          <?php if(isset($b_usuarios)){  
-                                  foreach ($b_usuarios as $b_user){?>  
+                          <?php if(isset($b_equipos)){  
+                                  foreach ($b_equipos as $equipo){?>  
                             <tr>
-                            <td><?php echo $b_user->usuario; ?></td>
-                              <td><?php echo $b_user->accion; ?></span></td>
-                              <td><?php echo $b_user->nombre; ?></td>
-                              <td><?php echo $b_user->apellidos; ?></td>
-                              <?php
-                                if($b_user->rol_nuevo=='AD'){
-                                    $ad='ADMINISTRADOR';?>
-                                    <td><span class="label label-primary"><?php echo $ad; ?></span></td>
-                                <?php }
-                                if($b_user->rol_nuevo=='SU'){
-                                    $su='SUPER ADMINISTRADOR';?>
-                                    <td><span class="label label-info"><?php echo $su; ?></span></td>
-                               <?php  }if($b_user->rol_nuevo=='CO'){
-                                    $co='CONSULTOR';?>
-                                    <td><span class="label label-megna"><?php echo $co; ?></span></td>
-                              <?php } ?>
-                              <?php
-                                if($b_user->rol_viejo=='AD'){
-                                    $ad='ADMINISTRADOR';?>
-                                    <td><pan class="label label-primary"><?php echo $ad; ?></span></td>
-                                <?php }
-                                if($b_user->rol_viejo=='SU'){
-                                    $su='SUPER ADMINISTRADOR';?>
-                                    <td><span class="label label-info"><?php echo $su; ?></span></td>
-                               <?php  }if($b_user->rol_viejo=='CO'){
-                                    $co='CONSULTOR';?>
-                                    <td><span class="label label-megna"><?php echo $co; ?></span></td>
-                              <?php } if($b_user->rol_viejo==NULL){
-                                    $null=''; ?>
-                                    <td><span><?php echo $null; ?></span></td>
-                              <?php }
-                              
-                            ?>
-                            <td><?php echo $b_user->grupo_nuevo; ?></td>
-                            <td><?php echo $b_user->grupo_viejo; ?></td>
-                              
-                              <td><?php echo $b_user->fecha; ?></td>
+                                <td><?php echo $equipo->usuario; ?></td>
+                                <td><?php echo $equipo->accion; ?></td>
+                                <td><?php echo $equipo->nombre_host; ?></td>
+                                <td><?php echo $equipo->dns; ?></td>
+                                <td><?php echo $equipo->dns_viejo ?></td>
+                                <td><?php echo $equipo->grupo; ?></td>
+                                <td><?php echo $equipo->fecha; ?></td>
                             </tr>
-                                <?php }
-                          }
-                          ?>
+                                  <?php }
+                          }?>
                           </tbody>
                         </table>
                       </div>
@@ -112,12 +79,11 @@
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
-        
-
-
-
-
-            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->

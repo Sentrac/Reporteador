@@ -53,7 +53,8 @@ class Grupo extends CI_Controller {
 				'nombre' => $nombre,
 				'alias' => $alias,
 				'rfc' => $rfc,
-				'descripcion' => $descripcion
+				'descripcion' => $descripcion,
+				'usuario' => $this->session->userdata("usuario")
 			);
 			if($this->Modelo_grupo->registrarGrupos($array)){
 				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO'); 

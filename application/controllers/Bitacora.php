@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bitacora extends CI_Controller {
 
@@ -15,14 +14,17 @@ class Bitacora extends CI_Controller {
     }
     public function usuarios(){
         $this->data['b_usuarios']=$this->Modelo_bitacora->getusuariosB();
-        $this->data['b_grupo']=$this->Modelo_bitacora->getGrupoB();
-        $this->data['b_grupo2']=$this->Modelo_bitacora->getGrupoB2();
         $this->load->view('interfaces/bitacora_usuario',$this->data);
 		$this->load->view('temps/footer');
     }
     public function grupos(){
         $this->data['b_grupos']=$this->Modelo_bitacora->getgruposB();
         $this->load->view('interfaces/bitacora_grupo',$this->data);
+		$this->load->view('temps/footer');
+    }
+    public function equipos(){
+        $this->data['b_equipos']=$this->Modelo_bitacora->getEquiposB();
+        $this->load->view('interfaces/bitacora_equipos',$this->data);
 		$this->load->view('temps/footer');
     }
 }

@@ -65,7 +65,8 @@ class Equipos extends CI_Controller {
 				'nombre_host' => $nom_host,
 				'dns' => $dns,
 				'fk_grupo' => $fkgrupo,
-				'descripcion' => $descripcion
+				'descripcion' => $descripcion,
+				'usuario' => $this->session->userdata("usuario")
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO'); 

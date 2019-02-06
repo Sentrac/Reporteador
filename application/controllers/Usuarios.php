@@ -80,7 +80,8 @@ class Usuarios extends CI_Controller {
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,
-				'fk_grupou' => $grupo
+				'fk_grupou' => $grupo,
+				'usuario_agrego' => $this->session->userdata("usuario")
 			);
 				if($this->Modelo_usuarios->registrarUsuarios($d)){
 					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
@@ -124,7 +125,8 @@ class Usuarios extends CI_Controller {
 				'usuario' => $user,
 				'pass' => md5($psw),
 				'tipo_usuario' => $tipouser,
-				'fk_grupou' => $grupo
+				'fk_grupou' => $grupo,
+				'usuario_agrego' => $this->session->userdata("usuario")
 			);
 			if($this->Modelo_usuarios->registrarUsuarios($d)){
 				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 

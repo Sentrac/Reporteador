@@ -40,7 +40,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Correo</label>
                               <div class="col-md-9">
-                                <input disabled type="email" class="form-control" value="<?php echo $post->email;?>">
+                                <input disabled type="email" class="form-control" value="<?php echo $post->usuario;?>">
                               </div>
                             </div>
                             <div class="form-group row">
