@@ -47,7 +47,7 @@
                                   foreach ($b_grupos as $grupo){?>  
                             <tr>
                                 <td><?php echo $grupo->usuario; ?></td>
-                                <td><?php echo $grupo->accion; ?></td>
+                                <td><span class="badge badge-secondary"><?php echo $grupo->accion; ?></span></td>
                                 <td><?php echo $grupo->nombre_nuevo; ?></td>
                                 <td><?php echo $grupo->nombre_viejo; ?></td>
                                 <td><?php echo $grupo->alias_nuevo ?></td>

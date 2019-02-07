@@ -138,22 +138,8 @@ inner join grupo
 where bitacora_usuario.grupo_viejo=grupo.idgrupo;
 
 
-
-
-
-
-<td><?php echo $b_user->grupo_actual; ?></td>  
-                                <?php if($b_user->accion=='AGREGO USUARIO'){
-                               $grupo=NULL;?>
-                                <td><?php echo $grupo; ?></td>
-                              <?php }if($b_user->accion=='MODIFICO USUARIO'){?>
-                              <td><?php echo $b_nGrupo[$bg]->nombre; ?></td>
-                              <?php }?>
-                                 <td><?php echo $b_user->fecha; ?></td>
-                               </tr>
-                                   <?php }
-                                  echo '<pre>';
-                                  print_r($b_nGrupo);
-                          }
-                          ?>
+create view b_equipos as (select bitacora_equipo.idbitacora,bitacora_equipo.accion,bitacora_equipo.id_equipo,bitacora_equipo.nombre_host,bitacora_equipo.dns,bitacora_equipo.dns_viejo,bitacora_equipo.grupo,grupo.nombre,bitacora_equipo.usuario,bitacora_equipo.fecha
+from bitacora_equipo
+join grupo
+on bitacora_equipo.grupo=grupo.idgrupo);
 

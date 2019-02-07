@@ -52,7 +52,7 @@
                                   foreach ($b_usuarios as $b_user ){ ?>
                             <tr>
                             <td><?php echo $b_user->usuario; ?></td>
-                              <td><?php echo $b_user->accion; ?></span></td>
+                              <td><span class="badge badge-secondary"><?php echo $b_user->accion; ?></span></td>
                               <td><?php echo $b_user->nombre; ?></td>
                               <td><?php echo $b_user->apellidos; ?></td>
                               <?php

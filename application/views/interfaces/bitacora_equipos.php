@@ -47,11 +47,11 @@
                                   foreach ($b_equipos as $equipo){?>  
                             <tr>
                                 <td><?php echo $equipo->usuario; ?></td>
-                                <td><?php echo $equipo->accion; ?></td>
+                                <td><span class="badge badge-secondary"><?php echo $equipo->accion; ?></span></td>
                                 <td><?php echo $equipo->nombre_host; ?></td>
                                 <td><?php echo $equipo->dns; ?></td>
                                 <td><?php echo $equipo->dns_viejo ?></td>
-                                <td><?php echo $equipo->grupo; ?></td>
+                                <td><?php echo $equipo->nombre; ?></td>
                                 <td><?php echo $equipo->fecha; ?></td>
                             </tr>
                                   <?php }
