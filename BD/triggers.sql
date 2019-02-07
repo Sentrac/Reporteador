@@ -119,9 +119,41 @@ idbitacora,accion,id_equipo,nombre_host,dns,dns_viejo,grupo,usuario,fecha)
 VALUES
 (null,'ELIMINO EQUIPO',old.idequipos,old.nombre_host,old.dns,null,old.fk_grupo,old.usuario,now());
 
+/**************************************VISTAS******************************************************/
+
+select DISTINCT b_grupoNuevo.id_usuario,b_grupoNuevo.accion,b_grupoNuevo.nombre,b_grupoNuevo.apellidos,b_grupoNuevo.rol_nuevo,b_grupoNuevo.rol_viejo,b_grupoNuevo.grupo_nuevo,b_grupoNuevo.grupo_actual,b_grupoViejo.grupo_viejo, b_grupoViejo.grupo_anterior,b_grupoNuevo.usuario,b_grupoNuevo.fecha
+from b_grupoNuevo
+join b_grupoViejo;
+
+
+
+SELECT bitacora_usuario.accion,bitacora_usuario.id_usuario,bitacora_usuario.nombre,bitacora_usuario.apellidos, bitacora_usuario.rol_nuevo,bitacora_usuario.rol_viejo,bitacora_usuario.grupo_nuevo,grupo.nombre as grupo_actual,bitacora_usuario.usuario,bitacora_usuario.fecha
+from bitacora_usuario
+inner join grupo
+where bitacora_usuario.grupo_nuevo=grupo.idgrupo;
+
+SELECT bitacora_usuario.accion,bitacora_usuario.id_usuario,bitacora_usuario.nombre,bitacora_usuario.apellidos, bitacora_usuario.rol_nuevo,bitacora_usuario.rol_viejo,bitacora_usuario.grupo_viejo,grupo.nombre as grupo_anterior,bitacora_usuario.usuario,bitacora_usuario.fecha
+from bitacora_usuario
+inner join grupo
+where bitacora_usuario.grupo_viejo=grupo.idgrupo;
 
 
 
 
 
+
+<td><?php echo $b_user->grupo_actual; ?></td>  
+                                <?php if($b_user->accion=='AGREGO USUARIO'){
+                               $grupo=NULL;?>
+                                <td><?php echo $grupo; ?></td>
+                              <?php }if($b_user->accion=='MODIFICO USUARIO'){?>
+                              <td><?php echo $b_nGrupo[$bg]->nombre; ?></td>
+                              <?php }?>
+                                 <td><?php echo $b_user->fecha; ?></td>
+                               </tr>
+                                   <?php }
+                                  echo '<pre>';
+                                  print_r($b_nGrupo);
+                          }
+                          ?>
 

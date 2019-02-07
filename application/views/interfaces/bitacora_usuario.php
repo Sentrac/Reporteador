@@ -42,11 +42,14 @@
                               <th>Grupo Actual</th>
                               <th>Grupo anterior</th>
                               <th>Fecha</th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>
-                          <?php if(isset($b_usuarios)){  
-                                  foreach ($b_usuarios as $b_user){?>  
+                         
+                          <?php 
+                                if(isset($b_usuarios)){  
+                                  foreach ($b_usuarios as $b_user ){ ?>
                             <tr>
                             <td><?php echo $b_user->usuario; ?></td>
                               <td><?php echo $b_user->accion; ?></span></td>
@@ -68,25 +71,30 @@
                                 if($b_user->rol_viejo=='AD'){
                                     $ad='ADMINISTRADOR';?>
                                     <td><pan class="label label-primary"><?php echo $ad; ?></span></td>
-                                <?php }
-                                if($b_user->rol_viejo=='SU'){
+                              <?php }
+                              if($b_user->rol_viejo=='SU'){
                                     $su='SUPER ADMINISTRADOR';?>
                                     <td><span class="label label-info"><?php echo $su; ?></span></td>
-                               <?php  }if($b_user->rol_viejo=='CO'){
+                              <?php  }if($b_user->rol_viejo=='CO'){
                                     $co='CONSULTOR';?>
                                     <td><span class="label label-megna"><?php echo $co; ?></span></td>
                               <?php } if($b_user->rol_viejo==NULL){
                                     $null=''; ?>
                                     <td><span><?php echo $null; ?></span></td>
-                              <?php }
-                              
-                            ?>
-                            <td><?php echo $b_user->grupo_nuevo; ?></td>
-                            <td><?php echo $b_user->grupo_viejo; ?></td>
-                              
-                              <td><?php echo $b_user->fecha; ?></td>
-                            </tr>
-                                <?php }
+                              <?php } ?>
+                                    <td><?php echo $b_user->grupo_actual; ?></td>
+                              <?php if($b_user->accion=='AGREGO USUARIO'){
+                                    $agrego=NULL;?>
+                                    <td><?php echo $agrego; ?></td>
+                              <?php }if($b_user->accion=='ELIMINO USUARIO'){
+                                    $elimino=NULL; ?>
+                                    <td><?php echo $elimino; ?></td>
+                                <?php }if($b_user->accion=='MODIFICO USUARIO'){?>
+                                  <td><?php echo $b_user->grupo_anterior; ?></td>
+                                <?php } ?>
+                                    <td><?php echo $b_user->fecha; ?></td>
+                                    <td></td>
+                               <?php }
                           }
                           ?>
                           </tbody>
@@ -121,3 +129,9 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+
+
+
+
+
+   
