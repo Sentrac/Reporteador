@@ -29,3 +29,5 @@ class Bitacora extends CI_Controller {
     }
 }
 ?>
+
+

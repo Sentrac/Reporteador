@@ -54,12 +54,12 @@
                             }); 
                         });
                     </script>
-                <?php }if($this->session->flashdata('grupo')){?>
+                <?php }if($this->session->flashdata('grupo_modificar')){?>
                     <script>
                         $(document).ready(function () {
                             $.toast({
                                 heading: 'Advertencia',
-                                text: '<?= $this->session->flashdata('grupo'); ?>',
+                                text: '<?= $this->session->flashdata('grupo_modificar'); ?>',
                                 icon: 'warning',
                                 showHideTransition: 'fade',
                                 allowToastClose: true,

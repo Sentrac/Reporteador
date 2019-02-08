@@ -34,23 +34,14 @@
                                     loader: true,
                                     loaderBg: "#000000",
                                 });
-                <?php echo validation_errors('
-                      
-                                $.toast({
-                                    heading: "Advertencia",
-                                    text: "','",
-                                    icon: "warning",
-                                    showHideTransition: "fade",
-                                    allowToastClose: true,
-                                    hideAfter: 3500,
-                                    stack: false,
-                                    position: "top-right",
-                                    textAlign: "left",
-                                    loader: true,
-                                    loaderBg: "#000000",
-                                });');?>
-                    
+                  ');?>
                 </script>
+                <?php echo validation_errors('<div class="alert alert-danger alert-dismissible fade show">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                 </button>',
+                                              '</div>'); 
+                ?>
                 <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
@@ -175,12 +166,6 @@
                               <label class="control-label text-center col-md-2">Telefono</label>
                               <div class="col-md-9">
                                 <input type="text" placeholder="TELEFONO" class="form-control" name="telefono">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="control-label text-center col-md-2">Correo</label>
-                              <div class="col-md-9">
-                                <input type="email" placeholder="CORREO" class="form-control" name="email">
                               </div>
                             </div>
                             <div class="form-group row">

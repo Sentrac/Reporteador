@@ -3,7 +3,7 @@
 class Modelo_bitacora extends CI_Model{
 
     public function getusuariosB(){
-       $sql=$this->db->get('bitacora_usuario');
+        $sql=$this->db->get('b_grupos');
        return $sql->result();
     }
     public function getGruposB(){
@@ -11,7 +11,7 @@ class Modelo_bitacora extends CI_Model{
         return $sql->result();
     }
     public function getEquiposB(){
-        $sql=$this->db->get('bitacora_equipo');
+        $sql=$this->db->get('b_equipos');
         return $sql->result();
     }
 }

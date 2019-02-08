@@ -86,7 +86,7 @@
                     <!-- Card -->
                     <div class="card text-center">
                       <div class="card-body">
-                      <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
+                      <center><img class="card-img-top img-responsive" src="../assets/images/equipos.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
                         <a href="<?= base_url() ?>Equipos/editarEquipo?idequipo=<?php echo $equipo->idequipos; ?>">
@@ -129,7 +129,7 @@
                     <div class="card text-center">
                         
                       <div class="card-body">
-                      <center><img class="card-img-top img-responsive" src="../assets/images/server.png" alt="Card image cap"></center>
+                      <center><img class="card-img-top img-responsive" src="../assets/images/equipos.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
                         <P><?php echo $equipo->descripcion;?></P>
@@ -201,9 +201,9 @@
                             type: response.status,
                             title: response.message,
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 1700
                         });
-                        setTimeout(redirect(fk), 1500);
+                        setTimeout(redirect(fk), 1700);
                     })
                     .fail(function(){
                         swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
