@@ -55,6 +55,14 @@
             </div>
             <div class="login-box card bg-papaya">
                 <h1 class="box-title m-b-40 text-center txt-blanco">Reporteador</h1>
+                <?php if($this->session->flashdata('chanPass')) {?>
+                    <div class="alert">
+                        <h5 class="txt-blanco">
+                            <i class="fa fa-check-circle text-success"></i>
+                            <?php echo $this->session->flashdata('chanPass'); ?>
+                        </h5>
+                    </div>
+                <?php } ?>
                 <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
                <?php echo validation_errors('<div class="error-login tajawalR ls1">', '</div>'); ?>
                <div class="font-medium text-warning "><center><?php echo $this->session->flashdata('error'); ?></center></div>
