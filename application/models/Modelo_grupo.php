@@ -19,6 +19,9 @@ class Modelo_grupo extends CI_Model{
         if($this->session->userdata('tipo_usuario')=='AD'){
             $this->db->select("grupo,iframe"); 
         }
+        if($this->session->userdata('tipo_usuario')=='CO'){
+            $this->db->select("grupo,iframe"); 
+        }
         $this->db->select("grupo"); 
         $this->db->from('usuarios_grupo');  
         $this->db->where("usuario",$this->session->userdata("usuario"));
