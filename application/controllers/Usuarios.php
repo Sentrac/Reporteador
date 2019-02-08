@@ -117,7 +117,7 @@ class Usuarios extends CI_Controller {
 							Para comenzar a usar su cuenta de WReporter, haga clic en el botón para confirmar su dirección de correo electrónico:
 							<br><br>
 							<center>
-								<a href="'.$url.'Login/verificar/'.$cod.'?iu='.$ui.'">
+								<a href="'.$url.'Login/verificar/'.$cod.'/'.$ui.'">
 									<button style="display: inline-block;
 									padding: 10px 20px;
 									font-size: 14px;
