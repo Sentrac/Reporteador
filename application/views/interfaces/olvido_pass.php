@@ -9,24 +9,24 @@
     <meta name="description" content="Reporteador">
     <meta name="author" content="WarrioPracticantes">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/ico" sizes="16x16" href="../../assets/images/favicon.ico">
+    <link rel="icon" type="image/ico" sizes="16x16" href="../assets/images/favicon.ico">
     <title>Reporteador</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
-    <link href="../../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="../../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
-    <link href="../../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <link href="../../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
     <!--This page css - Morris CSS -->
-    <link href="../../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <link href="../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../assets/css/style.css" rel="stylesheet">
-    <link href="../../assets/css/style2.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/style2.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="../../assets/css/colors/red.css" id="theme" rel="stylesheet">
+    <link href="../assets/css/colors/red.css" id="theme" rel="stylesheet">
     <!-- Icons -->
-    <link rel="stylesheet" href="../../assets/icons/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/icons/material-design-iconic-font/css/materialdesignicons.min.css">
     <!--<link rel="stylesheet" href="http://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and mfile:///home/sentrack/Documentos/edia queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +50,7 @@
         <div class="login-register bg-gradient">
             <div class="d-flex no-block align-items-center m-b-15">
                 <div class="m-auto">
-                    <img src="../../assets/images/Logo WL BLANCO_v.png" height="100px" alt="homepage" class="light-logo">
+                    <img src="../assets/images/Logo WL BLANCO_v.png" height="100px" alt="homepage" class="light-logo">
                 </div>
             </div>
             <div class="login-box card bg-papaya">
@@ -92,21 +92,21 @@
             </div>                      
         </div>
     </section>
-    <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/plugins/popper/popper.min.js"></script>
-    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/plugins/popper/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../../assets/js/jquery.slimscroll.js"></script>
+    <script src="../assets/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
-    <script src="../../assets/js/waves.js"></script>
+    <script src="../assets/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="../../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="../../assets/js/custom.min.js"></script>
+    <script src="../assets/js/custom.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
@@ -114,14 +114,14 @@
     <!--<script src="assets/plugins/chartist-js/dist/chartist.min.js"></script>
     <script src="assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>-->
     <!--c3 JavaScript -->
-    <script src="../../assets/plugins/d3/d3.min.js"></script>
-    <script src="../../assets/plugins/c3-master/c3.min.js"></script>
+    <script src="../assets/plugins/d3/d3.min.js"></script>
+    <script src="../assets/plugins/c3-master/c3.min.js"></script>
     <!-- Chart JS -->
     <!--<script src="js/dashboard1.js"></script>-->
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
-    <script src="../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 
 </html>

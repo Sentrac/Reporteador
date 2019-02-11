@@ -219,4 +219,19 @@ class Login extends CI_Controller {
             }
         }
     }
+    function comand(){
+        // $command = "whoami";
+        $command = "python3 /var/www/html/Reporteador/assets/Docker.py 2>&1";
+        $qwe = exec($command);
+        try{
+            if($qwe){    
+                echo "correcto <br>".$qwe;
+            } else {
+                echo "error";
+            }
+        } catch(Exception $e){
+            echo $e;           
+        }
+        
+    }
 }
