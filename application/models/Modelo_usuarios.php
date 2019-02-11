@@ -103,7 +103,35 @@ class Modelo_usuarios extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
-        
+    public function regTkn($tk,$iu,$tt)
+    {
+        $d = array(
+            'tkn' => $tk,
+            'fkusuarios' => $iu,
+            'status' => '0',
+            'typetkn' => $tt
+        );
+        $this->db->where('tkn',$tk);
+        $validar=$this->db->get('tkns');
+        if($validar->num_rows()>0){
+            return false;
+        } else {
+            $this->db->insert('tkns',$d);        
+            return true;
+        }
+    }
+    public function delTkUS($iu,$it)
+    {
+        $this->db->where('id', $it);
+        $this->db->delete('tkns');
+        $this->db->where('idusuarios', $iu);
+        $this->db->delete('usuarios');
+    }
+    public function delTk($it)
+    {
+        $this->db->where('id', $it);
+        $this->db->delete('tkns');
+    }
 }
 
 ?>

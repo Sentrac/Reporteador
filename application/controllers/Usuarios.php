@@ -41,7 +41,14 @@ class Usuarios extends CI_Controller {
 		$this->load->view('temps/footer');
     }
     //FUNCIÓN DONDE SE REGISTRA UN NUEVO USUARIO
-	public function registrar_usuarios(){		
+	public function registrar_usuarios(){
+		function generarCodigo($longitud) {
+			$key = '';
+			$pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+			$max = strlen($pattern)-1;
+			for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+			return $key;
+		}
 		//VALIDACIONES DE CAMPOS
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|alpha_dash');
@@ -83,13 +90,70 @@ class Usuarios extends CI_Controller {
 				'fk_grupou' => $grupo,
 				'user_session' => $this->session->userdata("usuario")
 			);
-				if($this->Modelo_usuarios->registrarUsuarios($d)){
+			
+			$this->load->library('email');
+
+			$url = base_url();
+			$cod = generarCodigo(64);
+			
+			$this->email->from('warlab2019@gmail.com', 'Warriors Labs');
+			$this->email->to($d['usuario']);
+			$this->email->subject('Cuenta de WReporter');
+
+			if($this->Modelo_usuarios->registrarUsuarios($d)){
+				$ui =  $this->db->insert_id();
+				$this->email->message(
+					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+					<tr>
+						<td align="center" style="padding: 0px 0 40px 0;">
+							<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+						</td>
+					</tr>
+					<tr>
+					   <td style="padding: 60px 50px 60px 50px;color:#000;">
+							<h1>Hola '.$d['nombre'].'!</h1>
+							Para comenzar a usar su cuenta de WReporter, haga clic en el botón para confirmar su dirección de correo electrónico:
+							<br><br>
+							<center>
+								<a href="'.$url.'Login/verificar/'.$cod.'/'.$ui.'">
+									<button style="display: inline-block;
+									padding: 10px 20px;
+									font-size: 14px;
+									cursor: pointer;
+									text-align: center;
+									text-decoration: none;
+									outline: none;
+									color: #fff;
+									background-color: #DD333B;
+									border: none;
+									border-radius: 15px;
+									box-shadow: 0 9px #999;" class="button">Confirmar correo electrónico</button>
+								</a>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="padding: 40px 0 0px 0;">
+							<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+						</td>
+					</tr>
+					</table>'
+				);
+				$this->Modelo_usuarios->regTkn($cod,$ui,'VF');
+				$it = $this->db->insert_id();
+				if($this->email->send()){
+					echo 'enviado'.'<br>';
 					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
 					redirect('/Usuarios/usuarios','refresh');
-				}else{
-					$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+				} else {
+					$this->Modelo_usuarios->delTkUS($ui,$it);
+					$this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
 					redirect('/Usuarios/usuarios','refresh');
 				}
+			}else{
+				$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+				redirect('/Usuarios/usuarios','refresh');
+			}
 		}
 	}
 	public function registrar_usuarios_admin(){		

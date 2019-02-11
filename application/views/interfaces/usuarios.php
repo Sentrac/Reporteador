@@ -222,7 +222,7 @@
                                             "orderable": false, //set not orderable
                                         },
                                         ],
-
+ 
                                     });
                                     $('#modal_contac').modal('show');
                                     $('.modal-title').text('Contactos');
