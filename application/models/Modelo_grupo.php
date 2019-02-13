@@ -40,8 +40,11 @@ class Modelo_grupo extends CI_Model{
        if($validar->num_rows()>0){
           return false;
        } else {
-            $count=$this->db->insert('grupo',$array);  
-            return true;   
+            if($this->db->insert('grupo',$array)){
+                return true;
+            }else {
+                return false;
+            }
         }    
     }
 

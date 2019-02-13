@@ -71,6 +71,11 @@
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
                             <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Enviar</button>
+                            <br>
+                            <br>
+                            <a href="<?= base_url()."login" ?>">
+                                <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light">Cancelar</button>
+                            </a>
                         </div>
                     </div>
                     <?php if($this->session->flashdata('recuperar_pass')){?>

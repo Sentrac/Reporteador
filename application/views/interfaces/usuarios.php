@@ -148,6 +148,9 @@
                                     <a href="javascript:void(0)" onclick="getContacts(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-verde" title="Contactos">
                                         <span class="mdi mdi-eye" aria-hidden="true"></span>
                                     </a>
+                                    <a href="javascript:void(0)" onclick="updPass(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-negro" title="Cambiar Contraseña">
+                                        <span class="mdi mdi-lock" aria-hidden="true"></span>
+                                    </a>
                                 </div>
                               </td>
                             </tr>
@@ -293,7 +296,12 @@
                                         swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
                                     });
                                 }
-                              
+                                function updPass(cu) {
+                                    $('#edit_pass').modal('show');
+                                    document.getElementById('form_pass').reset();
+                                    $('#idps').val(cu); 
+                                }
+
                                 $(document).ready(function() {
                                     <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                                     $('#Rol').change(function () {
@@ -326,10 +334,35 @@
                                         .fail(function(){
                                             swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
                                         });
-
-
                                         event.preventDefault();
-                                    }); 
+                                    });
+
+                                    $('#form_pass').submit(function (event) {
+                                        var datos = $('#form_pass').serialize();
+
+                                        $.ajax({
+                                            url: "<?php echo site_url('Usuarios/updpass')?>",
+                                            type: "POST",
+                                            data: datos,
+                                            beforeSend: function() {
+                                                $("#GuardarPass").html("Guardando...");
+                                            }
+                                        })
+                                        .done(function(repons){
+                                            $("#GuardarPass").html("Guardar");
+                                            if(repons == 1){
+                                                swal('Guardado','','success');
+                                            }else {
+                                                $('#form_pass').modal('hide');
+                                                swal('Se han encontrado errores:',repons,'error');
+                                            }
+                                            // setTimeout(redirect, 1500);
+                                        })
+                                        .fail(function(){
+                                            swal('Oops...', 'Se tuvieron errores con AJAX !', 'error');
+                                        });
+                                        event.preventDefault();
+                                    });
                                 });
                                 
                             </script>
@@ -481,6 +514,55 @@
                                                         <div class="col-md-6 offset-sm-3">
                                                             <center>
                                                             <button class="btn btn-success" id="Guardar"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                                            </center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="modal fade" id="edit_pass" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Cambiar contraseña</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form_pass" class="form-horizontal" method="POST">
+                                    <input type="hidden" value="" name="idps" id="idps"/> 
+                                    <div class="form-body">
+                                        
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Nueva contraseña</label>
+                                            <div class="col-md-9">
+                                                <input name="new_pass" id="new_pass" placeholder="Nueva contraseña" class="form-control" type="password">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Repetir nueva contraseña</label>
+                                            <div class="col-md-9">
+                                                <input name="new_pass2" id="new_pass2" placeholder="Repetir nueva contraseña" class="form-control" type="password">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 offset-sm-3">
+                                                            <center>
+                                                            <button class="btn btn-success" id="GuardarPass"> <i class="mdi mdi-content-save"></i> Guardar</button>
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
                                                             </center>
                                                         </div>

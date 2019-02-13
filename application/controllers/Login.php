@@ -69,9 +69,9 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('repeat_pswd','Repetir contraseña','required|matches[new_pswd]|min_length[8]|max_length[16]|alpha_numeric_spaces');
         
         if($this->form_validation->run()==FALSE){
-            $this->load->view('temps/header');
-            $this->data['posts']=$this->Modelo_login->getRoles();
-            redirect('Login/vistaPassword','refresh');
+            $asd =  validation_errors();
+            $this->session->set_flashdata('ErrorPass',$asd);
+            redirect('/Login/vistaPassword');
         }else {
             $sql=$this->db->select("*")->from("usuarios")
                                         ->where("usuario",$this->session->userdata("usuario"))
@@ -211,7 +211,6 @@ class Login extends CI_Controller {
         
         if($this->form_validation->run()==FALSE){
             $asd =  validation_errors();
-            // echo $asd;
             $this->session->set_flashdata('validate',$asd);    
             redirect('/Login/recover_pass/'.$tkn.'/'.$id);
         } else {
@@ -220,20 +219,5 @@ class Login extends CI_Controller {
                 redirect('Login','refresh');
             }
         }
-    }
-    function comand(){
-        // $command = "whoami";
-        $command = "python3 /var/www/html/Reporteador/assets/Docker.py 2>&1";
-        $qwe = exec($command);
-        try{
-            if($qwe){    
-                echo "correcto <br>".$qwe;
-            } else {
-                echo "error";
-            }
-        } catch(Exception $e){
-            echo $e;           
-        }
-        
     }
 }
