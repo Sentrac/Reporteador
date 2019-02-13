@@ -19,6 +19,32 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
+                <?php if($this->session->flashdata('ErrorPass')) {?>
+                  <script>
+                      $(document).ready(function()
+                      {
+                        $("#modalerror").modal("show");
+                      });
+                  </script>
+                <?php } ?>
+                <div class="modal fade" id="modalerror" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>Se encontraron los siguientes errores:</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="alert alert-danger alert-dismissible fade show">
+                            <?= $this->session->flashdata('ErrorPass'); ?>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
                 <?php echo form_open("Login/cambiarPassword"); ?>
                 <div class="Row">
                   <div class="col-lg-12">
@@ -26,25 +52,7 @@
                       <div class="card-header">
                         <h4 class="m-b-0 text-white">Cambiar Contraseña</h4>
                       </div>
-                      <center><?php echo validation_errors('
-                      <script>
-                            $(document).ready(function () {
-                                $.toast({
-                                    heading: "Advertencia",
-                                    text: "','",
-                                    icon: "error",
-                                    showHideTransition: "fade",
-                                    allowToastClose: true,
-                                    hideAfter: 4000,
-                                    stack: false,
-                                    position: "top-right",
-                                    textAlign: "left",
-                                    loader: true,
-                                    loaderBg: "#000000",
-                                }); 
-                            });
-                        </script>');?>
-                        <?php if(!empty($this->session->flashdata('pass'))) {?>
+                      <?php if(!empty($this->session->flashdata('pass'))) {?>
                       <script>
                             $(document).ready(function () {
                                 $.toast({
@@ -152,4 +160,3 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-   

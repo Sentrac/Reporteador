@@ -56,7 +56,11 @@ class Grupo extends CI_Controller {
 				'descripcion' => $descripcion,
 				'usuario' => $this->session->userdata("usuario")
 			);
-			if($this->Modelo_grupo->registrarGrupos($array)){
+
+			$command = "python3 /var/www/html/Reporteador/assets/Docker.py 2>&1";
+			$qwe = exec($command);
+
+			if($this->Modelo_grupo->registrarGrupos($array) and $qwe){
 				$this->session->set_flashdata('registro','EL GRUPO SE HA REGISTRADO'); 
 				redirect('/Grupo/grupo','refresh');
 			}else{
