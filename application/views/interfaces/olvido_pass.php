@@ -10,7 +10,7 @@
     <meta name="author" content="WarrioPracticantes">
     <!-- Favicon icon -->
     <link rel="icon" type="image/ico" sizes="16x16" href="../assets/images/favicon.ico">
-    <title>Reporteador</title>
+    <title>WReporter</title>
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
@@ -50,7 +50,7 @@
         <div class="login-register bg-gradient">
             <div class="d-flex no-block align-items-center m-b-15">
                 <div class="m-auto">
-                    <img src="../assets/images/Logo WL BLANCO_v.png" height="100px" alt="homepage" class="light-logo">
+                    <img src="../assets/images/LOGO-WL.png" height="150px" alt="homepage" class="light-logo">
                 </div>
             </div>
             <div class="login-box card bg-papaya">
@@ -65,7 +65,7 @@
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <?php echo validation_errors('<div class="error-login tajawalR ls1">', '</div>'); ?>
-                            <input class="form-control" type="email" name="email" placeholder="Correo" required>
+                            <input class="form-control" type="email" name="email" placeholder="Correo">
                         </div>
                     </div>
                     <div class="form-group text-center m-t-20">
@@ -73,8 +73,8 @@
                             <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Enviar</button>
                             <br>
                             <br>
-                            <a href="<?= base_url()."login" ?>">
-                                <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light">Cancelar</button>
+                            <a href="<?= base_url()."login" ?>" class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light">
+                                Cancelar
                             </a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             </h5>
                         </div>
                     <?php } ?>
-                <?php echo form_close(); ?>
+                    <?php echo form_close(); ?>
             </div>                      
         </div>
     </section>

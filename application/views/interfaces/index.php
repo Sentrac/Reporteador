@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="login-box card bg-papaya">
-                <h1 class="box-title m-b-40 text-center txt-blanco">Reporteador</h1>
+                <h1 class="box-title m-b-40 text-center txt-blanco">WReporter</h1>
                 <?php if($this->session->flashdata('chanPass')) {?>
                     <div class="alert">
                         <h5 class="txt-blanco">

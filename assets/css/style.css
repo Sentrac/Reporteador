@@ -5745,7 +5745,8 @@ a.mytooltip {
   height: 100%;
   width: 100%;
   padding: 3% 0;
-  position: fixed
+  position: fixed;
+  overflow: auto;
 }
 
 .login-box {

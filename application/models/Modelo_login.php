@@ -64,7 +64,7 @@ class Modelo_login extends CI_Model{
     {
         $this->db->select('idusuarios');
         $this->db->from('usuarios');
-        $this->db->where('email',$mail);
+        $this->db->where('usuario',$mail);
         $query = $this->db->get();
         if($query->num_rows()>0){
             return $query->result();

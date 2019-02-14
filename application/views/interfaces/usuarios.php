@@ -352,6 +352,7 @@
                                             $("#GuardarPass").html("Guardar");
                                             if(repons == 1){
                                                 swal('Guardado','','success');
+                                                setTimeout(redirect, 1000);
                                             }else {
                                                 $('#form_pass').modal('hide');
                                                 swal('Se han encontrado errores:',repons,'error');
