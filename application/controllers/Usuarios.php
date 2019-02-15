@@ -178,10 +178,11 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('tipo_usuario', 'Rol', 'required');
 		$this->form_validation->set_rules('pass', 'Contraseña', 'required|min_length[8]|max_length[16]|alpha_numeric_spaces');
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
+		
+		$idusuario = $this->input->post('idusuarios');
 
 		if($this->form_validation->run() == FALSE){
-           
-            $this->error_usuario_modal();
+            redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh');
 
         }else{
 			$nombre = $this->input->post('nombre');

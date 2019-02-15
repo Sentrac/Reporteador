@@ -1,3 +1,6 @@
+      
+        
+        
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -150,6 +153,12 @@
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
+                            <?php foreach($posts as $post){?>
+                    <div class="profile-text">
+                    <input type="text" value="<?php echo $post->idusuarios;?>" name="idusuarios">
+                       
+                    </div>
+                    <?php }?>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre(s)</label>
                               <div class="col-md-9">

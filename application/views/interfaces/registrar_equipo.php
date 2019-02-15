@@ -95,7 +95,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Dirección IP/DNS</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="IP o DNS" class="form-control" name="dns">
+                                <input style="text-transform: uppercase;" type="text" placeholder="IP o DNS" class="form-control" name="dns">
                                 <small class="form-control-feedback">Ejemplo: 255.255.255.255</small>
                               </div>
                             </div>

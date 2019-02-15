@@ -67,7 +67,7 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('actual_pswd','Contraseña actual','required');
         $this->form_validation->set_rules('new_pswd','Nueva contraseña','required|min_length[8]|max_length[16]|alpha_numeric_spaces');
         $this->form_validation->set_rules('repeat_pswd','Repetir contraseña','required|matches[new_pswd]|min_length[8]|max_length[16]|alpha_numeric_spaces');
-        
+
         if($this->form_validation->run()==FALSE){
             $asd =  validation_errors();
             $this->session->set_flashdata('ErrorPass',$asd);
