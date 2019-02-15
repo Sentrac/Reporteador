@@ -180,6 +180,7 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
 		
 		$idusuario = $this->input->post('idusuarios');
+		$idgrupo = $this->input->post('fk_grupou');
 
 		if($this->form_validation->run() == FALSE){
 			$error_usuario =  validation_errors();
@@ -210,7 +211,7 @@ class Usuarios extends CI_Controller {
 			);
 			if($this->Modelo_usuarios->registrarUsuarios($d)){
 				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
-				redirect('/Usuarios/success_usuario_modal','refresh');
+				redirect('/Usuarios/usuarios?fk_grupou='.$idgrupo);
 			}else{
 				$this->session->set_flashdata('usuario_existe','EL USUARIO YA ESXISTE, VUELVA A INTENTAR');
 				redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh'); 
@@ -222,12 +223,6 @@ class Usuarios extends CI_Controller {
 		$response['status']  = 'success';
 		$response['message'] = 'Registro eliminado correctamente ...';
 		echo json_encode($response);
-	}
-	public function success_usuario_modal(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/success_usuario_modal');
-		$this->load->view('temps/footer');
 	}
 	public function error_registaruser_modal(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
