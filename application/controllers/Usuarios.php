@@ -182,6 +182,8 @@ class Usuarios extends CI_Controller {
 		$idusuario = $this->input->post('idusuarios');
 
 		if($this->form_validation->run() == FALSE){
+			$error_usuario =  validation_errors();
+            $this->session->set_flashdata('ErrorUsuario',$error_usuario);
             redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh');
 
         }else{
@@ -210,8 +212,8 @@ class Usuarios extends CI_Controller {
 				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
 				redirect('/Usuarios/success_usuario_modal','refresh');
 			}else{
-				$this->session->set_flashdata('usuario_existe','EL USUARIO YA ESXISTE'); 
-				redirect('/Usuarios/error_usuario_modal','refresh');
+				$this->session->set_flashdata('usuario_existe','EL USUARIO YA ESXISTE, VUELVA A INTENTAR');
+				redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh'); 
 			}
 		}
 	}
@@ -225,12 +227,6 @@ class Usuarios extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/success_usuario_modal');
-		$this->load->view('temps/footer');
-	}
-	public function error_usuario_modal(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/error_usuario_modal');
 		$this->load->view('temps/footer');
 	}
 	public function error_registaruser_modal(){
