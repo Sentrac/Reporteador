@@ -35,7 +35,7 @@
                                     loader: true,
                                     loaderBg: "#000000",
                                 });
-                  ');?>
+                  });
                 </script>
                 <?php if($this->session->flashdata('ErrorUsuario')) {?>
                   <script>

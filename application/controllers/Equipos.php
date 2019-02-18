@@ -102,7 +102,7 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO EXITOSAMENTE'); 
-				redirect('/Equipos/success_equipo_modal','refresh');
+				redirect('/Equipos/equipo?fk_grupou='.$fkgrupo);
 			}else{
 				$this->session->set_flashdata('ip_existe','LA IP YA EXISTE'); 
 				redirect('/Equipos/grupo','refresh');
@@ -146,7 +146,7 @@ class Equipos extends CI_Controller {
 				if($this->session->userdata('tipo_usuario')=='SU'){
 					redirect('/Equipos/grupo','refresh');
 				}
-					redirect('/Equipos/success_equipo_modal','refresh');
+					redirect('/Equipos/equipo?fk_grupou='.$fkgrupo);
 			}else{
 				echo 'no registrado';
 			}
@@ -156,12 +156,6 @@ class Equipos extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/error_modal');
-		$this->load->view('temps/footer');
-	}
-	public function success_equipo_modal(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/success_equipo_modal');
 		$this->load->view('temps/footer');
 	}
 	public function EliminarEquipo($id){

@@ -24,7 +24,7 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                
+                <!--NOTIFICACIONES CON FLASHDATA-->
                     <?php   if($this->session->flashdata('registro')){?>
                         <script>
                             $(document).ready(function () {
@@ -82,6 +82,7 @@
                 <?php  
                         }
                 ?>
+                <!--FIN DE NOTIFICACIONES-->
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">

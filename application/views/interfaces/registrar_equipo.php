@@ -105,9 +105,11 @@
                                 <textarea style="text-transform: uppercase;" type="textarea" rows="5" placeholder="Descripción" class="form-control" name="descripcion"></textarea>
                               </div>
                             </div>
+                            <!--VALOR IDGRUPO DE TIPO ESCONDIDO-->
                             <?php if(isset($grupo_equipos)){?>
-                              <input type="hidden" class="form-control" value="<?php echo $grupo_equipos[0]->idgrupo; ?>" readonly name="fk_grupo">    
+                              <input type="text" class="form-control" value="<?php echo $grupo_equipos[0]->idgrupo; ?>" readonly name="fk_grupo">    
                             <?php } ?>
+                            <!--FIN DE IDGRUPO ESCONDIDO-->
                           </div>
                           <div class="form-actions">
                             <div class="row">
