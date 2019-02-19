@@ -4,12 +4,14 @@ class Modelo_usuarios extends CI_Model{
     //FUNCIÓN DONDE MUESTRA LOS DATOS DEL USUARIO POR ID
     public function traerdatosUsuario($idusuarios)
     {
+        $this->db->select('idusuarios,nombre,apellidos,telefono,usuario,tipo_usuario,fk_grupou');
         $this->db->where('idusuarios',$idusuarios);
         $data=$this->db->get('usuarios');
         return $data->result();
     } 
     public function traerdatosUsuariosAdmin($idusuarios)
     {
+        $this->db->select('idusuarios,nombre,apellidos,telefono,usuario,tipo_usuario,fk_grupou');
         $this->db->where('idusuarios',$idusuarios);
         $data=$this->db->get('usuarios_grupo');
         return $data->result();

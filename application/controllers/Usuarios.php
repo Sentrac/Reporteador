@@ -353,6 +353,7 @@ class Usuarios extends CI_Controller {
 		$nom = $this->input->post('Nombre');
 		$ape = $this->input->post('Apellidos');
 		$tel = $this->input->post('Telefono');
+		$usu = $this->input->post('Usuario');
 		$rol = $this->input->post('Rol');
 		$grp = $this->input->post('Grupo');
 		$nom = strtoupper($nom);
@@ -362,6 +363,7 @@ class Usuarios extends CI_Controller {
 			'nombre' => $nom,
 			'apellidos' => $ape,
 			'telefono' => $tel,
+			'usuario' => $usu,
 			'tipo_usuario' => $rol,
 			'fk_grupou' => $grp,
 			'user_session' => $this->session->userdata("usuario")

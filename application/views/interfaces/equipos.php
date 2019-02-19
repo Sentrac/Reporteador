@@ -222,7 +222,7 @@
                             type: response.status,
                             title: response.message,
                             showConfirmButton: false,
-                            timer: 1700
+                            timer: 2500
                         });
                         setTimeout(redirect(fk), 1700);
                     })

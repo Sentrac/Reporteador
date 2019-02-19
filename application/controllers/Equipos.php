@@ -25,13 +25,21 @@ class Equipos extends CI_Controller {
     public function equipo(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->data['grupo_admin']=$this->Modelo_grupo->getGrupoAdmin();
-		//Modelo para obtener todos los equipos y grupos para el super administrador
-		$idgrupo=$this->input->get('idgrupo');
-		$this->data['grupo_equipos']=$this->Modelo_grupo->getGrupo($idgrupo);
-		$this->data['equipos']=$this->Modelo_equipos->getEquipos($idgrupo);
-		//Modelo para mostrar todos los equipos pertenecientes al grupo del admin
-		$grupo=$this->input->get('fk_grupou');
-		$this->data['equipos_admin']=$this->Modelo_equipos->getEquiposAdmin($grupo);
+		//Modelo para obtener todos los equipos y grupos para el SuperAdministrador
+		if($this->session->userdata('tipo_usuario')=="SU"){
+			$idgrupo=$this->input->get('idgrupo');
+			$this->data['grupo_equipos']=$this->Modelo_grupo->getGrupo($idgrupo);
+			$this->data['equipos']=$this->Modelo_equipos->getEquipos($idgrupo);
+		} elseif($this->session->userdata('tipo_usuario')=="AD" or $this->session->userdata('tipo_usuario')=="CO"){
+			//Modelo para mostrar todos los equipos pertenecientes al grupo del Admin
+			$grup=$this->input->get('fk_grupou');
+			if($grup == $this->session->userdata('grupo')){
+				$grupo = $grup;
+			} else {
+				$grupo = $this->session->userdata('grupo');
+			}
+			$this->data['equipos_admin']=$this->Modelo_equipos->getEquiposAdmin($grupo);
+		}
 		/////////////////////////////////////////////////////////////////////
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/equipos',$this->data);
@@ -48,16 +56,16 @@ class Equipos extends CI_Controller {
     public function registrar_equipo(){
 		$this->form_validation->set_rules('nombre_host', 'Nombre/Hostname', 'trim|required');
 		$this->form_validation->set_rules('dns', 'DNS o IP', 'trim|required');
+		$fkgrupo=$this->input->post('fk_grupo');
 
 		if($this->form_validation->run() == FALSE){
-           
-            $this->error_modal();
-
-        }else{
+			$asd =  validation_errors();
+			$this->session->set_flashdata('ErrorEq',$asd);
+			redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
+  	}else{
 			$nom_host=$this->input->post('nombre_host');
 			$dns=$this->input->post('dns');
 			$descripcion=$this->input->post('descripcion');
-			$fkgrupo=$this->input->post('fk_grupo');
 
 			$descripcion = strtoupper($descripcion);
 			
@@ -70,10 +78,10 @@ class Equipos extends CI_Controller {
 			);
 			if($this->Modelo_equipos->registrarEquipos($array)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA REGISTRADO'); 
-				redirect('/Equipos/grupo','refresh');
+				redirect('/Equipos/equipo?idgrupo='.$fkgrupo,'refresh');
 			}else{
-				$this->session->set_flashdata('ip_existe','LA IP YA EXISTE'); 
-				redirect('/Equipos/grupo','refresh');
+				$this->session->set_flashdata('ErrorEq','LA IP YA EXISTE'); 
+				redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
 			}
 		}
 	}
@@ -144,9 +152,10 @@ class Equipos extends CI_Controller {
 			if($this->Modelo_equipos->updateEquipo($array,$idequipo)){
 				$this->session->set_flashdata('registro','EL EQUIPO SE HA CAMBIADO EXITOSAMENTE'); 
 				if($this->session->userdata('tipo_usuario')=='SU'){
-					redirect('/Equipos/grupo','refresh');
+					redirect('/Equipos/equipo?idgrupo='.$fkgrupo,'refresh');
+				} else {
+					redirect('/Equipos/equipo?fk_grupou='.$fkgrupo,'refresh');
 				}
-					redirect('/Equipos/equipo?fk_grupou='.$fkgrupo);
 			}else{
 				echo 'no registrado';
 			}

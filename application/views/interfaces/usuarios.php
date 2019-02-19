@@ -279,6 +279,7 @@
                                         $('#Nombre').val(response[0]['nombre']);
                                         $('#Apellidos').val(response[0]['apellidos']);
                                         $('#Telefono').val(response[0]['telefono']);
+                                        $('#Usuario').val(response[0]['usuario']);
                                         $('#Rol').val(response[0]['tipo_usuario']);
                                         $('#Grupo').val(response[0]['fk_grupou']);
                                 
@@ -328,7 +329,12 @@
                                             }
                                         })
                                         .done(function(reponse){
-                                            swal('Guardado','','success');
+                                            swal({
+                                                title: 'Guardado',
+                                                text: '',
+                                                type: 'success',
+                                                showConfirmButton: false
+                                            });
                                             $('#modal_edit').modal('hide');
                                             setTimeout(redirect, 1500);
                                         })
@@ -491,6 +497,13 @@
                                             <label class="control-label col-md-3 text-center">Teléfono</label>
                                             <div class="col-md-9">
                                                 <input name="Telefono" id="Telefono" placeholder="Teléfono" class="form-control" type="text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 text-center">Usuario</label>
+                                            <div class="col-md-9">
+                                                <input name="Usuario" id="Usuario" placeholder="Usuario" class="form-control" type="text">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
