@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 class Modelo_equipos extends CI_Model{
     //función para traer los datos de los equipos por ID

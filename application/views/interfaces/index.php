@@ -55,6 +55,14 @@
             </div>
             <div class="login-box card bg-papaya">
                 <h1 class="box-title m-b-40 text-center txt-blanco">WReporter</h1>
+                <?php if($this->session->flashdata('chanPass')) {?>
+                    <div class="alert">
+                        <h5 class="txt-blanco">
+                            <i class="fa fa-check-circle text-success"></i>
+                            <?php echo $this->session->flashdata('chanPass'); ?>
+                        </h5>
+                    </div>
+                <?php } ?>
                 <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
                <?php echo validation_errors('<div class="error-login tajawalR ls1">', '</div>'); ?>
                <div class="font-medium text-warning "><center><?php echo $this->session->flashdata('error'); ?></center></div>
@@ -75,28 +83,10 @@
                 <div class="form-group">
                     <div class="d-flex no-block align-items-center">
                         <div class="m-auto">
-                             <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i>¿Olvidaste la contraseña?</a> 
+                             <a href="<?= base_url()."Login/recover" ?>" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i>¿Olvidaste la contraseña?</a> 
                         </div>
                      </div>
                 </div>
-                <form class="form-horizontal" id="recoverform" action="index.html">
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <h3 class="txt-blanco m-b-15 text-center">Recuperar contraseña</h3>
-                            <p class="text-muted txt-blanco text-center">Ingrese su correo electrónico y las instrucciones serán enviadas a usted!</p>
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Correo">
-                        </div>
-                    </div>
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-xs-12">
-                            <button class="btn btn-rounded bg-gris btn-block text-uppercase waves-effect waves-light" type="submit">Enviar</button>
-                        </div>
-                    </div>
-                </form>      
             </div>                      
         </div>
     </section>
