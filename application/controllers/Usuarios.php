@@ -61,7 +61,9 @@ class Usuarios extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE){
            
-            $this->formulario_usuarios();
+            $error_usuario =  validation_errors();
+            $this->session->set_flashdata('ErrorUsuario',$error_usuario);
+            redirect('/Usuarios/formulario_usuarios');
 
         }else{
 			$nombre = $this->input->post('nombre');
@@ -217,7 +219,7 @@ class Usuarios extends CI_Controller {
 				'fk_grupou' => $grupo,
 				'user_session' => $this->session->userdata("usuario")
 			);
-			
+
 			if($tipouser == 'SU'){
 				$tps = 'Super Administrador';
 			} elseif ($tipouser == 'AD') {
@@ -300,12 +302,6 @@ class Usuarios extends CI_Controller {
 		$response['status']  = 'success';
 		$response['message'] = 'Registro eliminado correctamente ...';
 		echo json_encode($response);
-	}
-	public function error_registaruser_modal(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/error_registaruser_modal');
-		$this->load->view('temps/footer');
 	}
 	public function contactos($id)
 	{

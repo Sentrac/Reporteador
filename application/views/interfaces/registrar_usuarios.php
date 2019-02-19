@@ -21,21 +21,21 @@
                 <!-- Row -->
                 <!--FLASH DATA Y VALIDACIONES NOTIFICACIONES-->
                 <script>
-                  $(document).ready(function () {
-                                $.toast({
-                                    heading: "Advertencia",
-                                    text: "','",
-                                    icon: "warning",
-                                    showHideTransition: "fade",
-                                    allowToastClose: true,
-                                    hideAfter: 3500,
-                                    stack: false,
-                                    position: "top-right",
-                                    textAlign: "left",
-                                    loader: true,
-                                    loaderBg: "#000000",
-                                });
-                  });
+                  // $(document).ready(function () {
+                  //               $.toast({
+                  //                   heading: "Advertencia",
+                  //                   text: "','",
+                  //                   icon: "warning",
+                  //                   showHideTransition: "fade",
+                  //                   allowToastClose: true,
+                  //                   hideAfter: 3500,
+                  //                   stack: false,
+                  //                   position: "top-right",
+                  //                   textAlign: "left",
+                  //                   loader: true,
+                  //                   loaderBg: "#000000",
+                  //               });
+                  // });
                 </script>
                 <?php if($this->session->flashdata('ErrorUsuario')) {?>
                   <script>
@@ -300,7 +300,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2018 Reporteador by WarrioPracticantes</footer>
+            <footer class="footer"> WARRIORS LAB'S</footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

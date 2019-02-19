@@ -22,12 +22,10 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-              
+                
                 <div class="row">
                   <div class="embed-responsive embed-responsive-1by1" id="1">
-                  <?php if(isset($grupo_admin)){?>
-                    <?php echo $grupo_admin[0]->iframe;?>
-                    <?php }?>
+                 <!-- <iframe src="http://189.204.31.154:5601/app/kibana#/dashboard/14173c70-1ff0-11e9-8f4c-6b11e5ded0e8?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-60d%2Cmode%3Aquick%2Cto%3Anow))" height="600" width="800"></iframe>-->
                   </div>
                 </div>
 
@@ -37,13 +35,11 @@
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
+            <!-- End Container fluid  page-footer font-small special-color-dark pt-4-->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer"> © 2018 Reporteador by WarrioPracticantes</footer>
-            <!-- ============================================================== -->
+<!-- Footer -->
+
             <!-- End footer -->
             <!-- ============================================================== -->
         </div>
