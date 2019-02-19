@@ -84,10 +84,8 @@ class Grupo extends CI_Controller {
 		$this->form_validation->set_rules('iframe', 'Iframe', 'trim|required');
 
 		if($this->form_validation->run() == FALSE){
-           
             $this->error_modal();
-
-        }else{
+    }else{
 			$idgrupo = $this->input->post('idgrupo');
 			$nombre = $this->input->post('nombre');
 			$alias = $this->input->post('alias');

@@ -5,7 +5,7 @@ class Login extends CI_Controller {
 
 	function __construct(){
 
-		parent::__construct(); 
+		parent::__construct();
 		
 		$this->load->helper('url');
 		$this->load->helper('form');//ayudante de formularios
@@ -28,6 +28,7 @@ class Login extends CI_Controller {
             foreach ($checklogin as $row);
                 $this->session->set_userdata('usuario',$row->usuario);
                 $this->session->set_userdata('tipo_usuario',$row->tipo_usuario);
+                $this->session->set_userdata('grupo',$row->fk_grupou);
                 //USUARIO SUPERUSUARIO
                 if($this->session->userdata('tipo_usuario')=="SU"){
                     redirect('Roles/superusuario');
@@ -219,5 +220,9 @@ class Login extends CI_Controller {
                 redirect('Login','refresh');
             }
         }
+    }
+    function sesion()
+    {
+        var_dump($this->session->userdata());
     }
 }
