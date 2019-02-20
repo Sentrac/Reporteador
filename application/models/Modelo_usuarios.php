@@ -83,9 +83,16 @@ class Modelo_usuarios extends CI_Model{
     //ACTUALIZAR DATOS
     public function updateUsuarios($array,$idusuario)
     {
-        $this->db->where('idusuarios',$idusuario);
-        $this->db->update('usuarios', $array);
-        return true;
+        $query = $array['usuario'];
+        $this->db->where('usuario',$query);
+        $validar=$this->db->get('usuarios');
+        if($validar->num_rows()>0){
+            return false;
+         } else {
+            $this->db->where('idusuarios',$idusuario);
+            $this->db->update('usuarios', $array);
+            return true;
+         }
     }
     public function EliminardatosUsuario($idusuario)
     {

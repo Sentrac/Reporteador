@@ -26,7 +26,7 @@
                         <h4 class="m-b-0 text-white">Editar Equipo</h4>
                       </div>
                       <div class="card-body">
-                      <?php echo form_open("Equipos/actuali zarEquipo"); ?> 
+                      <?php echo form_open("Equipos/actualizarEquipo"); ?> 
                           <div class="form-body">
                             <hr>
                             <?php if (isset($mostrardatosequipo)){

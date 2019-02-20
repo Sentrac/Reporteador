@@ -375,7 +375,8 @@ class Usuarios extends CI_Controller {
 			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO'); 
 			// redirect('/Usuarios/usuarios','refresh');
 		}else{
-			echo 'no registrado';
+			$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+			redirect('/Usuarios/usuarios','refresh');
 		}
 	}
 	function updpass()
