@@ -40,8 +40,11 @@ class Modelo_grupo extends CI_Model{
        if($validar->num_rows()>0){
           return false;
        } else {
-            $count=$this->db->insert('grupo',$array);  
-            return true;   
+            if($this->db->insert('grupo',$array)){
+                return true;
+            }else {
+                return false;
+            }
         }    
     }
 
@@ -49,6 +52,7 @@ class Modelo_grupo extends CI_Model{
     public function updateGrupo($array,$idgrupo){
         $query = $array['nombre'];
         $this->db->where('nombre',$query);
+        $this->db->where_not_in('idgrupo', $idgrupo);
         $validar = $this->db->get('grupo');
         if($validar->num_rows()>0){
             return false;

@@ -6102,7 +6102,8 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .rounded-circle {
-  border-radius: 50% !important
+  border-radius: 50% !important;
+  color:#000000;
 }
 
 .rounded-0 {

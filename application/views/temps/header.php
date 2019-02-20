@@ -75,7 +75,19 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Light Logo icon -->
-                            <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
+                            <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
+                                <a href="<?php base_url() ?>../Roles/superusuario">
+                                    <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
+                                </a>
+                            <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
+                                <a href="<?php base_url() ?>../Roles/admin ">
+                                    <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
+                                </a>
+                            <?php } if($this->session->userdata('tipo_usuario')=='CO'){?>
+                                <a href="<?php base_url() ?>../Roles/consultor">
+                                    <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
+                                </a>
+                            <?php } ?>
                         </b>
                         <!--End Logo icon -->
                       

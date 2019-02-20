@@ -9,6 +9,34 @@
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
+                
+                <?php if($this->session->flashdata('ErrorEq')) {?>
+                  <script>
+                      $(document).ready(function()
+                      {
+                        $("#modalerror").modal("show");
+                      });
+                  </script>
+                <?php } ?>
+                <div class="modal fade" id="modalerror" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>Se encontraron los siguientes errores:</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="alert alert-danger alert-dismissible fade show">
+                            <?= $this->session->flashdata('ErrorEq'); ?>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
                 <div class="row page-titles">
                     <!--<div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor">Dashboard</h3>
@@ -61,8 +89,8 @@
                                 <div class="row">
                                     <div class="offset-sm-4 col-md-8">
                                         <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                        <a href="<?= base_url() ?>Grupo/grupo">
-                                            <button type="button" class="btn btn-inverse"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="btn btn-danger">
+                                            <i class="mdi mdi-close-circle"></i> Cancelar
                                         </a>
                                     </div>
                                 </div>
@@ -95,7 +123,7 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Dirección IP/DNS</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="IP o DNS" class="form-control" name="dns">
+                                <input style="text-transform: uppercase;" type="text" placeholder="IP o DNS" class="form-control" name="dns">
                                 <small class="form-control-feedback">Ejemplo: 255.255.255.255</small>
                               </div>
                             </div>
@@ -105,9 +133,11 @@
                                 <textarea style="text-transform: uppercase;" type="textarea" rows="5" placeholder="Descripción" class="form-control" name="descripcion"></textarea>
                               </div>
                             </div>
+                            <!--VALOR IDGRUPO DE TIPO ESCONDIDO-->
                             <?php if(isset($grupo_equipos)){?>
-                              <input type="hidden" class="form-control" value="<?php echo $grupo_equipos[0]->idgrupo; ?>" readonly name="fk_grupo">    
+                              <input type="text" class="form-control" value="<?php echo $grupo_equipos[0]->idgrupo; ?>" readonly name="fk_grupo">    
                             <?php } ?>
+                            <!--FIN DE IDGRUPO ESCONDIDO-->
                           </div>
                           <div class="form-actions">
                             <div class="row">
@@ -120,8 +150,8 @@
                                         </div>
                                     <?php } ?>
                                         <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                        <a href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>">
-                                            <button type="button" class="btn btn-inverse"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="btn btn-inverse">
+                                            <i class="mdi mdi-close-circle"></i> Cancelar
                                         </a>
                                     </div>
                                 </div>
@@ -147,12 +177,4 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2018 Reporteador by WarrioPracticantes</footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
+            

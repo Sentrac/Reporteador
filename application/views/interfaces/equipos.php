@@ -18,6 +18,27 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
+                <!--NOTIFICACIÓNES CON FLASHDATA-->
+                <?php   if($this->session->flashdata('registro')){?>
+                        <script>
+                            $(document).ready(function () {
+                                $.toast({
+                                    heading: 'Éxito',
+                                    text: '<?= $this->session->flashdata('registro'); ?>',
+                                    icon: 'success',
+                                    showHideTransition: 'fade',
+                                    allowToastClose: true,
+                                    hideAfter: 3500,
+                                    stack: false,
+                                    position: 'top-right',
+                                    textAlign: 'left',
+                                    loader: true,
+                                    loaderBg: '#000000',
+                                }); 
+                            });
+                        </script>
+                <?php } ?>
+                <!--FIN DE NOTIFICACIONES-->
                 <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                 <div class="row">
                   <div class="col-lg-12">
@@ -153,7 +174,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2018 Reporteador by WarrioPracticantes</footer>
+            <footer class="footer"> WARRIORS LAB'S</footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -201,7 +222,7 @@
                             type: response.status,
                             title: response.message,
                             showConfirmButton: false,
-                            timer: 1700
+                            timer: 2500
                         });
                         setTimeout(redirect(fk), 1700);
                     })

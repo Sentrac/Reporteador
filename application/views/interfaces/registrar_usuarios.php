@@ -1,4 +1,4 @@
-        <!-- ============================================================== -->
+          <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -19,29 +19,76 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
+                <!--FLASH DATA Y VALIDACIONES NOTIFICACIONES-->
                 <script>
-                  $(document).ready(function () {
-                                $.toast({
-                                    heading: "Advertencia",
-                                    text: "','",
-                                    icon: "warning",
-                                    showHideTransition: "fade",
-                                    allowToastClose: true,
-                                    hideAfter: 3500,
-                                    stack: false,
-                                    position: "top-right",
-                                    textAlign: "left",
-                                    loader: true,
-                                    loaderBg: "#000000",
-                                });
-                  ');?>
+                  // $(document).ready(function () {
+                  //               $.toast({
+                  //                   heading: "Advertencia",
+                  //                   text: "','",
+                  //                   icon: "warning",
+                  //                   showHideTransition: "fade",
+                  //                   allowToastClose: true,
+                  //                   hideAfter: 3500,
+                  //                   stack: false,
+                  //                   position: "top-right",
+                  //                   textAlign: "left",
+                  //                   loader: true,
+                  //                   loaderBg: "#000000",
+                  //               });
+                  // });
                 </script>
-                <?php echo validation_errors('<div class="alert alert-danger alert-dismissible fade show">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                 </button>',
-                                              '</div>'); 
-                ?>
+                <?php if($this->session->flashdata('ErrorUsuario')) {?>
+                  <script>
+                      $(document).ready(function()
+                      {
+                        $("#modalerror").modal("show");
+                      });
+                  </script>
+                <?php } ?>
+                <div class="modal fade" id="modalerror" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>Se encontraron los siguientes errores:</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="alert alert-danger alert-dismissible fade show">
+                            <?= $this->session->flashdata('ErrorUsuario'); ?>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <?php if($this->session->flashdata('usuario_existe')) {?>
+                  <script>
+                      $(document).ready(function()
+                      {
+                        $("#modalerrorusuario").modal("show");
+                      });
+                  </script>
+                <?php } ?>
+                <div class="modal fade" id="modalerrorusuario" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>Se encontro el siguiente error:</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="alert alert-danger alert-dismissible fade show">
+                            <?= $this->session->flashdata('usuario_existe'); ?>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
                 <div class="Row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
@@ -150,6 +197,11 @@
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
                             <hr>
+                            <?php foreach($posts as $post){?>
+                              <div class="profile-text">
+                              <input type="hidden" value="<?php echo $post->idusuarios;?>" name="idusuarios">
+                              </div>
+                            <?php }?>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre(s)</label>
                               <div class="col-md-9">
@@ -237,7 +289,6 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -249,17 +300,4 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2018 Reporteador by WarrioPracticantes</footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-   
+            
