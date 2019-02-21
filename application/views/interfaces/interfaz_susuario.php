@@ -6,7 +6,13 @@
         redirect(base_url());
     }
 ?>
-     
+<script>
+  function recargar()
+  {
+    location.href=location.href
+  }
+  setInterval('recargar()',60000)
+</script>     
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->

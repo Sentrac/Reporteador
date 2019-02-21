@@ -330,7 +330,7 @@
                                         })
                                         .done(function(reponse){
                                             swal({
-                                                title: 'Guardado',
+                                                title: 'Modificando...',
                                                 text: '',
                                                 type: 'success',
                                                 showConfirmButton: false

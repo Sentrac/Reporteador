@@ -358,6 +358,8 @@ class Usuarios extends CI_Controller {
 		$grp = $this->input->post('Grupo');
 		$nom = strtoupper($nom);
 		$ape = strtoupper($ape);
+
+		$usu = 'admin@gmail.com';
 	
 		$array = array(
 			'nombre' => $nom,
@@ -369,13 +371,20 @@ class Usuarios extends CI_Controller {
 			'user_session' => $this->session->userdata("usuario")
 		);
 
-		// echo json_encode($array);
-		
+		// $dts = $this->Modelo_usuarios->traerdatosUsuario(1);
+		// echo "<br>".$array['usuario']."<br>".$dts[0]->usuario;
+
+		// if(($array['usuario']) == ($dts[0]->usuario)){
+		// 	echo '<br>no cambiado';
+		// } else {
+		// 	echo '<br>cambio';
+		// }
+
 		if($this->Modelo_usuarios->updateUsuarios($array,$ids)){
-			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO'); 
-			// redirect('/Usuarios/usuarios','refresh');
+			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO');
 		}else{
-			echo 'no registrado';
+			$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+			redirect('/Usuarios/usuarios','refresh');
 		}
 	}
 	function updpass()
