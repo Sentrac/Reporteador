@@ -70,26 +70,23 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
+                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/superusuario">
+                    <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
+                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/admin ">
+                    <?php } if($this->session->userdata('tipo_usuario')=='CO'){?>
+                        <a class="navbar-brand"href="<?php base_url() ?>../Roles/consultor">
+                    <?php } ?>
                         <!-- Logo icon -->
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Light Logo icon -->
-                            <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
-                                <a href="<?php base_url() ?>../Roles/superusuario">
-                                    <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
-                                </a>
-                            <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
-                                <a href="<?php base_url() ?>../Roles/admin ">
-                                    <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
-                                </a>
-                            <?php } if($this->session->userdata('tipo_usuario')=='CO'){?>
-                                <a href="<?php base_url() ?>../Roles/consultor">
-                                    <img src="../assets/images/wreporter-logo.png"  height="70px" alt="homepage" class="light-logo" />
-                                </a>
-                            <?php } ?>
                         </b>
                         <!--End Logo icon -->
+                        <span>
+                            <!-- Light Logo text -->
+                            <img src="../assets/images/wreporter-logo.png" height="65px" class="light-logo" alt="homepage" />
+                        </span>
                       
                     </a>
                 </div>

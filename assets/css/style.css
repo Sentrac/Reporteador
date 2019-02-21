@@ -7968,7 +7968,7 @@ table.footable thead tr.footable-filtering th ul.dropdown-menu li a.checkbox inp
   }
 
   .login-register {
-    position: relative;
+    /* position: relative; */
     overflow: hidden
   }
 
