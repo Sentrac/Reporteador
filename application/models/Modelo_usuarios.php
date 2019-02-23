@@ -85,15 +85,15 @@ class Modelo_usuarios extends CI_Model{
     {
         $query = $array['usuario'];
         $this->db->where('usuario',$query);
-        $this->db->where_not_in("idusuarios",$idusuario);
+        $this->db->where_not_in('idusuarios',$idusuario);
         $validar=$this->db->get('usuarios');
         if($validar->num_rows()>0){ 
             return false;
-         } else {
+        } else {
             $this->db->where('idusuarios',$idusuario);
             $this->db->update('usuarios', $array);
             return true;
-         }
+        }
     }
     public function EliminardatosUsuario($idusuario)
     {

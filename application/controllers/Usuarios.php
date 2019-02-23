@@ -349,6 +349,14 @@ class Usuarios extends CI_Controller {
 	}
 	public function actusuari()
 	{
+		//FUNCIÓN PARA GENERAR CÓDIGO PARA EL TOKEN	
+		function generarCodigo($longitud) {
+			$key = '';
+			$pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+			$max = strlen($pattern)-1;
+			for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+			return $key;
+		}
 		$ids = $this->input->post('idus');
 		$nom = $this->input->post('Nombre');
 		$ape = $this->input->post('Apellidos');
@@ -358,8 +366,6 @@ class Usuarios extends CI_Controller {
 		$grp = $this->input->post('Grupo');
 		$nom = strtoupper($nom);
 		$ape = strtoupper($ape);
-
-		$usu = 'admin@gmail.com';
 	
 		$array = array(
 			'nombre' => $nom,
@@ -371,20 +377,74 @@ class Usuarios extends CI_Controller {
 			'user_session' => $this->session->userdata("usuario")
 		);
 
-		// $dts = $this->Modelo_usuarios->traerdatosUsuario(1);
-		// echo "<br>".$array['usuario']."<br>".$dts[0]->usuario;
+		$this->load->library('email');
 
-		// if(($array['usuario']) == ($dts[0]->usuario)){
-		// 	echo '<br>no cambiado';
-		// } else {
-		// 	echo '<br>cambio';
-		// }
+		$url = base_url();
+		$cod = generarCodigo(64);
 
+		$this->email->from('warlab2019@gmail.com', 'Warriors Labs');
+		$this->email->to($array['usuario']);
+		$this->email->subject('Cuenta de WReporter');
+
+		$this->email->message(
+			'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+				<tr>
+					<td align="center" style="padding: 0px 0 40px 0;">
+						<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 60px 50px 60px 50px;color:#000;">
+						<h1>Hola '.$array['nombre'].'!</h1><br>
+						Nombre : <strong>'.$array['nombre'].' '.$array['apellidos'].'</strong>.<br>
+						Telefono : <strong>'.$array['telefono'].'</strong>.<br>
+						Usuario : <strong>'.$array['usuario'].'</strong>.<br>
+						Nivel de usuario : <strong>'.$array['tipo_usuario'].'</strong>.<br>
+						Para comenzar a usar su cuenta de WReporter, haga clic en el botón para confirmar su dirección de correo electrónico:
+						<br><br>
+						<center>
+							<a href="'.$url.'Login/verificar/'.$cod.'/'.$ids.'">
+								<button style="display: inline-block;
+								padding: 10px 20px;
+								font-size: 14px;
+								cursor: pointer;
+								text-align: center;
+								text-decoration: none;
+								outline: none;
+								color: #fff;
+								background-color: #DD333B;
+								border: none;
+								border-radius: 15px;
+								box-shadow: 0 9px #999;" class="button">Confirmar correo electrónico</button>
+							</a>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" style="padding: 40px 0 0px 0;">
+						<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+					</td>
+				</tr>
+			</table>'
+		);
+		$this->Modelo_usuarios->regTkn($cod,$ids,'VF');
+		$it = $this->db->insert_id();
+		
+		$dts = $this->Modelo_usuarios->traerdatosUsuario($ids);
+		if(($array['usuario']) == ($dts[0]->usuario)){
+			
+		} else {
+			if($this->email->send()){
+				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
+			} else {
+				$this->Modelo_usuarios->delTkUS($ids,$it);
+				$this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
+			}
+		}
 		if($this->Modelo_usuarios->updateUsuarios($array,$ids)){
 			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO');
 		}else{
 			$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
-			redirect('/Usuarios/usuarios','refresh');
 		}
 	}
 	function updpass()
