@@ -421,6 +421,11 @@ class Usuarios extends CI_Controller {
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<strong>NOTA:</strong> <b>Le llegara un segundo correo en el cual se le enviara la contraseña.</b>
+					</td>
+				</tr>
+				<tr>
 					<td align="center" style="padding: 40px 0 0px 0;">
 						<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 					</td>
@@ -431,21 +436,19 @@ class Usuarios extends CI_Controller {
 		$it = $this->db->insert_id();
 		
 		$dts = $this->Modelo_usuarios->traerdatosUsuario($ids);
-		if(($array['usuario']) == ($dts[0]->usuario)){
-			
-		} else {
-			if($this->email->send()){
-				$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO EXITOSAMENTE'); 
+		if(($array['usuario']) != ($dts[0]->usuario)){
+			if($this->email->send() and $this->Modelo_usuarios->updateUsuarios($array,$ids)){
+				$this->session->set_flashdata('registro','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
 			} else {
 				$this->Modelo_usuarios->delTkUS($ids,$it);
-				$this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
-			}
+				$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+			}	
 		}
-		if($this->Modelo_usuarios->updateUsuarios($array,$ids)){
-			$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO');
-		}else{
-			$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
-		}
+		// if(){
+		// 	$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO');
+		// }else{
+		// 	$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
+		// }
 	}
 	function updpass()
 	{
