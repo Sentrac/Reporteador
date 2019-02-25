@@ -18,10 +18,18 @@ class Usuarios extends CI_Controller {
 	public function usuarios(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		//modelo para obtener todos los usuarios registrados para el superusuario
-		$this->data['usuarios']=$this->Modelo_usuarios->getUsuarios();
+		if($this->session->userdata('tipo_usuario')=="SU"){
+			$this->data['usuarios']=$this->Modelo_usuarios->getUsuarios();
+		} elseif($this->session->userdata('tipo_usuario')=="AD" or $this->session->userdata('tipo_usuario')=="CO") {
 		//modelo para obtener todos los usuarios pertenecientes a un solo grupo
-		$grupo=$this->input->get('fk_grupou');
-		$this->data['usuario_grupo']=$this->Modelo_usuarios->usuario_grupo($grupo);
+			$grup = $this->input->get('fk_grupou');
+			if($grup == $this->session->userdata('grupo')){
+				$grupo = $grup;
+			} else {
+				$grupo = $this->session->userdata('grupo');
+			}
+			$this->data['usuario_grupo']=$this->Modelo_usuarios->usuario_grupo($grupo);
+		}
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/usuarios',$this->data);
 		$this->load->view('temps/footer');
@@ -443,12 +451,13 @@ class Usuarios extends CI_Controller {
 				$this->Modelo_usuarios->delTkUS($ids,$it);
 				$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
 			}	
+		} else {
+			if($this->Modelo_usuarios->updateUsuarios($array,$ids)){
+				$this->session->set_flashdata('registro','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
+			} else{
+				$this->session->set_flashdata('usuario_existe','NO SE HA PODIDO REGISTRAR EL USUARIO, VUELVA A INTENTAR.');
+			}
 		}
-		// if(){
-		// 	$this->session->set_flashdata('editar','EL USUARIO SE HA MODIFICADO');
-		// }else{
-		// 	$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
-		// }
 	}
 	function updpass()
 	{
