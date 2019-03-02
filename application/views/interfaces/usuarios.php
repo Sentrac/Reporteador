@@ -496,8 +496,8 @@
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Teléfono</label>
                                             <div class="col-md-9">
-                                                <input name="Telefono" id="Telefono" placeholder="Teléfono" class="form-control" type="text">
-                                                <span class="help-block"></span>
+                                                <input name="Telefono" id="Telefono" placeholder="Teléfono" class="form-control" type="text" pattern="[0-9]{8,15}">
+                                                <span class="help-block">El número debe contener minimo 8 números y máximo 15.</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
