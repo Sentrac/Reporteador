@@ -446,9 +446,9 @@ class Usuarios extends CI_Controller {
 		$dts = $this->Modelo_usuarios->traerdatosUsuario($ids);
 		if(($array['usuario']) != ($dts[0]->usuario)){
 			if($this->email->send() and $this->Modelo_usuarios->updateUsuarios($array,$ids)){
-				$this->session->set_flashdata('registro','EL USUARIO SE HA MODIFICADO EXITOSAMENTE'); 
+				$this->session->set_flashdata('registro','EL USUARIO SE HA MODIFICADO EXITOSAMENTE');
 			} else {
-				$this->Modelo_usuarios->delTkUS($ids,$it);
+				$this->Modelo_usuarios->delTk($it);
 				$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
 			}	
 		} else {
