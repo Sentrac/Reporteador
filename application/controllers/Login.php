@@ -98,13 +98,13 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         redirect(base_url());
     }
-    public function verificar($tk)    {
-        $tkn = $tk;
-        $iu = $this->input->get('iu', TRUE);
+    public function verificar($tkn,$iu) {
         if($this->Modelo_login->validTI($tkn,$iu) and $this->Modelo_login->verifTI($iu)){
             $data['fic'] = '1';
+            echo 'verificado';
         } else {
             $data['fic'] = '2';
+            echo 'No';  
         }
         $this->load->view('interfaces/verifica',$data);
     }

@@ -130,11 +130,11 @@ class Usuarios extends CI_Controller {
 					<tr>
 					   <td style="padding: 60px 50px 60px 50px;color:#000;">
 							<h1>Hola '.$d['nombre'].'!</h1><br>
-							Nombre : <strong>'.$d['nombre'].' '.$d['apellidos'].'</strong>.<br>
-							Telefono : <strong>'.$d['telefono'].'</strong>.<br>
-							Usuario : <strong>'.$d['usuario'].'</strong>.<br>
-							Contraseña : <strong>'.$psw.'</strong>.<br>
-							Nivel de usuario : <strong>'.$tps.'</strong>.<br>
+							Nombre : <strong>'.$d['nombre'].' '.$d['apellidos'].'</strong><br>
+							Telefono : <strong>'.$d['telefono'].'</strong><br>
+							Usuario : <strong>'.$d['usuario'].'</strong><br>
+							Contraseña : <strong>'.$psw.'</strong><br>
+							Nivel de usuario : <strong>'.$tps.'</strong><br>
 							Para comenzar a usar su cuenta de WReporter, haga clic en el botón para confirmar su dirección de correo electrónico:
 							<br><br>
 							<center>
@@ -165,7 +165,6 @@ class Usuarios extends CI_Controller {
 				$this->Modelo_usuarios->regTkn($cod,$ui,'VF');
 				$it = $this->db->insert_id();
 				if($this->email->send()){
-					// echo 'enviado'.'<br>';
 					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
 					redirect('/Usuarios/usuarios','refresh');
 				} else {
