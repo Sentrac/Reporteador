@@ -19,17 +19,17 @@
                 
                   <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                      <a class="btn  btn-social text-center rounded-circle" href="https://www.facebook.com/WarriorsLabs/">
+                      <a class="btn  btn-social text-center rounded-circle" href="https://www.facebook.com/WarriorsLabs/" target="_blank">
                         <i class="fab fa-fw fa-facebook-f"></i>
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="btn  btn-social text-center rounded-circle" href="https://twitter.com/WarriorsFIM?s=08">
+                      <a class="btn  btn-social text-center rounded-circle" href="https://twitter.com/WarriorsFIM?s=08" target="_blank">
                         <i class="fab fa-fw fa-twitter"></i>
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="btn  btn-social text-center rounded-circle" href="https://warriorslabs.com/">
+                      <a class="btn  btn-social text-center rounded-circle" href="https://warriorslabs.com/" target="_blank">
                         <i class="fab fa-fw fa-dribbble"></i>
                       </a>
                     </li>
