@@ -125,6 +125,15 @@ class Modelo_usuarios extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
+    public function getGrupo($ig)
+    {
+        $this->db->select('idgrupo,nombre');
+        $this->db->from('grupo');
+        $this->db->where_not_in('idgrupo','1');
+        $this->db->where('idgrupo',$ig);
+        $query=$this->db->get();
+        return $query->result();
+    }
     public function regTkn($tk,$iu,$tt)
     {
         $d = array(

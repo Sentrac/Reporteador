@@ -345,6 +345,17 @@ class Usuarios extends CI_Controller {
 		}
 		echo json_encode($itm);
 	}
+	public function grupo($ig)
+	{
+		$sel = $this->Modelo_usuarios->getGrupo($ig);
+		$itm = array();
+		foreach ($sel as $group) {
+			$reg = array();
+			$reg[] = $group;
+			$itm[] = $reg;
+		}
+		echo json_encode($itm);
+	}
 	public function editusuari($id)
 	{
 		$dts = $this->Modelo_usuarios->traerdatosUsuario($id);

@@ -235,7 +235,11 @@
 
                                 function loadGrupos() {
                                     $.ajax({
-                                        url: '<?php echo site_url('Usuarios/grupos')?>/',
+                                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                                            url: '<?php echo site_url('Usuarios/grupos')?>/',
+                                        <?php }if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                            url: '<?php echo site_url('Usuarios/grupo/'.$this->session->userdata('grupo'))?>/',
+                                        <?php } ?>
                                         type: 'GET',
                                         dataType: 'JSON'
                                     })
@@ -243,7 +247,7 @@
                                         $('#Grupo').empty();
                                         $.each(response, function (i, item) {
                                             $('#Grupo').append($('<option>', { 
-                                                value: item[0]['idgrupo'],
+                                                value: item[0]['idgrupo'] ,
                                                 text : item[0]['nombre']
                                             }));
                                         });
@@ -258,16 +262,14 @@
                                     $('.modal-title').text('Editar registro');
                                     $('#idus').val(id);
                                     
-                                    <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                                        loadGrupos();
-                                    <?php } ?>
+                                    loadGrupos();
 
                                     $.ajax({
                                         <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                                        url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
+                                            url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
                                         <?php } ?>
                                         <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
-                                        url: '<?php echo site_url('Usuarios/editusuarioAdmin')?>/'+id,
+                                            url: '<?php echo site_url('Usuarios/editusuarioAdmin')?>/'+id,
                                         <?php } ?>
                                         type: 'GET',
                                         dataType: 'JSON'
@@ -275,6 +277,7 @@
                                     .done(function(response){
                                         <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                                         $('#Grupo').empty().append('<option value="'+response[0]['idgrupo']+'">'+response[0]['grupo']+'</option>');
+                                        loadGrupos();
                                         <?php } ?>
                                         $('#Nombre').val(response[0]['nombre']);
                                         $('#Apellidos').val(response[0]['apellidos']);
