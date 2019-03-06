@@ -89,7 +89,7 @@
                                 <div class="row">
                                     <div class="offset-sm-4 col-md-8">
                                         <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="btn btn-danger">
+                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo   $_GET['idgrupo']; ?>" class="btn btn-danger">
                                             <i class="mdi mdi-close-circle"></i> Cancelar
                                         </a>
                                     </div>

@@ -138,6 +138,7 @@ class Equipos extends CI_Controller {
 			$nom_host=$this->input->post('nombre_host');
 			$dns=$this->input->post('dns');
 			$descripcion=$this->input->post('descripcion');
+			$frm=$this->input->post('frame');
 			$fkgrupo=$this->input->post('fk_grupo');
 
 			$descripcion = strtoupper($descripcion);
@@ -147,6 +148,7 @@ class Equipos extends CI_Controller {
 				'dns' => $dns,
 				'fk_grupo' => $fkgrupo,
 				'descripcion' => $descripcion,
+				'iframe' => $frm,
 				'usuario' => $this->session->userdata("usuario")
 			);
 			if($this->Modelo_equipos->updateEquipo($array,$idequipo)){
@@ -172,6 +174,20 @@ class Equipos extends CI_Controller {
 		$response['status']  = 'success';
 		$response['message'] = 'Equipo eliminado correctamente ...';
 		echo json_encode($response);
+	}
+	public function grafic()
+	{
+		$frm = $_GET['ide'];
+		$this->data['posts']=$this->Modelo_login->getRoles();
+		if($this->session->userdata('tipo_usuario') == 'SU'){
+			$this->data['iframe']=$this->Modelo_equipos->getFrame($frm);
+		} elseif($this->session->userdata('tipo_usuario') == 'AD') {
+			$this->data['iframe']=$this->Modelo_equipos->getFrameG($frm,$this->session->userdata('grupo'));
+		}
+		// var_dump($this->data['iframe']);
+		$this->load->view('temps/header',$this->data);
+		$this->load->view('interfaces/interfaz_grafic',$this->data);
+		$this->load->view('temps/footer');
 	}
 }
 ?>

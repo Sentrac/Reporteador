@@ -38,6 +38,31 @@ class Modelo_equipos extends CI_Model{
         $this->db->where('idequipos',$id);
         $this->db->delete('equipos');
     }
+    public function getFrame($frm)
+    {
+        $this->db->select('iframe,fk_grupo');
+        $this->db->where('idequipos',$frm);
+        $this->db->from('equipos');
+        $query = $this->db->get();
+        if($query->num_rows()==1){
+            return $query->result();
+        }else {
+            return false;
+        }
+    }
+    public function getFrameG($frm,$grp)
+    {
+        $this->db->select('iframe,fk_grupo');
+        $this->db->where('idequipos',$frm);
+        $this->db->where('fk_grupo',$grp);
+        $this->db->from('equipos');
+        $query = $this->db->get();
+        if($query->num_rows()==1){
+            return $query->result();
+        }else {
+            return 'NEL';
+        }
+    }
 }
 
 ?>
