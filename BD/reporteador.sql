@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-03-2019 a las 19:00:23
+-- Tiempo de generación: 06-03-2019 a las 15:19:15
 -- Versión del servidor: 8.0.15
 -- Versión de PHP: 7.2.15-0ubuntu0.18.04.1
 
@@ -64,7 +64,21 @@ INSERT INTO `bitacora_equipo` (`idbitacora`, `accion`, `id_equipo`, `nombre_host
 (17, 'AGREGO EQUIPO', 51, '19233', '193.168.5.5', NULL, 1, 'admin@gmail.com', '2019-02-19 14:55:02'),
 (18, 'AGREGO EQUIPO', 52, 'hola', '195.165.123.123', NULL, 1, 'admin@gmail.com', '2019-02-19 14:57:02'),
 (19, 'AGREGO EQUIPO', 53, '159', '15.15.15.15', NULL, 4, 'enriquez.rosaicela@gmail.com', '2019-02-19 15:57:43'),
-(20, 'AGREGO EQUIPO', 54, '489', '123.123.123.123', NULL, 22, 'admin@gmail.com', '2019-02-19 16:01:16');
+(20, 'AGREGO EQUIPO', 54, '489', '123.123.123.123', NULL, 22, 'admin@gmail.com', '2019-02-19 16:01:16'),
+(21, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 12:36:13'),
+(22, 'MODIFICO EQUIPO', 52, 'hola', '195.165.123.123', '195.165.123.123', 32, 'admin@gmail.com', '2019-03-06 12:36:17'),
+(23, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 12:52:16'),
+(24, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 12:52:21'),
+(25, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 12:52:59'),
+(26, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 13:49:36'),
+(27, 'MODIFICO EQUIPO', 52, 'hola', '195.165.123.123', '195.165.123.123', 32, 'admin@gmail.com', '2019-03-06 13:52:49'),
+(28, 'MODIFICO EQUIPO', 52, 'hola', '195.165.123.123', '195.165.123.123', 32, 'admin@gmail.com', '2019-03-06 13:55:28'),
+(29, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 13:57:34'),
+(30, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 14:00:11'),
+(31, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 14:03:57'),
+(32, 'MODIFICO EQUIPO', 51, '19233', '193.168.5.5', '193.168.5.5', 32, 'admin@gmail.com', '2019-03-06 14:07:22'),
+(33, 'AGREGO EQUIPO', 55, 'lolita', '159.263.487', NULL, 33, 'admin@gmail.com', '2019-03-06 14:26:36'),
+(34, 'MODIFICO EQUIPO', 55, 'lolita', '159.263.487', '159.263.487', 33, 'admin@gmail.com', '2019-03-06 14:35:26');
 
 -- --------------------------------------------------------
 
@@ -112,7 +126,8 @@ INSERT INTO `bitacora_grupo` (`idbitacora`, `accion`, `id_grupo`, `nombre_nuevo`
 (25, 'MODIFICO GRUPO', 32, 'UNIVERSIDAD INSURGENTES', 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '&lt;iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"&gt;&lt;/iframe&gt;', 'admin@gmail.com', '2019-03-05 17:37:43'),
 (26, 'MODIFICO GRUPO', 32, 'UNIVERSIDAD INSURGENTES', 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '<iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"></iframe>', 'admin@gmail.com', '2019-03-05 17:42:45'),
 (27, 'MODIFICO GRUPO', 32, 'UNIVERSIDAD INSURGENTES', 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '', 'admin@gmail.com', '2019-03-05 17:48:16'),
-(28, 'MODIFICO GRUPO', 32, 'UNIVERSIDAD INSURGENTES', 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '&lt;iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"&gt;&lt;/iframe&gt;', 'admin@gmail.com', '2019-03-05 17:49:04');
+(28, 'MODIFICO GRUPO', 32, 'UNIVERSIDAD INSURGENTES', 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '&lt;iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"&gt;&lt;/iframe&gt;', 'admin@gmail.com', '2019-03-05 17:49:04'),
+(29, 'MODIFICO GRUPO', 32, 'UNIVERSIDAD INSURGENTES', 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '<iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"></iframe>', 'admin@gmail.com', '2019-03-06 12:35:23');
 
 -- --------------------------------------------------------
 
@@ -240,7 +255,8 @@ INSERT INTO `bitacora_usuario` (`idbitacora`, `accion`, `id_usuario`, `nombre`, 
 (99, 'ELIMINO USUARIO', 115, 'JOSUE', 'MARIN', 'CO', NULL, 32, NULL, 'eve@gma.com', '2019-03-05 00:44:20'),
 (100, 'AGREGO USUARIO', 116, 'JOSUE', 'MARIN', 'SU', NULL, 1, NULL, 'admin@gmail.com', '2019-03-05 00:49:35'),
 (101, 'ELIMINO USUARIO', 114, 'EVE', 'FERIA', 'AD', NULL, 32, NULL, 'admin@gmail.com', '2019-03-05 18:59:45'),
-(102, 'ELIMINO USUARIO', 116, 'JOSUE', 'MARIN', 'SU', NULL, 1, NULL, 'admin@gmail.com', '2019-03-05 18:59:47');
+(102, 'ELIMINO USUARIO', 116, 'JOSUE', 'MARIN', 'SU', NULL, 1, NULL, 'admin@gmail.com', '2019-03-05 18:59:47'),
+(103, 'AGREGO USUARIO', 117, 'EVE', 'PALOMAR', 'AD', NULL, 32, NULL, 'admin@gmail.com', '2019-03-06 14:28:27');
 
 -- --------------------------------------------------------
 
@@ -249,16 +265,16 @@ INSERT INTO `bitacora_usuario` (`idbitacora`, `accion`, `id_usuario`, `nombre`, 
 -- (Véase abajo para la vista actual)
 --
 CREATE TABLE `b_equipos` (
-`accion` varchar(17)
+`idbitacora` int(11)
+,`accion` varchar(17)
+,`id_equipo` int(11)
+,`nombre_host` varchar(50)
 ,`dns` varchar(15)
 ,`dns_viejo` varchar(15)
-,`fecha` datetime
 ,`grupo` int(11)
-,`id_equipo` int(11)
-,`idbitacora` int(11)
 ,`nombre` varchar(45)
-,`nombre_host` varchar(50)
 ,`usuario` varchar(45)
+,`fecha` datetime
 );
 
 -- --------------------------------------------------------
@@ -269,15 +285,15 @@ CREATE TABLE `b_equipos` (
 --
 CREATE TABLE `b_grupoNuevo` (
 `accion` varchar(17)
-,`apellidos` varchar(45)
-,`fecha` datetime
-,`grupo_actual` varchar(45)
-,`grupo_nuevo` int(11)
 ,`id_usuario` int(11)
 ,`nombre` varchar(45)
+,`apellidos` varchar(45)
 ,`rol_nuevo` varchar(2)
 ,`rol_viejo` varchar(2)
+,`grupo_nuevo` int(11)
+,`grupo_actual` varchar(45)
 ,`usuario` varchar(45)
+,`fecha` datetime
 );
 
 -- --------------------------------------------------------
@@ -287,18 +303,18 @@ CREATE TABLE `b_grupoNuevo` (
 -- (Véase abajo para la vista actual)
 --
 CREATE TABLE `b_grupos` (
-`accion` varchar(17)
-,`apellidos` varchar(45)
-,`fecha` datetime
-,`grupo_actual` varchar(45)
-,`grupo_anterior` varchar(45)
-,`grupo_nuevo` int(11)
-,`grupo_viejo` int(11)
-,`id_usuario` int(11)
+`id_usuario` int(11)
+,`accion` varchar(17)
 ,`nombre` varchar(45)
+,`apellidos` varchar(45)
 ,`rol_nuevo` varchar(2)
 ,`rol_viejo` varchar(2)
+,`grupo_nuevo` int(11)
+,`grupo_actual` varchar(45)
+,`grupo_viejo` int(11)
+,`grupo_anterior` varchar(45)
 ,`usuario` varchar(45)
+,`fecha` datetime
 );
 
 -- --------------------------------------------------------
@@ -309,15 +325,15 @@ CREATE TABLE `b_grupos` (
 --
 CREATE TABLE `b_grupoViejo` (
 `accion` varchar(17)
-,`apellidos` varchar(45)
-,`fecha` datetime
-,`grupo_anterior` varchar(45)
-,`grupo_viejo` int(11)
 ,`id_usuario` int(11)
 ,`nombre` varchar(45)
+,`apellidos` varchar(45)
 ,`rol_nuevo` varchar(2)
 ,`rol_viejo` varchar(2)
+,`grupo_viejo` int(11)
+,`grupo_anterior` varchar(45)
 ,`usuario` varchar(45)
+,`fecha` datetime
 );
 
 -- --------------------------------------------------------
@@ -341,8 +357,9 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`idequipos`, `nombre_host`, `dns`, `descripcion`, `fk_grupo`, `iframe`, `usuario`) VALUES
-(51, '19233', '193.168.5.5', 'OLO', 1, '0', 'admin@gmail.com'),
-(52, 'hola', '195.165.123.123', '', 1, '0', 'admin@gmail.com');
+(51, '19233', '193.168.5.5', 'OLO', 32, '', 'admin@gmail.com'),
+(52, 'hola', '195.165.123.123', '', 32, '<iframe src=\"https://materialdesignicons.com/\"></iframe>', 'admin@gmail.com'),
+(55, 'lolita', '159.263.487', 'QWE', 33, '<iframe src=\"https://getbootstrap.com/docs/4.3/components/alerts/\"></iframe>', 'admin@gmail.com');
 
 --
 -- Disparadores `equipos`
@@ -391,7 +408,7 @@ CREATE TABLE `grupo` (
 
 INSERT INTO `grupo` (`idgrupo`, `nombre`, `alias`, `rfc`, `iframe`, `descripcion`, `usuario`) VALUES
 (1, 'TODOS', NULL, NULL, '', NULL, ''),
-(32, 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '&lt;iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"&gt;&lt;/iframe&gt;', '', 'admin@gmail.com'),
+(32, 'UNIVERSIDAD INSURGENTES', 'UI', 'UI12345678', '<iframe src=\"http://189.204.31.154:5601/app/kibana#/dashboard/48ea39b0-3ea0-11e9-bd59-613c5e6c8929?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,mode:quick,to:now))\" height=\"600\" width=\"800\"></iframe>', '', 'admin@gmail.com'),
 (33, 'VILLA', 'CORTE', 'POI1624345QWE', '', '', 'admin@gmail.com');
 
 --
@@ -426,12 +443,12 @@ DELIMITER ;
 -- (Véase abajo para la vista actual)
 --
 CREATE TABLE `grupo_equipos` (
-`descripcion` varchar(255)
-,`dns` varchar(45)
-,`fk_grupo` int(11)
-,`grupo` varchar(45)
+`grupo` varchar(45)
 ,`idequipos` int(11)
 ,`nombre_host` varchar(50)
+,`dns` varchar(45)
+,`descripcion` varchar(255)
+,`fk_grupo` int(11)
 );
 
 -- --------------------------------------------------------
@@ -442,8 +459,8 @@ CREATE TABLE `grupo_equipos` (
 --
 CREATE TABLE `nombre_grupo` (
 `fk_grupou` int(11)
-,`grupo` varchar(45)
 ,`idgrupo` int(11)
+,`grupo` varchar(45)
 );
 
 -- --------------------------------------------------------
@@ -478,6 +495,13 @@ CREATE TABLE `tkns` (
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tkns`
+--
+
+INSERT INTO `tkns` (`id`, `tkn`, `fkusuarios`, `typetkn`, `status`) VALUES
+(26, 'o4Kg360pgaSiyaPxRkG0liIyqIcu9sBwcDewLs0gCSPexQXc0gqZLgHqHOcZq9nt', 117, 'VF', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -501,7 +525,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idusuarios`, `nombre`, `apellidos`, `telefono`, `usuario`, `pass`, `tipo_usuario`, `fk_grupou`, `user_session`) VALUES
-(1, 'JOSUE', 'MARIN ROMERO', '5587125364', 'admin@gmail.com', 'ad0d15b3e9b9c209962391db3cdae0fa', 'SU', 1, '');
+(1, 'JOSUE', 'MARIN ROMERO', '5587125364', 'admin@gmail.com', 'ad0d15b3e9b9c209962391db3cdae0fa', 'SU', 1, ''),
+(117, 'EVE', 'PALOMAR', '5512345678', 'eve@gma.com', 'bfdd8321feb5a8583516a3d82473db9f', 'AD', 32, 'admin@gmail.com');
 
 --
 -- Disparadores `usuarios`
@@ -535,16 +560,16 @@ DELIMITER ;
 -- (Véase abajo para la vista actual)
 --
 CREATE TABLE `usuarios_grupo` (
-`apellidos` varchar(45)
+`idusuarios` int(11)
 ,`fk_grupou` int(11)
-,`grupo` varchar(45)
 ,`idgrupo` int(11)
-,`idusuarios` int(11)
-,`iframe` varchar(250)
 ,`nombre` varchar(45)
+,`apellidos` varchar(45)
+,`usuario` varchar(50)
 ,`telefono` varchar(10)
 ,`tipo_usuario` varchar(2)
-,`usuario` varchar(50)
+,`grupo` varchar(45)
+,`iframe` varchar(250)
 );
 
 -- --------------------------------------------------------
@@ -673,25 +698,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `bitacora_equipo`
 --
 ALTER TABLE `bitacora_equipo`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `bitacora_grupo`
 --
 ALTER TABLE `bitacora_grupo`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `bitacora_usuario`
 --
 ALTER TABLE `bitacora_usuario`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `idequipos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `idequipos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
@@ -709,13 +734,13 @@ ALTER TABLE `Server`
 -- AUTO_INCREMENT de la tabla `tkns`
 --
 ALTER TABLE `tkns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- Restricciones para tablas volcadas
