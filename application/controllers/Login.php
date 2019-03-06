@@ -221,8 +221,24 @@ class Login extends CI_Controller {
             }
         }
     }
-    function sesion()
+    function servstat()
     {
-        var_dump($this->session->userdata());
+        $this->form_validation->set_rules('frame','IFrame','required');
+        
+        if($this->form_validation->run()==FALSE){
+            $this->data['posts']=$this->Modelo_login->getRoles();
+            $this->data['frame']=$this->Modelo_login->getFrame();
+            $this->load->view('temps/header',$this->data); 
+            $this->load->view('interfaces/interfaz_susuario',$this->data);
+            $this->load->view('temps/footer');
+        } else {
+            $frm = $this->input->post('frame',FALSE);
+            $dts = array(
+                'iframe' => $frm
+            );
+            if($this->Modelo_login->insertFrame($dts)){
+                redirect('/Roles/superusuario','refresh');
+            }
+        }
     }
 }

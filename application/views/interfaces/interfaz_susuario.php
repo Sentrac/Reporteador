@@ -29,13 +29,41 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                  <div class="embed-responsive embed-responsive-1by1">
-       			      <!-- <iframe src="http://189.204.31.154:5601/app/kibana#/dashboard/Metricbeat-system-overview?embed=true&_g=()" height="600" width="800"></iframe> -->
-       			        <iframe src="http://192.168.4.41:3000/d/-HiYvgjiz/warriors?orgId=1&from=now-5m&to=now&kiosk" height="600" width="800"></iframe>
-                  </div>
-                </div>
-                </div>
-                
+                    <?php if($frame != false){?>
+                      <div class="embed-responsive embed-responsive-1by1">
+                        <?php var_dump($frame); ?>
+                      </div>
+                    <?php } else { ?>
+                      <?php echo form_open("Login/servstat",'class="card-body"','class="form-material"','class="form-horizontal"'); ?>
+                      <div class="col-md-12">
+                        <div class="card card-outline-inverse">
+                          <div class="card-header">
+                            <h3 class="m-b-0 text-white">Iframe</h3>
+                          </div>
+                          <div class="card-body">
+                            <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
+                            <h4 class="card-title">Insertar iframe de las gráficas de metricbeat</h4>
+                            <input class="form-control" name="frame" id="frame" title="Iframe" placeholder="Iframe...">
+                          </div>
+                          <div class="form-actions">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="offset-sm-4 col-md-8">
+                                    <button class="btn btn-success" type="submit"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <br>
+                                    <br>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <?php echo form_close(); ?>
+                    <?php } ?>
+                </div>                
                 <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -47,4 +75,3 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            
