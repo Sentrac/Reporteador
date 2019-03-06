@@ -90,7 +90,7 @@ class Grupo extends CI_Controller {
 			$nombre = $this->input->post('nombre');
 			$alias = $this->input->post('alias');
 			$rfc = $this->input->post('rfc');
-			$iframe = $this->input->post('iframe');
+			$iframe = $this->input->post('iframe',FALSE);
 			$descripcion = $this->input->post('descripcion');
 			
 			$nombre = strtoupper($nombre);
