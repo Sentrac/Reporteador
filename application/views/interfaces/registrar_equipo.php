@@ -135,7 +135,7 @@
                             </div>
                             <!--VALOR IDGRUPO DE TIPO ESCONDIDO-->
                             <?php if(isset($grupo_equipos)){?>
-                              <input type="text" class="form-control" value="<?php echo $grupo_equipos[0]->idgrupo; ?>" readonly name="fk_grupo">    
+                              <input type="hidden" class="form-control" value="<?php echo $grupo_equipos[0]->idgrupo; ?>" readonly name="fk_grupo">    
                             <?php } ?>
                             <!--FIN DE IDGRUPO ESCONDIDO-->
                           </div>
@@ -150,7 +150,7 @@
                                         </div>
                                     <?php } ?>
                                         <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
-                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="btn btn-inverse">
+                                        <a href="<?= base_url() ?>Equipos/equipo?idgrupo=<?php echo $posts[0]->fk_grupou; ?>" class="btn btn-danger">
                                             <i class="mdi mdi-close-circle"></i> Cancelar
                                         </a>
                                     </div>
