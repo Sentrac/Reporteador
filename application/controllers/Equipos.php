@@ -138,7 +138,7 @@ class Equipos extends CI_Controller {
 			$nom_host=$this->input->post('nombre_host');
 			$dns=$this->input->post('dns');
 			$descripcion=$this->input->post('descripcion');
-			$frm=$this->input->post('frame');
+			$frm="<iframe src='".$this->input->post('frame',FALSE)."'></iframe>";
 			$fkgrupo=$this->input->post('fk_grupo');
 
 			$descripcion = strtoupper($descripcion);
