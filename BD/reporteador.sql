@@ -472,7 +472,7 @@ CREATE TABLE `nombre_grupo` (
 CREATE TABLE `Server` (
   `IdIframe` int(11) NOT NULL,
   `Iframe` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `Server`
