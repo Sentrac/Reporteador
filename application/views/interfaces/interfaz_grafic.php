@@ -1,11 +1,3 @@
-<?php
-    $name = $this->session->userdata('tipo_usuario');
-    if($name=='SU'){
-    }
-    else{
-        redirect(base_url());
-    }
-?>
 <script>
   function recargar()
   {
@@ -29,28 +21,54 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <?php if($frame != false){?>
-                      <div class="embed-responsive embed-responsive-1by1">
-                        <?php var_dump($frame); ?>
+                  <?php if($iframe == 'NEL'){ ?>
+                    <div class="col-md-12">
+                      <div class="card card-outline-danger">
+                        <div class="card-header">
+                          <h3 class="m-b-0 text-white">Advertencia.</h3>
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">No existe el equipo.</h4>
+                        </div>
+                        <div class="form-actions">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="offset-sm-4 col-md-8">
+                                  <a href="<?php echo base_url().'Equipos/equipo?idgrupo='.$this->session->userdata('grupo');?>">
+                                    <button class="btn btn-success">Aceptar</button>
+                                  </a>
+                                  <br>
+                                  <br>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    <?php } else { ?>
-                      <?php echo form_open("Login/servstat",'class="card-body"','class="form-material"','class="form-horizontal"'); ?>
+                    </div>
+                  <?php } else { ?>
+                    <?php if($iframe[0]->iframe == false){?>
                       <div class="col-md-12">
-                        <div class="card card-outline-inverse">
+                        <div class="card card-outline-danger">
                           <div class="card-header">
-                            <h3 class="m-b-0 text-white">Iframe</h3>
+                            <h3 class="m-b-0 text-white">Advertencia.</h3>
                           </div>
                           <div class="card-body">
-                            <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
-                            <h4 class="card-title">Insertar iframe de las gráficas de metricbeat</h4>
-                            <input class="form-control" name="frame" id="frame" title="Iframe" placeholder="Iframe...">
+                            <h4 class="card-title">Edite el equipo y agregue el Iframe.</h4>
                           </div>
                           <div class="form-actions">
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
-                                    <button class="btn btn-success" type="submit"> <i class="mdi mdi-content-save"></i> Guardar</button>
+                                    <?php if($this->session->userdata('tipo_usuario') == 'SU'){ ?>
+                                    <a href="<?php echo base_url().'Equipos/equipo?idgrupo='.$iframe[0]->fk_grupo;?>">
+                                    <?php } elseif($this->session->userdata('tipo_usuario') == 'AD' or $this->session->userdata('tipo_usuario') == 'CO'){ ?>
+                                      <a href="<?php echo base_url().'Equipos/equipo?idgrupo='.$this->session->userdata('grupo');?>">
+                                    <?php }?>
+                                      <button class="btn btn-success">Aceptar</button>
+                                    </a>
                                     <br>
                                     <br>
                                   </div>
@@ -58,15 +76,18 @@
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
-                      <?php echo form_close(); ?>
+                    <?php } else { ?>
+                      <div class="embed-responsive embed-responsive-1by1">
+                        <?php echo $iframe[0]->iframe; ?>
+                      </div>
                     <?php } ?>
+                  <?php }?>
                 </div>                
                 <!-- Row -->
                 <!-- ============================================================== -->
-                <!-- End PAge Content -->
+                <!-- End Page Content -->
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->

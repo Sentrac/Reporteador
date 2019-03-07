@@ -235,7 +235,11 @@
 
                                 function loadGrupos() {
                                     $.ajax({
-                                        url: '<?php echo site_url('Usuarios/grupos')?>/',
+                                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                                            url: '<?php echo site_url('Usuarios/grupos')?>/',
+                                        <?php }if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                                            url: '<?php echo site_url('Usuarios/grupo/'.$this->session->userdata('grupo'))?>/',
+                                        <?php } ?>
                                         type: 'GET',
                                         dataType: 'JSON'
                                     })
@@ -243,7 +247,7 @@
                                         $('#Grupo').empty();
                                         $.each(response, function (i, item) {
                                             $('#Grupo').append($('<option>', { 
-                                                value: item[0]['idgrupo'],
+                                                value: item[0]['idgrupo'] ,
                                                 text : item[0]['nombre']
                                             }));
                                         });
@@ -258,16 +262,14 @@
                                     $('.modal-title').text('Editar registro');
                                     $('#idus').val(id);
                                     
-                                    <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                                        loadGrupos();
-                                    <?php } ?>
+                                    loadGrupos();
 
                                     $.ajax({
                                         <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                                        url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
+                                            url: '<?php echo site_url('Usuarios/editusuari')?>/'+id,
                                         <?php } ?>
                                         <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
-                                        url: '<?php echo site_url('Usuarios/editusuarioAdmin')?>/'+id,
+                                            url: '<?php echo site_url('Usuarios/editusuarioAdmin')?>/'+id,
                                         <?php } ?>
                                         type: 'GET',
                                         dataType: 'JSON'
@@ -275,6 +277,7 @@
                                     .done(function(response){
                                         <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                                         $('#Grupo').empty().append('<option value="'+response[0]['idgrupo']+'">'+response[0]['grupo']+'</option>');
+                                        loadGrupos();
                                         <?php } ?>
                                         $('#Nombre').val(response[0]['nombre']);
                                         $('#Apellidos').val(response[0]['apellidos']);
@@ -330,7 +333,7 @@
                                         })
                                         .done(function(reponse){
                                             swal({
-                                                title: 'Guardado',
+                                                title: 'Modificando...',
                                                 text: '',
                                                 type: 'success',
                                                 showConfirmButton: false
@@ -496,8 +499,8 @@
                                         <div class="form-group row">
                                             <label class="control-label col-md-3 text-center">Teléfono</label>
                                             <div class="col-md-9">
-                                                <input name="Telefono" id="Telefono" placeholder="Teléfono" class="form-control" type="text">
-                                                <span class="help-block"></span>
+                                                <input name="Telefono" id="Telefono" placeholder="Teléfono" class="form-control" type="text" pattern="[0-9]{8,15}">
+                                                <span class="help-block">El número debe contener minimo 8 números y máximo 15.</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -67,6 +67,11 @@
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <input type="hidden" value="<?php echo $equipo->idequipos; ?>">
                         <p><?php echo $equipo->dns;?></p>
+                        <a href="<?php echo base_url()."Equipos/grafic?ide=".$equipo->idequipos; ?>">
+                          <button type="button" class="btn btn-secondary txt-verde" title="Estado">
+                              <span class="mdi mdi-chart-bar" aria-hidden="true"></span>
+                          </button>
+                        </a>
                         <a href="<?= base_url() ?>Equipos/editarEquipo?idequipo=<?php echo $equipo->idequipos; ?>">
                           <button type="button" class="btn btn-secondary txt-azul" title="Editar">
                               <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
@@ -110,6 +115,11 @@
                       <center><img class="card-img-top img-responsive" src="../assets/images/equipos.png" alt="Card image cap"></center>
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
+                        <a href="<?php echo base_url()."Equipos/grafic?ide=".$equipo->idequipos; ?>">
+                          <button type="button" class="btn btn-secondary txt-verde" title="Estado">
+                              <span class="mdi mdi-chart-bar" aria-hidden="true"></span>
+                          </button>
+                        </a>
                         <a href="<?= base_url() ?>Equipos/editarEquipo?idequipo=<?php echo $equipo->idequipos; ?>">
                           <button type="button" class="btn btn-secondary txt-azul" title="Editar">
                               <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
@@ -154,6 +164,11 @@
                         <h4 class="card-title"><?php echo $equipo->nombre_host;?></h4>
                         <p><?php echo $equipo->dns;?></p>
                         <P><?php echo $equipo->descripcion;?></P>
+                        <a href="<?php echo base_url()."Equipos/grafic?ide=".$equipo->idequipos; ?>">
+                          <button type="button" class="btn btn-secondary txt-verde" title="Estado">
+                              <span class="mdi mdi-chart-bar" aria-hidden="true"></span>
+                          </button>
+                        </a>
                       </div>
                     </div>
                   </div>

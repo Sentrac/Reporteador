@@ -108,5 +108,24 @@ class Modelo_login extends CI_Model{
             return false;
         }
     }
+    function getFrame()
+    {
+        $this->db->select('iframe');
+        $this->db->from('Server');
+        $query = $this->db->get();
+        if($query->num_rows()==1){
+            return $query->result();
+        }else {
+            return false;
+        }
+    }
+    function insertFrame($f)
+    {
+        if($this->db->insert('Server',$f)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

@@ -98,13 +98,13 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         redirect(base_url());
     }
-    public function verificar($tk)    {
-        $tkn = $tk;
-        $iu = $this->input->get('iu', TRUE);
+    public function verificar($tkn,$iu) {
         if($this->Modelo_login->validTI($tkn,$iu) and $this->Modelo_login->verifTI($iu)){
             $data['fic'] = '1';
+            echo 'verificado';
         } else {
             $data['fic'] = '2';
+            echo 'No';  
         }
         $this->load->view('interfaces/verifica',$data);
     }
@@ -221,8 +221,28 @@ class Login extends CI_Controller {
             }
         }
     }
-    function sesion()
+    function servstat()
     {
-        var_dump($this->session->userdata());
+        $this->form_validation->set_rules('frame','IFrame','required');
+        
+        if($this->form_validation->run()==FALSE){
+            $this->data['posts']=$this->Modelo_login->getRoles();
+            $this->data['frame']=$this->Modelo_login->getFrame();
+            $this->load->view('temps/header',$this->data); 
+            $this->load->view('interfaces/interfaz_susuario',$this->data);
+            $this->load->view('temps/footer');
+        } else {
+            $frm = $this->input->post('frame',FALSE);
+            $dts = array(
+                'iframe' => $frm
+            );
+            if($this->Modelo_login->insertFrame($dts)){
+                redirect('/Roles/superusuario','refresh');
+            }
+        }
+    }
+    function phpstat()
+    {
+        phpinfo();
     }
 }

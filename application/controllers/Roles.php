@@ -15,10 +15,11 @@ class Roles extends CI_Controller {
 	}
 	public function superusuario(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
+		$this->data['frame']=$this->Modelo_login->getFrame();
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/interfaz_susuario',$this->data);
 		$this->load->view('temps/footer');
-    }
+  }
     public function admin(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 

@@ -85,14 +85,15 @@ class Modelo_usuarios extends CI_Model{
     {
         $query = $array['usuario'];
         $this->db->where('usuario',$query);
+        $this->db->where_not_in('idusuarios',$idusuario);
         $validar=$this->db->get('usuarios');
-        if($validar->num_rows()>0){
+        if($validar->num_rows()>0){ 
             return false;
-         } else {
+        } else {
             $this->db->where('idusuarios',$idusuario);
             $this->db->update('usuarios', $array);
             return true;
-         }
+        }
     }
     public function EliminardatosUsuario($idusuario)
     {
@@ -121,6 +122,15 @@ class Modelo_usuarios extends CI_Model{
         $this->db->select('idgrupo,nombre');
         $this->db->from('grupo');
         $this->db->where_not_in('idgrupo','1');
+        $query=$this->db->get();
+        return $query->result();
+    }
+    public function getGrupo($ig)
+    {
+        $this->db->select('idgrupo,nombre');
+        $this->db->from('grupo');
+        $this->db->where_not_in('idgrupo','1');
+        $this->db->where('idgrupo',$ig);
         $query=$this->db->get();
         return $query->result();
     }
