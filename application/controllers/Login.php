@@ -243,6 +243,7 @@ class Login extends CI_Controller {
     }
     function phpstat()
     {
+        echo exec('whoami');
         phpinfo();
     }
 }
