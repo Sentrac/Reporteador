@@ -18,6 +18,8 @@
 .bg-gradient{
 	/*background: linear-gradient(25deg, #000, #D13239) !important;*/
 	background-image: url("../images/maybe.jpg");
+	background-repeat: no-repeat;
+  	background-size: auto;
 }
 
 .bg-papaya {
