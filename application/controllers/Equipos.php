@@ -181,10 +181,9 @@ class Equipos extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		if($this->session->userdata('tipo_usuario') == 'SU'){
 			$this->data['iframe']=$this->Modelo_equipos->getFrame($frm);
-		} elseif($this->session->userdata('tipo_usuario') == 'AD') {
+		} elseif($this->session->userdata('tipo_usuario') == 'AD' or $this->session->userdata('tipo_usuario') == 'CO') {
 			$this->data['iframe']=$this->Modelo_equipos->getFrameG($frm,$this->session->userdata('grupo'));
 		}
-		// var_dump($this->data['iframe']);
 		$this->load->view('temps/header',$this->data);
 		$this->load->view('interfaces/interfaz_grafic',$this->data);
 		$this->load->view('temps/footer');
