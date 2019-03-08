@@ -9,7 +9,6 @@
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
-                
                 <?php if($this->session->flashdata('ErrorEq')) {?>
                   <script>
                       $(document).ready(function()
@@ -36,7 +35,6 @@
                       </div>
                     </div>
                 </div>
-
                 <div class="row page-titles">
                     <!--<div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor">Dashboard</h3>

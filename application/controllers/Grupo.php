@@ -82,10 +82,15 @@ class Grupo extends CI_Controller {
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
 		$this->form_validation->set_rules('iframe', 'Iframe', 'trim|required');
+		$idgrupo = $this->input->post('idgrupo');
 
 		if($this->form_validation->run() == FALSE){
-            $this->error_modal();
-    }else{
+
+            $asd =  validation_errors();
+			$this->session->set_flashdata('ErrorGrupo',$asd);
+			redirect('/Grupo/editarGrupo?idgrupo='.$idgrupo,'refresh');
+		
+		}else{
 			$idgrupo = $this->input->post('idgrupo');
 			$nombre = $this->input->post('nombre');
 			$alias = $this->input->post('alias');
@@ -114,12 +119,6 @@ class Grupo extends CI_Controller {
 				redirect('/Grupo/grupo','refresh');
 			}
 		}
-	}
-	public function error_modal(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/error_modal');
-		$this->load->view('temps/footer');
 	}
 	public function delgrupo($id)
 	{

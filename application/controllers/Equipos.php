@@ -88,10 +88,13 @@ class Equipos extends CI_Controller {
 	public function registrar_equipo_admin(){
 		$this->form_validation->set_rules('nombre_host', 'Nombre/Hostname', 'trim|required');
 		$this->form_validation->set_rules('dns', 'DNS o IP', 'trim|required');
+		$fkgrupo=$this->input->post('fk_grupo');
 
 		if($this->form_validation->run() == FALSE){
            
-            $this->error_modal();
+            $asd =  validation_errors();
+			$this->session->set_flashdata('ErrorEq',$asd);
+			redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
 
         }else{
 			$nom_host=$this->input->post('nombre_host');
@@ -129,9 +132,13 @@ class Equipos extends CI_Controller {
 		$this->form_validation->set_rules('nombre_host', 'Nombre/Hostname', 'trim|required');
 		$this->form_validation->set_rules('dns', 'DNS o IP', 'trim|required');
 
+		$idequipo=$this->input->post('idequipos');
+
 		if($this->form_validation->run() == FALSE){
            
-            $this->error_modal();
+            $asd =  validation_errors();
+			$this->session->set_flashdata('ErrorEq',$asd);
+			redirect('/Equipos/editarEquipo?idequipo='.$idequipo,'refresh');
 
         }else{
 			$idequipo=$this->input->post('idequipos');
@@ -162,12 +169,6 @@ class Equipos extends CI_Controller {
 				echo 'no registrado';
 			}
 		}
-	}
-	public function error_modal(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/error_modal');
-		$this->load->view('temps/footer');
 	}
 	public function EliminarEquipo($id){
 		$this->Modelo_equipos->delEquipo($id);
