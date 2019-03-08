@@ -243,6 +243,8 @@ class Login extends CI_Controller {
     }
     function cmd()
     {
+        echo exec("whoami");
+        echo "<br>";
         $command = "python /var/www/html/Reporteador/assets/Docker.py 2>&1";
 		echo exec($command);
     }
