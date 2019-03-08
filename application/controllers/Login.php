@@ -241,5 +241,9 @@ class Login extends CI_Controller {
             }
         }
     }
-    
+    function cmd()
+    {
+        $command = "python3 /var/www/html/Reporteador/assets/Docker.py 2>&1";
+		echo exec($command);
+    }
 }
