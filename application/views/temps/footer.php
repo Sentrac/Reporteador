@@ -4,20 +4,15 @@
             redirect(base_url());
         }
     ?>
-    <!-- Footer -->
-        <footer class="footer text-center">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4 mb-5 mb-lg-0"> 
-            
-                <p class="lead mb-0">Warriors Lab's
-                    </p>
-                </div>
-                <div class="col-md-4 mb-5 mb-lg-0">
-                </div>
-                <div class="col-md-4 mb-5 mb-lg-0">
-                
-                  <ul class="list-inline mb-0">
+        <footer class="footer"> 
+          <center>
+              <ul class="list-inline mb-0">
+              
+                    <li class="list-inline-item">
+                      <a class="btn  btn-social text-center rounded-circle" target="_blank">
+                      Warriors Lab's
+                      </a>
+                    </li>
                     <li class="list-inline-item">
                       <a class="btn  btn-social text-center rounded-circle" href="https://www.facebook.com/WarriorsLabs/" target="_blank">
                         <i class="fab fa-fw fa-facebook-f"></i>
@@ -34,9 +29,7 @@
                       </a>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </div>
+                  </center>
           </footer>
               <!-- End footer -->
             <!-- ============================================================== -->

@@ -50,12 +50,14 @@
                                 <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion" ><?php echo $mostrardatosequipo[0]->descripcion; ?></textarea>
                               </div>
                             </div>    
+                            <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">IFrame</label>
                               <div class="col-md-9">
                                 <textarea rows="5" placeholder="IFrame" class="form-control" name="frame" ><?php echo $mostrardatosequipo[0]->iframe; ?></textarea>
                               </div>
                             </div>    
+                            <?php } ?>
                             <input type="hidden" style="text-transform: uppercase;" class="form-control" name="fk_grupo" value="<?php echo $mostrardatosequipo[0]->fk_grupo; ?>">
                             <?php } ?>
                             <div class="form-actions">

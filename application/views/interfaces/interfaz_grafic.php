@@ -20,6 +20,7 @@
                 </div>
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <?php if($this->session->userdata('tipo_usuario') == 'SU'){ ?>
                 <div class="row">
                   <?php if($iframe == 'NEL'){ ?>
                     <div class="col-md-12">
@@ -62,11 +63,7 @@
                               <div class="col-md-12">
                                 <div class="row">
                                   <div class="offset-sm-4 col-md-8">
-                                    <?php if($this->session->userdata('tipo_usuario') == 'SU'){ ?>
                                     <a href="<?php echo base_url().'Equipos/equipo?idgrupo='.$iframe[0]->fk_grupo;?>">
-                                    <?php } elseif($this->session->userdata('tipo_usuario') == 'AD' or $this->session->userdata('tipo_usuario') == 'CO'){ ?>
-                                      <a href="<?php echo base_url().'Equipos/equipo?idgrupo='.$this->session->userdata('grupo');?>">
-                                    <?php }?>
                                       <button class="btn btn-success">Aceptar</button>
                                     </a>
                                     <br>
@@ -83,7 +80,14 @@
                         <?php echo $iframe[0]->iframe; ?>
                       </div>
                     <?php } ?>
-                  <?php }?>
+                  <?php }
+                  }?>
+                  <?php if($this->session->userdata('tipo_usuario') == 'AD' or $this->session->userdata('tipo_usuario') == 'CO'){ ?>
+                     <div class="embed-responsive embed-responsive-1by1">
+                        <?php echo $iframe[0]->iframe; ?>
+                      </div>
+                  <?php } ?>
+
                 </div>                
                 <!-- Row -->
                 <!-- ============================================================== -->
