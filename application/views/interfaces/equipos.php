@@ -40,6 +40,7 @@
                 <?php } ?>
                 <!--FIN DE NOTIFICACIONES-->
                 <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                <?php if($equipos){ ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">
@@ -56,8 +57,7 @@
                   </div>
                 </div>
                 <div class="row">
-                <?php if(isset($equipos)){
-                        foreach($equipos as $equipo){?>
+                <?php foreach($equipos as $equipo){?>
                   <div class="col-lg-3 col-md-6">
                     <!-- Card -->
                     <div class="card text-center">
@@ -84,12 +84,25 @@
                     </div>
                     <!-- Card -->
                   </div>
-                  <?php }
-                    }?>
+                  <?php }?>
                 </div>
-                <?php }?>
+                <?php } else { ?>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card card-outline-danger">
+                        <div class="card-header">
+                          <h4 class="float-left m-b-0 text-white">Advertencia</h4>
+                          <a href="<?php echo base_url().'Grupo/grupo' ?>" class="float-right btn btn-sm btn-rounded btn-outline txt-blanco"><i class="mdi mdi-arrow-left"></i> Regresar</a>
+                        </div>
+                        <div class="card-body">
+                          No existe el grupo
+                        </div>
+                      </div>
+                    </div>  
+                  </div>
+                <?php } ?>
                 <!-- Row -->
-                <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                <?php } if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-outline-inverse">

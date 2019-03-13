@@ -41,7 +41,7 @@ class Equipos extends CI_Controller {
 			$this->data['equipos_admin']=$this->Modelo_equipos->getEquiposAdmin($grupo);
 		}
 		/////////////////////////////////////////////////////////////////////
-		$this->load->view('temps/header',$this->data); 
+		$this->load->view('temps/header',$this->data);
 		$this->load->view('interfaces/equipos',$this->data);
 		$this->load->view('temps/footer');
     }
