@@ -232,8 +232,8 @@
                               <div class="col-md-9">
                               <?php if(isset($grupo_admin)){?>
                                 <div class="profile-text">
-                                <input type="text" class="form-control" value="<?php echo $grupo_admin[0]->nombre?>" readonly>
-                                <input type="hidden" class="form-control" value="<?php echo $grupo_admin[0]->idgrupo?>" name="fk_grupou">
+                                <input type="text" class="form-control" value="<?php echo $grupo_admin[0]->nombre; ?>" readonly>
+                                <input type="hidden" class="form-control" value="<?php echo $grupo_admin[0]->idgrupo; ?>" name="fk_grupou">
                                 </div>
                               </div>
                             <?php }?>
