@@ -124,7 +124,7 @@ class Usuarios extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -157,7 +157,7 @@ class Usuarios extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
@@ -250,7 +250,7 @@ class Usuarios extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -283,7 +283,7 @@ class Usuarios extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
