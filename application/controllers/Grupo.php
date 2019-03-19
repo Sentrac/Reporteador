@@ -33,7 +33,7 @@ class Grupo extends CI_Controller {
 	public function registrar_grupo(){
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
+		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric|min_length[12]|max_length[13]');
 
 		if($this->form_validation->run() == FALSE){
            
@@ -80,7 +80,7 @@ class Grupo extends CI_Controller {
 	public function actualizarGrupo(){
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
+		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric|min_length[12]|max_length[13]');
 		$this->form_validation->set_rules('iframe', 'Iframe', 'trim|required');
 		$idgrupo = $this->input->post('idgrupo');
 
