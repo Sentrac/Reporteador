@@ -55,7 +55,6 @@
             </div>
             <div class="login-box card bg-papaya">
                 <h1 class="box-title m-b-40 text-center txt-blanco">WReporter</h1>
-				<?php echo base_url(); ?>
                 <?php if($this->session->flashdata('chanPass')) {?>
                     <div class="alert">
                         <h5 class="txt-blanco">
@@ -64,7 +63,7 @@
                         </h5>
                     </div>
                 <?php } ?>
-                <?php echo form_open("Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
+                <?php echo form_open(base_url()."Login/proceso_login",'class="card-body"','class="form-material"','class="form-horizontal"','id="loginform"'); ?>
                <?php echo validation_errors('<div class="error-login tajawalR ls1">', '</div>'); ?>
                <div class="font-medium text-warning "><center><?php echo $this->session->flashdata('error'); ?></center></div>
                 <div class="form-group ">
