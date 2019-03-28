@@ -12,6 +12,7 @@ class Login extends CI_Controller {
 		$this->load->library('session');//libreria de sesión
         $this->load->model('Modelo_login');
         $this->load->model('Modelo_usuarios');
+        $this->load->model('Modelo_PN');
         $this->load->library('form_validation');//libreria de validaciones
 	}
 
@@ -248,11 +249,8 @@ class Login extends CI_Controller {
 	}
 	function base()
 	{
-		echo "http://".$_SERVER["HTTP_HOST"]."/<br>".base_url();
-		$site_url = ((isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https' : 'http';
-		$site_url .= '://' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
-		$site_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-
-		echo "<br>".$site_url."<br>".$_SERVER['SERVER_NAME'];
+		$stA= $this->Modelo_PN->encryp('hola', 'evebebe');
+		$miA2= $this->Modelo_PN->decryp('$stA', 'evebebe');
+		echo $stA."<br>".$miA2;
 	}
 }
