@@ -249,8 +249,7 @@ class Login extends CI_Controller {
 	}
 	function base()
 	{
-		$stA= $this->Modelo_PN->encryp('hola', 'evebebe');
-		$miA2= $this->Modelo_PN->decryp('$stA', 'evebebe');
-		echo $stA."<br>".$miA2;
+		$stA = $this->Modelo_PN->encryp('hola', 'evebebe');
+		echo $stA;
 	}
 }
