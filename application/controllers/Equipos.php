@@ -91,12 +91,10 @@ class Equipos extends CI_Controller {
 		$fkgrupo=$this->input->post('fk_grupo');
 
 		if($this->form_validation->run() == FALSE){
-           
-            $asd =  validation_errors();
+      $asd =  validation_errors();
 			$this->session->set_flashdata('ErrorEq',$asd);
 			redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
-
-        }else{
+  	}else{
 			$nom_host=$this->input->post('nombre_host');
 			$dns=$this->input->post('dns');
 			$descripcion=$this->input->post('descripcion');
@@ -190,4 +188,3 @@ class Equipos extends CI_Controller {
 		$this->load->view('temps/footer');
 	}
 }
-?>

@@ -12,6 +12,7 @@ class Usuarios extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('Modelo_login');
 		$this->load->model('Modelo_usuarios');
+		$this->load->model('Modelo_encrypt');
 		$this->load->library('form_validation');//libreria de validaciones
 	}
     //INTERFAZ PRINCIPAL DONDE SE MUESTRAN LOS USUARIOS REGISTRADOS
@@ -95,10 +96,10 @@ class Usuarios extends CI_Controller {
 				'apellidos' => $apellidos,
 				'telefono' => $telefono,
 				'usuario' => $user,
-				'pass' => md5($psw),
+				'pass' => $this->Modelo_encrypt->encrypt($psw),
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo,
-				'user_session' => $this->session->userdata("usuario")
+				'user_session' => $this->session->userdata("usuario"),
 			);
 
 			if($tipouser == 'SU'){
@@ -113,7 +114,6 @@ class Usuarios extends CI_Controller {
 
 			$url = base_url();
 			$cod = generarCodigo(64);
-			
 			$this->email->from('warlab2019@gmail.com', 'Warriors Labs');
 			$this->email->to($d['usuario']);
 			$this->email->subject('Cuenta de WReporter');
@@ -157,21 +157,26 @@ class Usuarios extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="http://wreporter.warriorslabs.com:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
 				);
 				$this->Modelo_usuarios->regTkn($cod,$ui,'VF');
 				$it = $this->db->insert_id();
-				if($this->email->send()){
-					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
-					redirect('/Usuarios/usuarios','refresh');
-				} else {
-					$this->Modelo_usuarios->delTkUS($ui,$it);
-					$this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
-					redirect('/Usuarios/usuarios','refresh');
-				}
+
+				$this->email->send();
+				die();
+
+				// if($this->email->send()){
+				// 	echo 'ok';
+				// 	$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
+				// 	redirect('/Usuarios/usuarios','refresh');
+				// } else {
+				// 	$this->Modelo_usuarios->delTkUS($ui,$it);
+				// 	echo 'error';					// $this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
+				// 	redirect('/Usuarios/usuarios','refresh');
+				// }
 			}else{
 				$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
 				redirect('/Usuarios/usuarios','refresh');
@@ -221,7 +226,7 @@ class Usuarios extends CI_Controller {
 				'apellidos' => $apellidos,
 				'telefono' => $telefono,
 				'usuario' => $user,
-				'pass' => md5($psw),
+				'pass' => $this->Modelo_encrypt->encrypt($psw),
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo,
 				'user_session' => $this->session->userdata("usuario")
@@ -537,7 +542,7 @@ class Usuarios extends CI_Controller {
 				</table>'
 			);
 
-			if($this->Modelo_usuarios->UpdPass($ids,$np2) and $this->email->send()){
+			if($this->Modelo_usuarios->UpdPass($ids,$this->Modelo_encrypt->encrypt($np2)) and $this->email->send()){
 				echo true;
 			} else {
 				echo false;

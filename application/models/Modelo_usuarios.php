@@ -165,7 +165,7 @@ class Modelo_usuarios extends CI_Model{
     }
     public function UpdPass($id,$npw)
     {
-        $this->db->set('pass',md5($npw));
+        $this->db->set('pass',$npw);
         $this->db->where('idusuarios',$id);
         if($this->db->update('usuarios')){
             return true;

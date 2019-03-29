@@ -2,19 +2,32 @@
 
 class Modelo_login extends CI_Model{
 
-    function login($usuario,$pass){
-        /*FUNCIÓN PARA CONSULTAR LOS CAMPOS DE LA TABLA 'usuarios'*/
-        $this->db->select('usuario, pass, tipo_usuario,fk_grupou');
+    function login($usuario, $pass){
+		$this->load->model('Modelo_encrypt');
+        $this->db->select('usuario, pass, tipo_usuario, fk_grupou');
         $this->db->from('usuarios');
-        $this->db->where('usuario',$usuario);
-        $this->db->where('pass',md5($pass));
-        $this->db->limit(1);
-        $query=$this->db->get();
-        if($query->num_rows()==1){
-            return $query->result();
-        }else {
-            return false;
-        }
+		$this->db->where('usuario',$usuario);
+		$this->db->limit(1);
+		$quer = $this->db->get();
+		$query = $quer->result();
+		$enc = $this->Modelo_encrypt->decrypt($query[0]->pass);
+		if($enc == $pass){
+			return $query = $quer->result();
+		} else {
+			return false;
+		}
+		// $this->load->model('Modelo_encrypt');
+        // $this->db->select('usuario, pass, tipo_usuario,fk_grupou');
+        // $this->db->from('usuarios');
+        // $this->db->where('usuario',$usuario);
+        // $this->db->where('pass', $pass);
+        // $this->db->limit(1);
+        // $query=$this->db->get();
+        // if($query->num_rows()==1){
+        //     return $query->result();
+        // }else {
+        //     return false;
+        // }
     }
     //FUNCIÓN PARA TRAER LOS CAMPOS 'nombre,apellidos,email,tipo_usuario DE LA TABLA 'usuarios para mostrar en la vista perfil.php'
     function getRoles(){  

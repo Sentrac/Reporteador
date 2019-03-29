@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 		$this->load->library('session');//libreria de sesión
         $this->load->model('Modelo_login');
         $this->load->model('Modelo_usuarios');
-        $this->load->model('Modelo_PN');
+        $this->load->model('Modelo_encrypt');
         $this->load->library('form_validation');//libreria de validaciones
 	}
 
@@ -21,7 +21,7 @@ class Login extends CI_Controller {
     }
     public function proceso_login(){        
 		$usuario=$this->input->post('usuario');
-		md5($pass=$this->input->post('pass'));
+		$pass=$this->input->post('pass');
         
         $checklogin=$this->Modelo_login->login($usuario,$pass);
 
@@ -77,13 +77,13 @@ class Login extends CI_Controller {
         }else {
             $sql=$this->db->select("*")->from("usuarios")
                                         ->where("usuario",$this->session->userdata("usuario"))
-                                        ->where("pass",md5($this->input->post("actual_pswd")))->get();
+                                        ->where("pass",$this->Modelo_encrypt->encrypt($this->input->post("actual_pswd")))->get();
             if($sql->num_rows()==1) {
                 foreach ($sql->result() as $user) {
                     $db_password=$user->pass;
                     $db_user=$user->usuario;
                     $this->session->set_flashdata('pass', 'LA CONTRASEÑA SE HA CAMBIADO EXITOSAMENTE');
-                    $fixed_pw=md5($this->input->post("new_pswd"));
+                    $fixed_pw=$this->Modelo_encrypt($this->input->post("new_pswd"));
                     $update=$this->db->query("UPDATE usuarios SET pass='$fixed_pw' WHERE usuario='$db_user'")or die(mysqli_error());
                     $this->vistaPassword();
                     redirect('Login/vistaPassword','refresh');
@@ -205,7 +205,7 @@ class Login extends CI_Controller {
     {
         $this->form_validation->set_rules('pass','Nueva contraseña','required|min_length[8]|max_length[16]|alpha_numeric_spaces');
         $this->form_validation->set_rules('pass2','Repetir contraseña','required|matches[pass]|min_length[8]|max_length[16]|alpha_numeric_spaces');
-        $pw = md5($this->input->post("pass2"));
+        $pw = $this->Modelo_encrypt->encrypt($this->input->post("pass2"));
         $id = $this->input->post("idu");
         $tkn = $this->input->post("tkn");
         
@@ -249,7 +249,16 @@ class Login extends CI_Controller {
 	}
 	function base()
 	{
-		$stA = $this->Modelo_PN->encryp('hola', 'evebebe');
-		echo $stA;
+		$password_plain = 'Asdf.1234';
+		echo $password_plain . "<br>";
+		
+		$password_encrypted = $this->Modelo_encrypt->encrypt($password_plain);
+		echo $password_encrypted . "<br>";
+
+		$password_decrypted = $this->Modelo_encrypt->decrypt($password_encrypted);
+		echo $password_decrypted . "<br>";
+
+		$checklogin = $this->Modelo_login->login('admin@gmail.com','Asdf.1234');
+		var_dump($checklogin);
 	}
 }
