@@ -165,18 +165,15 @@ class Usuarios extends CI_Controller {
 				$this->Modelo_usuarios->regTkn($cod,$ui,'VF');
 				$it = $this->db->insert_id();
 
-				$this->email->send();
-				die();
-
-				// if($this->email->send()){
-				// 	echo 'ok';
-				// 	$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
-				// 	redirect('/Usuarios/usuarios','refresh');
-				// } else {
-				// 	$this->Modelo_usuarios->delTkUS($ui,$it);
-				// 	echo 'error';					// $this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
-				// 	redirect('/Usuarios/usuarios','refresh');
-				// }
+				if($this->email->send()){
+					echo 'ok';
+					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
+					redirect('/Usuarios/usuarios','refresh');
+				} else {
+					$this->Modelo_usuarios->delTkUS($ui,$it);
+					echo 'error';					// $this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
+					redirect('/Usuarios/usuarios','refresh');
+				}
 			}else{
 				$this->session->set_flashdata('usuario_existe','EL USUARIO YA EXISTE, ELIGA OTRO USUARIO');
 				redirect('/Usuarios/usuarios','refresh');
