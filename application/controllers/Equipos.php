@@ -41,7 +41,7 @@ class Equipos extends CI_Controller {
 			$this->data['equipos_admin']=$this->Modelo_equipos->getEquiposAdmin($grupo);
 		}
 		/////////////////////////////////////////////////////////////////////
-		$this->load->view('temps/header',$this->data); 
+		$this->load->view('temps/header',$this->data);
 		$this->load->view('interfaces/equipos',$this->data);
 		$this->load->view('temps/footer');
     }
@@ -91,12 +91,10 @@ class Equipos extends CI_Controller {
 		$fkgrupo=$this->input->post('fk_grupo');
 
 		if($this->form_validation->run() == FALSE){
-           
-            $asd =  validation_errors();
+      $asd =  validation_errors();
 			$this->session->set_flashdata('ErrorEq',$asd);
 			redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
-
-        }else{
+  	}else{
 			$nom_host=$this->input->post('nombre_host');
 			$dns=$this->input->post('dns');
 			$descripcion=$this->input->post('descripcion');
@@ -182,13 +180,11 @@ class Equipos extends CI_Controller {
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		if($this->session->userdata('tipo_usuario') == 'SU'){
 			$this->data['iframe']=$this->Modelo_equipos->getFrame($frm);
-		} elseif($this->session->userdata('tipo_usuario') == 'AD') {
+		} elseif($this->session->userdata('tipo_usuario') == 'AD' or $this->session->userdata('tipo_usuario') == 'CO') {
 			$this->data['iframe']=$this->Modelo_equipos->getFrameG($frm,$this->session->userdata('grupo'));
 		}
-		// var_dump($this->data['iframe']);
 		$this->load->view('temps/header',$this->data);
 		$this->load->view('interfaces/interfaz_grafic',$this->data);
 		$this->load->view('temps/footer');
 	}
 }
-?>

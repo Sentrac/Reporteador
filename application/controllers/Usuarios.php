@@ -12,6 +12,7 @@ class Usuarios extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('Modelo_login');
 		$this->load->model('Modelo_usuarios');
+		$this->load->model('Modelo_encrypt');
 		$this->load->library('form_validation');//libreria de validaciones
 	}
     //INTERFAZ PRINCIPAL DONDE SE MUESTRAN LOS USUARIOS REGISTRADOS
@@ -41,7 +42,7 @@ class Usuarios extends CI_Controller {
 		$this->data['ex_grupos']=$this->Modelo_usuarios->n_grupos();
 		$this->data['todo_grupo']=$this->Modelo_usuarios->grupostodos();
 		//Modelo para obtener el grupo del administrador para agregar un nuevo usuario a su grupo
-		$idusuario=$this->input->get('idusuarios');
+		$idusuario=$this->session->userdata('grupo');
 		$this->data['grupo_admin']=$this->Modelo_usuarios->getGrupo_admin($idusuario);
 		/////////////////////////////////////////////////////////////////////////////////////
 		$this->load->view('temps/header',$this->data); 
@@ -95,10 +96,10 @@ class Usuarios extends CI_Controller {
 				'apellidos' => $apellidos,
 				'telefono' => $telefono,
 				'usuario' => $user,
-				'pass' => md5($psw),
+				'pass' => $this->Modelo_encrypt->encrypt($psw),
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo,
-				'user_session' => $this->session->userdata("usuario")
+				'user_session' => $this->session->userdata("usuario"),
 			);
 
 			if($tipouser == 'SU'){
@@ -113,7 +114,6 @@ class Usuarios extends CI_Controller {
 
 			$url = base_url();
 			$cod = generarCodigo(64);
-			
 			$this->email->from('warlab2019@gmail.com', 'Warriors Labs');
 			$this->email->to($d['usuario']);
 			$this->email->subject('Cuenta de WReporter');
@@ -124,7 +124,7 @@ class Usuarios extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -157,19 +157,21 @@ class Usuarios extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="http://wreporter.warriorslabs.com:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
 				);
 				$this->Modelo_usuarios->regTkn($cod,$ui,'VF');
 				$it = $this->db->insert_id();
+
 				if($this->email->send()){
+					echo 'ok';
 					$this->session->set_flashdata('registro','EL USUARIO SE HA REGISTRADO ');
 					redirect('/Usuarios/usuarios','refresh');
 				} else {
 					$this->Modelo_usuarios->delTkUS($ui,$it);
-					$this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
+					echo 'error';					// $this->session->set_flashdata('usuario_existe','EL USUARIO NO SE HA REGISTRADO, VUELVA A INTENTAR');
 					redirect('/Usuarios/usuarios','refresh');
 				}
 			}else{
@@ -221,7 +223,7 @@ class Usuarios extends CI_Controller {
 				'apellidos' => $apellidos,
 				'telefono' => $telefono,
 				'usuario' => $user,
-				'pass' => md5($psw),
+				'pass' => $this->Modelo_encrypt->encrypt($psw),
 				'tipo_usuario' => $tipouser,
 				'fk_grupou' => $grupo,
 				'user_session' => $this->session->userdata("usuario")
@@ -250,7 +252,7 @@ class Usuarios extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -283,7 +285,7 @@ class Usuarios extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
@@ -408,7 +410,7 @@ class Usuarios extends CI_Controller {
 			'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 				<tr>
 					<td align="center" style="padding: 0px 0 40px 0;">
-						<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+						<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 					</td>
 				</tr>
 				<tr>
@@ -445,7 +447,7 @@ class Usuarios extends CI_Controller {
 				</tr>
 				<tr>
 					<td align="center" style="padding: 40px 0 0px 0;">
-						<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+						<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 					</td>
 				</tr>
 			</table>'
@@ -501,7 +503,7 @@ class Usuarios extends CI_Controller {
 				'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 				<tr>
 					<td align="center" style="padding: 0px 0 40px 0;">
-						<img src="http://189.204.31.154:81/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+						<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 					</td>
 				</tr>
 				<tr>
@@ -531,13 +533,13 @@ class Usuarios extends CI_Controller {
 				</tr>
 				<tr>
 					<td align="center" style="padding: 40px 0 0px 0;">
-						<img src="http://189.204.31.154:81/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+						<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 					</td>
 				</tr>
 				</table>'
 			);
 
-			if($this->Modelo_usuarios->UpdPass($ids,$np2) and $this->email->send()){
+			if($this->Modelo_usuarios->UpdPass($ids,$this->Modelo_encrypt->encrypt($np2)) and $this->email->send()){
 				echo true;
 			} else {
 				echo false;

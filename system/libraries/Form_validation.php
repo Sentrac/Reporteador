@@ -1323,7 +1323,7 @@ class CI_Form_validation {
 		$upp = preg_match('@[A-Z]@', $str);
 		$low = preg_match('@[a-z]@', $str);
 		$num = preg_match('@[0-9]@', $str);
-		$nan = preg_match('@[!\@.$%\?&\*_\-\+]@', $str);
+		$nan = preg_match('@[!\@.$%\?&\*_\-\+]@', $str); // ! @ . $ % ? & * _ - +
 
 		if (!$num or !$low or !$upp or !$nan or strlen($str) < 8 or strlen($str) > 16) {
 			$ret = 0;

@@ -6,21 +6,20 @@ class Grupo extends CI_Controller {
 	function __construct(){
 
 		parent::__construct(); 
-		
-		$this->load->helper('url');
-		$this->load->helper('form');
-		$this->load->library('session');
-		$this->load->model('Modelo_login');
-		$this->load->model('Modelo_grupo');
-		$this->load->library('form_validation');//libreria de validaciones
+			$this->load->helper('url');
+			$this->load->helper('form');
+			$this->load->library('session');
+			$this->load->model('Modelo_login');
+			$this->load->model('Modelo_grupo');
+			$this->load->library('form_validation');//libreria de validaciones
     }
     public function grupo(){
-		$this->data['posts']=$this->Modelo_login->getRoles();
-		//MODELO PARA OBTNER TODOS LOS GRUPOS
-		$this->data['lista_grupos']=$this->Modelo_grupo->grupos_lista();
-		$this->load->view('temps/header',$this->data); 
-		$this->load->view('interfaces/grupo',$this->data);
-		$this->load->view('temps/footer');
+			$this->data['posts']=$this->Modelo_login->getRoles();
+			//MODELO PARA OBTNER TODOS LOS GRUPOS
+			$this->data['lista_grupos']=$this->Modelo_grupo->grupos_lista();
+			$this->load->view('temps/header',$this->data); 
+			$this->load->view('interfaces/grupo',$this->data);
+			$this->load->view('temps/footer');
     }
     //FUNCIÓN PARA MOSTRAR EL FORMULARIO DE AGREGAR GRUPOS
 	public function formulario_grupos(){
@@ -28,18 +27,18 @@ class Grupo extends CI_Controller {
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/registrar_grupos',$this->data);
 		$this->load->view('temps/footer');
-    }
+  }
     //FUNCIÓN PARA PODER INSERTAR LOS REGISTROS DE UN NUEVO GRUPO EN LA BD 'grupo'
 	public function registrar_grupo(){
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
+		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric|min_length[12]|max_length[13]');
 
 		if($this->form_validation->run() == FALSE){
            
-            $this->formulario_grupos();
+    	$this->formulario_grupos();
 
-        }else{
+    }else{
 			$nombre = $this->input->post('nombre');
 			$alias = $this->input->post('alias');
 			$rfc = $this->input->post('rfc');
@@ -80,7 +79,7 @@ class Grupo extends CI_Controller {
 	public function actualizarGrupo(){
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
-		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric');
+		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric|min_length[12]|max_length[13]');
 		$this->form_validation->set_rules('iframe', 'Iframe', 'trim|required');
 		$idgrupo = $this->input->post('idgrupo');
 

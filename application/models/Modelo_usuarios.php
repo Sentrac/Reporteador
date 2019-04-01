@@ -76,8 +76,8 @@ class Modelo_usuarios extends CI_Model{
     }
     public function getGrupo_admin($idusuario)
     {
-        $this->db->where('idusuarios',$idusuario);
-        $data=$this->db->get('usuarios_grupo');
+        $this->db->where('idgrupo',$idusuario);
+        $data=$this->db->get('grupo');
         return $data->result();
     }
     //ACTUALIZAR DATOS
@@ -165,7 +165,7 @@ class Modelo_usuarios extends CI_Model{
     }
     public function UpdPass($id,$npw)
     {
-        $this->db->set('pass',md5($npw));
+        $this->db->set('pass',$npw);
         $this->db->where('idusuarios',$id);
         if($this->db->update('usuarios')){
             return true;
