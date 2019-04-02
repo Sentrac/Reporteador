@@ -546,4 +546,20 @@ class Usuarios extends CI_Controller {
 			}
 		}	
 	}
+	/*---------------------DATA TABLE -------------------- */
+	public function index(){
+		// load view
+		$this->load->view('interfaces/usuarios');
+   
+	  }
+	  public function empList(){
+		
+		// POST data
+		$postData = $this->input->post();
+   
+		// Get data
+		$data = $this->Modelo_usuarios->getUsers($postData);
+   
+		echo json_encode($data);
+	 }
 }
