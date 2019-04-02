@@ -100,7 +100,20 @@
                       </div>
                       <div class="card-body">
                         <div class="table-responsive">
-                            <!-- Table -->
+                        <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
+                        <table class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table">
+                            <thead>
+                                  <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuario</th>
+                                    <th>Grupo</th>
+                                    <th>Rol</th>
+                                    <th>Accion</th>
+                                  </tr>
+                            </thead>
+                        <?php } ?>
+                        <!-- Table -->
+                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                             <table id='empTable' class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
@@ -134,6 +147,7 @@
                              });
                             });
                             </script>
+                        <?php } ?>
                             <script>
                                 var table;
                                 function redirect() {

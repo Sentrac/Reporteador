@@ -158,7 +158,7 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- User profile -->
-                <div class="user-profile" style="background: url(../assets/images/reporteador2.png) no-repeat;">
+                <div class="user-profile" style="background: url(../assets/images/Quantum-Gradient.svg) no-repeat;">
                     <!-- User profile image -->
                     <div class="profile-img"> <img src="../assets/images/usuario.png" alt="user" /> </div>
                     <!-- User profile text-->
