@@ -32,16 +32,16 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('grupo',$row->fk_grupou);
                 //USUARIO SUPERUSUARIO
                 if($this->session->userdata('tipo_usuario')=="SU"){
-                    redirect('Roles/superusuario');
+                    redirect('Roles/usru');
                     
                 }
                 //USUARIO ADMINISTRADOR
                 elseif($this->session->userdata('tipo_usuario')=="AD"){
-                    redirect('Roles/admin');
+                    redirect('Roles/usrd');
                 }
                 //USUARIO CONSULTAS
                 elseif($this->session->userdata('tipo_usuario')=='CO'){
-                    redirect('Roles/consultor');
+                    redirect('Roles/usro');
                 }
             }
             else{
@@ -236,7 +236,7 @@ class Login extends CI_Controller {
                 'iframe' => $frm
             );
             if($this->Modelo_login->insertFrame($dts)){
-                redirect('/Roles/superusuario','refresh');
+                redirect('/Roles/usru','refresh');
             }
         }
     }

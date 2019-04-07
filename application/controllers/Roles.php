@@ -13,21 +13,21 @@ class Roles extends CI_Controller {
 		$this->load->model('Modelo_login');
 		$this->load->model('Modelo_grupo');
 	}
-	public function superusuario(){
+	public function usru(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->data['frame']=$this->Modelo_login->getFrame();
 		$this->load->view('temps/header',$this->data); 
 		$this->load->view('interfaces/interfaz_susuario',$this->data);
 		$this->load->view('temps/footer');
   }
-    public function admin(){
+    public function usrd(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
 		$this->data['grupo_admin']=$this->Modelo_grupo->getGrupoAdmin();
     	$this->load->view('interfaces/interfaz_admin',$this->data);
     	$this->load->view('temps/footer');
     }
-    public function consultor(){
+    public function usro(){
 		$this->data['posts']=$this->Modelo_login->getRoles();
 		$this->load->view('temps/header',$this->data); 
 		$this->data['grupo_admin']=$this->Modelo_grupo->getGrupoAdmin();
