@@ -94,7 +94,7 @@
                         <!--End Logo icon -->
                         <span>
                             <!-- Light Logo text -->
-                            <img src="../assets/images/wreporter-logo.png" height="65px" class="light-logo" alt="homepage" />
+                            <img src="../assets/images/logo-wreporter.png" height="65px" class="light-logo" alt="homepage" />
                         </span>
                       
                     </a>
