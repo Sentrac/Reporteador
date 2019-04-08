@@ -69,10 +69,23 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
 
 		if($this->form_validation->run() == FALSE){
+
+			$old = array(
+				'nombre' => $this->input->post('nombre'),
+				'apellidos' => $this->input->post('apellidos'),
+				'telefono' => $this->input->post('telefono'),
+				'usuario' => $this->input->post('usuario'),
+				'pass' => $this->input->post('pass'),
+				'rpass' => $this->input->post('repeat_pswd'),
+				'tipo_usuario' => $this->input->post('tipo_usuario'),
+				'fk_grupou' => $this->input->post('fk_grupou'),
+			);
+			$this->session->set_flashdata('old',$old);
            
             $error_usuario =  validation_errors();
             $this->session->set_flashdata('ErrorUsuario',$error_usuario);
-            redirect('/Usuarios/formulario_usuarios');
+			
+			redirect('/Usuarios/formulario_usuarios');
 
         }else{
 			$nombre = $this->input->post('nombre');
@@ -202,9 +215,22 @@ class Usuarios extends CI_Controller {
 		$idgrupo = $this->input->post('fk_grupou');
 
 		if($this->form_validation->run() == FALSE){
+
+			$old = array(
+				'nombre' => $this->input->post('nombre'),
+				'apellidos' => $this->input->post('apellidos'),
+				'telefono' => $this->input->post('telefono'),
+				'usuario' => $this->input->post('usuario'),
+				'pass' => $this->input->post('pass'),
+				'rpass' => $this->input->post('repeat_pswd'),
+				'tipo_usuario' => $this->input->post('tipo_usuario'),
+			);
+			$this->session->set_flashdata('old',$old);
+
 			$error_usuario =  validation_errors();
             $this->session->set_flashdata('ErrorUsuario',$error_usuario);
-            redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh');
+			
+			redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh');
 
         }else{
 			$nombre = $this->input->post('nombre');

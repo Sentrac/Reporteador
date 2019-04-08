@@ -22,7 +22,7 @@
     <!-- Datatables -->
     <link href="../assets/plugins/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- chartist CSS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -80,11 +80,11 @@
                 <!-- ============================================================== -->
                 <div class="navbar-header">
                     <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
-                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/superusuario">
+                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/usru">
                     <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
-                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/admin ">
+                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/usrd ">
                     <?php } if($this->session->userdata('tipo_usuario')=='CO'){?>
-                        <a class="navbar-brand"href="<?php base_url() ?>../Roles/consultor">
+                        <a class="navbar-brand"href="<?php base_url() ?>../Roles/usro">
                     <?php } ?>
                         <!-- Logo icon -->
                         <b>
@@ -173,7 +173,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                     <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/usru"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <li class="sidebar-item ng-star-inserted">
@@ -208,7 +208,7 @@
                                 <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
                                 </div>
                             <?php }?>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/usrd"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
                         <?php }elseif($this->session->userdata('tipo_usuario')=='CO'){?>
@@ -217,7 +217,7 @@
                                 <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
                                 </div>
                             <?php }?>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/consultor"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/usro"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
                         <?php } ?>
                     </ul>

@@ -59,8 +59,17 @@ class Equipos extends CI_Controller {
 		$fkgrupo=$this->input->post('fk_grupo');
 
 		if($this->form_validation->run() == FALSE){
+
+			$old = array(
+				'nombre_host' => $this->input->post('nombre_host'),
+				'dns' => $this->input->post('dns'),
+				'descripcion' => $this->input->post('descripcion'),
+			);
+			$this->session->set_flashdata('old',$old);
+
 			$asd =  validation_errors();
 			$this->session->set_flashdata('ErrorEq',$asd);
+
 			redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
   	}else{
 			$nom_host=$this->input->post('nombre_host');
@@ -91,8 +100,16 @@ class Equipos extends CI_Controller {
 		$fkgrupo=$this->input->post('fk_grupo');
 
 		if($this->form_validation->run() == FALSE){
+			$old = array(
+				'nombre_host' => $this->input->post('nombre_host'),
+				'dns' => $this->input->post('dns'),
+				'descripcion' => $this->input->post('descripcion'),
+			);
+			$this->session->set_flashdata('old',$old);
+
       $asd =  validation_errors();
 			$this->session->set_flashdata('ErrorEq',$asd);
+			
 			redirect('/Equipos/formulario_equipo?idgrupo='.$fkgrupo,'refresh');
   	}else{
 			$nom_host=$this->input->post('nombre_host');

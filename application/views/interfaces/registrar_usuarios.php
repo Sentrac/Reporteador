@@ -104,25 +104,25 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre(s)</label>
                               <div class="col-md-9">
-                                <input type="text" style="text-transform: uppercase;" placeholder="Nombre" class="form-control" name="nombre">
+                                <input type="text" style="text-transform: uppercase;" placeholder="Nombre" class="form-control" name="nombre" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['nombre'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Apellido(s)</label>
                               <div class="col-md-9">
-                                <input type="text" style="text-transform: uppercase;" placeholder="Apellidos(s)" class="form-control" name="apellidos">
+                                <input type="text" style="text-transform: uppercase;" placeholder="Apellidos(s)" class="form-control" name="apellidos" value="<?php if($this->session->flashdata('old')){ echo $this->session->flashdata('old')['apellidos'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Telefono</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="TELEFONO" class="form-control" name="telefono">
+                                <input type="text" placeholder="TELEFONO" class="form-control" name="telefono" value="<?php if($this->session->flashdata('old')){ echo $this->session->flashdata('old')['telefono'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Usuario</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="USUARIO" class="form-control" name="usuario">
+                                <input type="text" placeholder="USUARIO" class="form-control" name="usuario" value="<?php if($this->session->flashdata('old')){ echo $this->session->flashdata('old')['usuario'];}?>">
                                 <small class="form-control-feedback">Ejemplo: qwer1234@warriorslabs.com</small>
                               </div>
                             </div>
@@ -130,7 +130,60 @@
                               <label class="control-label text-center col-md-2">Rol</label>
                             <div class="col-md-9">
                               <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary">
+																<?php if($this->session->flashdata('old')['tipo_usuario'] == "SU"){?>
+																	<script>
+																		$(document).ready(function (){
+																			$("#grupo_default").show();
+        															$("#grupo_todos").hide();
+																		});
+																	</script>
+																	<label class="btn btn-secondary focus active">
+																		<input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU" checked>Super Administrador
+																	</label>
+																	<label class="btn btn-secondary">
+                                  	<input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> Administrador
+																	</label>
+																	<label class="btn btn-secondary">
+																		<input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
+																	</label>
+																<?php
+																	} elseif($this->session->flashdata('old')['tipo_usuario'] == "AD") {
+																?>
+																	<script>
+																		$(document).ready(function (){							
+																			$("#grupo_default").hide();
+        															$("#grupo_todos").show();
+																		});
+																	</script>
+																	<label class="btn btn-secondary">
+																		<input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
+																	</label>
+																	<label class="btn btn-secondary focus active">
+                                  	<input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD" checked> Administrador
+																	</label>
+																	<label class="btn btn-secondary">
+																		<input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
+																	</label>
+																<?php
+																	} elseif ($this->session->flashdata('old')['tipo_usuario'] == "CO") {
+																?>
+																	<script>
+																		$(document).ready(function (){
+																			$("#grupo_default").hide();
+        															$("#grupo_todos").show();
+																		});
+																	</script>
+																	<label class="btn btn-secondary">
+																		<input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
+																	</label>
+																	<label class="btn btn-secondary">
+                                  	<input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="AD"> Administrador
+																	</label>
+																	<label class="btn btn-secondary focus active">
+																		<input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO" checked> Consultor
+																	</label>
+																<?php } elseif ($this->session->flashdata('old')['tipo_usuario'] == "") { ?>
+																<label class="btn btn-secondary">
                                   <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="SU">Super Administrador
                                 </label>
                                 <label class="btn btn-secondary">
@@ -139,6 +192,7 @@
                                 <label class="btn btn-secondary">
                                   <input type="radio" name="tipo_usuario" id="option3" autocomplete="off" value="CO"> Consultor
                                 </label>
+																<?php } ?>
                               </div>   
                               </div>
                             </div>   
@@ -159,7 +213,11 @@
                                   <!--JS RADIO BUTTON OPCION 2 PARA ADMIN Y CONSULTOR EN radiobuttons.js-->            
                                 <select  class="form-control custom-select" name="fk_grupou" id="grupos">
                                 <?php foreach($ex_grupos as $grupos){?>
-                                  <option value="<?php echo $grupos->idgrupo?>"><?php echo $grupos->nombre?></option>
+																	<?php if($this->session->flashdata('old')['fk_grupou'] == $grupos->idgrupo){ ?>
+																		<option value="<?php echo $grupos->idgrupo?>" selected><?php echo $grupos->nombre?></option>
+																	<?php } else { ?>
+																		<option value="<?php echo $grupos->idgrupo?>"><?php echo $grupos->nombre?></option>
+																	<?php } ?>
                                 <?php } ?>
                                 </select>
                               </div>
@@ -167,13 +225,13 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="CONTRASEÑA" class="form-control" name="pass">
+                                <input type="password" placeholder="CONTRASEÑA" class="form-control" name="pass" value="<?php if($this->session->flashdata('old')){ echo $this->session->flashdata('old')['pass'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Repite la contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="CONFIRMA LA CONTRASEÑA" class="form-control" name="repeat_pswd">
+                                <input type="password" placeholder="CONFIRMA LA CONTRASEÑA" class="form-control" name="repeat_pswd" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['rpass'];}?>">
                               </div>
                             </div>
                           </div>
@@ -192,7 +250,7 @@
                             </div>
                           </div>
                         <?php echo form_close(); ?>     
-                                <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?> 
+                                <?php } elseif($this->session->userdata('tipo_usuario')=='AD'){?> 
                                   <?php echo form_open("Usuarios/registrar_usuarios_admin",'id="clean_form"','name="form"'); ?>
                           <div class="form-body">
                             <h4 class="card-title">Datos</h4>
@@ -205,25 +263,25 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre(s)</label>
                               <div class="col-md-9">
-                                <input type="text" style="text-transform: uppercase;" placeholder="Nombre" class="form-control" name="nombre">
+                                <input type="text" style="text-transform: uppercase;" placeholder="Nombre" class="form-control" name="nombre" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['nombre'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Apellido(s)</label>
                               <div class="col-md-9">
-                                <input type="text" style="text-transform: uppercase;" placeholder="Apellidos(s)" class="form-control" name="apellidos">
+                                <input type="text" style="text-transform: uppercase;" placeholder="Apellidos(s)" class="form-control" name="apellidos" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['apellidos'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Telefono</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="TELEFONO" class="form-control" name="telefono">
+                                <input type="text" placeholder="TELEFONO" class="form-control" name="telefono" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['telefono'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Usuario</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="USUARIO" class="form-control" name="usuario">
+                                <input type="text" placeholder="USUARIO" class="form-control" name="usuario" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['usuario'];}?>">
                                 <small class="form-control-feedback">Ejemplo: qwer1234@warriorslabs.com</small>
                               </div>
                             </div>
@@ -242,25 +300,41 @@
                               <label class="control-label text-center col-md-2">Rol</label>
                               <div class="col-md-9">
                                 <div class="radio-row row btn-group btn-group-toggle" data-toggle="buttons">
-                                  <label class="btn btn-secondary">
+																	<?php if($this->session->flashdata('old')['tipo_usuario'] == "AD"){?>
+																		<label class="btn btn-secondary">
+																			<input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="AD" checked><label><h5>Administrador</h5></label>
+																		</label>
+																		<label class="btn btn-secondary">
+																			<input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="CO"><label><h5>Consultor</h5></label>
+																		</label>
+																	<?php } elseif ($this->session->flashdata('old')['tipo_usuario'] == "CO") { ?>
+																		<label class="btn btn-secondary">
                                     <input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="AD"><label><h5>Administrador</h5></label>
                                   </label>
                                   <label class="btn btn-secondary">
-                                    <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="CO"><label><h5>Consultor</h5></label>
+                                    <input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="CO" checked><label><h5>Consultor</h5></label>
                                   </label>
+																	<?php } elseif ($this->session->flashdata('old')['tipo_usuario'] == "") { ?>
+																		<label class="btn btn-secondary">
+																			<input type="radio" name="tipo_usuario" id="option1" autocomplete="off" value="AD"><label><h5>Administrador</h5></label>
+																		</label>
+																		<label class="btn btn-secondary">
+																			<input type="radio" name="tipo_usuario" id="option2" autocomplete="off" value="CO"><label><h5>Consultor</h5></label>
+																		</label>
+																	<?php } ?>
                                 </div>   
                               </div>
                             </div>   
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="CONTRASEÑA" class="form-control" name="pass">
+                                <input type="password" placeholder="CONTRASEÑA" class="form-control" name="pass" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['pass'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Repite la contraseña</label>
                               <div class="col-md-9">
-                                <input type="password" placeholder="CONFIRMA LA CONTRASEÑA" class="form-control" name="repeat_pswd">
+                                <input type="password" placeholder="CONFIRMA LA CONTRASEÑA" class="form-control" name="repeat_pswd" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['rpass'];}?>">
                               </div>
                             </div>
                           </div>
