@@ -22,7 +22,7 @@
     <!-- Datatables -->
     <link href="../assets/plugins/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- chartist CSS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
     <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -40,6 +40,15 @@
     <!-- Icons -->
     <link rel="stylesheet" href="../assets/icons/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- Datatable CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- Datatable JS -->
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!--<link rel="stylesheet" href="http://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and mfile:///home/sentrack/Documentos/edia queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,11 +80,11 @@
                 <!-- ============================================================== -->
                 <div class="navbar-header">
                     <?php if($this->session->userdata('tipo_usuario')=='SU'){?>
-                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/superusuario">
+                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/usru">
                     <?php }if($this->session->userdata('tipo_usuario')=='AD'){?>
-                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/admin ">
+                        <a class="navbar-brand" href="<?php base_url() ?>../Roles/usrd ">
                     <?php } if($this->session->userdata('tipo_usuario')=='CO'){?>
-                        <a class="navbar-brand"href="<?php base_url() ?>../Roles/consultor">
+                        <a class="navbar-brand"href="<?php base_url() ?>../Roles/usro">
                     <?php } ?>
                         <!-- Logo icon -->
                         <b>
@@ -85,7 +94,7 @@
                         <!--End Logo icon -->
                         <span>
                             <!-- Light Logo text -->
-                            <img src="../assets/images/wreporter-logo.png" height="65px" class="light-logo" alt="homepage" />
+                            <img src="../assets/images/logo-wreporter.png" height="65px" class="light-logo" alt="homepage" />
                         </span>
                       
                     </a>
@@ -149,7 +158,7 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- User profile -->
-                <div class="user-profile" style="background: url(../assets/images/reporteador2.png) no-repeat;">
+                <div class="user-profile" style="background: url(../assets/images/Quantum-Gradient.svg) no-repeat;">
                     <!-- User profile image -->
                     <div class="profile-img"> <img src="../assets/images/usuario.png" alt="user" /> </div>
                     <!-- User profile text-->
@@ -164,7 +173,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                     <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/superusuario"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/usru"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Grupo/grupo"><i class="mdi mdi-laptop"></i><span class="hide-menu">Grupo</span></a></li>
                         <li class="sidebar-item ng-star-inserted">
@@ -199,7 +208,7 @@
                                 <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
                                 </div>
                             <?php }?>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/admin"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/usrd"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Usuarios/usuarios?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Usuarios</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
                         <?php }elseif($this->session->userdata('tipo_usuario')=='CO'){?>
@@ -208,7 +217,7 @@
                                 <input type="hidden" value="<?php echo $posts[0]->fk_grupou?>">
                                 </div>
                             <?php }?>
-                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/consultor"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Roles/usro"><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a></li>
                         <li><a class="waves-effect waves-dark" href="<?= base_url() ?>Equipos/equipo?fk_grupou=<?php echo $posts[0]->fk_grupou; ?>"><i class="mdi mdi-laptop"></i><span class="hide-menu">Equipos</span></a></li>
                         <?php } ?>
                     </ul>

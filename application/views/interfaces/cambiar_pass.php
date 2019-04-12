@@ -121,7 +121,7 @@
                                   <div class="offset-sm-4 col-md-8">
                                     <button class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
                                     
-                                    <a href="<?= base_url() ?>Roles/superusuario">
+                                    <a href="<?= base_url() ?>Roles/usru">
                                         <input type="button" class="btn btn-danger" value="Cancelar"></input>
                                     </a>
                                   </div>

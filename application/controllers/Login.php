@@ -32,16 +32,16 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('grupo',$row->fk_grupou);
                 //USUARIO SUPERUSUARIO
                 if($this->session->userdata('tipo_usuario')=="SU"){
-                    redirect('Roles/superusuario');
+                    redirect('Roles/usru');
                     
                 }
                 //USUARIO ADMINISTRADOR
                 elseif($this->session->userdata('tipo_usuario')=="AD"){
-                    redirect('Roles/admin');
+                    redirect('Roles/usrd');
                 }
                 //USUARIO CONSULTAS
                 elseif($this->session->userdata('tipo_usuario')=='CO'){
-                    redirect('Roles/consultor');
+                    redirect('Roles/usro');
                 }
             }
             else{
@@ -140,7 +140,7 @@ class Login extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -170,7 +170,7 @@ class Login extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
@@ -236,7 +236,7 @@ class Login extends CI_Controller {
                 'iframe' => $frm
             );
             if($this->Modelo_login->insertFrame($dts)){
-                redirect('/Roles/superusuario','refresh');
+                redirect('/Roles/usru','refresh');
             }
         }
     }

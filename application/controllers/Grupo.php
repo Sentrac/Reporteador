@@ -34,8 +34,16 @@ class Grupo extends CI_Controller {
 		$this->form_validation->set_rules('alias', 'Alias', 'trim|required|alpha_dash');
 		$this->form_validation->set_rules('rfc', 'RFC', 'trim|required|alpha_numeric|min_length[12]|max_length[13]');
 
-		if($this->form_validation->run() == FALSE){
-           
+	if($this->form_validation->run() == FALSE){
+	
+		$old = array(
+			'nombre' => $this->input->post('nombre'),
+			'alias' => $this->input->post('alias'),
+			'rfc' => $this->input->post('rfc'),
+			'descripcion' => $this->input->post('descripcion'),
+		);
+		$this->session->set_flashdata('old',$old);
+
     	$this->formulario_grupos();
 
     }else{

@@ -3,7 +3,6 @@
         redirect(base_url()."Roles/consultor"); 
     }
 ?>
-
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -93,74 +92,77 @@
                         <?php }elseif($this->session->userdata('tipo_usuario')=='AD'){?>
                         <?php if(isset($posts)){?>
                                 <div class="profile-text">
-                                <input type="hidden" value="<?php echo $posts[0]->idusuarios?>">
+                                    <input type="hidden" value="<?php echo $posts[0]->idusuarios?>">
                                 </div>
                             <?php }?>
                         <a href="<?= base_url() ?>Usuarios/formulario_usuarios?idusuarios=<?php echo $posts[0]->idusuarios; ?>" class="float-right btn btn-sm btn-rounded btn-success txt-blanco"><i class="mdi mdi-plus"></i> Agregar usuario</a>
                         <?php } ?>
                       </div>
                       <div class="card-body">
-                      <div class="table-responsive">
+                        <div class="table-responsive">
+                        <?php if($this->session->userdata('tipo_usuario')=='AD'){ ?>
                         <table class="table color-bordered-table dark-bordered-table full-color-table full-dark-table hover-table">
-                          <thead>
-                            <tr>
-                              <th>Nombre</th>
-                              <th>Usuario</th>
-                              <th>Grupo</th>
-                              <th>Rol</th>
-                              <th>Acción</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          <?php if($this->session->userdata('tipo_usuario')=='SU'){ 
-                                     foreach ($usuarios as $row){ ?>                              
-                            <tr>
-                              <td><?php echo $row->nombre; ?> <?php echo $row->apellidos; ?></td>
-                              <td><?php echo $row->usuario; ?></td>
-                              <td>
-                                  <?php echo $row->grupo; ?>
-                                  <input type="hidden" value=" <?php echo $row->grupo; ?>">
-                              </td>
-                              <td>
-                              <?php if($row->tipo_usuario=='SU'){
-                                        $su='SUPER ADMINISTRADOR';
-                                ?>
-                                    <span class="label label-info"><?php  echo $su; ?>
-                                <?php } 
-                                    if($row->tipo_usuario=='AD'){
-                                        $ad='ADMINISTRADOR';
-                                ?>
-                                    <span class="label label-primary"><?php  echo $ad; ?></span>
-                                <?php }
-                                    if($row->tipo_usuario=='CO'){
-                                        $co='CONSULTOR';?>
-                                    <span class="label label-megna"><?php  echo $co; ?>
-                                   <?php } ?>
-                                  </span> 
-                              </td>                                   
-                              <td class="footable-editing footable-last-visible" style="display: table-cell;">
-                                <div class="btn-group btn-group-xs" role="group">
-                                    <a href="javascript:void(0)" onclick="editreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-azul" title="Editar Modal">
-                                        <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="javascript:void(0)" onclick="delreg(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-rojo" title="Eliminar">
-                                        <span class="mdi mdi-delete" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="javascript:void(0)" onclick="getContacts(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-verde" title="Contactos">
-                                        <span class="mdi mdi-eye" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="javascript:void(0)" onclick="updPass(<?= $row->idusuarios; ?>);" class="btn btn-secondary txt-negro" title="Cambiar Contraseña">
-                                        <span class="mdi mdi-lock" aria-hidden="true"></span>
-                                    </a>
-                                </div>
-                              </td>
-                            </tr>
-                                  <?php } 
-                                  }?>
+                            <thead>
+                                  <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuario</th>
+                                    <th>Grupo</th>
+                                    <th>Rol</th>
+                                    <th>Accion</th>
+                                  </tr>
+                            </thead>
+                        <?php } ?>
+                        <!-- Table -->
+                        <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
+                            <table id='empTable' class="table table-striped table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Usuario</th>
+                                    <th>Grupo</th>
+                                    <th>Rol</th>
+                                    <th>Accion</th>
+                                  </tr>
+                                </thead>
+                            </table>
+                            <!-- Script -->
+                            <script type="text/javascript">
+                            $(document).ready(function(){
+                             $('#empTable').DataTable({
+                                'language':{
+                                    "sProcessing":  "Procesando",
+                                    "sLengthMenu":  "Mostrar _MENU_ registros",
+                                    "sInfo":        "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                    "sInfoEmpty":   "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                    "sSearch":      "Buscar:",
+                                    "oPaginate": {
+                                        "sFirst":   "Primero",
+                                        "sLast":    "Último",
+                                        "sNext":    "Siguiente",
+                                        "sPrevious":"Anterior",
+                                    }
+                                },
+                               'processing': true,
+                               'serverSide': true,
+                               'serverMethod': 'post',
+                               'ajax': {
+                                  'url':'<?=base_url()?>index.php/Usuarios/empList'
+                               },
+                               'columns': [
+                                  { data: 'nombre' },
+                                  { data: 'apellidos' },
+                                  { data: 'usuario' },
+                                  { data: 'grupo' },
+                                  { data: 'tipo_usuario' },
+                                  { data: 'actions' },
+                               ]
+                             });
+                            });
+                            </script>
+                        <?php } ?>
                             <script>
-
                                 var table;
-                               
                                 function redirect() {
                                     <?php if($this->session->userdata('tipo_usuario')=='SU'){ ?>
                                     window.location.href = "<?php echo site_url('/Usuarios/usuarios'); ?>";
@@ -170,7 +172,6 @@
                                     <?php }?>
                                 }
                                 
-
                                 function delreg(id) {
                                     Swal({
                                         title: 'Estas Seguro de eliminarlo?',

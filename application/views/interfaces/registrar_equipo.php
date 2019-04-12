@@ -61,20 +61,20 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre / Hostname</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Nombre o hostname" class="form-control" name="nombre_host">
+                                <input type="text" placeholder="Nombre o hostname" class="form-control" name="nombre_host" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['nombre_host'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Dirección IP/DNS</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="IP o DNS" class="form-control" name="dns">
+                                <input type="text" placeholder="IP o DNS" class="form-control" name="dns" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['dns'];}?>">
                                 <small class="form-control-feedback">Ejemplo: 255.255.255.255</small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Descripción</label>
                               <div class="col-md-9">
-                                <textarea style="text-transform: uppercase;" type="textarea" rows="5" placeholder="Descripción" class="form-control" name="descripcion"></textarea>
+                                <textarea style="text-transform: uppercase;" type="textarea" rows="5" placeholder="Descripción" class="form-control" name="descripcion"><?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['descripcion'];}?></textarea>
                               </div>
                             </div>
                             <?php if(isset($grupo_equipos)){?>
@@ -115,20 +115,20 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre / Hostname</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Nombre o hostname" class="form-control" name="nombre_host">
+                                <input type="text" placeholder="Nombre o hostname" class="form-control" name="nombre_host" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['nombre_host'];}?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Dirección IP/DNS</label>
                               <div class="col-md-9">
-                                <input style="text-transform: uppercase;" type="text" placeholder="IP o DNS" class="form-control" name="dns">
+                                <input style="text-transform: uppercase;" type="text" placeholder="IP o DNS" class="form-control" name="dns" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['dns'];}?>">
                                 <small class="form-control-feedback">Ejemplo: 255.255.255.255</small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Descripción</label>
                               <div class="col-md-9">
-                                <textarea style="text-transform: uppercase;" type="textarea" rows="5" placeholder="Descripción" class="form-control" name="descripcion"></textarea>
+                                <textarea style="text-transform: uppercase;" type="textarea" rows="5" placeholder="Descripción" class="form-control" name="descripcion"><?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['descripcion'];}?></textarea>
                               </div>
                             </div>
                             <!--VALOR IDGRUPO DE TIPO ESCONDIDO-->

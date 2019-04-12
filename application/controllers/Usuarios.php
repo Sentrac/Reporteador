@@ -69,10 +69,23 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('repeat_pswd', 'Confirmar Contraseña', 'required|matches[pass]');
 
 		if($this->form_validation->run() == FALSE){
+
+			$old = array(
+				'nombre' => $this->input->post('nombre'),
+				'apellidos' => $this->input->post('apellidos'),
+				'telefono' => $this->input->post('telefono'),
+				'usuario' => $this->input->post('usuario'),
+				'pass' => $this->input->post('pass'),
+				'rpass' => $this->input->post('repeat_pswd'),
+				'tipo_usuario' => $this->input->post('tipo_usuario'),
+				'fk_grupou' => $this->input->post('fk_grupou'),
+			);
+			$this->session->set_flashdata('old',$old);
            
             $error_usuario =  validation_errors();
             $this->session->set_flashdata('ErrorUsuario',$error_usuario);
-            redirect('/Usuarios/formulario_usuarios');
+			
+			redirect('/Usuarios/formulario_usuarios');
 
         }else{
 			$nombre = $this->input->post('nombre');
@@ -124,7 +137,7 @@ class Usuarios extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -202,9 +215,22 @@ class Usuarios extends CI_Controller {
 		$idgrupo = $this->input->post('fk_grupou');
 
 		if($this->form_validation->run() == FALSE){
+
+			$old = array(
+				'nombre' => $this->input->post('nombre'),
+				'apellidos' => $this->input->post('apellidos'),
+				'telefono' => $this->input->post('telefono'),
+				'usuario' => $this->input->post('usuario'),
+				'pass' => $this->input->post('pass'),
+				'rpass' => $this->input->post('repeat_pswd'),
+				'tipo_usuario' => $this->input->post('tipo_usuario'),
+			);
+			$this->session->set_flashdata('old',$old);
+
 			$error_usuario =  validation_errors();
             $this->session->set_flashdata('ErrorUsuario',$error_usuario);
-            redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh');
+			
+			redirect('/Usuarios/formulario_usuarios?idusuarios='.$idusuario,'refresh');
 
         }else{
 			$nombre = $this->input->post('nombre');
@@ -252,7 +278,7 @@ class Usuarios extends CI_Controller {
 					'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 					<tr>
 						<td align="center" style="padding: 0px 0 40px 0;">
-							<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+							<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 						</td>
 					</tr>
 					<tr>
@@ -285,7 +311,7 @@ class Usuarios extends CI_Controller {
 					</tr>
 					<tr>
 						<td align="center" style="padding: 40px 0 0px 0;">
-							<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+							<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 						</td>
 					</tr>
 					</table>'
@@ -410,7 +436,7 @@ class Usuarios extends CI_Controller {
 			'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 				<tr>
 					<td align="center" style="padding: 0px 0 40px 0;">
-						<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+						<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 					</td>
 				</tr>
 				<tr>
@@ -447,7 +473,7 @@ class Usuarios extends CI_Controller {
 				</tr>
 				<tr>
 					<td align="center" style="padding: 40px 0 0px 0;">
-						<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+						<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 					</td>
 				</tr>
 			</table>'
@@ -503,7 +529,7 @@ class Usuarios extends CI_Controller {
 				'<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
 				<tr>
 					<td align="center" style="padding: 0px 0 40px 0;">
-						<img src="http://189.204.31.154:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
+						<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/email.jpg" width="100%" alt="" style="display: block;">
 					</td>
 				</tr>
 				<tr>
@@ -533,7 +559,7 @@ class Usuarios extends CI_Controller {
 				</tr>
 				<tr>
 					<td align="center" style="padding: 40px 0 0px 0;">
-						<img src="http://189.204.31.154:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
+						<img src="https://wreporter.warriorslabs.com:82/Reporteador/assets/images/footer.png" width="100%" style="display: block;">
 					</td>
 				</tr>
 				</table>'
@@ -546,4 +572,20 @@ class Usuarios extends CI_Controller {
 			}
 		}	
 	}
+	/*---------------------DATA TABLE -------------------- */
+	public function index(){
+		// load view
+		$this->load->view('interfaces/usuarios');
+   
+	  }
+	  public function empList(){
+		
+		// POST data
+		$postData = $this->input->post();
+   
+		// Get data
+		$data = $this->Modelo_usuarios->getUsers($postData);
+   
+		echo json_encode($data);
+	 }
 }

@@ -46,28 +46,28 @@
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Nombre completo" class="form-control" style="text-transform: uppercase;" name="nombre">
+                                <input type="text" placeholder="Nombre completo" class="form-control" style="text-transform: uppercase;" name="nombre" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['nombre'];}?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Nombre (<small>Alias</small>)</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="Alias" class="form-control" style="text-transform: uppercase;" name="alias">
+                                <input type="text" placeholder="Alias" class="form-control" style="text-transform: uppercase;" name="alias" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['alias'];}?>">
                                 <small class="form-control-feedback"> </small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">RFC</label>
                               <div class="col-md-9">
-                                <input type="text" placeholder="RFC" class="form-control" style="text-transform: uppercase;" name="rfc">
+                                <input type="text" placeholder="RFC" class="form-control" style="text-transform: uppercase;" name="rfc" value="<?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['rfc'];}?>">
                                 <small class="form-control-feedback">Ejemplo: POI1624345QWE</small>
                               </div>
                             </div>
                             <div class="form-group row">
                               <label class="control-label text-center col-md-2">Descripción</label>
                               <div class="col-md-9">
-                                <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion"></textarea>
+                                <textarea rows="5" placeholder="Descripción" class="form-control" style="text-transform: uppercase;" name="descripcion"><?php if ($this->session->flashdata('old')) { echo $this->session->flashdata('old')['descripcion'];}?></textarea>
                               </div>
                             </div>
                           </div>
@@ -78,7 +78,7 @@
                                   <div class="offset-sm-4 col-md-8">
                                     <button type="submit" class="btn btn-success"> <i class="mdi mdi-content-save"></i> Guardar</button>
                                     <a href="<?= base_url() ?>Grupo/grupo">
-                                        <button type="button" class="btn btn-inverse"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
+                                        <button type="button" class="btn btn-danger"> <i class="mdi mdi-close-circle"></i> Cancelar</button>
                                     </a>
                                   </div>
                                 </div>

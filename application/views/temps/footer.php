@@ -68,6 +68,8 @@
     <script src="../assets/js/custom.min.js"></script>
     <script src="../assets/js/radiobuttons.js"></script>
     <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!--JS PARA CAPTURAR IMAGEN-->
+    <script src="../assets/js/html2canvas.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->

@@ -173,6 +173,96 @@ class Modelo_usuarios extends CI_Model{
             return false;
         }
     }
-}
+    /*--------------------------------DATA TABLE------------------------------*/
+    function getUsers($postData=null){
 
+        $response = array();
+   
+        ## Read value
+        $draw = $postData['draw'];
+        $start = $postData['start'];
+        $rowperpage = $postData['length']; // Rows display per page
+        $columnIndex = $postData['order'][0]['column']; // Column index
+        $columnName = $postData['columns'][$columnIndex]['data']; // Column name
+        $columnSortOrder = $postData['order'][0]['dir']; // asc or desc
+        $searchValue = $postData['search']['value']; // Search value
+   
+        ## Search 
+        $searchQuery = "";
+        if($searchValue != ''){
+           $searchQuery = " (nombre like '%".$searchValue."%' or apellidos like '%".$searchValue."%' or grupo like'%".$searchValue."%' or tipo_usuario like'%".$searchValue."%' ) ";
+        }
+   
+        ## Total number of records without filtering
+        $this->db->select('count(*) as allcount');
+        $records = $this->db->get('usuarios_grupo')->result();
+        $totalRecords = $records[0]->allcount;
+   
+        ## Total number of record with filtering
+        $this->db->select('count(*) as allcount');
+        if($searchValue != '')
+           $this->db->where($searchQuery);
+        $records = $this->db->get('usuarios_grupo')->result();
+        $totalRecordwithFilter = $records[0]->allcount;
+   
+        ## Fetch records
+        $this->db->select('*');
+        if($searchValue != '')
+           $this->db->where($searchQuery);
+           $this->db->where_not_in("usuario",$this->session->userdata("usuario"));
+        $this->db->order_by($columnName, $columnSortOrder);
+        $this->db->limit($rowperpage, $start);
+        $records = $this->db->get('usuarios_grupo')->result();
+   
+        $data = array();
+   
+        foreach($records as $record ){
+
+            if($record->tipo_usuario=='SU'){
+                $rol='SUPER ADMINISTRADOR';
+            }
+            if($record->tipo_usuario=='AD'){
+                $rol="ADMINISTRADOR";
+            }
+            if($record->tipo_usuario=='CO'){
+                $rol='CONSULTOR';
+            }
+
+   
+           $data[] = array( 
+              "nombre"=>$record->nombre,
+              "apellidos"=>$record->apellidos,
+              "usuario"=>$record->usuario,
+              "tipo_usuario"=>$rol,
+              "grupo"=>$record->grupo,
+              "actions"=>'<td class="footable-editing footable-last-visible" style="display: table-cell;">
+              <div class="btn-group btn-group-xs" role="group">
+                  <a href="javascript:void(0)" onclick="editreg('.$record->idusuarios.');" class="btn btn-secondary txt-azul" title="Editar Modal">
+                      <span class="mdi mdi-lead-pencil" aria-hidden="true"></span>
+                  </a>
+                  <a href="javascript:void(0)" onclick="delreg('.$record->idusuarios.');" class="btn btn-secondary txt-rojo" title="Eliminar">
+                      <span class="mdi mdi-delete" aria-hidden="true"></span>
+                  </a>
+                  <a href="javascript:void(0)" onclick="getContacts('.$record->idusuarios.');" class="btn btn-secondary txt-verde" title="Contactos">
+                      <span class="mdi mdi-eye" aria-hidden="true"></span>
+                  </a>
+                  <a href="javascript:void(0)" onclick="updPass('.$record->idusuarios.');" class="btn btn-secondary txt-negro" title="Cambiar Contraseña">
+                      <span class="mdi mdi-lock" aria-hidden="true"></span>
+                  </a>
+              </div>
+            </td>',
+           ); 
+        }
+   
+        ## Response
+        $response = array(
+           "draw" => intval($draw),
+           "iTotalRecords" => $totalRecordwithFilter,
+           "iTotalDisplayRecords" => $totalRecords,
+           "aaData" => $data
+        );
+   
+        return $response; 
+      }   
+}
 ?>
